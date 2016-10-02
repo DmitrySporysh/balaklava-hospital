@@ -18,6 +18,8 @@ class CreateBedsTable extends Migration
             $table->integer('bed_number')->unsigned();
 
             $table->integer('id_chamber')->unsigned();
+            $table->integer('id_patient')->unsigned()->unique()->nullable();
+
 
             $table->softDeletes();
             $table->timestamps();

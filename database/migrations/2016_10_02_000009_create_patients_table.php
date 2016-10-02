@@ -21,7 +21,7 @@ class CreatePatientsTable extends Migration
             $table->timestamp('receipt_date');
             $table->string('initial_inspection')->nullable();
             $table->string('preliminary_diagnosis')->nullable();
-            $table->string('confirmed diagnosis')->nullable();
+            $table->string('confirmed_diagnosis')->nullable();
 
             $table->integer('id_district_doctor')->unsigned()->nullable();
             $table->integer('id_attending_doctor')->unsigned()->nullable();
