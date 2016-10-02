@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTreatmentTable extends Migration
+class CreateTreatmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,23 +13,23 @@ class CreateTreatmentTable extends Migration
      */
     public function up()
     {
-        Schema::create('treatment', function (Blueprint $table) {
+        Schema::create('treatments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('treatment_name');
             $table->string('description')->nullable();
             $table->date('date');
 
-            $table->integer('id_patient')->unsigned();
-            $table->integer('id_doctor')->unsigned();
+            $table->integer('patient_id')->unsigned();
+            $table->integer('doctor_id')->unsigned();
 
             $table->softDeletes();
             $table->timestamps();
         });
 
-        Schema::table('treatment',function (Blueprint $table){
-            $table->foreign('id_patient')->references('id')->on('patients')
+        Schema::table('treatments',function (Blueprint $table){
+            $table->foreign('patient_id')->references('id')->on('patients')
                 ->onUpdate('cascade');
-            $table->foreign('id_doctor')->references('id')->on('medical_staff')
+            $table->foreign('doctor_id')->references('id')->on('health_workers')
                 ->onUpdate('cascade');
         });
     }
@@ -41,6 +41,6 @@ class CreateTreatmentTable extends Migration
      */
     public function down()
     {
-        Schema::drop('treatment');
+        Schema::drop('treatments');
     }
 }

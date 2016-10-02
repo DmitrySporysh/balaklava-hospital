@@ -22,20 +22,20 @@ class CreateSurveysTable extends Migration
             $table->string('result_text')->nullable();
             $table->string('result_file')->nullable();
 
-            $table->integer('id_patient')->unsigned();
-            $table->integer('id_doctor')->unsigned();
-            $table->integer('id_survey_type')->unsigned();
+            $table->integer('patient_id')->unsigned();
+            $table->integer('doctor_id')->unsigned();
+            $table->integer('survey_type_id')->unsigned();
 
             $table->softDeletes();
             $table->timestamps();
         });
 
         Schema::table('surveys',function (Blueprint $table){
-            $table->foreign('id_patient')->references('id')->on('patients')
+            $table->foreign('patient_id')->references('id')->on('patients')
                 ->onUpdate('cascade');
-            $table->foreign('id_doctor')->references('id')->on('medical_staff')
+            $table->foreign('doctor_id')->references('id')->on('health_workers')
                 ->onUpdate('cascade');
-            $table->foreign('id_survey_type')->references('id')->on('surveys_types')
+            $table->foreign('survey_type_id')->references('id')->on('surveys_types')
                 ->onUpdate('cascade');
         });
     }

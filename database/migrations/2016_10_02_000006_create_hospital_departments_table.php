@@ -18,14 +18,14 @@ class CreateHospitalDepartmentsTable extends Migration
             $table->string('department_name');
             $table->string('address');
 
-            $table->integer('id_department_chief')->unsigned();
+            $table->integer('department_chief_id')->unsigned();
 
             $table->softDeletes();
             $table->timestamps();
         });
 
         Schema::table('hospital_departments',function (Blueprint $table){
-            $table->foreign('id_department_chief')->references('id')->on('medical_staff')
+            $table->foreign('department_chief_id')->references('id')->on('health_workers')
                 ->onUpdate('cascade');
         });
     }

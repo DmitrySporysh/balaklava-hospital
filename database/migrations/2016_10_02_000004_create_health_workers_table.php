@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMedicalStaffTable extends Migration
+class CreateHealthWorkersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMedicalStaffTable extends Migration
      */
     public function up()
     {
-        Schema::create('medical_staff', function (Blueprint $table) {
+        Schema::create('health_workers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('fio');
             $table->string('name')->unique();
@@ -36,6 +36,6 @@ class CreateMedicalStaffTable extends Migration
      */
     public function down()
     {
-        Schema::drop('medical_staff');
+        Schema::drop('health_workers');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDischargeTable extends Migration
+class CreateDischargesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,26 +13,26 @@ class CreateDischargeTable extends Migration
      */
     public function up()
     {
-        Schema::create('discharge', function (Blueprint $table) {
+        Schema::create('discharges', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamp('discharge_date');
             $table->string('result_epicrisis');
             $table->enum('discharge_type', array('discharge', 'transfer', 'death', 'other'));
 
-            $table->integer('id_patient')->unsigned();
-            $table->integer('id_discharge_hospital')->unsigned()->nullable();
-            $table->integer('id_discharge_department')->unsigned()->nullable();
+            $table->integer('patient_id')->unsigned();
+            $table->integer('discharge_hospital_id')->unsigned()->nullable();
+            $table->integer('discharge_department_id')->unsigned()->nullable();
 
             $table->softDeletes();
             $table->timestamps();
         });
 
-        Schema::table('discharge',function (Blueprint $table){
-            $table->foreign('id_patient')->references('id')->on('patients')
+        Schema::table('discharges',function (Blueprint $table){
+            $table->foreign('patient_id')->references('id')->on('patients')
                 ->onUpdate('cascade');
-            $table->foreign('id_discharge_hospital')->references('id')->on('hospitals')
+            $table->foreign('discharge_hospital_id')->references('id')->on('hospitals')
                 ->onUpdate('cascade');
-            $table->foreign('id_discharge_department')->references('id')->on('hospital_departments')
+            $table->foreign('discharge_department_id')->references('id')->on('hospital_departments')
                 ->onUpdate('cascade');
         });
     }
@@ -44,6 +44,6 @@ class CreateDischargeTable extends Migration
      */
     public function down()
     {
-        Schema::drop('discharge');
+        Schema::drop('discharges');
     }
 }

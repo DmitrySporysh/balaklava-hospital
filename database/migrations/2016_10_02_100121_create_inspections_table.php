@@ -18,17 +18,17 @@ class CreateInspectionsTable extends Migration
             $table->timestamp('inspection_date');
             $table->string('result_text');
 
-            $table->integer('id_patient')->unsigned();
-            $table->integer('id_doctor')->unsigned();
+            $table->integer('patient_id')->unsigned();
+            $table->integer('doctor_id')->unsigned();
 
             $table->softDeletes();
             $table->timestamps();
         });
 
         Schema::table('inspections',function (Blueprint $table){
-            $table->foreign('id_patient')->references('id')->on('patients')
+            $table->foreign('patient_id')->references('id')->on('patients')
                 ->onUpdate('cascade');
-            $table->foreign('id_doctor')->references('id')->on('medical_staff')
+            $table->foreign('doctor_id')->references('id')->on('health_workers')
                 ->onUpdate('cascade');
         });
     }

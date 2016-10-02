@@ -20,15 +20,15 @@ class CreateChambersTable extends Migration
             $table->enum('chamber_sex', array('male', 'female', 'common'));
 
 
-            $table->integer('id_hospital_department')->unsigned();
+            $table->integer('hospital_department_id')->unsigned();
 
             $table->softDeletes();
             $table->timestamps();
         });
 
         Schema::table('chambers',function (Blueprint $table){
-            $table->unique(array('id_hospital_department', 'number'));
-            $table->foreign('id_hospital_department')->references('id')->on('hospital_departments')
+            $table->unique(array('hospital_department_id', 'number'));
+            $table->foreign('hospital_department_id')->references('id')->on('hospital_departments')
                 ->onUpdate('cascade');
         });
     }

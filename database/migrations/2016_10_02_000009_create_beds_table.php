@@ -15,20 +15,18 @@ class CreateBedsTable extends Migration
     {
         Schema::create('beds', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('bed_number')->unsigned();
-
-            $table->integer('id_chamber')->unsigned();
-            $table->integer('id_patient')->unsigned()->unique()->nullable();
-
+            $table->integer('chamber_id')->unsigned();
+            $table->integer('patient_id')->unsigned()->unique()->nullable();
 
             $table->softDeletes();
             $table->timestamps();
         });
 
         Schema::table('beds',function (Blueprint $table){
-            $table->foreign('id_chamber')->references('id')->on('chambers')
+            $table->foreign('chamber_id')->references('id')->on('chambers')
                 ->onUpdate('cascade');
-            $table->unique(array('id_chamber', 'bed_number'));
+            $table->foreign('patient_id')->references('id')->on('patients')
+                ->onUpdate('cascade');
         });
     }
 

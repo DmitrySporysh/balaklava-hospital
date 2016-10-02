@@ -20,14 +20,14 @@ class CreateDistrictDoctorsTable extends Migration
             $table->date('birth_date');
             $table->string('description')->nullable();
 
-            $table->integer('id_hospital')->unsigned();
+            $table->integer('hospital_id')->unsigned();
 
             $table->softDeletes();
             $table->timestamps();
         });
 
         Schema::table('district_doctors', function (Blueprint $table) {
-            $table->foreign('id_hospital')->references('id')->on('hospitals')
+            $table->foreign('hospital_id')->references('id')->on('hospitals')
                 ->onUpdate('cascade');
         });
     }

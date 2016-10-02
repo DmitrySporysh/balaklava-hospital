@@ -23,23 +23,20 @@ class CreatePatientsTable extends Migration
             $table->string('preliminary_diagnosis')->nullable();
             $table->string('confirmed_diagnosis')->nullable();
 
-            $table->integer('id_district_doctor')->unsigned()->nullable();
-            $table->integer('id_attending_doctor')->unsigned()->nullable();
-            $table->integer('id_hospital_department')->unsigned()->nullable();
-            $table->integer('id_bed')->unsigned()->nullable();
+            $table->integer('district_doctor_id')->unsigned()->nullable();
+            $table->integer('attending_doctor_id')->unsigned()->nullable();
+            $table->integer('hospital_department_id')->unsigned()->nullable();
             
             $table->softDeletes();            
             $table->timestamps();
         });
 
         Schema::table('patients',function (Blueprint $table){
-            $table->foreign('id_district_doctor')->references('id')->on('district_doctors')
+            $table->foreign('district_doctor_id')->references('id')->on('district_doctors')
                 ->onUpdate('cascade');
-            $table->foreign('id_attending_doctor')->references('id')->on('medical_staff')
+            $table->foreign('attending_doctor_id')->references('id')->on('health_workers')
                 ->onUpdate('cascade');
-            $table->foreign('id_hospital_department')->references('id')->on('hospital_departments')
-                ->onUpdate('cascade');
-            $table->foreign('id_bed')->references('id')->on('beds')
+            $table->foreign('hospital_department_id')->references('id')->on('hospital_departments')
                 ->onUpdate('cascade');
         });
 

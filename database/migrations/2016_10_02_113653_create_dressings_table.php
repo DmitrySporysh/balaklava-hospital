@@ -13,22 +13,22 @@ class CreateDressingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('dressing', function (Blueprint $table) {
+        Schema::create('dressings', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamp('dressing_date');
             $table->string('dressing_name');
 
-            $table->integer('id_patient')->unsigned();
-            $table->integer('id_doctor')->unsigned();
+            $table->integer('patient_id')->unsigned();
+            $table->integer('doctor_id')->unsigned();
 
             $table->softDeletes();
             $table->timestamps();
         });
 
-        Schema::table('dressing',function (Blueprint $table){
-            $table->foreign('id_patient')->references('id')->on('patients')
+        Schema::table('dressings',function (Blueprint $table){
+            $table->foreign('patient_id')->references('id')->on('patients')
                 ->onUpdate('cascade');
-            $table->foreign('id_doctor')->references('id')->on('medical_staff')
+            $table->foreign('doctor_id')->references('id')->on('health_workers')
                 ->onUpdate('cascade');
         });
     }
@@ -40,6 +40,6 @@ class CreateDressingsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('dressing');
+        Schema::drop('dressings');
     }
 }
