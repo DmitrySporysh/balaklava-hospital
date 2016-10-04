@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 
 
-interface WebMasterServiceInterface
+interface CheifMedicalOfficerServiceInterface
 {
 
     public function getAllBannerRequests($user_id,$page_size);
@@ -21,7 +21,7 @@ interface WebMasterServiceInterface
     public function editSite(Request $request,$user_id);
 
     public function acceptRequest($show_request_id);
-    
+
     public function rejectRequest($show_request_id);
 
 

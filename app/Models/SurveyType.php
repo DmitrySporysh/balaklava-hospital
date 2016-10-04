@@ -25,7 +25,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Survey_type whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class Survey_type extends Model
+class SurveyType extends Model
 {
     use SoftDeletes;
 

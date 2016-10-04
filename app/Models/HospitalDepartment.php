@@ -28,7 +28,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Hospital_department whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class Hospital_department extends Model
+class HospitalDepartment extends Model
 {
     use SoftDeletes;
 

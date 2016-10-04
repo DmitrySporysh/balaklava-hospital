@@ -8,7 +8,7 @@
 namespace App\Repositories\Interfaces;
 
 
-interface PatientInterface extends RepositoryInterface
+interface PatientRepositoryInterface extends RepositoryInterface
 {
 
 }

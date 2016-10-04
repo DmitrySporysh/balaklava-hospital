@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: DmitrySpor
@@ -8,7 +9,7 @@
 namespace App\Repositories\Interfaces;
 
 
-interface HealthWorkerRepositoryInterface extends RepositoryInterface
+interface PasswordResetRepositoryInterface extends RepositoryInterface
 {
 
 }

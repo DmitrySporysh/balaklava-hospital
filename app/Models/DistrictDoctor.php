@@ -30,7 +30,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\District_doctor whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class District_doctor extends Model
+class DistrictDoctor extends Model
 {
     use SoftDeletes;
 
