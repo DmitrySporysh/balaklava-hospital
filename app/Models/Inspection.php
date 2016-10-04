@@ -5,6 +5,29 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * App\Models\Inspection
+ *
+ * @property integer $id
+ * @property string $inspection_date
+ * @property string $result_text
+ * @property integer $patient_id
+ * @property integer $doctor_id
+ * @property \Carbon\Carbon $deleted_at
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property-read \App\Models\Patient $patient
+ * @property-read \App\Models\Health_worker $doctor
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Inspection whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Inspection whereInspectionDate($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Inspection whereResultText($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Inspection wherePatientId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Inspection whereDoctorId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Inspection whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Inspection whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Inspection whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Inspection extends Model
 {
     use SoftDeletes;
