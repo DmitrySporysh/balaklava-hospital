@@ -1,37 +1,64 @@
 <?php
+namespace App\Services;
+
+use App\Exceptions\HealthWorkerServiceException;
+use App\Exceptions\DALException;
+use \Exception;
+use App\Services\Interfaces\HealthWorkerServiceInterface;
+use App\Repositories\Interfaces\PatientRepositoryInterface;
+use App\Repositories\Interfaces\UserRepositoryInterface;
 
 
-namespace App\Services\Interfaces;
 
-
-
-use Illuminate\Http\Request;
-
-
-
-interface HealthWorkerServiceInterface
+class HealthWorkerService implements HealthWorkerServiceInterface
 {
-
-    public function getAllBannerRequests($user_id,$page_size);
-
-    public function addAllNewSiteData(Request $request,$user_id);
-
-    public function getSitesFullInfo($webmaster_id,$page_size);
-
-    public function editSite(Request $request,$user_id);
-
-    public function acceptRequest($show_request_id);
-
-    public function rejectRequest($show_request_id);
+    private $user_repo;
+    private $patient_repo;
 
 
-    public function getOneSiteInfo($site_id);
+    public function  __construct(UserRepositoryInterface $user_repo,
+                                 PatientRepositoryInterface $patient_repo){
+        dd('kokoko2');
+        $this->user_repo = $user_repo;
+        $this->patient_repo = $patient_repo;
+    }
 
-    public function getSelectedCategories($site_id);
 
-    public function getSelectedThematics($site_id);
+    public function getAllPatients($page_size)
+    {
+        try {
+            $data =  $this->patient_repo->paginate($page_size);
+            return $this->arrayToJson($data);
+        }
+        catch(DALException $e){
+            $message = 'Error while creating withdraw money request(DAL Error)';
+            throw new HealthWorkerServiceException($message,0,$e);
+        }
+        catch(Exception $e){
+            $message = 'Error while creating withdraw money request(UnknownError)';
+            throw new HealthWorkerServiceException($message,0,$e);
+        }
+    }
 
-    public function deletePage($user_id,$page_id);
+    public function addNewPatient(Request $request)
+    {
+        // TODO: Implement addNewPatient() method.
+    }
 
-    public function deleteSite($user_id,$site_id);
+    public function ediPatient(Request $request, $patient_id)
+    {
+        // TODO: Implement ediPatient() method.
+    }
+
+    public function deletePatient($patient_id)
+    {
+        // TODO: Implement deletePatient() method.
+    }
+
+    private function arrayToJson($data){
+        for($i = 0; $i<count($data);$i++) {
+            $data[$i] =  $data[$i]->toJson();
+        }
+        return $data;
+    }
 }

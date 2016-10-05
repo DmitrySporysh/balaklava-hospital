@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Services\Interfaces;
+namespace App\Services;
 use Auth;
 use Illuminate\Http\Request;
 use Validator;

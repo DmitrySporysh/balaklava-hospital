@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('test', 'TestController@test');
+Route::get('patients', 'HealthWorkerController@patients');
 
 Route::get('/', function () {
     return view('welcome');

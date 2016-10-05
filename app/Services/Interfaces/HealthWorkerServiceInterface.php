@@ -12,26 +12,11 @@ use Illuminate\Http\Request;
 interface HealthWorkerServiceInterface
 {
 
-    public function getAllBannerRequests($user_id,$page_size);
+    public function getAllPatients($page_size);
 
-    public function addAllNewSiteData(Request $request,$user_id);
+    public function addNewPatient(Request $request);
 
-    public function getSitesFullInfo($webmaster_id,$page_size);
+    public function ediPatient(Request $request, $patient_id);
 
-    public function editSite(Request $request,$user_id);
-
-    public function acceptRequest($show_request_id);
-
-    public function rejectRequest($show_request_id);
-
-
-    public function getOneSiteInfo($site_id);
-
-    public function getSelectedCategories($site_id);
-
-    public function getSelectedThematics($site_id);
-
-    public function deletePage($user_id,$page_id);
-
-    public function deleteSite($user_id,$site_id);
+    public function deletePatient($patient_id);
 }
