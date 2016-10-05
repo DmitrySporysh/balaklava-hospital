@@ -26,7 +26,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Bed extends Model
 {
-    use SoftDeletes;
+    /*use SoftDeletes;
 
     protected $dates = ['deleted_at'];
 
@@ -44,5 +44,5 @@ class Bed extends Model
 
     public function chamber(){
         return $this->belongsTo('App\Models\Chamber');
-    }
+    }*/
 }

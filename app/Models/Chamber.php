@@ -41,8 +41,8 @@ class Chamber extends Model
     protected $fillable = [
         'chamber_sex', 'number', 'floor', 'hospital_department_id'];
 
-    public function beds(){
-        return $this->hasMany('App\Models\Bed','chamber_id');
+    public function patients(){
+        return $this->hasMany('App\Models\Patient','chamber_id');
     }
 
     public function hospital_department(){

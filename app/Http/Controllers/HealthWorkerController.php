@@ -32,8 +32,6 @@ class HealthWorkerController extends Controller
     
     public function patients()
     {
-        Debugbar::error('Error!');
-        Debugbar::warning('Watch out…');
         Debugbar::addMessage('Another message', 'mylabel');
         $page_size = 3;
 

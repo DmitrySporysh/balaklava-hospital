@@ -7,6 +7,8 @@ use \Exception;
 use App\Services\Interfaces\HealthWorkerServiceInterface;
 use App\Repositories\Interfaces\PatientRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
+use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Model;
 
 
 
@@ -18,7 +20,6 @@ class HealthWorkerService implements HealthWorkerServiceInterface
 
     public function  __construct(UserRepositoryInterface $user_repo,
                                  PatientRepositoryInterface $patient_repo){
-        dd('kokoko2');
         $this->user_repo = $user_repo;
         $this->patient_repo = $patient_repo;
     }
@@ -28,7 +29,8 @@ class HealthWorkerService implements HealthWorkerServiceInterface
     {
         try {
             $data =  $this->patient_repo->paginate($page_size);
-            return $this->arrayToJson($data);
+            //return $this->arrayToJson($data);
+            return $data;
         }
         catch(DALException $e){
             $message = 'Error while creating withdraw money request(DAL Error)';
@@ -57,8 +59,9 @@ class HealthWorkerService implements HealthWorkerServiceInterface
 
     private function arrayToJson($data){
         for($i = 0; $i<count($data);$i++) {
-            $data[$i] =  $data[$i]->toJson();
+            $data[$i] =  $data[$i]->toArray();
         }
+        dd($data);
         return $data;
     }
 }

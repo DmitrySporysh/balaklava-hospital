@@ -26,6 +26,7 @@ class CreatePatientsTable extends Migration
             $table->integer('district_doctor_id')->unsigned()->nullable();
             $table->integer('attending_doctor_id')->unsigned()->nullable();
             $table->integer('hospital_department_id')->unsigned()->nullable();
+            $table->integer('chamber_id')->unsigned()->nullable();
             
             $table->softDeletes();            
             $table->timestamps();
@@ -37,6 +38,8 @@ class CreatePatientsTable extends Migration
             $table->foreign('attending_doctor_id')->references('id')->on('health_workers')
                 ->onUpdate('cascade');
             $table->foreign('hospital_department_id')->references('id')->on('hospital_departments')
+                ->onUpdate('cascade');
+            $table->foreign('chamber_id')->references('id')->on('chambers')
                 ->onUpdate('cascade');
         });
 
