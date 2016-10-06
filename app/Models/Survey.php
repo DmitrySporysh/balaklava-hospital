@@ -50,7 +50,7 @@ class Survey extends Model
     protected $guarded = ['id'];
 
     protected $fillable = [
-        'treatment_name', 'description', 'survey_date', 'status',
+        'survey_name', 'survey_date', 'status',
         'result_text', 'result_file', 'patient_id', 'doctor_id', 'survey_type_id'
     ];
 
