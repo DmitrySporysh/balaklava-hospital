@@ -13,8 +13,8 @@ class HospitalTableSeeder extends Seeder
     {
         foreach (range(1, 20) as $index) {
             DB::table('hospitals')->insert([
-                'hospital_name' => 'The best hospital of the world №' . $index,
-                'address' => 'Russia, Sevastopol, str. Vakulenchuka ' . ($index+7),
+                'hospital_name' => 'Больница им."Иванова И.И." №' . $index,
+                'address' => 'Россия, г.Севастополь, ул.Вакуленчука, д.' . ($index+7),
             ]);
         }
     }
