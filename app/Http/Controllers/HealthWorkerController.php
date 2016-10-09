@@ -20,7 +20,7 @@ use Debugbar;
 class HealthWorkerController extends Controller
 {
     private $healthworker_service;
-    
+
     public function __construct(HealthWorkerServiceInterface $healthworker_service)
     {
         Debugbar::addMessage('Another message', 'mylabel');
@@ -29,14 +29,15 @@ class HealthWorkerController extends Controller
         //$this->middleware('auth');
         //$this->middleware('checkRole:'.UserRole::WEBMASTER);
     }
-    
-    public function patients()
+
+    public function patients(Request $request)
     {
         Debugbar::addMessage('Another message', 'mylabel');
-        $page_size = 3;
+        $per_page = ($request->has('per_page')) ? $request->per_page : 3;
 
-        $response = $this->healthworker_service->getAllPatients($page_size);
-        return $response;
+        $response = $this->healthworker_service->getAllPatients($per_page);
+        Debugbar::info($response);
+        return view('welcome', ['response' => $response]);
     }
 
     public function getPatient($patient_id)
@@ -44,11 +45,8 @@ class HealthWorkerController extends Controller
         Debugbar::addMessage('HealthWorkerController/getPatient', 'mylabel');
 
         $response = $this->healthworker_service->getPatietnFullInfo($patient_id);
-
         //$response =  $this->healthworker_service->testFunc();
-        dd($response);
-        //dd($this->healthworker_service->testFunc());
-        //return $response;
-         //return view('welcome', ['response' => $response]);
+        Debugbar::info($response);
+        return view('welcome', ['response' => $response]);
     }
 }

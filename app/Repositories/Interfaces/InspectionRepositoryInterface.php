@@ -10,5 +10,6 @@ namespace App\Repositories\Interfaces;
 
 interface InspectionRepositoryInterface extends RepositoryInterface
 {
-
+    public function getPatientInspectionsWithDoctors($patient_id, $per_page);
+    
 }

@@ -6,8 +6,11 @@
  * Time: 12:33
  */
 namespace App\Repositories;
+use App\Exceptions\DALException;
+use App\Models\Dressing;
 use App\Repositories\Core\Repository;
 use App\Repositories\Interfaces\DressingRepositoryInterface;
+use Exception;
 
 
 class DressingRepository extends Repository implements DressingRepositoryInterface
@@ -15,5 +18,22 @@ class DressingRepository extends Repository implements DressingRepositoryInterfa
     function model()
     {
         return 'App\Models\Dressing';
+    }
+
+    public function getPatientDressingsWithDoctors($patient_id, $per_page_dressings)
+    {
+        try {
+            $data = Dressing::where('dressings.patient_id',$patient_id)
+                ->join('health_workers as doctors', 'dressings.doctor_id', '=', 'doctors.id')
+                ->select('dressings.dressing_date',
+                    'dressings.dressing_name',
+                    'doctors.fio as doctor_fio')
+                ->paginate($per_page_dressings);
+        } catch (Exception $e) {
+            $message = 'Error while finding element using ' . $this->model();
+            throw new DALException($message, 0, $e);
+        }
+        if ($data != null) return $data;
+        return array();
     }
 }

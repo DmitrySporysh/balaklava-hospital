@@ -10,5 +10,5 @@ namespace App\Repositories\Interfaces;
 
 interface TreatmentRepositoryInterface extends RepositoryInterface
 {
-
+    public function getPatientTreatmentsWithDoctors($patient_id, $per_page);
 }

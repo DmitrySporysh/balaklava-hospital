@@ -10,5 +10,9 @@ namespace App\Repositories\Interfaces;
 
 interface ChamberRepositoryInterface extends RepositoryInterface
 {
+    public function getChambersWithDepartments($page_size);
 
+    public function getNotEmptyChambersWithDepartments($perPage);
+
+    public function getChamberWithDepartmentAndPatients($chamber_id);
 }

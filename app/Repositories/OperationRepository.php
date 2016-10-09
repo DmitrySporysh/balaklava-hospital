@@ -6,8 +6,11 @@
  * Time: 12:33
  */
 namespace App\Repositories;
+use App\Exceptions\DALException;
+use App\Models\Operation;
 use App\Repositories\Core\Repository;
 use App\Repositories\Interfaces\OperationRepositoryInterface;
+use Exception;
 
 
 class OperationRepository extends Repository implements OperationRepositoryInterface
@@ -15,5 +18,24 @@ class OperationRepository extends Repository implements OperationRepositoryInter
     function model()
     {
         return 'App\Models\Operation';
+    }
+
+    public function getPatientOperationsWithDoctors($patient_id, $per_page)
+    {
+        try {
+            $data = Operation::where('operations.patient_id',$patient_id)
+                ->join('health_workers as doctors', 'operations.doctor_id', '=', 'doctors.id')
+                ->select('operations.operation_date',
+                    'operations.operation_name',
+                    'operations.preliminary_epicrisis',
+                    'operations.result',
+                    'doctors.fio as doctor_fio')
+                ->paginate($per_page);
+        } catch (Exception $e) {
+            $message = 'Error while finding element using ' . $this->model();
+            throw new DALException($message, 0, $e);
+        }
+        if ($data != null) return $data;
+        return array();
     }
 }

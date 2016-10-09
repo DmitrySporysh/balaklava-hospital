@@ -7,12 +7,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * App\Models\Chamber
+ * 
+ * ls\Chamber whereDeletedAt($value)
  *
  * @property integer $id
  * @property integer $number
  * @property integer $floor
  * @property integer $beds_total_count
- * @property integer $beds_remaining_count
+ * @property integer $beds_occupied_count
  * @property string $chamber_sex
  * @property integer $hospital_department_id
  * @property \Carbon\Carbon $deleted_at
@@ -24,7 +26,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Chamber whereNumber($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Chamber whereFloor($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Chamber whereBedsTotalCount($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Chamber whereBedsRemainingCount($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Chamber whereBedsOccupiedCount($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Chamber whereChamberSex($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Chamber whereHospitalDepartmentId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Chamber whereDeletedAt($value)
@@ -43,7 +45,7 @@ class Chamber extends Model
     protected $guarded = ['id'];
 
     protected $fillable = [
-        'chamber_sex', 'number', 'floor', 'hospital_department_id'];
+        'chamber_sex', 'number', 'floor', 'hospital_department_id', 'beds_total_count'];
 
     public function patients(){
         return $this->hasMany('App\Models\Patient','chamber_id');

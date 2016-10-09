@@ -7,26 +7,27 @@
  */
 namespace App\Repositories;
 use App\Exceptions\DALException;
-use App\Models\Inspection;
+use App\Models\Treatment;
 use App\Repositories\Core\Repository;
-use App\Repositories\Interfaces\InspectionRepositoryInterface;
+use App\Repositories\Interfaces\TreatmentRepositoryInterface;
 use Exception;
 
 
-class InspectionRepository extends Repository implements InspectionRepositoryInterface
+class TreatmentRepository extends Repository implements TreatmentRepositoryInterface
 {
     function model()
     {
-        return 'App\Models\Inspection';
+        return 'App\Models\Treatment';
     }
 
-    public function getPatientInspectionsWithDoctors($patient_id, $per_page)
+    public function getPatientTreatmentsWithDoctors($patient_id, $per_page)
     {
         try {
-            $data = Inspection::where('inspections.patient_id',$patient_id)
-                ->join('health_workers as doctors', 'inspections.doctor_id', '=', 'doctors.id')
-                ->select('inspections.inspection_date',
-                    'inspections.result_text',
+            $data = Treatment::where('treatments.patient_id',$patient_id)
+                ->join('health_workers as doctors', 'treatments.doctor_id', '=', 'doctors.id')
+                ->select('treatments.treatment_name',
+                    'treatments.date',
+                    'treatments.description',
                     'doctors.fio as doctor_fio')
                 ->paginate($per_page);
         } catch (Exception $e) {
