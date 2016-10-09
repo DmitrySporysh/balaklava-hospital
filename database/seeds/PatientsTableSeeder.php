@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class PatientsDepartmentsTableSeeder extends Seeder
+class PatientsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -37,7 +37,8 @@ class PatientsDepartmentsTableSeeder extends Seeder
                 'preliminary_diagnosis' => 'Чем-то он явно болеет',
                 'district_doctor_id' => $index,
                 'attending_doctor_id' => 2 + 4 * ($index % 4),
-                'hospital_department_id' => $index
+                'hospital_department_id' => $index,
+                'chamber_id' => $index*10 -9
             ]);
         }
 
@@ -51,7 +52,8 @@ class PatientsDepartmentsTableSeeder extends Seeder
                 'preliminary_diagnosis' => 'Чем-то он явно болеет',
                 'district_doctor_id' => $index,
                 'attending_doctor_id' => 2 + 4 * ($index % 4),
-                'hospital_department_id' => $index
+                'hospital_department_id' => $index,
+                'chamber_id' => $index*10 -9
             ]);
         }
     }

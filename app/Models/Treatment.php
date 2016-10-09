@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * App\Models\Treatment
  *
+ * @mixin \Eloquent
  * @property integer $id
  * @property string $treatment_name
  * @property string $description
@@ -18,7 +19,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property-read \App\Models\Patient $patient
- * @property-read \App\Models\Health_worker $doctor
+ * @property-read \App\Models\HealthWorker $doctor
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Treatment whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Treatment whereTreatmentName($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Treatment whereDescription($value)
@@ -28,7 +29,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Treatment whereDeletedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Treatment whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Treatment whereUpdatedAt($value)
- * @mixin \Eloquent
  */
 class Treatment extends Model
 {
@@ -48,6 +48,6 @@ class Treatment extends Model
     }
 
     public function doctor(){
-        return $this->belongsTo('App\Models\Health_worker');
+        return $this->belongsTo('App\Models\HealthWorker');
     }
 }

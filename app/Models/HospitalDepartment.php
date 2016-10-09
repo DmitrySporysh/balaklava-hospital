@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * App\Models\Hospital_department
  *
+ * @mixin \Eloquent
  * @property integer $id
  * @property string $department_name
  * @property string $address
@@ -16,17 +17,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Chamber[] $chambers
- * @property-read \App\Models\Health_worker $department_chief
+ * @property-read \App\Models\HealthWorker $department_chief
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Patient[] $patients
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Discharge[] $discharges
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Hospital_department whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Hospital_department whereDepartmentName($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Hospital_department whereAddress($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Hospital_department whereDepartmentChiefId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Hospital_department whereDeletedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Hospital_department whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Hospital_department whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\HospitalDepartment whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\HospitalDepartment whereDepartmentName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\HospitalDepartment whereAddress($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\HospitalDepartment whereDepartmentChiefId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\HospitalDepartment whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\HospitalDepartment whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\HospitalDepartment whereUpdatedAt($value)
  */
 class HospitalDepartment extends Model
 {
@@ -47,7 +47,7 @@ class HospitalDepartment extends Model
 
     public function department_chief()
     {
-        return $this->belongsTo('App\Models\Health_worker');
+        return $this->belongsTo('App\Models\HealthWorker');
     }
 
     public function patients(){

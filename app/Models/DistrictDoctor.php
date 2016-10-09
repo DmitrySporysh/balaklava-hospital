@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * App\Models\District_doctor
  *
+ * @mixin \Eloquent
  * @property integer $id
  * @property string $fio
  * @property string $address
@@ -19,16 +20,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\Carbon $updated_at
  * @property-read \App\Models\Hospital $hospital
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Patient[] $patients
- * @method static \Illuminate\Database\Query\Builder|\App\Models\District_doctor whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\District_doctor whereFio($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\District_doctor whereAddress($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\District_doctor whereBirthDate($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\District_doctor whereDescription($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\District_doctor whereHospitalId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\District_doctor whereDeletedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\District_doctor whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\District_doctor whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\DistrictDoctor whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\DistrictDoctor whereFio($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\DistrictDoctor whereAddress($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\DistrictDoctor whereBirthDate($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\DistrictDoctor whereDescription($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\DistrictDoctor whereHospitalId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\DistrictDoctor whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\DistrictDoctor whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\DistrictDoctor whereUpdatedAt($value)
  */
 class DistrictDoctor extends Model
 {

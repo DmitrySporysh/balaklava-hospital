@@ -38,4 +38,17 @@ class HealthWorkerController extends Controller
         $response = $this->healthworker_service->getAllPatients($page_size);
         return $response;
     }
+
+    public function getPatient($patient_id)
+    {
+        Debugbar::addMessage('HealthWorkerController/getPatient', 'mylabel');
+
+        $response = $this->healthworker_service->getPatietnFullInfo($patient_id);
+
+        //$response =  $this->healthworker_service->testFunc();
+        dd($response);
+        //dd($this->healthworker_service->testFunc());
+        //return $response;
+         //return view('welcome', ['response' => $response]);
+    }
 }

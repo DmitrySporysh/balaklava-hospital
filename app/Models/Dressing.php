@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * App\Models\Dressing
  *
+ * @mixin \Eloquent
  * @property integer $id
  * @property string $dressing_date
  * @property string $dressing_name
@@ -17,7 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property-read \App\Models\Patient $patient
- * @property-read \App\Models\Health_worker $doctor
+ * @property-read \App\Models\HealthWorker $doctor
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Dressing whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Dressing whereDressingDate($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Dressing whereDressingName($value)
@@ -26,7 +27,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Dressing whereDeletedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Dressing whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Dressing whereUpdatedAt($value)
- * @mixin \Eloquent
  */
 class Dressing extends Model
 {
@@ -47,6 +47,6 @@ class Dressing extends Model
     }
 
     public function doctor(){
-        return $this->belongsTo('App\Models\Health_worker');
+        return $this->belongsTo('App\Models\HealthWorker');
     }
 }

@@ -6,9 +6,11 @@ use App\Exceptions\DALException;
 use \Exception;
 use App\Services\Interfaces\HealthWorkerServiceInterface;
 use App\Repositories\Interfaces\PatientRepositoryInterface;
+use App\Repositories\Interfaces\DistrictDoctorRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
+
 
 
 
@@ -16,12 +18,17 @@ class HealthWorkerService implements HealthWorkerServiceInterface
 {
     private $user_repo;
     private $patient_repo;
+    private $districtDoctor_repo;
 
 
     public function  __construct(UserRepositoryInterface $user_repo,
-                                 PatientRepositoryInterface $patient_repo){
+                                 PatientRepositoryInterface $patient_repo,
+                                 DistrictDoctorRepositoryInterface $districtDoctor_repo
+
+    ){
         $this->user_repo = $user_repo;
         $this->patient_repo = $patient_repo;
+        $this->districtDoctor_repo = $districtDoctor_repo;
     }
 
 
@@ -29,7 +36,6 @@ class HealthWorkerService implements HealthWorkerServiceInterface
     {
         try {
             $data =  $this->patient_repo->paginate($page_size);
-            //return $this->arrayToJson($data);
             return $data;
         }
         catch(DALException $e){
@@ -41,6 +47,40 @@ class HealthWorkerService implements HealthWorkerServiceInterface
             throw new HealthWorkerServiceException($message,0,$e);
         }
     }
+
+    public function getPatietnFullInfo($patient_id)
+    {
+        try {
+            $data =  $this->patient_repo->getPatientFullInfo($patient_id);
+            return $data;
+        }
+        catch(DALException $e){
+            $message = 'Error while creating withdraw money request(DAL Error)';
+            throw new HealthWorkerServiceException($message,0,$e);
+        }
+        catch(Exception $e){
+            $message = 'Error while creating withdraw money request(UnknownError)';
+            throw new HealthWorkerServiceException($message,0,$e);
+        }
+    }
+
+    public function testFunc()
+    {
+        try {
+            $data =  $this->districtDoctor_repo->getDistrictDoctorsWithPatients(2);
+            return $data;
+        }
+        catch(DALException $e){
+            $message = 'Error while creating withdraw money request(DAL Error)';
+            throw new HealthWorkerServiceException($message,0,$e);
+        }
+        catch(Exception $e){
+            $message = 'Error while creating withdraw money request(UnknownError)';
+            throw new HealthWorkerServiceException($message,0,$e);
+        }
+    }
+
+
 
     public function addNewPatient(Request $request)
     {

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ChambersDepartmentsTableSeeder extends Seeder
+class ChambersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,8 +19,11 @@ class ChambersDepartmentsTableSeeder extends Seeder
                     'number' => $index,
                     'hospital_department_id' => $department,
                     'floor' => $index % 2,
-                    'beds_total_count' => ($index % 3) ? 2 : 4,
-                    'beds_remaining_count' => ($index % 3) ? 2 : 4,
+                    'beds_total_count' =>
+                        ($index % 10 == 1) ? 5 :      //это нужно для тестовых данных
+                            (($index % 3) ? 2 : 4),
+                    'beds_occupied_count' =>
+                        ($index % 10 == 1) ? 2 : 0,      //это нужно для тестовых данных
                     'chamber_sex' => $sex[$index % 3]
                 ]);
             }

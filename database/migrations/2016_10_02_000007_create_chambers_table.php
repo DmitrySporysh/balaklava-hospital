@@ -18,7 +18,7 @@ class CreateChambersTable extends Migration
             $table->integer('number')->unsigned();
             $table->integer('floor')->unsigned();
             $table->integer('beds_total_count')->unsigned();
-            $table->integer('beds_remaining_count')->unsigned();
+            $table->integer('beds_occupied_count')->unsigned();
 
             $table->enum('chamber_sex', array('male', 'female', 'common'));
 

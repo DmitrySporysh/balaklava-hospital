@@ -13,6 +13,9 @@
 
 Route::get('patients', 'HealthWorkerController@patients');
 
+Route::get('patient/{id}', 'HealthWorkerController@getPatient');
+
+
 Route::get('/', function () {
     return view('welcome');
 });

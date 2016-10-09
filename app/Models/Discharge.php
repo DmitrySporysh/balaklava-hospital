@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * App\Models\Discharge
  *
+ * @mixin \Eloquent
  * @property integer $id
  * @property string $discharge_date
  * @property string $result_epicrisis
@@ -20,7 +21,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\Carbon $updated_at
  * @property-read \App\Models\Patient $patient
  * @property-read \App\Models\Hospital $hospital
- * @property-read \App\Models\Hospital_department $hospital_department
+ * @property-read \App\Models\HospitalDepartment $hospital_department
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Discharge whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Discharge whereDischargeDate($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Discharge whereResultEpicrisis($value)
@@ -31,7 +32,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Discharge whereDeletedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Discharge whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Discharge whereUpdatedAt($value)
- * @mixin \Eloquent
  */
 class Discharge extends Model
 {
@@ -58,6 +58,6 @@ class Discharge extends Model
     }
 
     public function hospital_department(){
-        return $this->belongsTo('App\Models\Hospital_department');
+        return $this->belongsTo('App\Models\HospitalDepartment');
     }
 }

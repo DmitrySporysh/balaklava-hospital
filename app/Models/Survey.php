@@ -9,8 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * App\Models\Survey
  *
  * @property integer $id
- * @property string $treatment_name
- * @property string $description
+ * @property string $survey_name
  * @property string $survey_date
  * @property boolean $status
  * @property string $result_text
@@ -22,11 +21,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property-read \App\Models\Patient $patient
- * @property-read \App\Models\Health_worker $doctor
- * @property-read \App\Models\Survey_type $survey_type
+ * @property-read \App\Models\HealthWorker $doctor
+ * @property-read \App\Models\SurveyType $survey_type
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Survey whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Survey whereTreatmentName($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Survey whereDescription($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Survey whereSurveyName($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Survey whereSurveyDate($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Survey whereStatus($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Survey whereResultText($value)
@@ -59,10 +57,10 @@ class Survey extends Model
     }
 
     public function doctor(){
-        return $this->belongsTo('App\Models\Health_worker');
+        return $this->belongsTo('App\Models\HealthWorker');
     }
 
     public function survey_type(){
-        return $this->belongsTo('App\Models\Survey_type');
+        return $this->belongsTo('App\Models\SurveyType');
     }
 }

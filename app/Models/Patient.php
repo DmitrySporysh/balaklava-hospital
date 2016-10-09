@@ -19,14 +19,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer $district_doctor_id
  * @property integer $attending_doctor_id
  * @property integer $hospital_department_id
+ * @property integer $chamber_id
  * @property \Carbon\Carbon $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property-read \App\Models\Bed $bed
  * @property-read \App\Models\Discharge $discharge
- * @property-read \App\Models\District_doctor $district_doctors
- * @property-read \App\Models\Health_worker $attending_doctor
- * @property-read \App\Models\Hospital_department $hospital_department
+ * @property-read \App\Models\DistrictDoctor $district_doctor
+ * @property-read \App\Models\HealthWorker $attending_doctor
+ * @property-read \App\Models\HospitalDepartment $hospital_department
+ * @property-read \App\Models\Chamber $chamber
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Operation[] $operations
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Dressing[] $dressings
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Inspection[] $inspection
@@ -43,6 +44,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Patient whereDistrictDoctorId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Patient whereAttendingDoctorId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Patient whereHospitalDepartmentId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Patient whereChamberId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Patient whereDeletedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Patient whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Patient whereUpdatedAt($value)
@@ -72,16 +74,16 @@ class Patient extends Model
     }
 
     //----belongs to----
-    public function district_doctors(){
-        return $this->belongsTo('App\Models\District_doctor');
+    public function district_doctor(){
+        return $this->belongsTo('App\Models\DistrictDoctor');
     }
 
     public function attending_doctor(){
-        return $this->belongsTo('App\Models\Health_worker');
+        return $this->belongsTo('App\Models\HealthWorker');
     }
 
     public function hospital_department(){
-        return $this->belongsTo('App\Models\Hospital_department');
+        return $this->belongsTo('App\Models\HospitalDepartment');
     }
 
     public function chamber(){

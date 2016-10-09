@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * App\Models\Survey_type
  *
+ * @mixin \Eloquent
  * @property integer $id
  * @property string $survey_name
  * @property string $description
@@ -16,14 +17,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Survey[] $surveys
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Survey_type whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Survey_type whereSurveyName($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Survey_type whereDescription($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Survey_type whereRoomNumber($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Survey_type whereDeletedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Survey_type whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Survey_type whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereSurveyName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereDescription($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereRoomNumber($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereUpdatedAt($value)
  */
 class SurveyType extends Model
 {
