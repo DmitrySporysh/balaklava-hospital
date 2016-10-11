@@ -20,7 +20,7 @@ class TreatmentRepository extends Repository implements TreatmentRepositoryInter
         return 'App\Models\Treatment';
     }
 
-    public function getPatientTreatmentsWithDoctors($patient_id, $per_page)
+    public function getPatientTreatmentsWithDoctors($patient_id)
     {
         try {
             $data = Treatment::where('treatments.patient_id',$patient_id)
@@ -29,7 +29,8 @@ class TreatmentRepository extends Repository implements TreatmentRepositoryInter
                     'treatments.date',
                     'treatments.description',
                     'doctors.fio as doctor_fio')
-                ->paginate($per_page);
+                ->orderBy('treatments.date','DESC')
+                ->get();
         } catch (Exception $e) {
             $message = 'Error while finding element using ' . $this->model();
             throw new DALException($message, 0, $e);

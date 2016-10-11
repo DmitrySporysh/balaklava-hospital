@@ -13,7 +13,7 @@ class SurveyTypeTableSeeder extends Seeder
     {
         foreach (range(1, 30) as $index) {
             DB::table('surveys_types')->insert([
-                'survey_name' => 'Тип обследования №'.$index,
+                'survey_type_name' => 'Тип обследования №'.$index,
                 'description' => 'Тут д.б. описания данног типа обследования №'.$index,
                 'room_number' => '№'.$index
             ]);

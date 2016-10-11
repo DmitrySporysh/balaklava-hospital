@@ -48,9 +48,9 @@ class NurseController extends Controller
     }
 
 
-    public function getChamber(Request $request, $chamber_id)
+    public function getChamberWithPatients(Request $request, $chamber_id)
     {
-        $response = $this->nurse_service->getChamberFullInfo($chamber_id);
+        $response = $this->nurse_service->getChamberWithPatients($chamber_id);
         Debugbar::info($response);
         return view('welcome', ['response' => $response]);
         //return $response;

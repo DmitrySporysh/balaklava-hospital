@@ -9,8 +9,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * App\Models\Survey_type
  *
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereUpdatedAt($value)
  * @property integer $id
- * @property string $survey_name
+ * @property string $survey_type_name
  * @property string $description
  * @property string $room_number
  * @property \Carbon\Carbon $deleted_at
@@ -18,12 +20,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\Carbon $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Survey[] $surveys
  * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereSurveyName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereSurveyTypeName($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereDescription($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereRoomNumber($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereDeletedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereUpdatedAt($value)
  */
 class SurveyType extends Model
 {
@@ -36,7 +36,7 @@ class SurveyType extends Model
     protected $guarded = ['id'];
 
     protected $fillable = [
-        'survey_name', 'description', 'room_number'
+        'survey_type_name', 'description', 'room_number'
     ];
 
     public function surveys(){

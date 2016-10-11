@@ -10,6 +10,5 @@ namespace App\Repositories\Interfaces;
 
 interface SurveyRepositoryInterface extends RepositoryInterface
 {
-    public function getPatientSurveysWithDoctors($patient_id, $per_page);
-
+    public function getPatientSurveysWithDoctorsAndSurveysType($patient_id);
 }

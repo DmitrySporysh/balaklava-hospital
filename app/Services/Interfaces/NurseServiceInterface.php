@@ -15,7 +15,7 @@ interface NurseServiceInterface
 
     public function getDepartmentChambers($department_id);
 
-    public function getChamberFullInfo($chamber_id);
+    public function getChamberWithPatients($chamber_id);
 
     public function getPatientWithTableInfo($patient_id);
 

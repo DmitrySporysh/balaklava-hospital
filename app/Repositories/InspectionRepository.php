@@ -20,7 +20,7 @@ class InspectionRepository extends Repository implements InspectionRepositoryInt
         return 'App\Models\Inspection';
     }
 
-    public function getPatientInspectionsWithDoctors($patient_id, $per_page)
+    public function getPatientInspectionsWithDoctors($patient_id)
     {
         try {
             $data = Inspection::where('inspections.patient_id',$patient_id)
@@ -28,7 +28,8 @@ class InspectionRepository extends Repository implements InspectionRepositoryInt
                 ->select('inspections.inspection_date',
                     'inspections.result_text',
                     'doctors.fio as doctor_fio')
-                ->paginate($per_page);
+                ->orderBy('inspections.inspection_date','DESC')
+                ->get();
         } catch (Exception $e) {
             $message = 'Error while finding element using ' . $this->model();
             throw new DALException($message, 0, $e);

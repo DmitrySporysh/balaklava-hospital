@@ -72,7 +72,7 @@ class NurseService implements NurseServiceInterface
     public function getAllDepartments()
     {
         try {
-            $data = $this->department_repo->all(array('department_name', 'address'));
+            $data = $this->department_repo->all(array('department_name'));
             return $data;
         } catch (DALException $e) {
             $message = 'Error while creating withdraw departments request(DAL Error)';
@@ -88,7 +88,7 @@ class NurseService implements NurseServiceInterface
         try {
             $data['department'] = $this->department_repo->find($department_id, array('department_name'));
             $data['chambers'] = $this->chamber_repo->getNotEmptyChambersByDepartmentNum($department_id,
-                array('number', 'floor', 'beds_total_count', 'beds_occupied_count', 'chamber_sex'));
+                array('number', 'beds_occupied_count'));
             return $data;
         } catch (DALException $e) {
             $message = 'Error while creating withdraw departments request(DAL Error)';
@@ -99,9 +99,12 @@ class NurseService implements NurseServiceInterface
         }
     }
 
-    public function getChamberFullInfo($chamber_id)
+    public function getChamberWithPatients($chamber_id)
     {
         try {
+            //$data['department'] = $this->department_repo->find($department_id, array('department_name'));
+            //$data['chamber'] = $this->chamber_repo->find($chamber_id, array('number', 'floor'));
+
             $data = $this->chamber_repo->getChamberWithDepartmentAndPatients($chamber_id);
             return $data;
         } catch (DALException $e) {

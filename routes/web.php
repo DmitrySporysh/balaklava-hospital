@@ -23,7 +23,7 @@ Route::get('nurse/departments', 'NurseController@getDepartments');
 
 Route::get('nurse/department/{id}/chambers', 'NurseController@getDepartmentChambers');
 
-Route::get('nurse/chamber/{id}', 'NurseController@getChamber');
+Route::get('nurse/chamber/{id}', 'NurseController@getChamberWithPatients');
 
 Route::get('nurse/patient/{id}', 'NurseController@getPatient');
 
