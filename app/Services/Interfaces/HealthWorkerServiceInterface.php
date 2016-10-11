@@ -22,6 +22,7 @@ interface HealthWorkerServiceInterface
 
     public function deletePatient($patient_id);
 
+    public function getAllPatientsFio();
 
     public function testFunc();
 }

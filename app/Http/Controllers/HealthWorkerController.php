@@ -32,10 +32,9 @@ class HealthWorkerController extends Controller
 
     public function patients(Request $request)
     {
-        Debugbar::addMessage('Another message', 'mylabel');
-        $per_page = ($request->has('per_page')) ? $request->per_page : 3;
+        //$per_page = ($request->has('per_page')) ? $request->per_page : 3;
 
-        $response = $this->healthworker_service->getAllPatients($per_page);
+        $response = $this->healthworker_service->getAllPatientsFio();
         Debugbar::info($response);
         return view('welcome', ['response' => $response]);
     }

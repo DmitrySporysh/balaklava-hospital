@@ -15,11 +15,13 @@ Route::get('patients', 'HealthWorkerController@patients');
 
 Route::get('patient/{id}', 'HealthWorkerController@getPatient');
 
+Route::get('patientsFio', 'HealthWorkerController@patients');
+
 
 //----------Nurse-------------------------------
-Route::get('nurse/chambers', 'NurseController@getNotEmptyChambers');
+Route::get('nurse/departments', 'NurseController@getDepartments');
 
-Route::get('nurse/allChambers', 'NurseController@getChambers');
+Route::get('nurse/department/{id}/chambers', 'NurseController@getDepartmentChambers');
 
 Route::get('nurse/chamber/{id}', 'NurseController@getChamber');
 
@@ -35,9 +37,13 @@ Route::get('nurse/patient/{id}/surveys', 'NurseController@surveys');
 
 Route::get('nurse/patient/{id}/treatments', 'NurseController@treatments');
 
+//no important ---------------------------------------
+Route::get('nurse/chambers', 'NurseController@getNotEmptyChambers');
+
+Route::get('nurse/allChambers', 'NurseController@getChambers');
 
 Route::get('nurse/testFunc', 'NurseController@testFunc');
-
+//----------
 
 Route::get('/', function () {
     return view('welcome');

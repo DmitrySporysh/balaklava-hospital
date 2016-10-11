@@ -72,4 +72,22 @@ class ChamberRepository extends Repository implements ChamberRepositoryInterface
 
         return array();
     }
+
+    public function getNotEmptyChambersByDepartmentNum($department_id, $columns){
+        try {
+            $data = $this->model->where('hospital_department_id', $department_id)
+                ->where('beds_occupied_count', '>', 0)
+                ->get($columns);
+            if ($data == null) {
+                return array();
+            }
+        } catch (Exception $e) {
+            $message = 'Error while finding element using ' . $this->model();
+            throw new DALException($message, 0, $e);
+        }
+
+        if($data!=null) return $data;
+
+        return array();
+    }
 }
