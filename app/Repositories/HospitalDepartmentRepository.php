@@ -6,6 +6,7 @@
  * Time: 12:33
  */
 namespace App\Repositories;
+use App\Models\HospitalDepartment;
 use App\Repositories\Core\Repository;
 use App\Repositories\Interfaces\HospitalDepartmentRepositoryInterface;
 

@@ -47,6 +47,22 @@ class HealthWorkerService implements HealthWorkerServiceInterface
             throw new HealthWorkerServiceException($message,0,$e);
         }
     }
+    
+    public function getAllPatientsFio()
+    {
+        try {
+            $data =  $this->patient_repo->all(array('fio'));
+            return $data;
+        }
+        catch(DALException $e){
+            $message = 'Error while creating withdraw money request(DAL Error)';
+            throw new HealthWorkerServiceException($message,0,$e);
+        }
+        catch(Exception $e){
+            $message = 'Error while creating withdraw money request(UnknownError)';
+            throw new HealthWorkerServiceException($message,0,$e);
+        }
+    }
 
     public function getPatietnFullInfo($patient_id)
     {

@@ -38,7 +38,7 @@ class PatientsTableSeeder extends Seeder
                 'district_doctor_id' => $index,
                 'attending_doctor_id' => 2 + 4 * ($index % 4),
                 'hospital_department_id' => $index,
-                'chamber_id' => $index*10 -9
+                'chamber_id' => $index % 6 + (10 * ceil($index / 10))
             ]);
         }
 
@@ -53,7 +53,7 @@ class PatientsTableSeeder extends Seeder
                 'district_doctor_id' => $index,
                 'attending_doctor_id' => 2 + 4 * ($index % 4),
                 'hospital_department_id' => $index,
-                'chamber_id' => $index*10 -9
+                'chamber_id' => $index % 6 + (10 * ceil($index / 10)) + 20
             ]);
         }
     }

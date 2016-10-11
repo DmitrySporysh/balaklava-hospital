@@ -6,6 +6,7 @@ namespace App\Services;
 //Exceptions
 use App\Exceptions\NurseServiceException;
 use App\Exceptions\DALException;
+use App\Repositories\Interfaces\HospitalDepartmentRepositoryInterface;
 use \Exception;
 //Services interfaces
 use App\Services\Interfaces\NurseServiceInterface;
@@ -38,6 +39,7 @@ class NurseService implements NurseServiceInterface
     private $surveyType_repo;
     private $treatment_repo;
     private $nurse_repo;
+    private $department_repo;
 
 
     public function __construct(UserRepositoryInterface $user_repo,
@@ -49,6 +51,7 @@ class NurseService implements NurseServiceInterface
                                 SurveyRepositoryInterface $survey_repo,
                                 SurveyTypeRepositoryInterface $surveyType_repo,
                                 TreatmentRepositoryInterface $treatment_repo,
+                                HospitalDepartmentRepositoryInterface $department_repo,
                                 HealthWorkerRepositoryInterface $nurse_repo
 
     )
@@ -63,34 +66,35 @@ class NurseService implements NurseServiceInterface
         $this->surveyType_repo = $surveyType_repo;
         $this->treatment_repo = $treatment_repo;
         $this->nurse_repo = $nurse_repo;
+        $this->department_repo = $department_repo;
     }
 
-
-    public function getAllChambersWithDepartment($perPage)
+    public function getAllDepartments()
     {
         try {
-
-            $data = $this->chamber_repo->getChambersWithDepartments($perPage);
+            $data = $this->department_repo->all(array('department_name', 'address'));
             return $data;
         } catch (DALException $e) {
-            $message = 'Error while creating withdraw chamber request(DAL Error)';
+            $message = 'Error while creating withdraw departments request(DAL Error)';
             throw new NurseServiceException($message, 0, $e);
         } catch (Exception $e) {
-            $message = 'Error while creating withdraw chamber request(UnknownError)';
+            $message = 'Error while creating withdraw departments request(UnknownError)';
             throw new NurseServiceException($message, 0, $e);
         }
     }
 
-    public function getNotEmptyChambersWithDepartment($perPage)
+    public function getDepartmentChambers($department_id)
     {
         try {
-            $data = $this->chamber_repo->getNotEmptyChambersWithDepartments($perPage);
+            $data['department'] = $this->department_repo->find($department_id, array('department_name'));
+            $data['chambers'] = $this->chamber_repo->getNotEmptyChambersByDepartmentNum($department_id,
+                array('number', 'floor', 'beds_total_count', 'beds_occupied_count', 'chamber_sex'));
             return $data;
         } catch (DALException $e) {
-            $message = 'Error while creating withdraw chamber request(DAL Error)';
+            $message = 'Error while creating withdraw departments request(DAL Error)';
             throw new NurseServiceException($message, 0, $e);
         } catch (Exception $e) {
-            $message = 'Error while creating withdraw chamber request(UnknownError)';
+            $message = 'Error while creating withdraw departments request(UnknownError)';
             throw new NurseServiceException($message, 0, $e);
         }
     }
@@ -123,11 +127,11 @@ class NurseService implements NurseServiceInterface
         }
     }
 
-    public function getPatientDressings($patient_id, $per_page)
+    public function getPatientDressings($patient_id)
     {
         try {
             $data['patient'] = $this->patient_repo->where('id', $patient_id, '=', array('fio', 'birth_date'));
-            $data['dressings'] = $this->dressing_repo->getPatientDressingsWithDoctors($patient_id, $per_page);
+            $data['dressings'] = $this->dressing_repo->getPatientDressingsWithDoctors($patient_id);
             return $data;
         } catch (DALException $e) {
             $message = 'Error while creating withdraw patient dressings request(DAL Error)';
@@ -138,11 +142,11 @@ class NurseService implements NurseServiceInterface
         }
     }
 
-    public function getPatientInspections($patient_id, $per_page)
+    public function getPatientInspections($patient_id)
     {
         try {
             $data['patient'] = $this->patient_repo->where('id', $patient_id, '=', array('fio', 'birth_date'));
-            $data['inspections'] = $this->inspection_repo->getPatientInspectionsWithDoctors($patient_id, $per_page);
+            $data['inspections'] = $this->inspection_repo->getPatientInspectionsWithDoctors($patient_id);
             return $data;
         } catch (DALException $e) {
             $message = 'Error while creating withdraw patient inspections request(DAL Error)';
@@ -153,11 +157,11 @@ class NurseService implements NurseServiceInterface
         }
     }
 
-    public function getPatientOperations($patient_id, $per_page)
+    public function getPatientOperations($patient_id)
     {
         try {
             $data['patient'] = $this->patient_repo->where('id', $patient_id, '=', array('fio', 'birth_date'));
-            $data['operations'] = $this->operation_repo->getPatientOperationsWithDoctors($patient_id, $per_page);
+            $data['operations'] = $this->operation_repo->getPatientOperationsWithDoctors($patient_id);
             return $data;
         } catch (DALException $e) {
             $message = 'Error while creating withdraw patient operations request(DAL Error)';
@@ -168,11 +172,11 @@ class NurseService implements NurseServiceInterface
         }
     }
 
-    public function getPatientSurveys($patient_id, $per_page)
+    public function getPatientSurveys($patient_id)
     {
         try {
             $data['patient'] = $this->patient_repo->where('id', $patient_id, '=', array('fio', 'birth_date'));
-            $data['surveys'] = $this->survey_repo->getPatientSurveysWithDoctors($patient_id, $per_page);
+            $data['surveys'] = $this->survey_repo->getPatientSurveysWithDoctors($patient_id);
             return $data;
         } catch (DALException $e) {
             $message = 'Error while creating withdraw patient surveys request(DAL Error)';
@@ -183,11 +187,11 @@ class NurseService implements NurseServiceInterface
         }
     }
 
-    public function getPatientTreatments($patient_id, $per_page)
+    public function getPatientTreatments($patient_id)
     {
         try {
             $data['patient'] = $this->patient_repo->where('id', $patient_id, '=', array('fio', 'birth_date'));
-            $data['treatments'] = $this->treatment_repo->getPatientTreatmentsWithDoctors($patient_id, $per_page);
+            $data['treatments'] = $this->treatment_repo->getPatientTreatmentsWithDoctors($patient_id);
             return $data;
         } catch (DALException $e) {
             $message = 'Error while creating withdraw patient treatments request(DAL Error)';
@@ -197,21 +201,5 @@ class NurseService implements NurseServiceInterface
             throw new NurseServiceException($message, 0, $e);
         }
     }
-
-
-    public function testFunc($per_page)
-    {
-        try {
-            $data = $this->patient_repo->getPatientsWithTableInfo_Paginate($per_page);
-            return $data;
-        } catch (DALException $e) {
-            $message = 'Error while creating withdraw chamber request(DAL Error)';
-            throw new NurseServiceException($message, 0, $e);
-        } catch (Exception $e) {
-            $message = 'Error while creating withdraw chamber request(UnknownError)';
-            throw new NurseServiceException($message, 0, $e);
-        }
-    }
-
-
+    
 }

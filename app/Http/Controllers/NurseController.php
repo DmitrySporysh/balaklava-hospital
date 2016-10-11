@@ -31,106 +31,76 @@ class NurseController extends Controller
         //$this->middleware('checkRole:'.UserRole::WEBMASTER);
     }
 
-    public function getChambers(Request $request)
+    public function getDepartments(Request $request)
     {
-        Debugbar::addMessage('Another message', 'mylabel');
-        $perPage = ($request->has('per_page')) ? $request->per_page : 3;
-
-
-        $response = $this->nurse_service->getAllChambersWithDepartment($perPage);
+        $response = $this->nurse_service->getAllDepartments();
         Debugbar::info($response);
         return view('welcome', ['response' => $response]);
+        //return $response;
     }
 
-    public function getNotEmptyChambers(Request $request)
+    public function getDepartmentChambers(Request $request, $department_id)
     {
-        Debugbar::addMessage('Another message', 'mylabel');
-        $perPage = ($request->has('per_page')) ? $request->per_page : 3;
-
-
-        $response = $this->nurse_service->getNotEmptyChambersWithDepartment($perPage);
+        $response = $this->nurse_service->getDepartmentChambers($department_id);
         Debugbar::info($response);
         return view('welcome', ['response' => $response]);
+        //return $response;
     }
 
-    public function testFunc(Request $request)
-    {
-        Debugbar::addMessage('Another message', 'mylabel');
-        $perPage = ($request->has('per_page')) ? $request->per_page : 3;
-
-
-        $response = $this->nurse_service->testFunc($perPage);
-        Debugbar::info($response);
-        return view('welcome', ['response' => $response]);
-    }
 
     public function getChamber(Request $request, $chamber_id)
     {
-        Debugbar::addMessage('Another message', 'mylabel');
-
         $response = $this->nurse_service->getChamberFullInfo($chamber_id);
         Debugbar::info($response);
         return view('welcome', ['response' => $response]);
+        //return $response;
     }
 
-    public function getPatient(Request $request, $id)
+    public function getPatient(Request $request, $patient_id)
     {
-        Debugbar::addMessage('Another message', 'mylabel');
-
-        $response = $this->nurse_service->getPatientWithTableInfo($id);
+        $response = $this->nurse_service->getPatientWithTableInfo($patient_id);
         Debugbar::info($response);
         return view('welcome', ['response' => $response]);
+        //return $response;
     }
 
     public function dressings(Request $request, $patient_id)
     {
-        Debugbar::addMessage('Another message', 'mylabel');
-        $perPage = ($request->has('per_page')) ? $request->per_page : 3;
-
-        $response = $this->nurse_service->getPatientDressings($patient_id, $perPage);
+        $response = $this->nurse_service->getPatientDressings($patient_id);
         Debugbar::info($response);
         return view('welcome', ['response' => $response]);
+        //return $response;
     }
 
     public function inspections(Request $request, $patient_id)
     {
-        Debugbar::addMessage('Another message', 'mylabel');
-        $perPage = ($request->has('per_page')) ? $request->per_page : 3;
-
-        $response = $this->nurse_service->getPatientInspections($patient_id, $perPage);
+        $response = $this->nurse_service->getPatientInspections($patient_id);
         Debugbar::info($response);
         return view('welcome', ['response' => $response]);
+        //return $response;
     }
 
     public function operations(Request $request, $patient_id)
     {
-        Debugbar::addMessage('Another message', 'mylabel');
-        $perPage = ($request->has('per_page')) ? $request->per_page : 3;
-
-        $response = $this->nurse_service->getPatientOperations($patient_id, $perPage);
+        $response = $this->nurse_service->getPatientOperations($patient_id);
         Debugbar::info($response);
         return view('welcome', ['response' => $response]);
+        //return $response;
     }
 
     public function surveys(Request $request, $patient_id)
     {
-        Debugbar::addMessage('Another message', 'mylabel');
-        $perPage = ($request->has('per_page')) ? $request->per_page : 3;
-
-        $response = $this->nurse_service->getPatientSurveys($patient_id, $perPage);
+        $response = $this->nurse_service->getPatientSurveys($patient_id);
         Debugbar::info($response);
         return view('welcome', ['response' => $response]);
+        //return $response;
     }
 
     public function treatments(Request $request, $patient_id)
     {
-        Debugbar::addMessage('Another message', 'mylabel');
-        $perPage = ($request->has('per_page')) ? $request->per_page : 3;
-
-        $response = $this->nurse_service->getPatientTreatments($patient_id, $perPage);
+        $response = $this->nurse_service->getPatientTreatments($patient_id);
         Debugbar::info($response);
         return view('welcome', ['response' => $response]);
+        //return $response;
     }
-
-
 }

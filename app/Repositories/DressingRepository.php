@@ -20,15 +20,14 @@ class DressingRepository extends Repository implements DressingRepositoryInterfa
         return 'App\Models\Dressing';
     }
 
-    public function getPatientDressingsWithDoctors($patient_id, $per_page_dressings)
+    public function getPatientDressingsWithDoctors($patient_id)
     {
         try {
             $data = Dressing::where('dressings.patient_id',$patient_id)
                 ->join('health_workers as doctors', 'dressings.doctor_id', '=', 'doctors.id')
                 ->select('dressings.dressing_date',
                     'dressings.dressing_name',
-                    'doctors.fio as doctor_fio')
-                ->paginate($per_page_dressings);
+                    'doctors.fio as doctor_fio');
         } catch (Exception $e) {
             $message = 'Error while finding element using ' . $this->model();
             throw new DALException($message, 0, $e);

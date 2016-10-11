@@ -13,20 +13,35 @@ class ChambersTableSeeder extends Seeder
     {
         $sex = array('male', 'female', 'common');
 
-        foreach (range(1, 20) as $department) {
+        foreach (range(1, 4) as $department) {
             foreach (range(1, 10) as $index) {
                 DB::table('chambers')->insert([
                     'number' => $index,
                     'hospital_department_id' => $department,
                     'floor' => $index % 2,
                     'beds_total_count' =>
-                        ($index % 10 == 1) ? 5 :      //это нужно для тестовых данных
-                            (($index % 3) ? 2 : 4),
+                        (($index % 3) ? 2 : 4),
                     'beds_occupied_count' =>
-                        ($index % 10 == 1) ? 2 : 0,      //это нужно для тестовых данных
+                        ($index > 0 && $index < 5) ? 2
+                            : (($index == 10 || $index == 5) ? 1 : 0),
+
                     'chamber_sex' => $sex[$index % 3]
                 ]);
             }
         }
+
+        foreach (range(5, 20) as $department) {
+            foreach (range(1, 10) as $index) {
+                DB::table('chambers')->insert([
+                    'number' => $index,
+                    'hospital_department_id' => $department,
+                    'floor' => $index % 2,
+                    'beds_total_count' => (($index % 3) ? 2 : 4),
+                    'beds_occupied_count' => 0,
+                    'chamber_sex' => $sex[$index % 3]
+                ]);
+            }
+        }
+
     }
 }
