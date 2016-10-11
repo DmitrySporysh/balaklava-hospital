@@ -35,8 +35,9 @@ class HealthWorkerController extends Controller
         //$per_page = ($request->has('per_page')) ? $request->per_page : 3;
 
         $response = $this->healthworker_service->getAllPatientsFio();
-        Debugbar::info($response);
-        return view('welcome', ['response' => $response]);
+        //Debugbar::info($response);
+        //return view('welcome', ['response' => $response]);
+        return $response;
     }
 
     public function getPatient($patient_id)
