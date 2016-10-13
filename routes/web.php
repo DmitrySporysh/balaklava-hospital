@@ -17,6 +17,9 @@ Route::get('patient/{id}', 'HealthWorkerController@getPatient');
 
 Route::get('patientsFio', 'HealthWorkerController@patients');
 
+Route::get('patients-test', function () {
+    return view('layouts.emergency_room');
+});
 
 //----------Nurse-------------------------------
 Route::get('nurse/departments', 'NurseController@getDepartments');

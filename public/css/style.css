@@ -1,0 +1,384 @@
+
+@font-face {
+    font-family: 'themify';
+    src:url('/fonts/themify/themify.eot?-fvbane');
+    src:url('/fonts/themify/themify.eot?#iefix-fvbane') format('embedded-opentype'),
+    url('/fonts/themify/themify.woff?-fvbane') format('woff'),
+    url('/fonts/themify/themify.ttf?-fvbane') format('truetype'),
+    url('/fonts/themify/themify.svg?-fvbane#themify') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+.wrapper {
+
+}
+
+.header {
+    background-color: #ffffff;
+}
+
+.header-top {
+    background-color: white;
+}
+
+.header-top__logo-wpapper {
+    width: 500px;
+    height: 70px;
+}
+
+.header-top__logo {
+    display: block;
+    height: 100%;
+    background: url(/img/logo.jpg) left center no-repeat;
+}
+
+.header-top__logo-wpapper_left {
+    float: left;
+}
+
+.header-top__user-panel_right {
+    float: right;
+}
+
+.user-menu__item {
+    height: 100%;
+    vertical-align: top;
+    border-left: 1px solid #c5c7cc;
+    display: inline-block;
+}
+
+.user-menu__item:hover {
+    background: #f7f7f7;
+}
+
+.user-menu_right {
+    float: right;
+    margin-bottom: 0;
+    padding-left: 40px;
+}
+
+.user-menu__ref {
+    text-align: center;
+    display: block;
+    padding: 10px;
+    min-width: 80px;
+    min-height: 65px;
+}
+
+.user-menu__ref:hover {
+    text-decoration: none;
+}
+
+.user-menu__icon {
+    display: block;
+}
+
+.user-menu__icon:before {
+    font-family: 'themify';
+    font-size: 18px;
+    color: #25bce9;
+    display: block;
+    text-align: center;
+}
+
+.user-menu__icon_help:before {
+    content: "\e718";
+}
+
+.user-menu__icon_requirements:before {
+    content: "\e732";
+}
+
+.user-menu__icon_add:before {
+    content: "\e665";
+}
+
+.user-menu__title {
+    display: block;
+    margin-top: 5px;
+    font-family: 'Roboto';
+    font-weight: 300;
+    text-transform: uppercase;
+    color: #888888;
+}
+
+.header-top__search_right{
+    float: right;
+}
+
+.search {
+    width: 205px;
+    height: 70px;
+    line-height: 70px;
+    position: relative;
+}
+
+.search__input {
+    height: 34px;
+    width: 100%;
+    padding: 5px 15px;
+    font-size: 12px;
+    color: #cecece;
+}
+
+.search__input_blue {
+    border: 1px solid #25bce9;
+    border-radius: 20px;
+}
+
+.search__icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -8px;
+}
+
+.search__icon_blue {
+    font-size: 18px !important;
+    color: #cecece;
+}
+
+.user-info {
+    padding: 15px;
+}
+
+.user-info_pr-30 {
+    padding-right: 30px;
+}
+
+.user-info_photo {
+    float: left;
+}
+
+.user-info_name {
+    display: block;
+}
+
+.user-info_badge {
+    margin-left: 15px;
+    float: right;
+}
+
+.nav {
+    background: #323945;
+    height: 71px;
+}
+
+.nav__list {
+    margin-bottom: 0px;
+    padding-left: 0px;
+    height: 100%;
+}
+
+.nav__list_left {
+    float: left;
+}
+
+.nav__list-ref {
+    padding: 8px 15px;
+    height: 100%;
+    display: block;
+    color: #888888;
+}
+
+.nav__list-ref_active {
+    color: #fff;
+    background-color: #25bce9;
+}
+
+.nav-icon:before {
+    font-family: 'themify';
+    font-size: 18px;
+    color: #888888;
+    display: block;
+    text-align: center;
+}
+
+.nav-icon_patients:before {
+    content: "\e69b";
+}
+
+.nav-icon_register:before {
+    content: "\e602";
+}
+
+.nav-icon_news:before {
+    content: "\e75a";
+}
+
+.nav-icon_notes:before {
+    content: "\e61d";
+}
+
+.nav-icon_schedule:before {
+    content: "\e68e";
+}
+
+.nav-icon_reports:before {
+    content: "\e673";
+}
+
+.nav-icon_catalog:before {
+    content: "\e639";
+}
+
+.nav__list-ref_active:before {
+    color: #fff;
+}
+
+.nav__list-ref_active:hover:before {
+    color: #25bce9;
+}
+
+.nav__list-ref:hover {
+    background: #2d313b;
+    color: #25bce9;
+    text-decoration: none;
+}
+
+.nav__list-ref:hover:before {
+    color: #25bce9;
+}
+
+.nav__list-item {
+    height: 100%;
+    display: inline-block;
+}
+
+.nav-item-name {
+    display: block;
+    padding-top: 5px;
+    font-size: 16px;
+    font-family: "Roboto";
+}
+
+.container {
+    width: 100%;
+    padding: 0 15px;
+}
+
+/*-----templ-------*/
+
+.main-content {
+    background: #f1f4f9;
+}
+
+.content-header {
+    height: 110px;
+    background: #e9edf2;
+    border-bottom: 1px solid #c5c7cc;
+    font-family: "Roboto";
+}
+
+.content-header__title {
+    margin: 0;
+    padding-top: 25px;
+    color: #444444;
+    font-size: 28px;
+    font-weight: 300;
+}
+
+.content-header__subtitle {
+    margin-top: 5px;
+    display: block;
+    font-size: 16px;
+    font-weight: 300;
+    color: #888888;
+    text-transform: uppercase;
+}
+
+.content-header__title-block_left {
+    float: left;
+    width: 50%;
+}
+
+.content-header__add_right {
+    float: right;
+    width: 50%;
+}
+
+
+.add-block__button {
+    float: right;
+    margin-top: 35px;
+    display: block;
+    width: 250px;
+    text-align: center;
+    background: #25bce9;
+    color: white;
+    padding: 10px;
+    font: 13.3333px Arial;
+    font-size: 16px;
+    font-family: "Roboto";
+}
+
+.add-block__button:hover {
+    color: #fff;
+    text-decoration: none;
+    background: #16a2cc;
+}
+
+.add-block__button:before {
+    padding-right: 7px;
+    font-family: 'FontAwesome';
+    content: "\f067";
+    font-size: 14px;
+}
+
+.patients-wrapper {
+    margin-top: 50px;
+    margin-left: 50px;
+    padding-bottom: 50px;
+}
+
+.patients-table__caption {
+    font-size: 16px;
+    background: #e9edf2;
+    line-height: 52px;
+    color: #444444;
+    padding: 10px;
+    border-bottom: 1px solid #d7d9de;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+}
+
+.patients-table__caption:before {
+    padding-right: 10px;
+    font-family: 'themify';
+    content: "\e6b6";
+
+}
+
+.patients-table td {
+    color: #888888;
+    border-width: 0 0 1px 0px;
+    border-bottom: 1px solid #f1f1f1;
+    text-align: left !important;
+    padding: 9px 15px;
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.patients-table th {
+    border-top: none;
+    border-bottom: 1px solid #f1f1f1;
+    border-left: none;
+    border-right: none;
+    padding: 9px 15px;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: "Roboto";
+
+
+}
+
+.patients-table tbody,
+.patients-table thead {
+    background-color: #ffffff;
+}

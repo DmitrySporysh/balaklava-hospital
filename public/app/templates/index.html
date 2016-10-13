@@ -1,0 +1,37 @@
+<div class="main-content">
+    <div class="content-header">
+        <div class="container">
+            <div class="content-header__title-block content-header__title-block_left">
+                <h3 class="content-header__title">Поступившие больные</h3>
+                <span class="content-header__subtitle">Основные данные</span>
+            </div>
+            <div class="content-header__add content-header__add_right add-block">
+                <a class='add-block__button' href="">Добавить нового пациента</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="patients-wrapper" ng-controller='MainController'>
+        <table class="patients-table">
+            <caption class="patients-table__caption">Посление поступившие больные</caption>
+            <thead>
+                <tr>
+                    <th>Имя</th>
+                    <th>Пол</th>
+                    <th>Возраст</th>
+                    <th>Участок</th>
+                    <th>Подозрение на</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="patient in patientsFio ">
+                <td>{{patient.fio}}</td>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
