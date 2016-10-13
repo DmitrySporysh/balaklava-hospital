@@ -22,7 +22,10 @@
                         <tr>
                             <td class="patient-form__label">ФИО</td>
                             <td class="patient-form__value">
-                                <input ng-model="patient.fio" class="patient-form__input" name="name" value="" title="Person Name" type="text">
+                                <input ng-model="patient.fio"  class="patient-form__input" name="name" value="" title="Person Name" type="text">
+                            </td>
+                            <td class="patient-form__value">
+                                <input ng-model="patient.sex"  class="patient-form__input" name="name2" value="" title="Person Name" type="text">
                             </td>
                         </tr>
                     </table>
@@ -30,5 +33,9 @@
                 <input ng-click="save(patient, NewPatient)" type="submit" value="Send Text">
             </div>
         </form>
+
+        <div>Ответ:</div>
+        <p ng-bind="response.text">{{response}}</p>
+    </div>
     </div>
 </div>
