@@ -63,6 +63,8 @@ class HealthWorkerController extends Controller
 
             $validator->validate();
 
+            $request->session()->put('temp', 'ура работает');
+
             $response = $this->healthworker_service->addNewPatient($request);
             return json_encode("Success adding patient");
         } catch (HealthWorkerServiceException $e) {
