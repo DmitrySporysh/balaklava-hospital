@@ -22,13 +22,13 @@ class ChambersTableSeeder extends Seeder
                     'beds_total_count' =>
                         (($index % 3) ? 2 : 4),
                     'beds_occupied_count' =>
-                        ($index > 0 && $index < 5) ? 2
-                            : (($index == 10 || $index == 5) ? 1 : 0),
-
+                        ($index === 1 && $department === 1) ? 1 :
+                            ($index > 0 && $index < 6) ? 2 : 0,
                     'chamber_sex' => $sex[$index % 3]
                 ]);
             }
         }
+
 
         foreach (range(5, 20) as $department) {
             foreach (range(1, 10) as $index) {
@@ -37,7 +37,7 @@ class ChambersTableSeeder extends Seeder
                     'hospital_department_id' => $department,
                     'floor' => $index % 2,
                     'beds_total_count' => (($index % 3) ? 2 : 4),
-                    'beds_occupied_count' => 0,
+                    'beds_occupied_count' => ($index == 1 && ($department == 5)) ? 1 :0,
                     'chamber_sex' => $sex[$index % 3]
                 ]);
             }
