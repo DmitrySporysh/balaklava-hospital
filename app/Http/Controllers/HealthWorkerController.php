@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Input;
 
 use Barryvdh\Debugbar\Facade;
 use Debugbar;
+use Validator;
 
 class HealthWorkerController extends Controller
 {
@@ -55,6 +56,13 @@ class HealthWorkerController extends Controller
         Debugbar::info($request);
 
         try {
+            $validator = Validator::make($request->all(), [
+                'sex' => 'required|min:8',
+                'fio' => 'required|in:male,female'
+            ]);
+
+            $validator->validate();
+            
             $response = $this->healthworker_service->addNewPatient($request);
             return json_encode("Success adding patient");
         } catch (HealthWorkerServiceException $e) {
