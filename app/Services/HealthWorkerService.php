@@ -101,7 +101,7 @@ class HealthWorkerService implements HealthWorkerServiceInterface
     public function addNewPatient(Request $request)
     {
         try {
-            $data =  $this->patient_repo->create(['fio' => $request->fio, 'sex' => 'male', 'birth_date' => '2010-10-10', 'receipt_date' => '2010-10-10']);
+            $data =  $this->patient_repo->create(['fio' => $request->fio, 'sex' => $request->sex, 'birth_date' => '2010-10-10', 'receipt_date' => '2010-10-10']);
             return $data;
         }
         catch(DALException $e){
