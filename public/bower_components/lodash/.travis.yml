@@ -87,8 +87,8 @@ script:
   # Test in Sauce Labs.
   - "[ $SAUCE_LABS == false ] || node ./node_modules/lodash-cli/bin/lodash core -o ./dist/lodash.core.js"
   - "[ $SAUCE_LABS == false ] || npm run build"
-  - "[ $SAUCE_LABS == false ] || $BIN ./test/saucelabs.js name=\"lodash tests\"     runner=\"test/index.html?build=../dist/lodash.js&noglobals=true\"     tags=\"development\""
-  - "[ $SAUCE_LABS == false ] || $BIN ./test/saucelabs.js name=\"lodash tests\"     runner=\"test/index.html?build=../dist/lodash.min.js&noglobals=true\" tags=\"production\""
+  - "[ $SAUCE_LABS == false ] || $BIN ./test/saucelabs.js name=\"lodash tests\"     runner=\"test/patients.html?build=../dist/lodash.js&noglobals=true\"     tags=\"development\""
+  - "[ $SAUCE_LABS == false ] || $BIN ./test/saucelabs.js name=\"lodash tests\"     runner=\"test/patients.html?build=../dist/lodash.min.js&noglobals=true\" tags=\"production\""
   - "[ $SAUCE_LABS == false ] || $BIN ./test/saucelabs.js name=\"lodash-fp tests\"  runner=\"test/fp.html?noglobals=true\"                                tags=\"development\""
   - "[ $SAUCE_LABS == false ] || $BIN ./test/saucelabs.js name=\"underscore tests\" runner=\"test/underscore.html?build=../dist/lodash.js\"               tags=\"development,underscore\""
   - "[ $SAUCE_LABS == false ] || $BIN ./test/saucelabs.js name=\"underscore tests\" runner=\"test/underscore.html?build=../dist/lodash.min.js\"           tags=\"production,underscore\""

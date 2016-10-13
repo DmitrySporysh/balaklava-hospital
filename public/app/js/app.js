@@ -1,21 +1,25 @@
 var emergencyRoomApp = angular.module('emergencyRoomApp', [
     'ngRoute',
-    'bookWishlistAppControllers'
+    'emergencyRoomAppControllers'
 ]);
 
 emergencyRoomApp.config(['$routeProvider', function($routeProvider) {
 
     $routeProvider.
-    when('/login', {
-        templateUrl: 'app/templates/login.html',
+    when('/archive', {
+        templateUrl: 'app/templates/emergency/login.html',
         controller: 'LoginController'
     }).
-    when('/signup', {
-        templateUrl: 'app/templates/signup.html',
-        controller: 'SignupController'
+    when('/new_patient', {
+        templateUrl: 'app/templates/emergency/new_patient.html',
+        controller: 'NewPatientController'
+    }).
+    when('/patients', {
+        templateUrl: 'app/templates/emergency/patients.html',
+        controller: 'MainController'
     }).
     when('/', {
-        templateUrl: 'app/templates/index.html',
+        templateUrl: 'app/templates/emergency/patients.html',
         controller: 'MainController'
     }).
     otherwise({

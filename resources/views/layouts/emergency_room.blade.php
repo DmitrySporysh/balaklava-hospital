@@ -26,19 +26,11 @@
 </head>
 
 <body>
-
-
 <div class="wrapper">
     @include('components.header')
-
-
-
-    <div ng-view></div>
-
-
+    <div class="main-content">
+        <div ng-view></div>
+    </div>
 </div>
-
-
-
 </body>
 </html>

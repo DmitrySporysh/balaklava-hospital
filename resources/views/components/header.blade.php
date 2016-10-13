@@ -45,12 +45,12 @@
     <div class="nav">
         <ul class="nav__list nav__list_left">
             <li class="nav__list-item" >
-                <a href="" class="nav__list-ref nav__list-ref_active nav-icon nav-icon_patients">
+                <a href="/emergency#/patients" class="nav__list-ref nav__list-ref_active nav-icon nav-icon_patients">
                     <span class="nav-item-name">Поступившие</span>
                 </a>
 
             <li class="nav__list-item">
-                <a href="" class="nav__list-ref nav-icon nav-icon_register">
+                <a href="/emergency#/new_patient" class="nav__list-ref nav-icon nav-icon_register">
                     <span class="nav-item-name">Новая регистрация</span>
                 </a>
 

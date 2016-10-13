@@ -260,6 +260,12 @@
     padding: 0 15px;
 }
 
+/*-----внешняя геометрия-------*/
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+
 /*-----templ-------*/
 
 .main-content {
