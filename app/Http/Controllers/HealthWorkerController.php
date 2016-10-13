@@ -57,12 +57,12 @@ class HealthWorkerController extends Controller
 
         try {
             $validator = Validator::make($request->all(), [
-                'sex' => 'required|min:8',
-                'fio' => 'required|in:male,female'
+                'fio' => 'required|min:8',
+                'sex' => 'required|in:male,female'
             ]);
 
             $validator->validate();
-            
+
             $response = $this->healthworker_service->addNewPatient($request);
             return json_encode("Success adding patient");
         } catch (HealthWorkerServiceException $e) {
