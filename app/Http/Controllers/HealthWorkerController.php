@@ -49,4 +49,15 @@ class HealthWorkerController extends Controller
         Debugbar::info($response);
         return view('welcome', ['response' => $response]);
     }
+
+    public function addPatient(Request $request)
+    {
+
+        //$per_page = ($request->has('per_page')) ? $request->per_page : 3;
+
+        $response = $this->healthworker_service->addNewPatient($request);
+        //Debugbar::info($response);
+        //return view('welcome', ['response' => $response]);
+        return json_encode("Success adding patient");
+    }
 }
