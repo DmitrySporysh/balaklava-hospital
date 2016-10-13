@@ -102,15 +102,16 @@ class NurseService implements NurseServiceInterface
     public function getChamberWithPatients($chamber_id)
     {
         try {
-            $data['chamber'] = $this->chamber_repo->find($chamber_id, array('number', 'floor', 'hospital_department_id'));
-            $data['department'] = $this->department_repo->find($data['chamber']['hospital_department_id'], array('department_name'));
-            $data['patients'] = $this->patient_repo->where('chamber_id', $chamber_id, '=', array('fio', 'birth_date'));
+            //$data['department'] = $this->department_repo->find($department_id, array('department_name'));
+            //$data['chamber'] = $this->chamber_repo->find($chamber_id, array('number', 'floor'));
+
+            $data = $this->chamber_repo->getChamberWithDepartmentAndPatients($chamber_id);
             return $data;
         } catch (DALException $e) {
-            $message = 'Error while creating withdraw patient request(DAL Error)';
+            $message = 'Error while creating withdraw chamber request(DAL Error)';
             throw new NurseServiceException($message, 0, $e);
         } catch (Exception $e) {
-            $message = 'Error while creating withdraw patient request(UnknownError)';
+            $message = 'Error while creating withdraw chamber request(UnknownError)';
             throw new NurseServiceException($message, 0, $e);
         }
     }

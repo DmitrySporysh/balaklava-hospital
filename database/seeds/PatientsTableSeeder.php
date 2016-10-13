@@ -38,11 +38,11 @@ class PatientsTableSeeder extends Seeder
                 'district_doctor_id' => $index,
                 'attending_doctor_id' => 2 + 4 * ($index % 4),
                 'hospital_department_id' => $index,
-                'chamber_id' => $index % 5 + 1 + (10 * floor($index / 10))
+                'chamber_id' => $index % 6 + (10 * ceil($index / 10))
             ]);
         }
 
-        foreach (range(21, 40) as $index) {
+        foreach (range(1, 20) as $index) {
             DB::table('patients')->insert([
                 'fio' => $fioFemale[$index % 10],
                 'sex' => 'female',
@@ -50,10 +50,10 @@ class PatientsTableSeeder extends Seeder
                 'receipt_date' => '2016-10-10',
                 'initial_inspection' => 'Пациенту явно плохо',
                 'preliminary_diagnosis' => 'Чем-то он явно болеет',
-                'district_doctor_id' => $index % 20 + 1,
+                'district_doctor_id' => $index,
                 'attending_doctor_id' => 2 + 4 * ($index % 4),
-                'hospital_department_id' => $index % 20 + 1,
-                'chamber_id' => $index % 5 + 1 + (10 * floor($index / 10))
+                'hospital_department_id' => $index,
+                'chamber_id' => $index % 6 + (10 * ceil($index / 10)) + 20
             ]);
         }
     }
