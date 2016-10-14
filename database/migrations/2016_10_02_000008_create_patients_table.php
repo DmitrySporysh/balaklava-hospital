@@ -1,10 +1,11 @@
+
 <?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePatientsTable extends Migration
+class CreateHealthWorkersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,39 +14,29 @@ class CreatePatientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('patients', function (Blueprint $table) {
+        Schema::create('health_workers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('fio');
-            $table->enum('sex', array('male', 'female'));
+            $table->integer('login_id')->unsigned()->nullable();
+            $table->string('address');
             $table->date('birth_date');
-            $table->timestamp('receipt_date');
-            $table->string('initial_inspection')->nullable();
-            $table->string('preliminary_diagnosis')->nullable();
-            $table->string('confirmed_diagnosis')->nullable();
 
-            $table->integer('district_doctor_id')->unsigned()->nullable();
-            $table->integer('attending_doctor_id')->unsigned()->nullable();
-            $table->integer('hospital_department_id')->unsigned()->nullable();
-            $table->integer('chamber_id')->unsigned()->nullable();
-            
-            $table->softDeletes();            
+            $table->enum('post', array('chief medical officer', 'nurse', 'attending doctor', 'other'))->nullable();
+            $table->string('description')->nullable();
+
+            $table->softDeletes();
             $table->timestamps();
         });
 
+
         Schema::table('patients',function (Blueprint $table){
-            $table->foreign('district_doctor_id')->references('id')->on('district_doctors')
+            $table->foreign('login_id')->references('id')->on('users')
                 ->onUpdate('cascade');
-            $table->foreign('attending_doctor_id')->references('id')->on('health_workers')
-                ->onUpdate('cascade');
-            $table->foreign('hospital_department_id')->references('id')->on('hospital_departments')
-                ->onUpdate('cascade');
-            $table->foreign('chamber_id')->references('id')->on('chambers')
-                ->onUpdate('cascade');
+
         });
 
     }
 
-    
     /**
      * Reverse the migrations.
      *
@@ -53,6 +44,6 @@ class CreatePatientsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('patients');
+        Schema::drop('health_workers');
     }
 }
