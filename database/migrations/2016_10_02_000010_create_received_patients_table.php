@@ -42,7 +42,7 @@ class CreateReceivedPatientsTable extends Migration
             $table->foreign('inspections_protocol_id')->references('id')->on('inspections_protocol')
                 ->onUpdate('cascade');
 
-            $table->unique(array('patients_id', 'received_date'));
+            $table->unique(array('patient_id', 'received_date'));
         });
 
     }

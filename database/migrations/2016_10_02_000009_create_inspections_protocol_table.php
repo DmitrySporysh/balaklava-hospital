@@ -20,7 +20,7 @@ class CreateInspectionsProtocolTable extends Migration
             $table->timestamp('date');
 
             //жалобы
-            $table->string('complaints ')->nullable();
+            $table->string('complaints')->nullable();
             //из анамнеза (истории болезни)
             $table->string('from_anamnesis')->nullable();
             //в анамнезе

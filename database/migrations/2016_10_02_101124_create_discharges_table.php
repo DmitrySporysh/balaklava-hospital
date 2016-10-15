@@ -19,7 +19,7 @@ class CreateDischargesTable extends Migration
             $table->string('result_epicrisis');
             $table->enum('discharge_type', array('discharge', 'transfer', 'death', 'other'));
 
-            $table->integer('patient_id')->unsigned();
+            $table->integer('inpatient_id')->unsigned();
             $table->integer('discharge_hospital_id')->unsigned()->nullable();
             $table->integer('discharge_department_id')->unsigned()->nullable();
 
@@ -28,7 +28,7 @@ class CreateDischargesTable extends Migration
         });
 
         Schema::table('discharges',function (Blueprint $table){
-            $table->foreign('patient_id')->references('id')->on('patients')
+            $table->foreign('inpatient_id')->references('id')->on('inpatients')
                 ->onUpdate('cascade');
             $table->foreign('discharge_hospital_id')->references('id')->on('hospitals')
                 ->onUpdate('cascade');
