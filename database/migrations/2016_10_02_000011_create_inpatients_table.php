@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePatientsTable extends Migration
+class CreateInpatientsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreatePatientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('patients', function (Blueprint $table) {
+        Schema::create('inpatients', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('fio');
-            $table->enum('sex', array('male', 'female'));
-            $table->date('birth_date');
-            $table->timestamp('receipt_date');
-            $table->string('initial_inspection')->nullable();
-            $table->string('preliminary_diagnosis')->nullable();
-            $table->string('confirmed_diagnosis')->nullable();
 
+            $table->timestamp('start_date');
+
+            $table->string('diagnosis')->nullable();
+
+            $table->integer('received_patient_id')->unsigned();
             $table->integer('district_doctor_id')->unsigned()->nullable();
             $table->integer('attending_doctor_id')->unsigned()->nullable();
             $table->integer('hospital_department_id')->unsigned()->nullable();
@@ -31,8 +29,9 @@ class CreatePatientsTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
-
-        Schema::table('patients',function (Blueprint $table){
+        Schema::table('inpatients',function (Blueprint $table){
+            $table->foreign('received_patient_id')->references('id')->on('received_patients')
+                ->onUpdate('cascade');
             $table->foreign('district_doctor_id')->references('id')->on('district_doctors')
                 ->onUpdate('cascade');
             $table->foreign('attending_doctor_id')->references('id')->on('health_workers')
@@ -53,7 +52,7 @@ class CreatePatientsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('patients');
+        Schema::drop('inpatients');
     }
 }
 
