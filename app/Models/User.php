@@ -38,7 +38,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'login'
     ];
 
     /**
@@ -49,4 +49,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function health_worker()
+    {
+        return $this->hasOne('App\Models\HealthWorker', 'login_id');
+    }
 }

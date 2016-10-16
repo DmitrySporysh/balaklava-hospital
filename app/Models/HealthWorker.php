@@ -49,16 +49,32 @@ class HealthWorker extends Model
 
     protected $fillable = [
         'fio', 'name', 'address', 'birth_date',
-        'post', 'description'
+        'post', 'description', 'login_id'
     ];
 
+    //belongs to
+    public function department_chief()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
+    //has one
     public function hospital_department()
     {
         return $this->hasOne('App\Models\HospitalDepartment', 'department_chief_id');
     }
 
-    public function patients(){
-        return $this->hasMany('App\Models\Patient','attending_doctor_id');
+    //has many
+    public function inpatients(){
+        return $this->hasMany('App\Models\Inpatient','attending_doctor_id');
+    }
+
+    public function inspections_protocols(){
+        return $this->hasMany('App\Models\InspectionProtocol','duty_doctor_id');
+    }
+
+    public function received_patients(){
+        return $this->hasMany('App\Models\ReceivedPatient','registration_nurse_id');
     }
 
     public function inspections(){

@@ -43,7 +43,7 @@ class Dressing extends Model
     ];
 
     public function patient(){
-        return $this->belongsTo('App\Models\Patient');
+        return $this->belongsTo('App\Models\Inpatient');
     }
 
     public function doctor(){

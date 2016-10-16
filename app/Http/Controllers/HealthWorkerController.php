@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Common\Enums\MessageUserRole;
 use App\Http\Requests;
 use App\Repositories\Interfaces\HealthWorkerRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
@@ -44,9 +44,13 @@ class HealthWorkerController extends Controller
     {
         Debugbar::addMessage('HealthWorkerController/getPatient', 'mylabel');
 
-        $response = $this->healthworker_service->getPatietnFullInfo($patient_id);
+        //$response = $this->healthworker_service->getPatietnFullInfo($patient_id);
         //$response =  $this->healthworker_service->testFunc();
-        Debugbar::info($response);
-        return view('welcome', ['response' => $response]);
+        Debugbar::info(MessageUserRole::values);
+        Debugbar::info(MessageUserRole::getValueByNumber(1));
+        Debugbar::info(MessageUserRole::getValueByNumber(0));
+        Debugbar::info(MessageUserRole::getValueByNumber(3));
+
+        return view('welcome');
     }
 }

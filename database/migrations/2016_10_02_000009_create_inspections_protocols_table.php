@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
+    use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInspectionsProtocolTable extends Migration
+class CreateInspectionsProtocolsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateInspectionsProtocolTable extends Migration
      */
     public function up()
     {
-        Schema::create('inspections_protocol', function (Blueprint $table) {
+        Schema::create('inspections_protocols', function (Blueprint $table) {
             $table->increments('id');
 
             $table->integer('duty_doctor_id')->unsigned();
@@ -99,7 +99,7 @@ class CreateInspectionsProtocolTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('inspections_protocol', function (Blueprint $table) {
+        Schema::table('inspections_protocols', function (Blueprint $table) {
             $table->foreign('duty_doctor_id')->references('id')->on('health_workers')
                 ->onUpdate('cascade');
         });
@@ -114,7 +114,7 @@ class CreateInspectionsProtocolTable extends Migration
      */
     public function down()
     {
-        Schema::drop('inspections_protocol');
+        Schema::drop('inspections_protocols');
     }
 }
 

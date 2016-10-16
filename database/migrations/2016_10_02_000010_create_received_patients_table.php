@@ -28,7 +28,7 @@ class CreateReceivedPatientsTable extends Migration
             $table->string('complaints');
             $table->enum('received_type', array('плановое', 'эксренное', 'по скорой', 'другое'));
 
-            $table->integer('inspections_protocol_id')->unsigned();
+            $table->integer('inspection_protocol_id')->unsigned();
 
             $table->softDeletes();
             $table->timestamps();
@@ -39,7 +39,7 @@ class CreateReceivedPatientsTable extends Migration
                 ->onUpdate('cascade');
             $table->foreign('registration_nurse_id')->references('id')->on('health_workers')
                 ->onUpdate('cascade');
-            $table->foreign('inspections_protocol_id')->references('id')->on('inspections_protocol')
+            $table->foreign('inspection_protocol_id')->references('id')->on('inspections_protocols')
                 ->onUpdate('cascade');
 
             $table->unique(array('patient_id', 'received_date'));

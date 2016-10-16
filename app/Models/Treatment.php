@@ -44,7 +44,7 @@ class Treatment extends Model
         'treatment_name', 'description', 'date', 'patient_id', 'doctor_id'];
 
     public function patient(){
-        return $this->belongsTo('App\Models\Patient');
+        return $this->belongsTo('App\Models\Inpatient');
     }
 
     public function doctor(){
