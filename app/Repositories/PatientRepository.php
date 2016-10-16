@@ -20,7 +20,7 @@ class PatientRepository extends Repository implements PatientRepositoryInterface
     {
         return 'App\Models\Patient';
     }
-
+/*
     public function getPatientWithTableInfo($patient_id)
     {
         try {
@@ -86,7 +86,8 @@ class PatientRepository extends Repository implements PatientRepositoryInterface
             }
             return $banner_requests;
         }*/
-        if ($data != null) return $data;
+       /* if ($data != null) return $data;
         return array();
     }
+*/
 }

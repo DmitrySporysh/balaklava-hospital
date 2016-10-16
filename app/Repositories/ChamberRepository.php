@@ -36,7 +36,7 @@ class ChamberRepository extends Repository implements ChamberRepositoryInterface
 
         return array();
     }
-
+/*
     public function getChamberWithDepartmentAndPatients($chamber_id){
 
         try {
@@ -54,7 +54,7 @@ class ChamberRepository extends Repository implements ChamberRepositoryInterface
         if($data!=null) return $data;
 
         return array();
-    }
+    }*/
 
     public function getNotEmptyChambersWithDepartments($perPage){
 

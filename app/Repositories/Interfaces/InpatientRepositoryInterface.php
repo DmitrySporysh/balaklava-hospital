@@ -8,7 +8,7 @@
 namespace App\Repositories\Interfaces;
 
 
-interface DistrictDoctorRepositoryInterface extends RepositoryInterface
+interface InpatientRepositoryInterface extends RepositoryInterface
 {
-   // public function getDistrictDoctorsWithPatients($id);
+
 }

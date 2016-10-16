@@ -6,27 +6,30 @@
  * Time: 12:33
  */
 namespace App\Repositories;
+
 use App\Exceptions\DALException;
-use App\Models\DistrictDoctor;
+use App\Models\ReceivedPatient;
 use App\Repositories\Core\Repository;
-use App\Repositories\Interfaces\DistrictDoctorRepositoryInterface;
+use App\Repositories\Interfaces\ReceivedPatientRepositoryInterface;
+use DB;
 use Exception;
 
 
-class DistrictDoctorRepository extends Repository implements DistrictDoctorRepositoryInterface
+class ReceivedPatientRepository extends Repository implements ReceivedPatientRepositoryInterface
 {
     function model()
     {
-        return 'App\Models\DistrictDoctor';
+        return 'App\Models\ReceivedPatient';
     }
 
-   /* public function getDistrictDoctorsWithPatients($id){
 
+    public function getReceivedPatientsSortByDateDesc_Paginate($per_page, $columns)
+    {
         try {
-            $data = DistrictDoctor::where('id', $id)
-                ->with(['patients'
-                ])->get();
-            ;
+            $data = DB::table('received_patients')->
+                select($columns)
+                ->orderBy('received_patients.received_date', 'DESC')
+                ->paginate($per_page);
             if ($data == null) {
                 return array();
             }
@@ -38,5 +41,5 @@ class DistrictDoctorRepository extends Repository implements DistrictDoctorRepos
         if($data!=null) return $data;
 
         return array();
-    }*/
+    }
 }

@@ -30,14 +30,14 @@ class HealthWorkerController extends Controller
         //$this->middleware('checkRole:'.UserRole::WEBMASTER);
     }
 
-    public function patients(Request $request)
+    public function getReceivedPatients(Request $request)
     {
-        //$per_page = ($request->has('per_page')) ? $request->per_page : 3;
+        $per_page = ($request->has('per_page')) ? $request->per_page : 5;
 
-        $response = $this->healthworker_service->getAllPatientsFio();
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        $response = $this->healthworker_service->getAllReceivedPatientsSortByDateDesc($per_page);
+        Debugbar::info($response);
+        return view('welcome', ['response' => $response]);
+        //return $response;
     }
 
     public function getPatient($patient_id)
