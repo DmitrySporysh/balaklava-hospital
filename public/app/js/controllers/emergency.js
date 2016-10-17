@@ -5,7 +5,7 @@ emergencyRoomAppControllers.controller('LoginController', ['$scope', '$http', fu
 }]);
 
 emergencyRoomAppControllers.controller('NewPatientController', ['$scope', '$http', function ($scope, $http) {
-    
+
 }]);
 
 emergencyRoomAppControllers.controller('MainController', ['$scope', '$http', function ($scope, $http) {
@@ -16,7 +16,6 @@ emergencyRoomAppControllers.controller('MainController', ['$scope', '$http', fun
     });
 
     $scope.save = function (patient, NewPatient){
-
         $scope.response={};
         if(NewPatient.$valid){
             $http.post("/patient/addNew", patient).success(function (answ) {

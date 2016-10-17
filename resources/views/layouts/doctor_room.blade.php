@@ -18,8 +18,11 @@
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <script src="app/js/app_emerg.js"></script>
-    <script src="app/js/controllers/emergency.js"></script>
+    <script src="app/js/app_doctor.js"></script>
+    <script src="app/js/controllers/doctor.js"></script>
+
+
+    <script src="/js/accordeon.js"></script>
 
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/font-awesome.css">
@@ -27,11 +30,10 @@
     <link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700" media="all" />
 </head>
 
-<body ng-app="emergencyRoomApp">
+<body ng-app="doctorApp">
 <div class="wrapper">
-    @include('components.header')
+    @include('components.doctor_header')
     <div class="main-content">
-        {{--@include('components.content_header')--}}
         <div ng-view></div>
     </div>
 </div>
