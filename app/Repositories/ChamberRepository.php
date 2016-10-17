@@ -36,13 +36,13 @@ class ChamberRepository extends Repository implements ChamberRepositoryInterface
 
         return array();
     }
-/*
+
     public function getChamberWithDepartmentAndPatients($chamber_id){
 
         try {
             $data = $this->model
                 ->where('id', $chamber_id)
-                ->with(['hospital_department', 'patients'])->get();
+                ->with(['hospital_department', 'inpatients'])->get();
             if ($data == null) {
                 return array();
             }
@@ -54,7 +54,7 @@ class ChamberRepository extends Repository implements ChamberRepositoryInterface
         if($data!=null) return $data;
 
         return array();
-    }*/
+    }
 
     public function getNotEmptyChambersWithDepartments($perPage){
 

@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 interface NurseServiceInterface
 {
-    public function getAllDepartments();
+    public function getAllDepartmentsWithDepartmentChiefFio();
 
     public function getDepartmentChambers($department_id);
 

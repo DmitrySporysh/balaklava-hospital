@@ -6,12 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * App\Models\Health_worker
+ * App\Models\HealthWorker
  *
- * @mixin \Eloquent
  * @property integer $id
  * @property string $fio
- * @property string $name
+ * @property integer $login_id
  * @property string $address
  * @property string $birth_date
  * @property string $post
@@ -19,8 +18,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\Carbon $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ * @property-read \App\Models\User $department_chief
  * @property-read \App\Models\HospitalDepartment $hospital_department
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Patient[] $patients
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Inpatient[] $inpatients
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\InspectionProtocol[] $inspections_protocols
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ReceivedPatient[] $received_patients
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Inspection[] $inspections
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Dressing[] $dressings
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Operation[] $operations
@@ -28,7 +30,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Treatment[] $treatments
  * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereFio($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereLoginId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereAddress($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereBirthDate($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker wherePost($value)
@@ -36,6 +38,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereDeletedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class HealthWorker extends Model
 {

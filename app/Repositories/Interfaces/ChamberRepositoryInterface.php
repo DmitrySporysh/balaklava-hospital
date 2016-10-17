@@ -14,7 +14,7 @@ interface ChamberRepositoryInterface extends RepositoryInterface
 
     public function getNotEmptyChambersWithDepartments($perPage);
 
-  //  public function getChamberWithDepartmentAndPatients($chamber_id);
-//
+    public function getChamberWithDepartmentAndPatients($chamber_id);
+
     public function getNotEmptyChambersByDepartmentNum($department_id, $columns);
 }

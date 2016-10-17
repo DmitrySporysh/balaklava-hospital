@@ -6,9 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * App\Models\Hospital_department
+ * App\Models\HospitalDepartment
  *
- * @mixin \Eloquent
  * @property integer $id
  * @property string $department_name
  * @property string $address
@@ -27,6 +26,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\HospitalDepartment whereDeletedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\HospitalDepartment whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\HospitalDepartment whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class HospitalDepartment extends Model
 {
