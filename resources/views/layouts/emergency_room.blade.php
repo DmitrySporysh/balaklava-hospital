@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="emergencyRoomApp">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +10,7 @@
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
     <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>
     <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
@@ -22,13 +23,15 @@
 
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/font-awesome.css">
+    <link rel="stylesheet" href="/fonts/themify/themify-icons.css">
     <link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700" media="all" />
 </head>
 
-<body>
+<body ng-app="emergencyRoomApp">
 <div class="wrapper">
     @include('components.header')
     <div class="main-content">
+        {{--@include('components.content_header')--}}
         <div ng-view></div>
     </div>
 </div>

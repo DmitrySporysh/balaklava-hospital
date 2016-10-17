@@ -10,8 +10,8 @@ emergencyRoomAppControllers.controller('NewPatientController', ['$scope', '$http
 
 emergencyRoomAppControllers.controller('MainController', ['$scope', '$http', function ($scope, $http) {
 
+    $scope.general=[{'header_title':'Поступившие больные'}];
     $http.get('/patientsFio').success(function(patientsFio) {
-
         $scope.patientsFio = patientsFio;
     });
 
@@ -24,5 +24,19 @@ emergencyRoomAppControllers.controller('MainController', ['$scope', '$http', fun
             });
         }
     };
-    
+
 }]);
+
+
+
+var cookieStoreExample = angular.module('cookieStoreExample', ['ngCookies'])
+    .controller('ExampleController', ['$cookieStore', function($cookieStore) {
+        // Put cookie
+        /*$cookieStore.put('myFavorite','oatmeal');*/
+        // Get cookie
+        var favoriteCookie = $cookieStore.get('temp');
+        alert (favoriteCookie);
+        // Removing a cookie
+        /*$cookieStore.remove('myFavorite');*/
+    }]);
+
