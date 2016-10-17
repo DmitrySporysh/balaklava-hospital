@@ -15,6 +15,11 @@ Route::get('receivedPatients', 'HealthWorkerController@getReceivedPatients');
 
 Route::get('patient/{id}', 'HealthWorkerController@getPatient');
 
+Route::post('patient/addNew', 'HealthWorkerController@addPatient');
+
+Route::get('emergency', function () {
+    return view('layouts.emergency_room');
+});
 
 //----------Nurse-------------------------------
 Route::get('nurse/departments', 'NurseController@getDepartments');
