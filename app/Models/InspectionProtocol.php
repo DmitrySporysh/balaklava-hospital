@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
+
 /**
  * App\Models\InspectionProtocol
  *
@@ -31,8 +33,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $heart_tones
  * @property string $heart_rhythm
  * @property string $heart_rhythm_extended
- * @property string $respiratory_movements_frequency(ChDD)
- * @property string $heart_rate(ChSS)
+ * @property string $respiratory_movements_frequency_ChDD
+ * @property string $heart_rate_ChSS
  * @property string $heart_boundaries
  * @property string $heart_boundaries_extended
  * @property string $muscle_tone
@@ -75,8 +77,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\InspectionProtocol whereHeartTones($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\InspectionProtocol whereHeartRhythm($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\InspectionProtocol whereHeartRhythmExtended($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\InspectionProtocol whereRespiratoryMovementsFrequency(ChDD)($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\InspectionProtocol whereHeartRate(ChSS)($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\InspectionProtocol whereRespiratoryMovementsFrequencyChDD($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\InspectionProtocol whereHeartRateChSS($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\InspectionProtocol whereHeartBoundaries($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\InspectionProtocol whereHeartBoundariesExtended($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\InspectionProtocol whereMuscleTone($value)
@@ -95,10 +97,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\InspectionProtocol whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\InspectionProtocol whereUpdatedAt($value)
  * @mixin \Eloquent
- * @method static \Illuminate\Database\Query\Builder|\App\Models\InspectionProtocol whereRespiratoryMovementsFrequency(ChDD)($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\InspectionProtocol whereHeartRate(ChSS)($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\InspectionProtocol whereRespiratoryMovementsFrequency(ChDD)($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\InspectionProtocol whereHeartRate(ChSS)($value)
  */
 class InspectionProtocol extends Model
 {
@@ -110,8 +108,14 @@ class InspectionProtocol extends Model
 
     protected $guarded = ['id'];
 
-    protected $fillable = [
-
+    protected $fillable = [ 'duty_doctor_id', 'date', 'complaints', 'from_anamnesis',
+        'in_anamnesis', 'insurance_anamnesis', 'allergoanamnez', 'condition', 'consciousness',
+        'body_type', 'food', 'skin', 'turgor', 'pupils', 'tongue', 'tongue_extended',
+        'auscultation', 'auscultation_extended', 'percussion_sound', 'heart_tones',
+        'heart_rhythm', 'heart_rhythm_extended', 'respiratory_movements_frequency_ChDD',
+        'heart_rate_ChSS', 'heart_boundaries', 'heart_boundaries_extended', 'muscle_tone',
+        'muscle_tone_extended', 'joint_motion', 'stomach_density', 'stomach_pain', 'stomach_extended',
+        'in_romberg_position', 'gait', 'gait_extended', 'stools', 'stools_extended', 'stools_consistency'
     ];
 
 
