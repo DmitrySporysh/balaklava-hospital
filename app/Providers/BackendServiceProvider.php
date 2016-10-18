@@ -79,6 +79,9 @@ class BackendServiceProvider extends ServiceProvider
         $this->app->bind( 'App\Services\Interfaces\AttendingDoctorServiceInterface',
             'App\Services\AttendingDoctorService' );
 
+        $this->app->bind( 'App\Services\Interfaces\DoctorServiceInterface',
+            'App\Services\DoctorService' );
+
         $this->app->bind( 'App\Services\Interfaces\AuthorizationServiceInterface',
                           'App\Services\AuthorizationService' );
 

@@ -34,9 +34,9 @@ class EmergencyController extends Controller
         $per_page = ($request->has('per_page')) ? $request->per_page : 20;
 
         $response = $this->emergency_service->getAllReceivedPatientsSortByDateDesc($per_page);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        Debugbar::info($response);
+        return view('welcome', ['response' => $response]);
+        //return $response;
     }
 
     public function getPatient($patient_id)
@@ -70,7 +70,7 @@ class EmergencyController extends Controller
             $response = $this->emergency_service->addNewPatient($request);
             return json_encode("Success adding patient");
         } catch (HealthWorkerServiceException $e) {
-            return json_encode("Error");
+            return json_encode("Error whil");
         } catch (Exception $e) {
             return json_encode("Error");
         }
