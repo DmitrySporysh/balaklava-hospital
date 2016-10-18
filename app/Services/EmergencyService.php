@@ -56,7 +56,28 @@ class EmergencyService implements EmergencyServiceInterface
     public function addNewPatient(Request $request)
     {
         try {
+
+
+
             $data =  $this->patient_repo->create(['fio' => $request->fio, 'sex' => $request->sex, 'birth_date' => '2010-10-10', 'receipt_date' => '2010-10-10']);
+            return $data;
+        }
+        catch(DALException $e){
+            $message = 'Error while creating withdraw money request(DAL Error)';
+            throw new HealthWorkerServiceException($message,0,$e);
+        }
+        catch(Exception $e){
+            $message = 'Error while creating withdraw money request(UnknownError)';
+            throw new HealthWorkerServiceException($message,0,$e);
+        }
+    }
+
+    public function checkPatientExists($insurance_number)
+    {
+        try {
+            $data = $this->patient_repo->findBy('insurance_number', $insurance_number, ['id']);
+
+
             return $data;
         }
         catch(DALException $e){

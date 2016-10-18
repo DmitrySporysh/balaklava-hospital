@@ -16,6 +16,9 @@ interface EmergencyServiceInterface
 
     public function addNewPatient(Request $request);
 
+    public function checkPatientExists($insurance_number);
+
+
     public function ediPatient(Request $request, $patient_id);
 
     public function deletePatient($patient_id);

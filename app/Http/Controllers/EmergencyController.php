@@ -53,26 +53,29 @@ class EmergencyController extends Controller
         return view('welcome');
     }
 
-    public function addPatient(Request $request)
+    public function addNewInpatient(Request $request)
     {
-        Debugbar::info($request);
-
         try {
-            $validator = Validator::make($request->all(), [
+            /*$validator = Validator::make($request->all(), [
                 'fio' => 'required|min:8',
                 'sex' => 'required|in:male,female'
             ]);
 
-            $validator->validate();
+            $validator->validate();*/
 
-            $request->session()->put('temp', 'ура работает');
+            Debugbar::info($this->emergency_service->checkPatientExists(4000));
+            return view('welcome');
 
-            $response = $this->emergency_service->addNewPatient($request);
-            return json_encode("Success adding patient");
+            /*$request->session()->put('temp', 'ура работает');
+
+            $this->emergency_service->addNewPatient($request);
+
+            return json_encode("Success adding patient");*/
+
         } catch (HealthWorkerServiceException $e) {
-            return json_encode("Error whil");
+            return json_encode("Error while cheking validation fields");
         } catch (Exception $e) {
-            return json_encode("Error");
+            return json_encode("error");
         }
     }
 }
