@@ -15,7 +15,9 @@ doctorAppControllers.controller('EmergencyPersonController', ['$scope', '$http',
 }]);
 
 doctorAppControllers.controller('PatientsController', ['$scope', '$http', function ($scope, $http) {
-
+    $http.get('doctor/inpatients').success(function(patients) {
+        $scope.patients_info = patients.data;
+    });
 }]);
 
 

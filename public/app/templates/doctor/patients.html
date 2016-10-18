@@ -8,7 +8,7 @@
 </div>
 
 
-<div class="patients-wrapper plain-table plain-table_full" ng-controller='MainController'>
+<div class="patients-wrapper plain-table plain-table_full" ng-controller='PatientsController'>
     <div class="container">
         <div class="plain-table__caption">
             <span class="plain-table__icon ti-marker"></span>Пациенты в отделении
@@ -26,14 +26,14 @@
             </tr>
             </thead>
             <tbody class='plain-table__value'>
-            <tr ng-repeat="patient in patientsFio">
+            <tr ng-repeat="patient in patients_info">
                 <td>{{patient.fio}}</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
+                <td>{{patient.birth_date}}</td>
+                <td>{{patient.sex}}</td>
+                <td>{{patient.number}}</td>
+                <td>{{patient.phone}}</td>
+                <td>{{patient.start_date}}</td>
+                <td>{{patient.insurance_number}}</td>
             </tr>
             </tbody>
         </table>
