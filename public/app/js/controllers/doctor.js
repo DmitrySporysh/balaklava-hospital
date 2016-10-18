@@ -1,10 +1,10 @@
 var doctorAppControllers = angular.module('doctorAppControllers', [])
-    .directive('tab_general', function () {
+    .directive('tabGeneral', function () {
         return {
             templateUrl: "app/templates/doctor/patient_full/general.html"
         }
     })
-    .directive('tab_results', function () {
+    .directive('tabResults', function () {
         return {
             templateUrl: "app/templates/doctor/patient_full/results.html"
         }
@@ -20,7 +20,7 @@ doctorAppControllers.controller('PatientFullController', ['$scope', '$http', fun
         if(template=='general'){
             console.log('g');
         }
-        template=('" '+template);
+        template='" '+template+'"';
         console.log(template);
         $scope.active_menu=template;
     };

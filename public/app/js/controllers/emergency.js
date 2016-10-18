@@ -20,14 +20,14 @@ emergencyRoomAppControllers.controller('MainController', ['$scope', '$http', fun
 
 
 
-    /*$scope.save = function (patient, NewPatient){
+    $scope.save = function (patient, NewPatient){
         $scope.response={};
         if(NewPatient.$valid){
             $http.post("/patient/addNew", patient).success(function (answ) {
                 $scope.response=answ;
             });
         }
-    };*/
+    };
 
 }]);
 
