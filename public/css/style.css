@@ -536,3 +536,33 @@ body {
 .patient-form__obj {
     border-bottom: 1px solid red;
 }
+
+
+.vert-menu {
+    width: 23%;
+    float: left;
+}
+
+.vert-menu__title {
+    font-size: 18px;
+    margin: 45px 0 15px 0;
+}
+
+.vert-menu__caption {
+    height: 40px;
+    line-height: 20px;
+}
+
+.vert-menu__icon {
+    font-size: 15px;
+}
+
+.vert-menu__table td:hover {
+    cursor: pointer;
+    color: #25bce9;
+}
+
+.tab-area {
+    width: 70%;
+    float: right;
+}

@@ -2,12 +2,44 @@
     <div class="container">
         <div class="content-header__title-block content-header__title-block_left">
             <h3 class="content-header__title block-title">Имя</h3>
-            <span class="content-header__subtitle block-subtitle">Возраст, пол</span>
+            <span class="content-header__subtitle block-subtitle">Пациенты/ Имя</span>
         </div>
     </div>
 </div>
-<!--
-<div ng-controller='MainController'>-->
 
-<div patient-info></div>
 
+
+
+<div ng-controller='PatientFullController'>
+<div class="container">
+    <div class="vert-menu">
+        <div class="vert-menu__title">Информация о пациенте</div>
+        <div class="plain-table" >
+            <div class="plain-table__caption vert-menu__caption">
+                <span class="plain-table__icon vert-menu__icon ti-marker"></span>История лечения
+            </div>
+            <table class="plain-table__table vert-menu__table">
+                <tbody class='plain-table__value'>
+                    <tr>
+                        <td  ng-click="area_change('general')">Основыне данные</td>
+                    </tr>
+                    <tr>
+                        <td  ng-click="area_change('results')">Результаты анализов</td>
+                    </tr>
+                    <tr>
+                        <td >Динамика лечения</td>
+                    </tr>
+                    <tr>
+                        <td >Назначения</td>
+                    </tr>
+                    <tr>
+                        <td >Первичный осмотр</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <input class="help-block" ng-model="word" value="{{active_menu}}" placeholder="{{active_menu}}">
+    <div patient-info='word' template='{{active_menu}}' class="tab-area"></div>
+</div>
+</div>
