@@ -30,61 +30,69 @@ class CreateInspectionsProtocolsTable extends Migration
             // Алерго анамнез
             $table->string('allergoanamnez')->nullable();
             //состояние
-            $table->string('condition')->nullable();
+            $table->enum('condition', array('удовлетворительное', 'ср. тяжести', 'тяжелое', 'другое'))->nullable();
             //•	Сознание больного
-            $table->string('consciousness')->nullable();
+            $table->enum('consciousness', array('ясное', 'нарушенное (заторможен)', 'нарушенное (возбужден)', 'ступор', 'сопор',
+                'кома', 'без сознания'))->nullable();
             //•	Телосложение
-            $table->string('body_type')->nullable();
+            $table->enum('body_type', array('астеническое', 'нормостеническое', 'гиперстеническое'))->nullable();
             //•	Питание
-            $table->string('food')->nullable();
+            $table->enum('food', array('пониженное', 'нормальное', 'повышенное'))->nullable();
             //•	Кожные покровы
-            $table->string('skin')->nullable();
+            $table->enum('skin', array('нормальной окраски', 'желтушные', 'синюшные (цианоз)',
+                'красные (гиперемия)', 'сухие', 'влажные'))->nullable();
             //•	Тургор
-            $table->string('turgor')->nullable();
+            $table->enum('turgor', array('эластичная', 'дряблая'))->nullable();
             //•	Зрачки
-            $table->string('pupils')->nullable();
+            $table->enum('pupils', array('не увеличены', 'расширены', 'сужены', 'не реагируют на свет'))->nullable();
             //•	Язык
-            $table->string('tongue')->nullable();
+            $table->enum('tongue', array('сухой', 'влажный', 'обложен налётом (белым)', 'обложен налётом (желтым)'
+            , 'обложен налётом (другим)'))->nullable();
             $table->string('tongue_extended')->nullable();
             //•	Аускультативно над лёгкими дыхание
-            $table->string('auscultation')->nullable();
+            $table->enum('auscultation', array('везикулярное (нормальное)', 'выслушиваются сухие хрипы',
+                'выслушиваются влажные хрипы (свистящие, жужжащие) (на вдохе, на выдохе)',
+                'крепитация', 'шум трения плевры', 'шум трения перикарда', 'посторонние шумы (бронхиальные, органные)'))->nullable();
             $table->string('auscultation_extended')->nullable();
             //•	Перкуторно над лёгкими звук
-            $table->string('percussion_sound')->nullable();
+            $table->enum('percussion_sound', array('легочный (нормальное)', 'тимпанический (тупой)', 'коробочный',
+                'с коробочным оттенком'))->nullable();
             //•	Тоны сердца
-            $table->string('heart_tones')->nullable();
+            $table->enum('heart_tones', array('ясные', 'приглушены', 'глухие', 'не выслушиваются'))->nullable();
             //Ритм сердца
-            $table->string('heart_rhythm')->nullable();
+            $table->enum('heart_rhythm', array('правильный (брадикардия, нормокардия, тахикардия)',
+                'неправильный (экстрасистолия, мерцательная аритмия)', 'синусовый',
+                'несинусовый (узловой, желудочковый)'))->nullable();
             $table->string('heart_rhythm_extended')->nullable();
             //•	ЧДД (частота дыхательных движений)
-            $table->string('respiratory_movements_frequency_ChDD')->nullable();
+            $table->string('respiratory_movements_frequency(ChDD)')->nullable();
             //•	ЧСС (частота сердечных сокращений)
-            $table->string('heart_rate_ChSS')->nullable();
+            $table->string('heart_rate(ChSS)')->nullable();
 
             //•	Границы сердца
-            $table->string('heart_boundaries')->nullable();
+            $table->enum('heart_boundaries', array('не отклонены', 'отклонены на х см (влево, вправо, вверх, вниз)'))->nullable();
             $table->string('heart_boundaries_extended')->nullable();
 
             //•	Мышечный тонус
-            $table->string('muscle_tone')->nullable();
+            $table->enum('muscle_tone', array('нормальный', 'снижен (атония)', 'повышен (ригидность)(где?)'))->nullable();
             $table->string('muscle_tone_extended')->nullable();
             //•	Движение в суставах
-            $table->string('joint_motion')->nullable();
+            $table->enum('joint_motion', array('сохранено', 'ограничено'))->nullable();
             //Плотность живота
-            $table->string('stomach_density')->nullable();
+            $table->enum('stomach_density', array('мягкий', 'твёрдый'))->nullable();
             //Болезненость живота
-            $table->string('stomach_pain')->nullable();
+            $table->enum('stomach_pain', array('болезненный', 'безболезненный'))->nullable();
             $table->string('stomach_extended')->nullable();
             //•	В позе Ромберга
-            $table->string('in_romberg_position')->nullable();
+            $table->enum('in_romberg_position', array('устойчив', 'неустойчив', 'устойчив с шатанием'))->nullable();
             //•	Походка
-            $table->string('gait')->nullable();
+            $table->enum('gait', array('обычная', 'нарушенная (какая?)'))->nullable();
             $table->string('gait_extended')->nullable();
             //•	Стул
-            $table->string('stools')->nullable();
+            $table->enum('stools', array('норма', 'учащен (до х раз в сутки)', 'задержка (до х суток)'))->nullable();
             $table->string('stools_extended')->nullable();
             //•	стул по консистенции
-            $table->string('stools_consistency')->nullable();
+            $table->enum('stools_consistency', array('кашицеобразный', 'твердый', 'жидкий'))->nullable();
 
 
             $table->softDeletes();

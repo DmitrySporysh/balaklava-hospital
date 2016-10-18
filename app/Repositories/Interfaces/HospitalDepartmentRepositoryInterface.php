@@ -10,4 +10,5 @@ namespace App\Repositories\Interfaces;
 
 interface HospitalDepartmentRepositoryInterface extends RepositoryInterface
 {
+    public function getAllDepartmentsWithDepartmentChiefFio();
 }
