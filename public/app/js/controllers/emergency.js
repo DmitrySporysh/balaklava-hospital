@@ -10,19 +10,24 @@ emergencyRoomAppControllers.controller('NewPatientController', ['$scope', '$http
 
 emergencyRoomAppControllers.controller('MainController', ['$scope', '$http', function ($scope, $http) {
 
-    $scope.general=[{'header_title':'Поступившие больные'}];
-    $http.get('/patientsFio').success(function(patientsFio) {
-        $scope.patientsFio = patientsFio;
+   /* $scope.general=[{'header_title':'Поступившие больные'}];*/
+    $http.get('/emergency/patients').success(function(patients) {
+        $scope.patients_info = patients.data;
+        console.log(patients);
     });
 
-    $scope.save = function (patient, NewPatient){
+
+
+
+
+    /*$scope.save = function (patient, NewPatient){
         $scope.response={};
         if(NewPatient.$valid){
             $http.post("/patient/addNew", patient).success(function (answ) {
                 $scope.response=answ;
             });
         }
-    };
+    };*/
 
 }]);
 
