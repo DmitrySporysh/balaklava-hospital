@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 
+
 /**
  * App\Models\InspectionProtocol
  *
  * @property integer $id
  * @property integer $duty_doctor_id
  * @property string $date
- * @property string $complaints
  * @property string $from_anamnesis
  * @property string $in_anamnesis
  * @property string $insurance_anamnesis
@@ -57,7 +57,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\InspectionProtocol whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\InspectionProtocol whereDutyDoctorId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\InspectionProtocol whereDate($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\InspectionProtocol whereComplaints($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\InspectionProtocol whereFromAnamnesis($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\InspectionProtocol whereInAnamnesis($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\InspectionProtocol whereInsuranceAnamnesis($value)
@@ -109,7 +108,7 @@ class InspectionProtocol extends Model
     protected $guarded = ['id'];
 
     protected $fillable = [
-        'duty_doctor_id', 'date', 'complaints', 'from_anamnesis', 'in_anamnesis', 'insurance_anamnesis',
+        'duty_doctor_id', 'date', 'from_anamnesis', 'in_anamnesis', 'insurance_anamnesis',
         'allergoanamnez', 'condition', 'consciousness', 'body_type', 'food', 'skin', 'turgor', 'pupils',
         'tongue', 'auscultation', 'auscultation_extended', 'percussion_sound', 'heart_tones', 'heart_rhythm',
         'heart_rhythm_extended', 'respiratory_movements_frequency_ChDD', 'heart_rate_ChSS', 'heart_boundaries',

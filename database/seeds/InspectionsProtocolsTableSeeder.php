@@ -66,7 +66,6 @@ class InspectionsProtocolsTableSeeder extends Seeder
             DB::table('inspections_protocols')->insert([
                 'duty_doctor_id' => 2 + 4 * ($index % 4),
                 'date' => '2016-10-'.($index % 30 + 1).' 08:'.($index + 9).':00',
-                'complaints' => 'Пациент говорит, что ему плохо где-то в груди',
                 'from_anamnesis' => 'тут какой-то текст',
                 'in_anamnesis' => 'тут какой-то текст',
                 'insurance_anamnesis' => 'тут какой-то текст',

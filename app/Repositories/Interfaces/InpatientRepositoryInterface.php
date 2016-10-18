@@ -13,4 +13,5 @@ interface InpatientRepositoryInterface extends RepositoryInterface
     public function getDoctorAllInpatientsSortByDateDesc($doctor_id, $per_page);
 
     public function getDepartmentAllInpatientsSortByDateDesc($department_id, $per_page);
+
 }

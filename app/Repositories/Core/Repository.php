@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Repositories\Interfaces\RepositoryInterface;
 
 
+
 abstract class Repository implements RepositoryInterface
 {
 
@@ -83,7 +84,7 @@ abstract class Repository implements RepositoryInterface
             return $createdElement->id;
 
         } catch (Exception $e) {
-            $message = 'Error while creating element using ' . $this->model();
+            $message = 'Error while creating element using ' . $this->model() ."\n". $e->getMessage();
             throw new DALException($message, 0, $e);
         }
     }
