@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Common\Enums\MessageUserRole;
 use App\Http\Requests;
-use App\Services\Interfaces\DoctorServiceInterface;
-use App\Services\Interfaces\EmergencyServiceInterface;
-use App\Services\Interfaces\UserServiceInterface;
+use App\Services\Interfaces\DepartmentChiefServiceInterface;
 use App\Exceptions\DALException;
 use App\Exceptions\HealthWorkerServiceException;
 use Illuminate\Http\Request;
@@ -17,25 +15,25 @@ use Barryvdh\Debugbar\Facade;
 use Debugbar;
 use Validator;
 
-class DoctorController extends Controller
+class DepartmentChiefController extends Controller
 {
-    private $doctor_service;
+    private $departmentChief_service;
 
-    public function __construct(DoctorServiceInterface $doctor_service)
+    public function __construct(DepartmentChiefServiceInterface $departmentChief_service)
     {
         Debugbar::addMessage('Another message', 'mylabel');
-        $this->doctor_service = $doctor_service;
+        $this->departmentChief_service = $departmentChief_service;
 
         //$this->middleware('auth');
         //$this->middleware('checkRole:'.UserRole::WEBMASTER);
     }
 
-    public function getDoctorInpatients(Request $request)
+    public function getDepartmentInpatients(Request $request)
     {
         $per_page = ($request->has('per_page')) ? $request->per_page : 20;
 
-        $doctor_id = 2;
-        $response = $this->doctor_service->getDoctorAllInpatientsSortByDateDesc($doctor_id, $per_page);
+        $department_id = 1;
+        $response = $this->departmentChief_service->getDepartmentAllInpatientsSortByDateDesc($department_id, $per_page);
         Debugbar::info($response);
         return view('welcome', ['response' => $response]);
         //return $response;
@@ -43,9 +41,9 @@ class DoctorController extends Controller
 
     public function getAwaitingPrimaryInspectionPatients(Request $request)
     {
-        $per_page = ($request->has('per_page')) ? $request->per_page : 100;
+        $per_page = ($request->has('per_page')) ? $request->per_page : 20;
 
-        $response = $this->doctor_service->getAwaitingPrimaryInspectionPatientsSortByDatetimeAsc($per_page);
+        $response = $this->departmentChief_service->getAwaitingPrimaryInspectionPatientsSortByDatetimeAsc($per_page);
         Debugbar::info($response);
         return view('welcome', ['response' => $response]);
         //return $response;

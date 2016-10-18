@@ -57,6 +57,7 @@ class ReceivedPatientRepository extends Repository implements ReceivedPatientRep
                 ->whereNull('received_patients.inspection_protocol_id')
                 ->join('patients', 'received_patients.patient_id', '=', 'patients.id')
                 ->select([
+                    'received_patients.id',
                     'fio',
                     'sex',
                     'received_date',

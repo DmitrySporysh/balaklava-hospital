@@ -63,7 +63,7 @@ class InspectionsProtocolsTableSeeder extends Seeder
         $stools_consistency = array('кашицеобразный', 'твердый', 'жидкий');
 
         foreach (range(1, 40) as $index) {
-            DB::table('patients')->insert([
+            DB::table('inspections_protocols')->insert([
                 'duty_doctor_id' => 2 + 4 * ($index % 4),
                 'date' => '2016-10-'.($index % 30 + 1).' 08:'.($index + 9).':00',
                 'complaints' => 'Пациент говорит, что ему плохо где-то в груди',
@@ -84,8 +84,8 @@ class InspectionsProtocolsTableSeeder extends Seeder
                 'percussion_sound' => $percussion_sound[$index % 4],
                 'heart_tones' => $heart_tones[$index % 4],
                 'heart_rhythm' => $heart_rhythm[$index % 4],
-                'respiratory_movements_frequency(ChDD)' => (12 + $index % 4),
-                'heart_rate(ChSS)' => (70 + $index % 20),
+                'respiratory_movements_frequency_ChDD' => (12 + $index % 4),
+                'heart_rate_ChSS' => (70 + $index % 20),
                 'heart_boundaries' => $heart_boundaries[$index % 2],
                 'muscle_tone' => $muscle_tone[$index % 3],
                 'joint_motion' => $joint_motion[$index % 2],

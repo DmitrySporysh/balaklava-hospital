@@ -22,8 +22,8 @@ class ChambersTableSeeder extends Seeder
                     'beds_total_count' =>
                         (($index % 3) ? 2 : 4),
                     'beds_occupied_count' =>
-                        ($index > 0 && $index < 5) ? 2
-                            : (($index == 10 || $index == 5) ? 1 : 0),
+                        ($index > 1 && $index < 6) ? 2
+                            : (($index == 1 || $index == 6) ? 1 : 0),
 
                     'chamber_sex' => $sex[$index % 3]
                 ]);

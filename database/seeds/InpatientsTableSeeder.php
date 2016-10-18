@@ -18,8 +18,8 @@ class InpatientsTableSeeder extends Seeder
                 'district_doctor_id' => $index % 20 + 1,
                 'received_patient_id' => $index,
                 'attending_doctor_id' => 2 + 4 * ($index % 4),
-                'hospital_department_id' => $index % 20 + 1,
-                'chamber_id' => $index % 6 + (10 * ceil($index / 10))
+                'hospital_department_id' => (ceil($index / 10)),
+                'chamber_id' => 1+ $index % 6 + (10 * ceil($index / 10))
             ]);
         }
     }
