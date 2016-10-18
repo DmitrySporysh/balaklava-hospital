@@ -30,12 +30,22 @@ class DoctorController extends Controller
         //$this->middleware('checkRole:'.UserRole::WEBMASTER);
     }
 
-    public function getInpatients(Request $request)
+    public function getDoctorInpatients(Request $request)
     {
         $per_page = ($request->has('per_page')) ? $request->per_page : 20;
 
         $doctor_id = 2;
         $response = $this->doctor_service->getDoctorAllInpatientsSortByDateDesc($doctor_id, $per_page);
+        //Debugbar::info($response);
+        //return view('welcome', ['response' => $response]);
+        return $response;
+    }
+
+    public function getAwaitingPrimaryInspectionPatients(Request $request)
+    {
+        $per_page = ($request->has('per_page')) ? $request->per_page : 20;
+
+        $response = $this->doctor_service->getAwaitingPrimaryInspectionPatientsSortByDatetimeAsc($per_page);
         Debugbar::info($response);
         return view('welcome', ['response' => $response]);
         //return $response;
