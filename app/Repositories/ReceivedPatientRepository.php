@@ -30,10 +30,6 @@ class ReceivedPatientRepository extends Repository implements ReceivedPatientRep
                 ->join('patients', 'received_patients.patient_id', '=', 'patients.id')
                 ->select([
                     'fio',
-                    'work_place',
-                    'birth_date',
-                    'marital_status',
-                    'residential_address',
                     'phone',
                     'received_date',
                     'received_type',

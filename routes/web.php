@@ -10,16 +10,19 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-//----------Health worker-----------------
+//----------Emergency-----------------
 Route::get('emergency/patients', 'EmergencyController@getReceivedPatients');
-
-Route::get('patient/{id}', 'EmergencyController@getPatient');
 
 Route::post('patient/addNew', 'EmergencyController@addPatient');
 
 Route::get('emergency', function () {
     return view('layouts.emergency_room');
 });
+
+//---------Doctor-------------------
+
+Route::get('doctor/inpatients', 'DoctorController@getInpatients');
+
 
 Route::get('doctor', function () {
     return view('layouts.doctor_room');

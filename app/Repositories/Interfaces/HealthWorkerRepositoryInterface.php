@@ -10,5 +10,4 @@ namespace App\Repositories\Interfaces;
 
 interface HealthWorkerRepositoryInterface extends RepositoryInterface
 {
-
 }
