@@ -10,5 +10,5 @@ namespace App\Repositories\Interfaces;
 
 interface InpatientRepositoryInterface extends RepositoryInterface
 {
-
+    public function getDoctorAllInpatientsSortByDateDesc($doctor_id, $per_page);
 }
