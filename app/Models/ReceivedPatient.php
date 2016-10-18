@@ -43,6 +43,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\ReceivedPatient whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\ReceivedPatient whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $marital_status
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ReceivedPatient whereMaritalStatus($value)
  */
 class ReceivedPatient extends Model
 {

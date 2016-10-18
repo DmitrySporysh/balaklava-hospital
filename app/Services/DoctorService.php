@@ -56,4 +56,20 @@ class DoctorService implements DoctorServiceInterface
         }
     }
 
+    public function getAwaitingPrimaryInspectionPatientsSortByDatetimeAsc($page_size)
+    {
+        try {
+            $data =  $this->received_patient_repo->getAwaitingPrimaryInspectionReceivedPatientsSortByDatetimeAsc($page_size);
+            return $data;
+        }
+        catch(DALException $e){
+            $message = 'Error while creating withdraw received_patient request(DAL Error)';
+            throw new HealthWorkerServiceException($message,0,$e);
+        }
+        catch(Exception $e){
+            $message = 'Error while creating withdraw received_patient request(UnknownError)';
+            throw new HealthWorkerServiceException($message,0,$e);
+        }
+    }
+
 }
