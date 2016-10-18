@@ -21,7 +21,9 @@ Route::get('emergency', function () {
 
 //---------Doctor-------------------
 
-Route::get('doctor/inpatients', 'DoctorController@getInpatients');
+Route::get('doctor/inpatients', 'DoctorController@getDoctorInpatients');
+
+Route::get('doctor/emergency', 'DoctorController@getAwaitingPrimaryInspectionPatients');
 
 
 Route::get('doctor', function () {
