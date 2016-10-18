@@ -22,11 +22,12 @@ class CreateReceivedPatientsTable extends Migration
 
             $table->string('fio');
             $table->string('work_place');
+            $table->string('marital_status');
             $table->string('residential_address');
-            $table->string('registration_address');
+            $table->string('registration_address')->nullable();
             $table->string('phone')->nullable();
             $table->string('complaints')->nullable();
-            $table->enum('received_type', array('плановое', 'эксренное', 'по скорой', 'другое'));
+            $table->string('received_type');
 
             $table->integer('inspection_protocol_id')->unsigned()->nullable();
 

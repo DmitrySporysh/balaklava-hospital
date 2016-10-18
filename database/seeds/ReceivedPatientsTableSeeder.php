@@ -28,12 +28,14 @@ class ReceivedPatientsTableSeeder extends Seeder
         );
 
         $received_types = array('плановое', 'эксренное', 'по скорой', 'другое');
+        $marital_status = array('в браке', 'не в браке');
 
         foreach (range(1, 20) as $index) {
             DB::table('received_patients')->insert([
                 'patient_id' => $index,
                 'registration_nurse_id' => 1 + ((($index - 1) % 4) * 4),
                 'fio' => $fioMale[$index % 10],
+                'marital_status' => $marital_status[$index % 2],
                 'received_date' => '2016-10-'. ($index % 30 + 1),
                 'work_place' => 'Пациенту явно плохо',
                 'residential_address' => 'г.Севастополь, ул.Вакуленчука №'.$index,
@@ -49,6 +51,7 @@ class ReceivedPatientsTableSeeder extends Seeder
                 'patient_id' => $index,
                 'registration_nurse_id' => 1 + ((($index - 1) % 4) * 4),
                 'fio' => $fioFemale[$index % 10],
+                'marital_status' => $marital_status[$index % 2],
                 'received_date' => '2016-10-'. ($index % 30 + 1),
                 'work_place' => 'Пациенту явно плохо',
                 'residential_address' => 'г.Севастополь, ул.Вакуленчука №'.$index,
