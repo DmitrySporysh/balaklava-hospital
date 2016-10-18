@@ -11,11 +11,11 @@
 |
 */
 //----------Health worker-----------------
-Route::get('receivedPatients', 'HealthWorkerController@getReceivedPatients');
+Route::get('emergency/patients', 'EmergencyController@getReceivedPatients');
 
-Route::get('patient/{id}', 'HealthWorkerController@getPatient');
+Route::get('patient/{id}', 'EmergencyController@getPatient');
 
-Route::post('patient/addNew', 'HealthWorkerController@addPatient');
+Route::post('patient/addNew', 'EmergencyController@addPatient');
 
 Route::get('emergency', function () {
     return view('layouts.emergency_room');

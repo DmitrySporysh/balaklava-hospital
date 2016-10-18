@@ -5,8 +5,8 @@ use App\Exceptions\HealthWorkerServiceException;
 use App\Exceptions\DALException;
 use App\Repositories\Interfaces\InpatientRepositoryInterface;
 use App\Repositories\Interfaces\ReceivedPatientRepositoryInterface;
+use App\Services\Interfaces\EmergencyServiceInterface;
 use \Exception;
-use App\Services\Interfaces\HealthWorkerServiceInterface;
 use App\Repositories\Interfaces\PatientRepositoryInterface;
 use App\Repositories\Interfaces\DistrictDoctorRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
@@ -15,12 +15,11 @@ use Illuminate\Database\Eloquent\Model;
 
 
 
-
-class HealthWorkerService implements HealthWorkerServiceInterface
+class EmergencyService implements EmergencyServiceInterface
 {
     private $user_repo;
     private $patient_repo;
-    private $ipatient_repo;
+    private $inpatient_repo;
     private $received_patient_repo;
 
 
@@ -40,7 +39,7 @@ class HealthWorkerService implements HealthWorkerServiceInterface
     public function getAllReceivedPatientsSortByDateDesc($page_size)
     {
         try {
-            $data =  $this->received_patient_repo->getReceivedPatientsSortByDateDesc_Paginate($page_size,['received_date', 'fio']);
+            $data =  $this->received_patient_repo->getReceivedPatientsWithPatientInfoSortByDateDesc_Paginate($page_size);
             return $data;
         }
         catch(DALException $e){

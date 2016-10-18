@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Common\Enums\MessageUserRole;
 use App\Http\Requests;
-use App\Repositories\Interfaces\HealthWorkerRepositoryInterface;
-use App\Repositories\Interfaces\UserRepositoryInterface;
-use App\Services\Interfaces\HealthWorkerServiceInterface;
+use App\Services\Interfaces\EmergencyServiceInterface;
 use App\Services\Interfaces\UserServiceInterface;
 use App\Exceptions\DALException;
 use App\Exceptions\HealthWorkerServiceException;
@@ -18,14 +16,14 @@ use Barryvdh\Debugbar\Facade;
 use Debugbar;
 use Validator;
 
-class HealthWorkerController extends Controller
+class EmergencyController extends Controller
 {
-    private $healthworker_service;
+    private $emergency_service;
 
-    public function __construct(HealthWorkerServiceInterface $healthworker_service)
+    public function __construct(EmergencyServiceInterface $emergency_service)
     {
         Debugbar::addMessage('Another message', 'mylabel');
-        $this->healthworker_service = $healthworker_service;
+        $this->emergency_service = $emergency_service;
 
         //$this->middleware('auth');
         //$this->middleware('checkRole:'.UserRole::WEBMASTER);
@@ -33,9 +31,9 @@ class HealthWorkerController extends Controller
 
     public function getReceivedPatients(Request $request)
     {
-        $per_page = ($request->has('per_page')) ? $request->per_page : 5;
+        $per_page = ($request->has('per_page')) ? $request->per_page : 20;
 
-        $response = $this->healthworker_service->getAllReceivedPatientsSortByDateDesc($per_page);
+        $response = $this->emergency_service->getAllReceivedPatientsSortByDateDesc($per_page);
         Debugbar::info($response);
         return view('welcome', ['response' => $response]);
         //return $response;
@@ -69,7 +67,7 @@ class HealthWorkerController extends Controller
 
             $request->session()->put('temp', 'ура работает');
 
-            $response = $this->healthworker_service->addNewPatient($request);
+            $response = $this->emergency_service->addNewPatient($request);
             return json_encode("Success adding patient");
         } catch (HealthWorkerServiceException $e) {
             return json_encode("Error");

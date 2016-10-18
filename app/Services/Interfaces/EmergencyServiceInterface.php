@@ -9,14 +9,11 @@ use Illuminate\Http\Request;
 
 
 
-interface HealthWorkerServiceInterface
+interface EmergencyServiceInterface
 {
 
     public function getAllReceivedPatientsSortByDateDesc($page_size);
 
-
-
-    
     public function addNewPatient(Request $request);
 
     public function ediPatient(Request $request, $patient_id);

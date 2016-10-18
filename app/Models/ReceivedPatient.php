@@ -55,7 +55,7 @@ class ReceivedPatient extends Model
     protected $guarded = ['id'];
 
     protected $fillable = [
-        'patient_id', 'registration_nurse_id', 'received_date', 'fio', 'work_place',
+        'patient_id', 'marital_status', 'registration_nurse_id', 'received_date', 'fio', 'work_place',
         'residential_address', 'registration_address', 'phone', 'complaints', 'received_type',
         'inspection_protocol_id'
     ];

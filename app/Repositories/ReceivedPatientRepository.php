@@ -23,11 +23,21 @@ class ReceivedPatientRepository extends Repository implements ReceivedPatientRep
     }
 
 
-    public function getReceivedPatientsSortByDateDesc_Paginate($per_page, $columns)
+    public function getReceivedPatientsWithPatientInfoSortByDateDesc_Paginate($per_page)
     {
         try {
-            $data = DB::table('received_patients')->
-                select($columns)
+            $data = DB::table('received_patients')
+                ->join('patients', 'received_patients.patient_id', '=', 'patients.id')
+                ->select([
+                    'fio',
+                    'work_place',
+                    'birth_date',
+                    'marital_status',
+                    'residential_address',
+                    'phone',
+                    'received_date',
+                    'received_type',
+                    'insurance_number'])
                 ->orderBy('received_patients.received_date', 'DESC')
                 ->paginate($per_page);
             if ($data == null) {
