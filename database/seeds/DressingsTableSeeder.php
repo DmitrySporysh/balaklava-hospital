@@ -16,7 +16,7 @@ class DressingsTableSeeder extends Seeder
                 DB::table('dressings')->insert([
                     'dressing_date' => '2016-10-'.$day,
                     'dressing_name' => 'перевязка пациента  ',
-                    'patient_id' => $index,
+                    'inpatient_id' => $index,
                     'doctor_id' => 1 + ((($index - 1) % 4) * 4)
                 ]);
             }

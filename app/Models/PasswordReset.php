@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * App\Models\PasswordReset
  *
- * @mixin \Eloquent
  * @property string $email
  * @property string $token
  * @property \Carbon\Carbon $created_at
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PasswordReset whereEmail($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PasswordReset whereToken($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PasswordReset whereCreatedAt($value)
+ * @mixin \Eloquent
  */
 class PasswordReset extends Model
 {

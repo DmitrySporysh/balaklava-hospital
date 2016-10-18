@@ -6,11 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * App\Models\Survey_type
+ * App\Models\SurveyType
  *
- * @mixin \Eloquent
- * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereUpdatedAt($value)
  * @property integer $id
  * @property string $survey_type_name
  * @property string $description
@@ -24,6 +21,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereDescription($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereRoomNumber($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\SurveyType whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class SurveyType extends Model
 {

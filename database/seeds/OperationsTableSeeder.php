@@ -18,7 +18,7 @@ class OperationsTableSeeder extends Seeder
                     'operation_name' => 'название операции .. №' . ($index - 19),
                     'preliminary_epicrisis' => 'у пациента что-то болело, это надо было удалить/поправить',
                     'result' => 'операция прошла успешно',
-                    'patient_id' => $index,
+                    'inpatient_id' => $index,
                     'doctor_id' => 3 + ((($index - 1) % 4) * 4)
                 ]);
             }

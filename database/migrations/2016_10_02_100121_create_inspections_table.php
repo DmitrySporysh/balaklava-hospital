@@ -18,7 +18,7 @@ class CreateInspectionsTable extends Migration
             $table->timestamp('inspection_date');
             $table->string('result_text');
 
-            $table->integer('patient_id')->unsigned();
+            $table->integer('inpatient_id')->unsigned();
             $table->integer('doctor_id')->unsigned();
 
             $table->softDeletes();
@@ -26,7 +26,7 @@ class CreateInspectionsTable extends Migration
         });
 
         Schema::table('inspections',function (Blueprint $table){
-            $table->foreign('patient_id')->references('id')->on('patients')
+            $table->foreign('inpatient_id')->references('id')->on('inpatients')
                 ->onUpdate('cascade');
             $table->foreign('doctor_id')->references('id')->on('health_workers')
                 ->onUpdate('cascade');

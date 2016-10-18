@@ -16,7 +16,7 @@ class InspectionsTableSeeder extends Seeder
                 DB::table('inspections')->insert([
                     'inspection_date' => '2016-10-'.$day,
                     'result_text' => 'результат осмотра в виде текста \'все норм\'',
-                    'patient_id' => $index,
+                    'inpatient_id' => $index,
                     'doctor_id' => 4 * (($index % 3) + 1)
                 ]);
             }

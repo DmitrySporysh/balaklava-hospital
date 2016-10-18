@@ -10,8 +10,8 @@ namespace App\Repositories\Interfaces;
 
 interface PatientRepositoryInterface extends RepositoryInterface
 {
-    public function getPatientWithTableInfo($patient_id);
+   /* public function getPatientWithTableInfo($patient_id);
 
-    public function getPatientsWithTableInfo_Paginate($page_size);
+    public function getPatientsWithTableInfo_Paginate($page_size);*/
 
 }

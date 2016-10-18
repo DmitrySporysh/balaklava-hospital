@@ -27,7 +27,6 @@ class HealthWorkerTableSeeder extends Seeder
         foreach (range(1, 15) as $index) {
             DB::table('health_workers')->insert([
                 'fio' => $fio[$index],
-                'name' => 'worker'.$index,
                 'address' => 'г.Севастополь, ул.Вакуленчука №'.$index,
                 'birth_date' => '1990-10-10',
                 'post' => $post[$index % 4],

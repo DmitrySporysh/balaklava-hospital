@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Common\Enums\MessageUserRole;
 use App\Http\Requests;
 use App\Repositories\Interfaces\HealthWorkerRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Input;
 
 use Barryvdh\Debugbar\Facade;
 use Debugbar;
+use Validator;
 
 class HealthWorkerController extends Controller
 {
@@ -30,23 +31,50 @@ class HealthWorkerController extends Controller
         //$this->middleware('checkRole:'.UserRole::WEBMASTER);
     }
 
-    public function patients(Request $request)
+    public function getReceivedPatients(Request $request)
     {
-        //$per_page = ($request->has('per_page')) ? $request->per_page : 3;
+        $per_page = ($request->has('per_page')) ? $request->per_page : 5;
 
-        $response = $this->healthworker_service->getAllPatientsFio();
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        $response = $this->healthworker_service->getAllReceivedPatientsSortByDateDesc($per_page);
+        Debugbar::info($response);
+        return view('welcome', ['response' => $response]);
+        //return $response;
     }
 
     public function getPatient($patient_id)
     {
         Debugbar::addMessage('HealthWorkerController/getPatient', 'mylabel');
 
-        $response = $this->healthworker_service->getPatietnFullInfo($patient_id);
+        //$response = $this->healthworker_service->getPatietnFullInfo($patient_id);
         //$response =  $this->healthworker_service->testFunc();
-        Debugbar::info($response);
-        return view('welcome', ['response' => $response]);
+        Debugbar::info(MessageUserRole::values);
+        Debugbar::info(MessageUserRole::getValueByNumber(1));
+        Debugbar::info(MessageUserRole::getValueByNumber(0));
+        Debugbar::info(MessageUserRole::getValueByNumber(3));
+
+        return view('welcome');
+    }
+
+    public function addPatient(Request $request)
+    {
+        Debugbar::info($request);
+
+        try {
+            $validator = Validator::make($request->all(), [
+                'fio' => 'required|min:8',
+                'sex' => 'required|in:male,female'
+            ]);
+
+            $validator->validate();
+
+            $request->session()->put('temp', 'ура работает');
+
+            $response = $this->healthworker_service->addNewPatient($request);
+            return json_encode("Success adding patient");
+        } catch (HealthWorkerServiceException $e) {
+            return json_encode("Error");
+        } catch (Exception $e) {
+            return json_encode("Error");
+        }
     }
 }

@@ -20,7 +20,7 @@ class DistrictDoctorRepository extends Repository implements DistrictDoctorRepos
         return 'App\Models\DistrictDoctor';
     }
 
-    public function getDistrictDoctorsWithPatients($id){
+   /* public function getDistrictDoctorsWithPatients($id){
 
         try {
             $data = DistrictDoctor::where('id', $id)
@@ -38,5 +38,5 @@ class DistrictDoctorRepository extends Repository implements DistrictDoctorRepos
         if($data!=null) return $data;
 
         return array();
-    }
+    }*/
 }

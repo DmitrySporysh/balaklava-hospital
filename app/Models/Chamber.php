@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
 /**
  * App\Models\Chamber
- * 
- * ls\Chamber whereDeletedAt($value)
  *
  * @property integer $id
  * @property integer $number
@@ -20,7 +19,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\Carbon $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Patient[] $patients
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Inpatient[] $inpatients
  * @property-read \App\Models\HospitalDepartment $hospital_department
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Chamber whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Chamber whereNumber($value)
@@ -47,8 +46,8 @@ class Chamber extends Model
     protected $fillable = [
         'chamber_sex', 'number', 'floor', 'hospital_department_id', 'beds_total_count'];
 
-    public function patients(){
-        return $this->hasMany('App\Models\Patient','chamber_id');
+    public function inpatients(){
+        return $this->hasMany('App\Models\Inpatient','chamber_id');
     }
 
     public function hospital_department(){

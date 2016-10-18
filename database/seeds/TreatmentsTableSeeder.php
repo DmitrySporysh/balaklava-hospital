@@ -17,7 +17,7 @@ class TreatmentsTableSeeder extends Seeder
                     'treatment_name' => 'назначенное лечение №' . $index*$day,
                     'date' => '2016-10-'.$day,
 
-                    'patient_id' => $index,
+                    'inpatient_id' => $index,
                     'doctor_id' => 4 * (($index % 3) + 1)
                 ]);
             }

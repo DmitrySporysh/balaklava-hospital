@@ -6,9 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * App\Models\District_doctor
+ * App\Models\DistrictDoctor
  *
- * @mixin \Eloquent
  * @property integer $id
  * @property string $fio
  * @property string $address
@@ -29,6 +28,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\DistrictDoctor whereDeletedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\DistrictDoctor whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\DistrictDoctor whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class DistrictDoctor extends Model
 {

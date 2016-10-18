@@ -16,7 +16,7 @@ class CreateHealthWorkersTable extends Migration
         Schema::create('health_workers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('fio');
-            $table->string('name')->unique();
+            $table->integer('login_id')->unsigned()->nullable();
             $table->string('address');
             $table->date('birth_date');
 
@@ -25,6 +25,13 @@ class CreateHealthWorkersTable extends Migration
 
             $table->softDeletes();
             $table->timestamps();
+        });
+
+
+        Schema::table('health_workers',function (Blueprint $table){
+            $table->foreign('login_id')->references('id')->on('users')
+                ->onUpdate('cascade');
+
         });
 
     }

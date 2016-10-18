@@ -33,18 +33,18 @@ class NurseController extends Controller
 
     public function getDepartments(Request $request)
     {
-        $response = $this->nurse_service->getAllDepartments();
-        Debugbar::info($response);
-        return view('welcome', ['response' => $response]);
-        //return $response;
+        $response = $this->nurse_service->getAllDepartmentsWithDepartmentChiefFio();
+        //Debugbar::info($response);
+        //return view('welcome', ['response' => $response]);
+        return $response;
     }
 
     public function getDepartmentChambers(Request $request, $department_id)
     {
         $response = $this->nurse_service->getDepartmentChambers($department_id);
-        Debugbar::info($response);
-        return view('welcome', ['response' => $response]);
-        //return $response;
+        //Debugbar::info($response);
+        //return view('welcome', ['response' => $response]);
+        return $response;
     }
 
 

@@ -15,37 +15,16 @@ class CreatePatientsTable extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('fio');
+            $table->integer('insurance_number')->unsigned()->unique();
             $table->enum('sex', array('male', 'female'));
             $table->date('birth_date');
-            $table->timestamp('receipt_date');
-            $table->string('initial_inspection')->nullable();
-            $table->string('preliminary_diagnosis')->nullable();
-            $table->string('confirmed_diagnosis')->nullable();
 
-            $table->integer('district_doctor_id')->unsigned()->nullable();
-            $table->integer('attending_doctor_id')->unsigned()->nullable();
-            $table->integer('hospital_department_id')->unsigned()->nullable();
-            $table->integer('chamber_id')->unsigned()->nullable();
-            
-            $table->softDeletes();            
+            $table->softDeletes();
             $table->timestamps();
         });
-
-        Schema::table('patients',function (Blueprint $table){
-            $table->foreign('district_doctor_id')->references('id')->on('district_doctors')
-                ->onUpdate('cascade');
-            $table->foreign('attending_doctor_id')->references('id')->on('health_workers')
-                ->onUpdate('cascade');
-            $table->foreign('hospital_department_id')->references('id')->on('hospital_departments')
-                ->onUpdate('cascade');
-            $table->foreign('chamber_id')->references('id')->on('chambers')
-                ->onUpdate('cascade');
-        });
-
     }
 
-    
+
     /**
      * Reverse the migrations.
      *
@@ -56,3 +35,4 @@ class CreatePatientsTable extends Migration
         Schema::drop('patients');
     }
 }
+

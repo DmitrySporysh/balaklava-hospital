@@ -42,7 +42,7 @@ class ChamberRepository extends Repository implements ChamberRepositoryInterface
         try {
             $data = $this->model
                 ->where('id', $chamber_id)
-                ->with(['hospital_department', 'patients'])->get();
+                ->with(['hospital_department', 'inpatients'])->get();
             if ($data == null) {
                 return array();
             }
