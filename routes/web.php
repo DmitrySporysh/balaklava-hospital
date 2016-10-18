@@ -21,6 +21,10 @@ Route::get('emergency', function () {
     return view('layouts.emergency_room');
 });
 
+Route::get('doctor', function () {
+    return view('layouts.doctor_room');
+});
+
 //----------Nurse-------------------------------
 Route::get('nurse/departments', 'NurseController@getDepartments');
 
