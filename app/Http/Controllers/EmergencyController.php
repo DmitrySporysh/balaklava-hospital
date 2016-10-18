@@ -34,9 +34,9 @@ class EmergencyController extends Controller
         $per_page = ($request->has('per_page')) ? $request->per_page : 20;
 
         $response = $this->emergency_service->getAllReceivedPatientsSortByDateDesc($per_page);
-        Debugbar::info($response);
-        return view('welcome', ['response' => $response]);
-        //return $response;
+        //Debugbar::info($response);
+        //return view('welcome', ['response' => $response]);
+        return $response;
     }
 
     public function getPatient($patient_id)
