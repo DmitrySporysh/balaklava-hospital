@@ -13,7 +13,7 @@
 //----------Emergency-----------------
 Route::get('emergency/patients', 'EmergencyController@getReceivedPatients'); //
 
-Route::post('emergency/addNewInpatient', 'EmergencyController@addNewInpatient');
+Route::get('emergency/addNewInpatient', 'EmergencyController@addNewInpatient');
 
 Route::get('emergency', function () {
     return view('layouts.emergency_room');
