@@ -86,18 +86,5 @@ class InpatientRepository extends Repository implements InpatientRepositoryInter
         return array();
     }
 
-    public function createNewPatientAndInpatien($patientInfo, $inpatientInfo)
-    {
-        try {
-            DB::transaction(function () use ($patientInfo, $inpatientInfo) {
-                $createdElement = Patient::create($patientInfo);
-                $inpatientInfo['patient_id'] = $createdElement['id'];
-                $this->create($inpatientInfo);
-            });
 
-        } catch (Exception $e) {
-            $message = 'Error while finding element using ' . $this->model();
-            throw new DALException($message, 0, $e);
-        }
-    }
 }

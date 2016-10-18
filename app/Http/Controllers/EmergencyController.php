@@ -64,8 +64,8 @@ class EmergencyController extends Controller
             $validator->validate();*/
 
             $response = $this->emergency_service->addNewPatient($request);
-            Debugbar::info($response);
-            return view('welcome', ['response' => $response]);
+            //Debugbar::info($response);
+            return json_encode('success');
 
             /*$request->session()->put('temp', 'ура работает');
 

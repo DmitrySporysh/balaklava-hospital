@@ -8,6 +8,7 @@
 namespace App\Repositories;
 
 use App\Exceptions\DALException;
+use App\Models\Patient;
 use App\Models\ReceivedPatient;
 use App\Repositories\Core\Repository;
 use App\Repositories\Interfaces\ReceivedPatientRepositoryInterface;
@@ -45,7 +46,7 @@ class ReceivedPatientRepository extends Repository implements ReceivedPatientRep
             throw new DALException($message, 0, $e);
         }
 
-        if($data!=null) return $data;
+        if ($data != null) return $data;
 
         return array();
     }
@@ -72,8 +73,24 @@ class ReceivedPatientRepository extends Repository implements ReceivedPatientRep
             throw new DALException($message, 0, $e);
         }
 
-        if($data!=null) return $data;
+        if ($data != null) return $data;
 
         return array();
+    }
+
+    public function createNewPatientAndReceivedPatient($patientInfo, $receivedPatientInfo)
+    {
+        try {
+            DB::transaction(function () use ($patientInfo, $receivedPatientInfo) {
+                $createdElement = Patient::create($patientInfo);
+                $receivedPatientInfo['patient_id'] = $createdElement['id'];
+                $this->create($receivedPatientInfo);
+            });
+
+        } catch
+        (Exception $e) {
+            $message = 'Error while finding element using ' . $this->model()."\n".$e->getMessage();
+            throw new DALException($message, 0, $e);
+        }
     }
 }
