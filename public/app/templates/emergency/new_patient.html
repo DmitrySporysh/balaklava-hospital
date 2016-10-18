@@ -24,7 +24,7 @@
                             <tr>
                                 <td class="patient-form__label">ФИО</td>
                                 <td class="patient-form__value">
-                                    <input ng-model="patient.fio"  class="patient-form__input" name="name" value="" title="Person Name" type="text">
+                                    <input ng-model="patient.fio"  class="patient-form__input" name="fio" value="" title="Person Name" type="text">
                                 </td>
                             </tr>
                             <tr>
@@ -40,75 +40,75 @@
                             <tr>
                                 <td>Место работы/учебы</td>
                                 <td class="patient-form__value">
-                                    <input ng-model="patient.sex"  class="patient-form__input" name="name2" value="" title="Person Name" type="text">
+                                    <input ng-model="patient.work_place"  class="patient-form__input" name="work_place" value="" title="Person Name" type="text">
                                 </td>
                             </tr>
                             <tr>
                                 <td>Дата рождения</td>
                                 <td>
-                                    <input ng-model="patient.sex"  class="patient-form__input-date" name="name2" value="" title="Person Name" type="text">
+                                    <input ng-model="patient.birth_date"  class="patient-form__input-date" name="birth_date" value="" title="Person Name" type="text">
                                     <span class="ti-calendar patient__icon"></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Семейное положение</td>
                                 <td>
-                                    <input ng-model="patient.sex"  class="patient-form__input" name="name2" value="" title="Person Name" type="text">
+                                    <input ng-model="patient.marital_status"  class="patient-form__input" name="marital_status" value="" title="Person Name" type="text">
                                 </td>
                             </tr>
                             <tr>
                                 <td>Адрес проживания</td>
                                 <td>
-                                    <input ng-model="patient.sex"  class="patient-form__input" name="name2" value="" title="Person Name" type="text">
+                                    <input ng-model="patient.residential_address"  class="patient-form__input" name="residential_address" value="" title="Person Name" type="text">
                                 </td>
                             </tr>
                             <tr>
                                 <td>Адрес по паспорту</td>
                                 <td>
-                                    <input ng-model="patient.sex"  class="patient-form__input" name="name2" value="" title="Person Name" type="text">
+                                    <input ng-model="patient.registration_address"  class="patient-form__input" name="registration_address" value="" title="Person Name" type="text">
                                 </td>
                             </tr>
                             <tr>
                                 <td>Телефон</td>
                                 <td>
-                                    <input ng-model="patient.sex"  class="patient-form__input" name="name2" value="" title="Person Name" type="text">
+                                    <input ng-model="patient.phone"  class="patient-form__input" name="phone" value="" title="Person Name" type="text">
                                 </td>
                             </tr>
                             <tr>
                                 <td>Дата обращения</td>
                                 <td>
-                                    <input ng-model="patient.sex"  class="patient-form__input-date" name="name2" value="" title="Person Name" type="text">
+                                    <input ng-model="patient.received_date"  class="patient-form__input-date" name="received_date" value="" title="Person Name" type="text">
                                     <span class="ti-calendar patient__icon"></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Время обращения</td>
                                 <td>
-                                    <input ng-model="patient.sex"  class="patient-form__input-date" name="name2" value="" title="Person Name" type="text">
+                                    <input ng-model="patient.received_date"  class="patient-form__input-date" name="received_date" value="" title="Person Name" type="text">
                                     <span class="ti-time patient__icon"></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Тип обращения</td>
                                 <td>
-                                    <select class="patient-form__select" name="sex" ng-model="patient.sex">
+                                    <select class="patient-form__select" name="received_type" ng-model="patient.received_type">
                                         <option value="" selected="selected">-- Выберите вариант --</option>
-                                        <option value="female" selected="selected">Планово</option>
-                                        <option value="male">Экстренно</option>
-                                        <option value="male1">По скорой</option>
+                                        <option value="planed" selected="selected">Планово</option>
+                                        <option value="extra">Экстренно</option>
+                                        <option value="emerg">По скорой</option>
                                     </select>
                                 </td>
                             </tr>
                             <tr>
                                 <td>№ Страховки</td>
                                 <td>
-                                    <input ng-model="patient.sex"  class="patient-form__input" name="name2" value="" title="Person Name" type="text">
+                                    <input ng-model="patient.insurance_number"  class="patient-form__input" name="insurance_number" value="" title="Person Name" type="text">
                                 </td>
                             </tr>
                             <tr>
                                 <td>Жалобы</td>
                                 <td>
-                                    <textarea ng-model="patient.sex" name="" class="patient-form__textarea" rows="8" > </textarea>
+                                    <textarea ng-model="patient.complaints" name="complaints" class="patient-form__textarea" rows="8" > </textarea>
                                 </td>
                             </tr>
                             </tbody>
