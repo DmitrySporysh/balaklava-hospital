@@ -17,4 +17,6 @@ interface DoctorServiceInterface
 
     public function getReceivedPatientFullInfo($received_patient_id);
 
+    public function addNewInspectionProtocolWithPatient(Request $request);
+
 }

@@ -59,4 +59,28 @@ class DoctorController extends Controller
         return $response;
     }
 
+
+    public function addNewInspectionProtocol(Request $request)
+    {
+        try {
+            /*$validator = Validator::make($request->all(), [
+                'fio' => 'required|min:8',
+                'sex' => 'required|in:male,female'
+            ]);
+
+            $validator->validate();*/
+
+            $response = $this->doctor_service->addNewInspectionProtocolWithPatient($request);
+            //Debugbar::info($response);
+            return json_encode('success');
+
+            //$request->session()->put('temp', 'ура работает');
+
+        } catch (HealthWorkerServiceException $e) {
+            return json_encode($e->getMessage());
+        } catch (Exception $e) {
+            return json_encode($e->getMessage());
+        }
+    }
+
 }
