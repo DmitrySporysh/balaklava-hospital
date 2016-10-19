@@ -21,24 +21,32 @@
             <table class="plain-table__table vert-menu__table">
                 <tbody class='plain-table__value'>
                     <tr>
-                        <td  ng-click="area_change('tab-general')">Основыне данные</td>
+                        <td ng-click="area_change('tab-general')">Основыне данные</td>
                     </tr>
                     <tr>
-                        <td  ng-click="area_change('tab-results')">Результаты анализов</td>
+                        <td ng-click="area_change('tab-results')">Результаты анализов</td>
                     </tr>
                     <tr>
-                        <td >Динамика лечения</td>
+                        <td ng-click="area_change('tab-dynamic')">Динамика лечения</td>
                     </tr>
                     <tr>
-                        <td >Назначения</td>
+                        <td ng-click="area_change('tab-prescriptions')">Назначения</td>
                     </tr>
                     <tr>
-                        <td >Первичный осмотр</td>
+                        <td ng-click="area_change('tab-first-inspection')">Первичный осмотр</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-    <div  class="tab-area "></div>
+
+    <div ng-switch on="active_menu">
+        <div ng-switch-when="tab-general" tab-general></div>
+        <div ng-switch-when="tab-results" tab-results></div>
+        <div ng-switch-when="tab-dynamic" tab-dynamic></div>
+        <div ng-switch-when="tab-prescriptions" tab-prescriptions></div>
+        <div ng-switch-when="tab-first-inspection" tab-first-inspection></div>
+        <div ng-switch-default>default</div>
+    </div>
 </div>
 </div>

@@ -8,10 +8,24 @@ var doctorAppControllers = angular.module('doctorAppControllers', [])
         return {
             templateUrl: "app/templates/doctor/patient_full/results.html"
         }
+    })
+    .directive('tabDynamic', function () {
+        return {
+            templateUrl: "app/templates/doctor/patient_full/dynamic.html"
+        }
+    })
+    .directive('tabPrescriptions', function () {
+        return {
+            templateUrl: "app/templates/doctor/patient_full/prescriptions.html"
+        }
+    })
+    .directive('tabFirstInspection', function () {
+        return {
+            templateUrl: "app/templates/doctor/patient_full/first_inspection.html"
+        }
     });
 
 doctorAppControllers.controller('PatientFullController', ['$scope', '$http', function ($scope, $http) {
-
     $scope.area_change = function (template){
         $scope.response={};
         if(template=='results'){
@@ -20,13 +34,8 @@ doctorAppControllers.controller('PatientFullController', ['$scope', '$http', fun
         if(template=='general'){
             console.log('g');
         }
-        template='" '+template+'"';
-        console.log(template);
         $scope.active_menu=template;
     };
-
-
-
 }]);
 
 doctorAppControllers.controller('EmergencyPersonController', ['$scope', '$http', function ($scope, $http) {

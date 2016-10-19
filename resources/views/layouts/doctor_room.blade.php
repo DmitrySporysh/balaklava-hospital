@@ -10,6 +10,7 @@
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-bootstrap-switch/dist/angular-bootstrap-switch.min.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
     <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>
