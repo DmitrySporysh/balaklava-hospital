@@ -1,6 +1,24 @@
+<!--<a class="add-block__button button button_patient-full" href="/emergency#/new_patient">
+    <span class="ti-plus add-block__icon">
+    </span> Направть на анализ
+</a>-->
+
+
 <div class=" plain-table " ng-controller='PatientFullController'>
     <div class="plain-table__caption">
-        <span class="plain-table__icon ti-marker"></span>Пациенты в отделении
+        <span class="plain-table__icon ti-marker"></span>Результаты анализов
     </div>
-
+    <table class="plain-table__table">
+        <tbody class='plain-table__value'>
+            <thead class="plain-table__heading">
+                <tr>
+                    <th>Тип анализа</th>
+                    <th>Доп данные</th>
+                    <th>Результат</th>
+                    <th>Дата сдачи</th>
+                    <th>Дата результата</th>
+                </tr>
+            </thead>
+        </tbody>
+    </table>
 </div>

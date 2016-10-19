@@ -580,3 +580,17 @@ body {
     width: 70%;
     float: left;
 }
+
+.add-block_patient-full button{
+    margin-top: 0px;
+    margin-left: 10px;
+}
+
+.add-block_patient-full {
+    margin-top: -60px;
+    margin-bottom: 20px;
+}
+
+.add-block_right {
+    float: right;
+}
