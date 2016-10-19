@@ -15,4 +15,6 @@ interface ReceivedPatientRepositoryInterface extends RepositoryInterface
     public function getAwaitingPrimaryInspectionReceivedPatientsSortByDatetimeAsc($per_page);
 
     public function createNewPatientAndReceivedPatient($patientInfo, $receivedPatientInfo);
+
+    public function getReceivedPatientWithPatientInfo($received_patient_id);
 }

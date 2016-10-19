@@ -25,6 +25,8 @@ Route::get('doctor/inpatients', 'DoctorController@getDoctorInpatients'); //+ 3)d
 
 Route::get('doctor/emergency', 'DoctorController@getAwaitingPrimaryInspectionPatients'); //+ 4)doctor#/emergency
 
+Route::get('doctor/received_patient/{id}', 'DoctorController@getReceivedPatient'); //+ 4)doctor#/emergency
+
 Route::get('doctor', function () {
     return view('layouts.doctor_room');
 });
