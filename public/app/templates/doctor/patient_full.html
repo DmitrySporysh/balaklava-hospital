@@ -40,13 +40,15 @@
         </div>
     </div>
 
-    <div ng-switch on="active_menu">
-        <div ng-switch-when="tab-general" tab-general></div>
-        <div ng-switch-when="tab-results" tab-results></div>
-        <div ng-switch-when="tab-dynamic" tab-dynamic></div>
-        <div ng-switch-when="tab-prescriptions" tab-prescriptions></div>
-        <div ng-switch-when="tab-first-inspection" tab-first-inspection></div>
-        <div ng-switch-default>default</div>
+    <div class="inner-tabs">
+        <div ng-switch on="active_menu">
+            <div ng-switch-when="tab-general" tab-general></div>
+            <div ng-switch-when="tab-results" tab-results></div>
+            <div ng-switch-when="tab-dynamic" tab-dynamic></div>
+            <div ng-switch-when="tab-prescriptions" tab-prescriptions></div>
+            <div ng-switch-when="tab-first-inspection" tab-first-inspection></div>
+            <div ng-switch-default>default</div>
+        </div>
     </div>
 </div>
 </div>

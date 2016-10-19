@@ -38,9 +38,31 @@ doctorAppControllers.controller('PatientFullController', ['$scope', '$http', fun
     };
 }]);
 
-doctorAppControllers.controller('EmergencyPersonController', ['$scope', '$http', function ($scope, $http) {
+doctorAppControllers.controller('EmergencyPersonController', function ($scope, $http, testFactory) {
 
-}]);
+    $scope.testFactory=testFactory;
+
+    $http.get('doctor/received_patient/'+$scope.testFactory.patient_full_id).success(function(patients) {
+        $scope.patient_info = patients[0];
+
+        var temp= angular.element($("#EmergencyController")).scope();
+        console.log($scope.testFactory);
+    });
+});
+
+doctorAppControllers.controller('EmergencyController', function ($scope, $http, testFactory) {
+    $http.get('doctor/emergency').success(function(patients) {
+        $scope.patients_info = patients.data;
+    });
+
+    $scope.testFactory=testFactory;
+
+    $scope.follow_id = function (id){
+        $scope.testFactory.patient_full_id = id;
+        console.log($scope.testFactory.patient_full_id);
+    };
+
+});
 
 doctorAppControllers.controller('PatientsController', ['$scope', '$http', function ($scope, $http) {
     $http.get('doctor/inpatients').success(function(patients) {
@@ -49,3 +71,8 @@ doctorAppControllers.controller('PatientsController', ['$scope', '$http', functi
 }]);
 
 
+doctorAppControllers.factory('testFactory', function() {
+    return {
+        patient_full_id: 'null'
+    }
+});
