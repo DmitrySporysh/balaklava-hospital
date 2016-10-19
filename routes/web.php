@@ -27,6 +27,8 @@ Route::get('doctor/emergency', 'DoctorController@getAwaitingPrimaryInspectionPat
 
 Route::get('doctor/received_patient/{id}', 'DoctorController@getReceivedPatient'); //+ 4)doctor#/emergency
 
+Route::post('doctor/addNewInspectionProtocolWithPatient', 'DoctorController@addNewInspectionProtocol');
+
 Route::get('doctor', function () {
     return view('layouts.doctor_room');
 });
