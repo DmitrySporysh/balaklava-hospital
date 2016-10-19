@@ -15,4 +15,6 @@ interface DoctorServiceInterface
 
     public function getAwaitingPrimaryInspectionPatientsSortByDatetimeAsc($page_size);
 
+    public function getReceivedPatientFullInfo($received_patient_id);
+
 }

@@ -78,6 +78,42 @@ class ReceivedPatientRepository extends Repository implements ReceivedPatientRep
         return array();
     }
 
+    public function getReceivedPatientWithPatientInfo($received_patient_id)
+    {
+        try {
+            $data = DB::table('received_patients')
+                ->where('received_patients.id','=', $received_patient_id)
+                ->join('patients', 'received_patients.patient_id', '=', 'patients.id')
+                ->select([
+                    'received_patients.id as received_patient_id',
+                    'patients.id as patient_id',
+                    'fio',
+                    'sex',
+                    'work_place',
+                    'birth_date',
+                    'marital_status',
+                    'residential_address',
+                    'registration_address',
+                    'phone',
+                    'received_date',
+                    'received_type',
+                    'insurance_number',
+                    'complaints'
+                    ])
+                ->get();
+            if ($data == null) {
+                return array();
+            }
+        } catch (Exception $e) {
+            $message = 'Error while finding element using ' . $this->model() . $e->getMessage();
+            throw new DALException($message, 0, $e);
+        }
+
+        if ($data != null) return $data;
+
+        return array();
+    }
+
     public function createNewPatientAndReceivedPatient($patientInfo, $receivedPatientInfo)
     {
         try {

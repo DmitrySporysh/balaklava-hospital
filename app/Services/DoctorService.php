@@ -72,4 +72,20 @@ class DoctorService implements DoctorServiceInterface
         }
     }
 
+    public function getReceivedPatientFullInfo($received_patient_id)
+    {
+        try {
+            $data =  $this->received_patient_repo->getReceivedPatientWithPatientInfo($received_patient_id);
+            return $data;
+        }
+        catch(DALException $e){
+            $message = 'Error while creating withdraw received_patient request(DAL Error)';
+            throw new HealthWorkerServiceException($message,0,$e);
+        }
+        catch(Exception $e){
+            $message = 'Error while creating withdraw received_patient request(UnknownError)';
+            throw new HealthWorkerServiceException($message,0,$e);
+        }
+    }
+
 }
