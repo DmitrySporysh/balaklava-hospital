@@ -77,14 +77,22 @@
                             <tr>
                                 <td>Дата обращения</td>
                                 <td>
+<<<<<<< HEAD
+                                    <input ng-model="patient.received_date"  class="patient-form__input-date" name="name2" value="" title="Person Name" type="text">
+=======
                                     <input ng-model="patient.received_date"  class="patient-form__input-date" name="received_date" value="" title="Person Name" type="text">
+>>>>>>> master
                                     <span class="ti-calendar patient__icon"></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Время обращения</td>
                                 <td>
+<<<<<<< HEAD
+                                    <input ng-model="patient.received_date"  class="patient-form__input-date" name="name2" value="" title="Person Name" type="text">
+=======
                                     <input ng-model="patient.received_date"  class="patient-form__input-date" name="received_date" value="" title="Person Name" type="text">
+>>>>>>> master
                                     <span class="ti-time patient__icon"></span>
                                 </td>
                             </tr>

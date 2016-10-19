@@ -2,12 +2,53 @@
     <div class="container">
         <div class="content-header__title-block content-header__title-block_left">
             <h3 class="content-header__title block-title">Имя</h3>
-            <span class="content-header__subtitle block-subtitle">Возраст, пол</span>
+            <span class="content-header__subtitle block-subtitle">Пациенты/ Имя</span>
         </div>
     </div>
 </div>
-<!--
-<div ng-controller='MainController'>-->
 
-<div patient-info></div>
 
+
+
+<div ng-controller='PatientFullController'>
+<div class="container">
+    <div class="vert-menu">
+        <div class="vert-menu__title">Информация о пациенте</div>
+        <div class="plain-table" >
+            <div class="plain-table__caption vert-menu__caption">
+                <span class="plain-table__icon vert-menu__icon ti-marker"></span>История лечения
+            </div>
+            <table class="plain-table__table vert-menu__table">
+                <tbody class='plain-table__value'>
+                    <tr>
+                        <td ng-click="area_change('tab-general')">Основыне данные</td>
+                    </tr>
+                    <tr>
+                        <td ng-click="area_change('tab-results')">Результаты анализов</td>
+                    </tr>
+                    <tr>
+                        <td ng-click="area_change('tab-dynamic')">Динамика лечения</td>
+                    </tr>
+                    <tr>
+                        <td ng-click="area_change('tab-prescriptions')">Назначения</td>
+                    </tr>
+                    <tr>
+                        <td ng-click="area_change('tab-first-inspection')">Первичный осмотр</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="inner-tabs">
+        <div ng-switch on="active_menu">
+            <div ng-switch-when="tab-general" tab-general></div>
+            <div ng-switch-when="tab-results" tab-results></div>
+            <div ng-switch-when="tab-dynamic" tab-dynamic></div>
+            <div ng-switch-when="tab-prescriptions" tab-prescriptions></div>
+            <div ng-switch-when="tab-first-inspection" tab-first-inspection></div>
+            <div ng-switch-default>default</div>
+        </div>
+    </div>
+</div>
+</div>

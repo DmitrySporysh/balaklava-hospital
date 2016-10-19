@@ -10,13 +10,13 @@
 </div>
 
 
-<div class="patients-wrapper" ng-controller='MainController'>
+<div class="patients-wrapper" ng-controller='EmergencyPersonController'>
     <div class="container">
         <div class="patient-form__wrapper">
             <div class="patient-form__fieldset fieldset plain-table plain-table_full">
                 <ul class="accordion">
                     <li>
-                        <div class="accordion__title">
+                        <div class="accordion__title  accordion__title_active">
                             <span class="accordion__icon ti-support"></span>Основные данные
                         </div>
                         <div  class="accordion__content">
@@ -26,7 +26,7 @@
                                     <tr>
                                         <td class="patient-form__label">ФИО</td>
                                         <td class="patient-form__value">
-                                            <input ng-model="patient.fio"  class="patient-form__input" name="name" value="" title="Person Name" type="text">
+                                            <input ng-model="patient.fio"  class="patient-form__input" name="name" placeholder="{{patient_info.fio}}" title="Person Name" type="text">
                                         </td>
                                     </tr>
                                     <tr>
@@ -42,57 +42,57 @@
                                     <tr>
                                         <td class="patient-form__label">Место работы/учебы</td>
                                         <td class="patient-form__value">
-                                            <input ng-model="patient.sex"  class="patient-form__input" name="name2" value="" title="Person Name" type="text">
+                                            <input ng-model="patient.sex"  class="patient-form__input" name="name2" placeholder="{{patient_info.work_place}}" title="Person Name" type="text">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="patient-form__label">Дата рождения</td>
-                                        <td class="patient-form__label">
-                                            <input ng-model="patient.sex"  class="patient-form__input-date" name="name2" value="" title="Person Name" type="text">
+                                        <td class="patient-form__value">
+                                            <input ng-model="patient.sex"  class="patient-form__input-date" name="name2" placeholder="{{patient_info.birth_date}}" title="Person Name" type="text">
                                             <span class="ti-calendar patient__icon"></span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="patient-form__label">Семейное положение</td>
-                                        <td class="patient-form__label">
-                                            <input ng-model="patient.sex"  class="patient-form__input" name="name2" value="" title="Person Name" type="text">
+                                        <td class="patient-form__value">
+                                            <input ng-model="patient.sex"  class="patient-form__input" name="name2" placeholder="{{patient_info.marital_status}}" title="Person Name" type="text">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="patient-form__label">Адрес проживания</td>
-                                        <td class="patient-form__label">
-                                            <input ng-model="patient.sex"  class="patient-form__input" name="name2" value="" title="Person Name" type="text">
+                                        <td class="patient-form__value">
+                                            <input ng-model="patient.sex"  class="patient-form__input" name="name2" placeholder="{{patient_info.residential_address}}" title="Person Name" type="text">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="patient-form__label">Адрес по паспорту</td>
-                                        <td class="patient-form__label">
-                                            <input ng-model="patient.sex"  class="patient-form__input" name="name2" value="" title="Person Name" type="text">
+                                        <td class="patient-form__value">
+                                            <input ng-model="patient.sex"  class="patient-form__input" name="name2" placeholder="{{patient_info.registration_address}}" title="Person Name" type="text">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="patient-form__label">Телефон</td>
-                                        <td class="patient-form__label">
-                                            <input ng-model="patient.sex"  class="patient-form__input" name="name2" value="" title="Person Name" type="text">
+                                        <td class="patient-form__value">
+                                            <input ng-model="patient.sex"  class="patient-form__input" name="name2" placeholder="{{patient_info.phone}}" title="Person Name" type="text">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="patient-form__label">Дата обращения</td>
-                                        <td class="patient-form__label">
-                                            <input ng-model="patient.sex"  class="patient-form__input-date" name="name2" value="" title="Person Name" type="text">
+                                        <td class="patient-form__value">
+                                            <input ng-model="patient.sex"  class="patient-form__input-date" name="name2" placeholder="{{patient_info.received_date}}" title="Person Name" type="text">
                                             <span class="ti-calendar patient__icon"></span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="patient-form__label">Время обращения</td>
-                                        <td class="patient-form__label">
-                                            <input ng-model="patient.sex"  class="patient-form__input-date" name="name2" value="" title="Person Name" type="text">
+                                        <td class="patient-form__value">
+                                            <input ng-model="patient.sex"  class="patient-form__input-date" name="name2" placeholder="{{patient_info.received_date}}" title="Person Name" type="text">
                                             <span class="ti-time patient__icon"></span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="patient-form__label">Тип обращения</td>
-                                        <td class="patient-form__label">
+                                        <td class="patient-form__value">
                                             <select class="patient-form__select" name="sex" ng-model="patient.sex">
                                                 <option value="" selected="selected">-- Выберите вариант --</option>
                                                 <option value="female" selected="selected">Планово</option>
@@ -103,14 +103,14 @@
                                     </tr>
                                     <tr>
                                         <td class="patient-form__label">№ Страховки</td>
-                                        <td class="patient-form__label">
-                                            <input ng-model="patient.sex"  class="patient-form__input" name="name2" value="" title="Person Name" type="text">
+                                        <td class="patient-form__value">
+                                            <input ng-model="patient.sex"  class="patient-form__input" name="name2" placeholder="{{patient_info.insurance_number}}" title="Person Name" type="text">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="patient-form__label">Жалобы</td>
-                                        <td class="patient-form__label">
-                                            <textarea ng-model="patient.sex" name="" class="patient-form__textarea" rows="8" > </textarea>
+                                        <td class="patient-form__value">
+                                            <textarea ng-model="patient.sex" name="" placeholder="{{patient_info.complaints}}" class="patient-form__textarea" rows="8" > </textarea>
                                         </td>
                                     </tr>
                                     </tbody>
