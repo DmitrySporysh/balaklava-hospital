@@ -42,7 +42,8 @@ class ReceivedPatientsTableSeeder extends Seeder
                 'registration_address' => 'г.Севастополь, ул.Гагарина №'.$index,
                 'phone' => '797800007'.($index % 10 * 10),
                 'complaints' => 'у пацинта что-то болит. Говорит "мне прям ваще фигово"',
-                'received_type' => $received_types[$index % 4]
+                'received_type' => $received_types[$index % 4],
+                'inspection_protocol_id' => $index
             ]);
         }
 
@@ -54,6 +55,23 @@ class ReceivedPatientsTableSeeder extends Seeder
                 'marital_status' => $marital_status[$index % 2],
                 'received_date' => '2016-10-'. ($index % 30 + 1),
                 'work_place' => 'Фирма № '.($index % 8 + 1),
+                'residential_address' => 'г.Севастополь, ул.Вакуленчука №'.$index,
+                'registration_address' => 'г.Севастополь, ул.Гагарина №'.$index,
+                'phone' => '797800007'.($index % 10 * 10),
+                'complaints' => 'у пацинта что-то болит. Говорит "мне прям ваще фигово"',
+                'received_type' => $received_types[$index % 4],
+                'inspection_protocol_id' => $index
+            ]);
+        }
+
+        foreach (range(41, 65) as $index) {
+            DB::table('received_patients')->insert([
+                'patient_id' => $index,
+                'registration_nurse_id' => 1 + ((($index - 1) % 4) * 4),
+                'fio' => $fioFemale[$index % 10],
+                'marital_status' => $marital_status[$index % 2],
+                'received_date' => '2016-10-10 08:'.($index % 60).':00',
+                'work_place' => 'Фирма № '.($index % 25 + 1),
                 'residential_address' => 'г.Севастополь, ул.Вакуленчука №'.$index,
                 'registration_address' => 'г.Севастополь, ул.Гагарина №'.$index,
                 'phone' => '797800007'.($index % 10 * 10),

@@ -75,15 +75,14 @@ class BackendServiceProvider extends ServiceProvider
 
         //binding services
 
-
-        $this->app->bind( 'App\Services\Interfaces\AttendingDoctorServiceInterface',
-            'App\Services\AttendingDoctorService' );
-
         $this->app->bind( 'App\Services\Interfaces\DoctorServiceInterface',
             'App\Services\DoctorService' );
 
         $this->app->bind( 'App\Services\Interfaces\AuthorizationServiceInterface',
                           'App\Services\AuthorizationService' );
+
+        $this->app->bind( 'App\Services\Interfaces\DepartmentChiefServiceInterface',
+                          'App\Services\DepartmentChiefService' );
 
         $this->app->bind( 'App\Services\Interfaces\CheifMedicalOfficerServiceInterface',
                           'App\Services\CheifMedicalOfficerService' );
@@ -100,9 +99,6 @@ class BackendServiceProvider extends ServiceProvider
 
         $this->app->bind( 'App\Services\Interfaces\PasswordServiceInterface',
                           'App\Services\PasswordService' );
-
-        $this->app->bind( 'App\Services\Interfaces\PatientServiceInterface',
-                          'App\Services\PatientService' );
 
         $this->app->bind( 'App\Repositories\Interfaces\RegistrationServiceInterface',
                           'App\Repositories\RegistrationService' );

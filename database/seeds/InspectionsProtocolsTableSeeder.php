@@ -11,50 +11,91 @@ class InspectionsProtocolsTableSeeder extends Seeder
      */
     public function run()
     {
-        $fioMale = array(
-            'Иванов Иван Иванович', 'Петров Петр Петрович', 'Сидоров Иван Петрович'
+        $condition = array('удовлетворительное', 'ср. тяжести', 'тяжелое', 'другое');
 
-        , 'Кащук Павел Иванович', 'Закипелов Дмитрий Иванович', 'Попов Дмитрий Николаевич'
-        , 'Староверов Павел Иванович', 'Староверов Анна Николаевна', 'Сидорова Юлий Павловна',
-            'Карпов Петр Петрович'
-        );
+        $consciousness = array('ясное', 'нарушенное (заторможен)', 'нарушенное (возбужден)', 'ступор', 'сопор',
+        'кома', 'без сознания');
 
-        $fioFemale = array
-        (
-            'Иванова Анна Ивановна', 'Петрова Анна Петровна', 'Сидорова Анна Павловна'
-        , 'Сидорова Юлия Николаевна', 'Попова Юлия Николаевна', 'Петрова Екатерина Андреевна',
-            'Иванова Анна Ивановна', 'Петрова Анна Петровна', 'Сидорова Анна Павловна'
-        , 'Сидорова Юлия Николаевна', 'Попова Юлия Николаевна'
-        );
+        $body_type = array('астеническое', 'нормостеническое', 'гиперстеническое');
 
-        foreach (range(1, 20) as $index) {
-            DB::table('patients')->insert([
-                'fio' => $fioMale[$index % 10],
-                'sex' => 'male',
-                'birth_date' => '1990-10-10',
-                'receipt_date' => '2016-10-10',
-                'initial_inspection' => 'Пациенту явно плохо',
-                'preliminary_diagnosis' => 'Чем-то он явно болеет',
-                'district_doctor_id' => $index,
-                'attending_doctor_id' => 2 + 4 * ($index % 4),
-                'hospital_department_id' => $index,
-                'chamber_id' => $index % 6 + (10 * ceil($index / 10))
+        $food = array('пониженное', 'нормальное', 'повышенное');
+
+        $skin = array('нормальной окраски', 'желтушные', 'синюшные (цианоз)',
+            'красные (гиперемия)', 'сухие', 'влажные');
+
+        $turgor = array('эластичная', 'дряблая');
+
+        $pupils = array('не увеличены', 'расширены', 'сужены', 'не реагируют на свет');
+
+        $tongue = array('сухой', 'влажный', 'обложен налётом (белым)', 'обложен налётом (желтым)'
+        , 'обложен налётом (другим)');
+
+        $auscultation = array('везикулярное (нормальное)', 'выслушиваются сухие хрипы',
+            'выслушиваются влажные хрипы (свистящие, жужжащие) (на вдохе, на выдохе)',
+            'крепитация', 'шум трения плевры', 'шум трения перикарда', 'посторонние шумы (бронхиальные, органные)');
+
+        $percussion_sound = array('легочный (нормальное)', 'тимпанический (тупой)', 'коробочный',
+            'с коробочным оттенком');
+
+        $heart_tones = array('ясные', 'приглушены', 'глухие', 'не выслушиваются');
+
+        $heart_rhythm = array('правильный (брадикардия, нормокардия, тахикардия)',
+            'неправильный (экстрасистолия, мерцательная аритмия)', 'синусовый',
+            'несинусовый (узловой, желудочковый)');
+
+        $heart_boundaries = array('не отклонены', 'отклонены на х см (влево, вправо, вверх, вниз)');
+
+        $muscle_tone = array('легочный (нормальное)', 'тимпанический (тупой)', 'коробочный',
+            'с коробочным оттенком');
+        
+        $joint_motion = array('сохранено', 'ограничено');
+
+        $stomach_density = array('мягкий', 'твёрдый');
+
+        $stomach_pain = array('болезненный', 'безболезненный');
+
+        $in_romberg_position = array('устойчив', 'неустойчив', 'устойчив с шатанием');
+
+        $gait = array('обычная', 'нарушенная (какая?)');
+
+        $stools = array('норма', 'учащен (до х раз в сутки)', 'задержка (до х суток)');
+
+        $stools_consistency = array('кашицеобразный', 'твердый', 'жидкий');
+
+        foreach (range(1, 40) as $index) {
+            DB::table('inspections_protocols')->insert([
+                'duty_doctor_id' => 2 + 4 * ($index % 4),
+                'date' => '2016-10-'.($index % 30 + 1).' 08:'.($index + 9).':00',
+                'from_anamnesis' => 'тут какой-то текст',
+                'in_anamnesis' => 'тут какой-то текст',
+                'insurance_anamnesis' => 'тут какой-то текст',
+                'allergoanamnez' => 'тут какой-то текст',
+                'condition' => $condition[$index % 4],
+                'consciousness' => $consciousness [$index % 7],
+                'body_type' => $body_type[$index % 3],
+                'food' => $food[$index % 3],
+                'skin' => $skin[$index % 6],
+                'turgor' => $turgor[$index % 2],
+                'pupils' => $pupils[$index % 4],
+                'tongue' => $tongue[$index % 5],
+                'tongue_extended' => '...',
+                'auscultation' => $auscultation[$index % 7],
+                'percussion_sound' => $percussion_sound[$index % 4],
+                'heart_tones' => $heart_tones[$index % 4],
+                'heart_rhythm' => $heart_rhythm[$index % 4],
+                'respiratory_movements_frequency_ChDD' => (12 + $index % 4),
+                'heart_rate_ChSS' => (70 + $index % 20),
+                'heart_boundaries' => $heart_boundaries[$index % 2],
+                'muscle_tone' => $muscle_tone[$index % 3],
+                'joint_motion' => $joint_motion[$index % 2],
+                'stomach_density' => $stomach_density[$index % 2],
+                'stomach_pain' => $stomach_pain[$index % 2],
+                'in_romberg_position' => $in_romberg_position[$index % 3],
+                'gait' => $gait[$index % 2],
+                'stools' => $stools[$index % 3],
+                'stools_consistency' => $stools_consistency[$index % 3]
             ]);
         }
 
-        foreach (range(1, 20) as $index) {
-            DB::table('patients')->insert([
-                'fio' => $fioFemale[$index % 10],
-                'sex' => 'female',
-                'birth_date' => '1990-10-10',
-                'receipt_date' => '2016-10-10',
-                'initial_inspection' => 'Пациенту явно плохо',
-                'preliminary_diagnosis' => 'Чем-то он явно болеет',
-                'district_doctor_id' => $index,
-                'attending_doctor_id' => 2 + 4 * ($index % 4),
-                'hospital_department_id' => $index,
-                'chamber_id' => $index % 6 + (10 * ceil($index / 10)) + 20
-            ]);
-        }
     }
 }

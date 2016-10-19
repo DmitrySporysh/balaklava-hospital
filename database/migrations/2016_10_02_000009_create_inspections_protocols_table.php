@@ -19,8 +19,7 @@ class CreateInspectionsProtocolsTable extends Migration
             $table->integer('duty_doctor_id')->unsigned();
             $table->timestamp('date');
 
-            //жалобы
-            $table->string('complaints')->nullable();
+
             //из анамнеза (истории болезни)
             $table->string('from_anamnesis')->nullable();
             //в анамнезе
@@ -65,9 +64,9 @@ class CreateInspectionsProtocolsTable extends Migration
                 'несинусовый (узловой, желудочковый)'))->nullable();
             $table->string('heart_rhythm_extended')->nullable();
             //•	ЧДД (частота дыхательных движений)
-            $table->string('respiratory_movements_frequency(ChDD)')->nullable();
+            $table->string('respiratory_movements_frequency_ChDD')->nullable();
             //•	ЧСС (частота сердечных сокращений)
-            $table->string('heart_rate(ChSS)')->nullable();
+            $table->string('heart_rate_ChSS')->nullable();
 
             //•	Границы сердца
             $table->enum('heart_boundaries', array('не отклонены', 'отклонены на х см (влево, вправо, вверх, вниз)'))->nullable();

@@ -11,9 +11,9 @@
 |
 */
 //----------Emergency-----------------
-Route::get('emergency/patients', 'EmergencyController@getReceivedPatients');
+Route::get('emergency/patients', 'EmergencyController@getReceivedPatients'); //
 
-Route::post('patient/addNew', 'EmergencyController@addPatient');
+Route::post('emergency/addNewInpatient', 'EmergencyController@addNewInpatient');
 
 Route::get('emergency', function () {
     return view('layouts.emergency_room');
@@ -21,14 +21,19 @@ Route::get('emergency', function () {
 
 //---------Doctor-------------------
 
-Route::get('doctor/inpatients', 'DoctorController@getDoctorInpatients');
+Route::get('doctor/inpatients', 'DoctorController@getDoctorInpatients'); //+ 3)doctor#/patients
 
-Route::get('doctor/emergency', 'DoctorController@getAwaitingPrimaryInspectionPatients');
+Route::get('doctor/emergency', 'DoctorController@getAwaitingPrimaryInspectionPatients'); //+ 4)doctor#/emergency
 
+Route::get('doctor/received_patient/{id}', 'DoctorController@getReceivedPatient'); //+ 4)doctor#/emergency
 
 Route::get('doctor', function () {
     return view('layouts.doctor_room');
 });
+
+//---------DepartmentChief-------------------
+Route::get('department_chief/inpatients', 'DepartmentChiefController@getDepartmentInpatients');
+
 
 //----------Nurse-------------------------------
 Route::get('nurse/departments', 'NurseController@getDepartments');

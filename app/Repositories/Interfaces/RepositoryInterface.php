@@ -18,7 +18,7 @@ namespace App\Repositories\Interfaces;
 
         public function find($id, $columns = array('*'));
 
-        public function findBy($field, $value, $columns = array('*'));
+        public function findBy($field, $value, $operator = '=', $columns = array('*'));
 
         public function where($attribute, $value, $operator = '=', $columns = array('*'));
 

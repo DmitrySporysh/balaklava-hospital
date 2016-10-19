@@ -11,7 +11,7 @@ class PatientsTableSeeder extends Seeder
      */
     public function run()
     {
-        foreach (range(1, 40) as $index) {
+        foreach (range(1, 65) as $index) {
             DB::table('patients')->insert([
                 'sex' => ($index < 21) ? 'male' : 'female',
                 'birth_date' => '1990-10-'.($index % 30 + 1),

@@ -43,12 +43,20 @@ class DoctorController extends Controller
 
     public function getAwaitingPrimaryInspectionPatients(Request $request)
     {
-        $per_page = ($request->has('per_page')) ? $request->per_page : 20;
+        $per_page = ($request->has('per_page')) ? $request->per_page : 100;
 
         $response = $this->doctor_service->getAwaitingPrimaryInspectionPatientsSortByDatetimeAsc($per_page);
-        Debugbar::info($response);
-        return view('welcome', ['response' => $response]);
-        //return $response;
+        //Debugbar::info($response);
+        //return view('welcome', ['response' => $response]);
+        return $response;
+    }
+
+    public function getReceivedPatient(Request $request, $received_patient_id)
+    {
+        $response = $this->doctor_service->getReceivedPatientFullInfo($received_patient_id);
+        //Debugbar::info($response);
+        //return view('welcome', ['response' => $response]);
+        return $response;
     }
 
 }
