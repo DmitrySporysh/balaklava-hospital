@@ -60,6 +60,7 @@ doctorAppControllers.controller('EmergencyController', function ($scope, $http, 
     $scope.follow_id = function (id){
         $scope.testFactory.patient_full_id = id;
         console.log($scope.testFactory.patient_full_id);
+        console.log($scope.testFactory.patient_full_id);
     };
 
 });
