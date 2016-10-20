@@ -1,21 +1,81 @@
-<div class=" plain-table " ng-controller='PatientFullController'>
-    <div class="plain-table__caption">
-        <span class="plain-table__icon ti-marker"></span>Пациенты в отделении
-    </div>
-    <table class="plain-table__table">
-        <thead class="plain-table__heading">
-        <tr>
-            <th>ФИО</th>
-            <th>Дата рождения</th>
-            <th>Пол</th>
-            <th>№ Палаты</th>
-            <th>Телефон</th>
-            <th>Дата обращения</th>
-            <th>№ Страховки</th>
-        </tr>
-        </thead>
-        <tbody class='plain-table__value'>
 
-        </tbody>
-    </table>
-</div>
+
+
+<ul class="accordion">
+    <li>
+        <div class="accordion__title  accordion__title_active">
+            <span class="accordion__icon ti-support"></span>Стационар
+        </div>
+        <div  class="accordion__content">
+            <div class="plain-table__table-wrapper clearfix">
+                <table class="plain-table__table">
+                    <thead class="plain-table__heading">
+                        <tr>
+                            <th>Отделение</th>
+                            <th>Дата заселение</th>
+                            <th>Дата выписки</th>
+                            <th>Направлен в</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="accordion__title  accordion__title_active">
+            <span class="accordion__icon ti-support"></span>Операции
+        </div>
+        <div  class="accordion__content">
+            <div class="plain-table__table-wrapper clearfix">
+                <table class="plain-table__table">
+                    <thead class="plain-table__heading">
+                    <tr>
+                        <th>Хирург</th>
+                        <th>Дата проведения операции</th>
+                        <th>Время проведения операции</th>
+                        <th>Кабинет</th>
+                        <th>Область</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="accordion__title  accordion__title_active">
+            <span class="accordion__icon ti-support"></span>Проявление  симптомов
+        </div>
+        <div  class="accordion__content">
+            <div class="plain-table__table-wrapper clearfix">
+                <table class="plain-table__table">
+                    <thead class="plain-table__heading">
+                    <tr>
+                        <th>Дата</th>
+                        <th>Время</th>
+                        <th>Симптом</th>
+                        <th>Заметка</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="accordion__title  accordion__title_active">
+            <span class="accordion__icon ti-support"></span>Изменения состояния
+        </div>
+        <div  class="accordion__content">
+            <div class="plain-table__table-wrapper clearfix">
+                <table class="plain-table__table">
+                    <thead class="plain-table__heading">
+                    <tr>
+                        <th>Тип</th>
+                        <th>Дата наблюдения</th>
+                        <th>Описание</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </li>
+</ul>
