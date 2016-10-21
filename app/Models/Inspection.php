@@ -18,10 +18,10 @@ class Inspection extends Model
     protected $guarded = ['id'];
 
     protected $fillable = [
-        'inspection_date', 'state_type', 'description_extended', 'patient_id', 'doctor_id'
+        'inspection_date', 'state_type', 'description_extended', 'inpatient_id', 'doctor_id'
     ];
 
-    public function patient(){
+    public function inpatient(){
         return $this->belongsTo('App\Models\Inpatient');
     }
 

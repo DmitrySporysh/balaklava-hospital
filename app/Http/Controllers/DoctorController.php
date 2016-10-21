@@ -51,13 +51,6 @@ class DoctorController extends Controller
         return $response;
     }
 
-    public function getReceivedPatient(Request $request, $received_patient_id)
-    {
-        $response = $this->doctor_service->getReceivedPatientFullInfo($received_patient_id);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
-    }
 
 
     public function addNewInspectionProtocol(Request $request)

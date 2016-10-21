@@ -23,6 +23,8 @@ Route::get('emergency', function () {
 
 Route::get('doctor/inpatients', 'DoctorController@getDoctorInpatients'); //+ 3)doctor#/patients
 
+Route::get('doctor/inpatient/{id}', 'DoctorController@getInpatientFullInfo'); //+ 3)doctor#/patients
+
 Route::get('doctor/emergency', 'DoctorController@getAwaitingPrimaryInspectionPatients'); //+ 4)doctor#/emergency
 
 Route::get('doctor/received_patient/{id}', 'DoctorController@getReceivedPatient'); //+ 4)doctor#/emergency

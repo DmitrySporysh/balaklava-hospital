@@ -48,7 +48,7 @@ class DistrictDoctor extends Model
         return $this->belongsTo('App\Models\Hospital');
     }
 
-    public function patients(){
-        return $this->hasMany('App\Models\Patient', 'district_doctor_id');
+    public function inpatients(){
+        return $this->hasMany('App\Models\Inpatient', 'district_doctor_id');
     }
 }

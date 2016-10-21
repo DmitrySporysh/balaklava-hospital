@@ -8,7 +8,7 @@
 namespace App\Repositories\Interfaces;
 
 
-interface SurveyTypeRepositoryInterface extends RepositoryInterface
+interface AnalysisRepositoryInterface extends RepositoryInterface
 {
-
+    public function getInpatientAnalyzesWithDoctors($inpatient_id);
 }

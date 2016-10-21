@@ -13,13 +13,8 @@ class BackendServiceProvider extends ServiceProvider
     public function bindRepositories()
     {
         //binding repositories
-
-        $this->app->bind( 'App\Repositories\Interfaces\BedRepositoryInterface',
-                          'App\Repositories\BedRepository' );
-
         $this->app->bind( 'App\Repositories\Interfaces\ChamberRepositoryInterface',
                           'App\Repositories\ChamberRepository' );
-
 
         $this->app->bind( 'App\Repositories\Interfaces\DischargeRepositoryInterface',
                           'App\Repositories\DischargeRepository' );
@@ -51,18 +46,14 @@ class BackendServiceProvider extends ServiceProvider
         $this->app->bind( 'App\Repositories\Interfaces\PatientRepositoryInterface',
                           'App\Repositories\PatientRepository' );
 
-        $this->app->bind( 'App\Repositories\Interfaces\SurveyRepositoryInterface',
-                          'App\Repositories\SurveyRepository' );
-
-        $this->app->bind( 'App\Repositories\Interfaces\SurveyTypeRepositoryInterface',
-                          'App\Repositories\SurveyTypeRepository' );
+        $this->app->bind( 'App\Repositories\Interfaces\AnalysisRepositoryInterface',
+                          'App\Repositories\AnalysisRepository' );
 
         $this->app->bind( 'App\Repositories\Interfaces\MedicalAppointmentRepositoryInterface',
                           'App\Repositories\MedicalAppointmentRepository' );
 
         $this->app->bind( 'App\Repositories\Interfaces\UserRepositoryInterface',
                           'App\Repositories\UserRepository' );
-
 
         $this->app->bind( 'App\Repositories\Interfaces\InpatientRepositoryInterface',
                           'App\Repositories\InpatientRepository' );
@@ -84,9 +75,6 @@ class BackendServiceProvider extends ServiceProvider
         $this->app->bind( 'App\Services\Interfaces\DepartmentChiefServiceInterface',
                           'App\Services\DepartmentChiefService' );
 
-        $this->app->bind( 'App\Services\Interfaces\CheifMedicalOfficerServiceInterface',
-                          'App\Services\CheifMedicalOfficerService' );
-
         $this->app->bind( 'App\Services\Interfaces\FileServiceInterface',
                           'App\Services\FileService' );
 
@@ -95,7 +83,6 @@ class BackendServiceProvider extends ServiceProvider
 
         $this->app->bind( 'App\Services\Interfaces\NurseServiceInterface',
                           'App\Services\NurseService' );
-
 
         $this->app->bind( 'App\Services\Interfaces\PasswordServiceInterface',
                           'App\Services\PasswordService' );

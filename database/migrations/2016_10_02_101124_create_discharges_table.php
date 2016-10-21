@@ -17,7 +17,7 @@ class CreateDischargesTable extends Migration
             $table->increments('id');
             $table->timestamp('discharge_date');
             $table->string('result_epicrisis');
-            $table->enum('discharge_type', array('discharge', 'transfer', 'death', 'other'));
+            $table->string('discharge_type');
 
             $table->integer('inpatient_id')->unsigned();
             $table->integer('discharge_hospital_id')->unsigned()->nullable();

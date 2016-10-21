@@ -45,13 +45,13 @@ class Discharge extends Model
     protected $guarded = ['id'];
 
     protected $fillable = [
-        'discharge_date', 'result_epicrisis', 'discharge_type', 'patient_id',
+        'discharge_date', 'result_epicrisis', 'discharge_type', 'inpatient_id',
         'discharge_hospital_id', 'discharge_department_id'
     ];
 
-    public function patient()
+    public function inpatient()
     {
-        return $this->belongsTo('App\Models\Inpatient', 'patient_id');
+        return $this->belongsTo('App\Models\Inpatient', 'inpatient_id');
     }
 
     public function hospital(){

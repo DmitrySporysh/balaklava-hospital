@@ -25,7 +25,7 @@ class Inpatient extends Model
 
     public function discharge()
     {
-        return $this->hasOne('App\Models\Discharge', 'patient_id');
+        return $this->hasOne('App\Models\Discharge', 'inpatient_id');
     }
 
     //----belongs to----
@@ -51,22 +51,22 @@ class Inpatient extends Model
     //----has many-----------
 
     public function operations(){
-        return $this->hasMany('App\Models\Operation','patient_id');
+        return $this->hasMany('App\Models\Operation','inpatient_id');
     }
 
     public function dressings(){
-        return $this->hasMany('App\Models\Dressing','patient_id');
+        return $this->hasMany('App\Models\Dressing','inpatient_id');
     }
 
     public function inspection(){
-        return $this->hasMany('App\Models\Inspection','patient_id');
+        return $this->hasMany('App\Models\Inspection','inpatient_id');
     }
 
     public function medical_appointments(){
         return $this->hasMany('App\Models\MedicalAppointment','inpatient_id');
     }
 
-    public function surveys(){
-        return $this->hasMany('App\Models\Survey','patient_id');
+    public function analyzes(){
+        return $this->hasMany('App\Models\Analysis','inpatient_id');
     }
 }

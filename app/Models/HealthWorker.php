@@ -58,8 +58,8 @@ class HealthWorker extends Model
         return $this->hasMany('App\Models\Operation','doctor_id');
     }
 
-    public function surveys(){
-        return $this->hasMany('App\Models\Survey','doctor_id');
+    public function analyzes(){
+        return $this->hasMany('App\Models\Analysis','doctor_id');
     }
 
     public function medical_appointments(){

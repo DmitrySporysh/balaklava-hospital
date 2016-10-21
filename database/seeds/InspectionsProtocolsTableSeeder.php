@@ -11,56 +11,55 @@ class InspectionsProtocolsTableSeeder extends Seeder
      */
     public function run()
     {
-        $condition = array('удовлетворительное', 'ср. тяжести', 'тяжелое', 'другое');
+        $condition = array('Удовлетворительное', 'Средней тяжести', 'Тяжелое');
 
-        $consciousness = array('ясное', 'нарушенное (заторможен)', 'нарушенное (возбужден)', 'ступор', 'сопор',
-        'кома', 'без сознания');
+        $consciousness = array('Ясное', 'Нарушенное (заторможен)', 'Нарушенное (возбужден)', 'Ступор', 'Сопор',
+        'Кома', 'Без сознания');
 
-        $body_type = array('астеническое', 'нормостеническое', 'гиперстеническое');
+        $body_type = array('Астеническое', 'Нормостеническое', 'Гиперстеническое');
 
-        $food = array('пониженное', 'нормальное', 'повышенное');
+        $food = array('Пониженное', 'Нормальное', 'Повышенное');
 
-        $skin = array('нормальной окраски', 'желтушные', 'синюшные (цианоз)',
-            'красные (гиперемия)', 'сухие', 'влажные');
+        $skin = array('Нормальной окраски', 'Желтушные', 'Синюшные',
+            'Красные', 'Сухие', 'Влажные');
 
-        $turgor = array('эластичная', 'дряблая');
+        $turgor = array('Эластичная', 'Дряблая');
 
-        $pupils = array('не увеличены', 'расширены', 'сужены', 'не реагируют на свет');
+        $pupils = array('Не увеличены', 'Расширены', 'Сужены', 'Не реагируют на свет');
 
-        $tongue = array('сухой', 'влажный', 'обложен налётом (белым)', 'обложен налётом (желтым)'
-        , 'обложен налётом (другим)');
+        $tongue = array('Сухой', 'Влажный', 'Обложен налётом');
 
-        $auscultation = array('везикулярное (нормальное)', 'выслушиваются сухие хрипы',
-            'выслушиваются влажные хрипы (свистящие, жужжащие) (на вдохе, на выдохе)',
-            'крепитация', 'шум трения плевры', 'шум трения перикарда', 'посторонние шумы (бронхиальные, органные)');
+        $auscultation = array('Везикулярное', 'Выслушиваются сухие хрипы',
+            'Выслушиваются влажные хрипы', 'Крепитация', 'Шум трения плевры',
+            'Шум трения перикарда', 'Посторонние шумы');
 
-        $percussion_sound = array('легочный (нормальное)', 'тимпанический (тупой)', 'коробочный',
-            'с коробочным оттенком');
+        $percussion_sound = array('Легочный', 'Тимпанический', 'Коробочный',
+            'С коробочным оттенком');
 
-        $heart_tones = array('ясные', 'приглушены', 'глухие', 'не выслушиваются');
+        $heart_tones = array('Ясные', 'Приглушены', 'Глухие', 'Не выслушиваются');
 
-        $heart_rhythm = array('правильный (брадикардия, нормокардия, тахикардия)',
-            'неправильный (экстрасистолия, мерцательная аритмия)', 'синусовый',
-            'несинусовый (узловой, желудочковый)');
+        $heart_rhythm = array('Правильный',
+            'Неправильный', 'Синусовый',
+            'Несинусовый');
 
-        $heart_boundaries = array('не отклонены', 'отклонены на х см (влево, вправо, вверх, вниз)');
+        $heart_boundaries = array('Не отклонены',
+            'Отклонены на х см');
 
-        $muscle_tone = array('легочный (нормальное)', 'тимпанический (тупой)', 'коробочный',
-            'с коробочным оттенком');
+        $muscle_tone = array('Нормальный', 'Снижен', 'Повышен');
         
-        $joint_motion = array('сохранено', 'ограничено');
+        $joint_motion = array('Сохранено', 'Ограничено');
 
-        $stomach_density = array('мягкий', 'твёрдый');
+        $stomach_density = array('Мягкий', 'Твёрдый');
 
-        $stomach_pain = array('болезненный', 'безболезненный');
+        $stomach_pain = array('Болезненный', 'Безболезненный');
 
-        $in_romberg_position = array('устойчив', 'неустойчив', 'устойчив с шатанием');
+        $in_romberg_position = array('Устойчив', 'Неустойчив', 'Устойчив с шатанием');
 
-        $gait = array('обычная', 'нарушенная (какая?)');
+        $gait = array('Обычная', 'Нарушенная');
 
-        $stools = array('норма', 'учащен (до х раз в сутки)', 'задержка (до х суток)');
+        $stools = array('Норма', 'Учащен', 'Задержка');
 
-        $stools_consistency = array('кашицеобразный', 'твердый', 'жидкий');
+        $stools_consistency = array('Кашицеобразный', 'Твердый', 'Жидкий');
 
         foreach (range(1, 40) as $index) {
             DB::table('inspections_protocols')->insert([
@@ -70,30 +69,30 @@ class InspectionsProtocolsTableSeeder extends Seeder
                 'in_anamnesis' => 'тут какой-то текст',
                 'insurance_anamnesis' => 'тут какой-то текст',
                 'allergoanamnez' => 'тут какой-то текст',
-                'condition' => $condition[$index % 4],
-                'consciousness' => $consciousness [$index % 7],
-                'body_type' => $body_type[$index % 3],
-                'food' => $food[$index % 3],
-                'skin' => $skin[$index % 6],
-                'turgor' => $turgor[$index % 2],
-                'pupils' => $pupils[$index % 4],
-                'tongue' => $tongue[$index % 5],
+                'condition' => $condition[$index % count($condition)],
+                'consciousness' => $consciousness [$index % count($consciousness)],
+                'body_type' => $body_type[$index % count($body_type)],
+                'food' => $food[$index % count($food)],
+                'skin' => $skin[$index % count($skin)],
+                'turgor' => $turgor[$index % count($turgor)],
+                'pupils' => $pupils[$index %count($pupils)],
+                'tongue' => $tongue[$index % count($tongue)],
                 'tongue_extended' => '...',
-                'auscultation' => $auscultation[$index % 7],
-                'percussion_sound' => $percussion_sound[$index % 4],
-                'heart_tones' => $heart_tones[$index % 4],
-                'heart_rhythm' => $heart_rhythm[$index % 4],
+                'auscultation' => $auscultation[$index % count($auscultation)],
+                'percussion_sound' => $percussion_sound[$index % count($percussion_sound)],
+                'heart_tones' => $heart_tones[$index % count($heart_tones)],
+                'heart_rhythm' => $heart_rhythm[$index % count($heart_rhythm)],
                 'respiratory_movements_frequency_ChDD' => (12 + $index % 4),
                 'heart_rate_ChSS' => (70 + $index % 20),
-                'heart_boundaries' => $heart_boundaries[$index % 2],
-                'muscle_tone' => $muscle_tone[$index % 3],
-                'joint_motion' => $joint_motion[$index % 2],
-                'stomach_density' => $stomach_density[$index % 2],
-                'stomach_pain' => $stomach_pain[$index % 2],
-                'in_romberg_position' => $in_romberg_position[$index % 3],
-                'gait' => $gait[$index % 2],
-                'stools' => $stools[$index % 3],
-                'stools_consistency' => $stools_consistency[$index % 3]
+                'heart_boundaries' => $heart_boundaries[$index % count($heart_boundaries)],
+                'muscle_tone' => $muscle_tone[$index % count($muscle_tone)],
+                'joint_motion' => $joint_motion[$index % count($joint_motion)],
+                'stomach_density' => $stomach_density[$index % count($stomach_density)],
+                'stomach_pain' => $stomach_pain[$index % count($stomach_pain)],
+                'in_romberg_position' => $in_romberg_position[$index % count($in_romberg_position)],
+                'gait' => $gait[$index % count($gait)],
+                'stools' => $stools[$index % count($stools)],
+                'stools_consistency' => $stools_consistency[$index % count($stools_consistency)],
             ]);
         }
 

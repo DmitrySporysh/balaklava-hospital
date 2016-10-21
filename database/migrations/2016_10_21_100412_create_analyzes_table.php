@@ -13,15 +13,18 @@ class CreateAnalyzesTable extends Migration
      */
     public function up()
     {
-        /*Schema::create('analyzes', function (Blueprint $table) {
+        Schema::create('analyzes', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamp('appointment_date');
-            $table->timestamp('ready_date');
-            $table->string('description');
-            $table->string('result_description');
-
             $table->integer('inpatient_id')->unsigned();
             $table->integer('doctor_id')->unsigned();
+            $table->timestamp('appointment_date');
+            $table->timestamp('ready_date');
+            $table->boolean('status')->default(0);
+            $table->string('analysis_name');
+            $table->string('analysis_description')->nullable();
+            $table->string('result_description');
+            $table->string('paths_to_files')->nullable();
+
 
             $table->softDeletes();
             $table->timestamps();
@@ -32,7 +35,7 @@ class CreateAnalyzesTable extends Migration
                 ->onUpdate('cascade');
             $table->foreign('doctor_id')->references('id')->on('health_workers')
                 ->onUpdate('cascade');
-        });*/
+        });
     }
 
     /**
@@ -42,6 +45,6 @@ class CreateAnalyzesTable extends Migration
      */
     public function down()
     {
-        /*Schema::drop('analyzes');*/
+        Schema::drop('analyzes');
     }
 }

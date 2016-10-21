@@ -20,7 +20,7 @@ class CreateHealthWorkersTable extends Migration
             $table->string('address');
             $table->date('birth_date');
 
-            $table->enum('post', array('chief medical officer', 'nurse', 'attending doctor', 'other'))->nullable();
+            $table->string('post')->nullable();
             $table->string('description')->nullable();
 
             $table->softDeletes();
