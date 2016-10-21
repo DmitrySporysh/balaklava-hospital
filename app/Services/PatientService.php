@@ -6,7 +6,7 @@ use App\Exceptions\DALException;
 use App\Repositories\Interfaces\HealthWorkerRepositoryInterface;
 use App\Repositories\Interfaces\InpatientRepositoryInterface;
 use App\Repositories\Interfaces\ReceivedPatientRepositoryInterface;
-use App\Services\Interfaces\DoctorServiceInterface;
+use App\Services\Interfaces\PatientServiceInterface;
 use \Exception;
 use App\Repositories\Interfaces\PatientRepositoryInterface;
 use Illuminate\Http\Request;
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
 use Barryvdh\Debugbar\Facade;
 use Debugbar;
 
-class PatientService implements DoctorServiceInterface
+class PatientService implements PatientServiceInterface
 {
     private $patient_repo;
     private $inpatient_repo;
@@ -51,21 +51,24 @@ class PatientService implements DoctorServiceInterface
         //return view('welcome', ['response' => $response]);
         return $response;
     }
-    public function getDoctorAllInpatientsSortByDateDesc($doctor_id, $page_size)
+
+    public function getReceivedPatientFullInfo($received_patient_id)
     {
         try {
-            $data =  $this->inpatient_repo->getDoctorAllInpatientsSortByDateDesc($doctor_id, $page_size);
+            $data =  $this->received_patient_repo->getReceivedPatientWithPatientInfo($received_patient_id);
             return $data;
         }
         catch(DALException $e){
-            $message = 'Error while creating withdraw inpatient request(DAL Error)';
+            $message = 'Error while creating withdraw received_patient request(DAL Error)';
             throw new HealthWorkerServiceException($message,0,$e);
         }
         catch(Exception $e){
-            $message = 'Error while creating withdraw inpatient request(UnknownError)';
+            $message = 'Error while creating withdraw received_patient request(UnknownError)';
             throw new HealthWorkerServiceException($message,0,$e);
         }
     }
+
+
 
     public function getAwaitingPrimaryInspectionPatientsSortByDatetimeAsc($page_size)
     {
@@ -83,21 +86,7 @@ class PatientService implements DoctorServiceInterface
         }
     }
 
-    public function getReceivedPatientFullInfo($received_patient_id)
-    {
-        try {
-            $data =  $this->received_patient_repo->getReceivedPatientWithPatientInfo($received_patient_id);
-            return $data;
-        }
-        catch(DALException $e){
-            $message = 'Error while creating withdraw received_patient request(DAL Error)';
-            throw new HealthWorkerServiceException($message,0,$e);
-        }
-        catch(Exception $e){
-            $message = 'Error while creating withdraw received_patient request(UnknownError)';
-            throw new HealthWorkerServiceException($message,0,$e);
-        }
-    }
+
 
 
     public function addNewInspectionProtocolWithPatient(Request $request)
