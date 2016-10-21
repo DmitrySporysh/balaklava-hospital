@@ -6,22 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
-
-class Inspection extends Model
+class MedicalAppointment extends Model
 {
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
 
-    protected $table = 'inspections';
+    protected $table = 'medical_appointments';
 
     protected $guarded = ['id'];
 
     protected $fillable = [
-        'inspection_date', 'state_type', 'description_extended', 'patient_id', 'doctor_id'
-    ];
+        'description', 'date', 'inpatient_id', 'doctor_id'];
 
-    public function patient(){
+    public function inpatient(){
         return $this->belongsTo('App\Models\Inpatient');
     }
 

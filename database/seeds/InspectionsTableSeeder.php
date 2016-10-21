@@ -15,7 +15,8 @@ class InspectionsTableSeeder extends Seeder
             foreach (range(1, 40) as $index) {
                 DB::table('inspections')->insert([
                     'inspection_date' => '2016-10-'.$day,
-                    'result_text' => 'результат осмотра в виде текста \'все норм\'',
+                    'state_type' => ($day % 3 == 0) ? 'улучшилось' : 'ухудшилось',
+                    'description_extended' => 'результат осмотра в виде текста \'все норм\'',
                     'inpatient_id' => $index,
                     'doctor_id' => 4 * (($index % 3) + 1)
                 ]);

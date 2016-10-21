@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class TreatmentsTableSeeder extends Seeder
+class AnalyzesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,10 +13,11 @@ class TreatmentsTableSeeder extends Seeder
     {
         foreach (range(1, 5) as $day)
             foreach (range(1, 40) as $index) {
-                DB::table('treatments')->insert([
-                    'treatment_name' => 'назначенное лечение №' . $index*$day,
-                    'date' => '2016-10-'.$day,
-
+                DB::table('analyzes')->insert([
+                    'appointment_date' => '2016-10-'.$day,
+                    'ready_date' => '2016-10-'.$day,
+                    'description' => 'ЭКГ',
+                    'result_description' => 'все норм',
                     'inpatient_id' => $index,
                     'doctor_id' => 4 * (($index % 3) + 1)
                 ]);

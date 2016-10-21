@@ -27,7 +27,5 @@ interface NurseServiceInterface
 
     public function getPatientSurveys($patient_id);
 
-    public function getPatientTreatments($patient_id);
-
-   
+    public function getInpatientMedicalAppointments($inpatient_id);
 }

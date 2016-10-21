@@ -8,6 +8,7 @@ use App\Exceptions\NurseServiceException;
 use App\Exceptions\DALException;
 use App\Repositories\Interfaces\HospitalDepartmentRepositoryInterface;
 use App\Repositories\Interfaces\InpatientRepositoryInterface;
+use App\Repositories\Interfaces\MedicalAppointmentRepositoryInterface;
 use \Exception;
 //Services interfaces
 use App\Services\Interfaces\NurseServiceInterface;
@@ -39,7 +40,7 @@ class NurseService implements NurseServiceInterface
     private $operation_repo;
     private $survey_repo;
     private $surveyType_repo;
-    private $treatment_repo;
+    private $medical_appointment_repo;
     private $nurse_repo;
     private $department_repo;
 
@@ -53,7 +54,7 @@ class NurseService implements NurseServiceInterface
                                 OperationRepositoryInterface $operation_repo,
                                 SurveyRepositoryInterface $survey_repo,
                                 SurveyTypeRepositoryInterface $surveyType_repo,
-                                TreatmentRepositoryInterface $treatment_repo,
+                                MedicalAppointmentRepositoryInterface $medical_appointment_repo,
                                 HospitalDepartmentRepositoryInterface $department_repo,
                                 HealthWorkerRepositoryInterface $nurse_repo
 
@@ -68,7 +69,7 @@ class NurseService implements NurseServiceInterface
         $this->operation_repo = $operation_repo;
         $this->survey_repo = $survey_repo;
         $this->surveyType_repo = $surveyType_repo;
-        $this->treatment_repo = $treatment_repo;
+        $this->medical_appointment_repo = $medical_appointment_repo;
         $this->nurse_repo = $nurse_repo;
         $this->department_repo = $department_repo;
     }
@@ -192,11 +193,11 @@ class NurseService implements NurseServiceInterface
         }
     }
 
-    public function getPatientTreatments($patient_id)
+    public function getInpatientMedicalAppointments($inpatient_id)
     {
         try {
-            $data['patient'] = $this->patient_repo->where('id', $patient_id, '=', array('fio', 'birth_date'));
-            $data['treatments'] = $this->treatment_repo->getPatientTreatmentsWithDoctors($patient_id);
+            $data['patient'] = $this->inpatient_repo->where('id', $inpatient_id, '=', array('fio')); //TODO + birth_date
+            $data['treatments'] = $this->medical_appointment_repo->getInpatientMedicalAppointmentsWithDoctors($inpatient_id);
             return $data;
         } catch (DALException $e) {
             $message = 'Error while creating withdraw patient treatments request(DAL Error)';

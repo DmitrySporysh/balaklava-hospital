@@ -54,7 +54,7 @@ Route::get('nurse/patient/{id}/operations', 'NurseController@operations');
 
 Route::get('nurse/patient/{id}/surveys', 'NurseController@surveys');
 
-Route::get('nurse/patient/{id}/treatments', 'NurseController@treatments');
+Route::get('nurse/patient/{id}/appointments', 'NurseController@getInpatientMedicalAppointments');
 
 //no important ---------------------------------------
 Route::get('nurse/chambers', 'NurseController@getNotEmptyChambers');
