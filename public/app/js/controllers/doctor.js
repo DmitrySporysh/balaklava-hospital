@@ -27,27 +27,31 @@ var doctorAppControllers = angular.module('doctorAppControllers', [])
 
 doctorAppControllers.controller('PatientFullController', ['$scope', '$http', function ($scope, $http) {
     $scope.area_change = function (template){
-        $scope.response={};
-        if(template=='results'){
-                console.log('r');
-            }
-        if(template=='general'){
-            console.log('g');
-        }
         $scope.active_menu=template;
     };
 }]);
 
 doctorAppControllers.controller('EmergencyPersonController', function ($scope, $http, testFactory) {
-
     $scope.testFactory=testFactory;
 
     $http.get('doctor/received_patient/'+$scope.testFactory.patient_full_id).success(function(patients) {
         $scope.patient_info = patients[0];
-
-        var temp= angular.element($("#EmergencyController")).scope();
-        console.log($scope.testFactory);
     });
+
+    $scope.save = function (patient, PatientProtocol){
+        $scope.response={};
+        if(PatientProtocol.$valid){
+            if (patient==undefined)
+                patient={};
+            patient.id=$scope.testFactory.patient_full_id;
+            console.log('тестим отправку');
+            console.log(patient);
+            $http.post("/doctor/addNewInspectionProtocol", patient).success(function (answ) {
+                $scope.response=answ;
+
+            });
+        }
+    };
 });
 
 doctorAppControllers.controller('EmergencyController', function ($scope, $http, testFactory) {
@@ -59,10 +63,7 @@ doctorAppControllers.controller('EmergencyController', function ($scope, $http, 
 
     $scope.follow_id = function (id){
         $scope.testFactory.patient_full_id = id;
-        console.log($scope.testFactory.patient_full_id);
-        console.log($scope.testFactory.patient_full_id);
     };
-
 });
 
 doctorAppControllers.controller('PatientsController', ['$scope', '$http', function ($scope, $http) {
@@ -72,6 +73,8 @@ doctorAppControllers.controller('PatientsController', ['$scope', '$http', functi
 }]);
 
 
+
+/*------------FACTORIES------------*/
 doctorAppControllers.factory('testFactory', function() {
     return {
         patient_full_id: 'null'
