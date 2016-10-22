@@ -39,15 +39,21 @@ doctorAppControllers.controller('PatientFullController', ['$scope', '$http', fun
 }]);
 
 doctorAppControllers.controller('EmergencyPersonController', function ($scope, $http, testFactory) {
-
     $scope.testFactory=testFactory;
 
     $http.get('doctor/received_patient/'+$scope.testFactory.patient_full_id).success(function(patients) {
         $scope.patient_info = patients[0];
-
-        var temp= angular.element($("#EmergencyController")).scope();
-        console.log($scope.testFactory);
     });
+
+    $scope.save = function (patient, PatientProtocol){
+        $scope.response={};
+        if(PatientProtocol.$valid){
+            $http.post("/emergency/addNewInpatient", patient).success(function (answ) {
+                $scope.response=answ;
+                console.log('тестим отправку');
+            });
+        }
+    };
 });
 
 doctorAppControllers.controller('EmergencyController', function ($scope, $http, testFactory) {
@@ -59,10 +65,7 @@ doctorAppControllers.controller('EmergencyController', function ($scope, $http, 
 
     $scope.follow_id = function (id){
         $scope.testFactory.patient_full_id = id;
-        console.log($scope.testFactory.patient_full_id);
-        console.log($scope.testFactory.patient_full_id);
     };
-
 });
 
 doctorAppControllers.controller('PatientsController', ['$scope', '$http', function ($scope, $http) {
@@ -72,6 +75,8 @@ doctorAppControllers.controller('PatientsController', ['$scope', '$http', functi
 }]);
 
 
+
+/*------------FACTORIES------------*/
 doctorAppControllers.factory('testFactory', function() {
     return {
         patient_full_id: 'null'

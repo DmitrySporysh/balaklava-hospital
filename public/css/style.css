@@ -409,6 +409,7 @@ body {
 }
 
 .patient-form__label {
+    line-height: 34px;
     width: 250px;
 }
 
