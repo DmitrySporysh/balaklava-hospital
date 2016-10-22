@@ -65,4 +65,8 @@ class HealthWorker extends Model
     public function medical_appointments(){
         return $this->hasMany('App\Models\MedicalAppointment','doctor_id');
     }
+
+    public function notes(){
+        return $this->hasMany('App\Models\Note','health_worker_id');
+    }
 }

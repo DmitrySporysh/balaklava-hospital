@@ -35,22 +35,6 @@ class PatientService implements PatientServiceInterface
         $this->doctor_repo = $doctor_repo;
     }
 
-    public function getInpatientFullInfo(Request $request, $inpatient_id)
-    {
-        $response = $this->doctor_service->getInpatientFullInfo($inpatient_id);
-        Debugbar::info($response);
-        return view('welcome', ['response' => $response]);
-        //return $response;
-    }
-
-
-    public function getReceivedPatient(Request $request, $received_patient_id)
-    {
-        $response = $this->doctor_service->getReceivedPatientFullInfo($received_patient_id);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
-    }
 
     public function getReceivedPatientFullInfo($received_patient_id)
     {

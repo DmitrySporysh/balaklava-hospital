@@ -21,16 +21,27 @@ class HealthWorkerTableSeeder extends Seeder
         );
 
         $post = array(
-            'chief medical officer', 'nurse', 'attending doctor', 'other'
+            'заведующий отделением', 'медсестра', 'врач', 'мед персонал'
         );
 
-        foreach (range(1, 15) as $index) {
+        $description = [
+            'Ответственный, исполнительный',
+            'Пунктуальный, справедливый',
+            'Дружелюбный, профессиональный',
+            'Быстрообучаемый, внимательный',
+            'Решительный, амбициозный',
+            'Действенный, уверенный',
+            'Понимающий, ответсвтенный',
+            'Усидчивый, внимательный'
+        ];
+
+        foreach (range(1, 30) as $index) {
             DB::table('health_workers')->insert([
-                'fio' => $fio[$index],
-                'address' => 'г.Севастополь, ул.Вакуленчука №'.$index,
-                'birth_date' => '1990-10-10',
+                'fio' => $fio[$index%15],
+                'address' => 'г.Севастополь, ул.Вакуленчука №'.$index.', д.'.($index + 7).', кв.'.($index+37),
+                'birth_date' => '19'.(65 + $index).'-'.($index % 12 + 1).'-'.$index,
                 'post' => $post[$index % 4],
-                'description' => 'good worker'
+                'description' => $description[$index % 8]
             ]);
         }
     }
