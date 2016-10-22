@@ -8,6 +8,7 @@
 namespace App\Repositories;
 
 use App\Exceptions\DALException;
+use App\Models\InspectionProtocol;
 use App\Models\Patient;
 use App\Models\ReceivedPatient;
 use App\Repositories\Core\Repository;
@@ -139,6 +140,21 @@ class ReceivedPatientRepository extends Repository implements ReceivedPatientRep
                 $createdElement = Patient::create($patientInfo);
                 $receivedPatientInfo['patient_id'] = $createdElement['id'];
                 $this->create($receivedPatientInfo);
+            });
+
+        } catch
+        (Exception $e) {
+            $message = 'Error while finding element using ' . $this->model() . "\n" . $e->getMessage();
+            throw new DALException($message, 0, $e);
+        }
+    }
+
+    public function addNewInspectionProtocol($inspection_protocol_data, $received_patient_id)
+    {
+        try {
+            DB::transaction(function () use ($inspection_protocol_data, $received_patient_id) {
+                $createdElement = InspectionProtocol::create($inspection_protocol_data);
+                $this->update(['inspection_protocol_id' => $createdElement['id']], $received_patient_id);
             });
 
         } catch

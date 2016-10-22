@@ -29,6 +29,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\DistrictDoctor whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\DistrictDoctor whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Inpatient[] $inpatients
  */
 class DistrictDoctor extends Model
 {

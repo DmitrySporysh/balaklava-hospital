@@ -41,6 +41,9 @@ class EmergencyController extends Controller
 
     public function addNewInpatient(Request $request)
     {
+        Debugbar::addMessage('fffffff');
+        Debugbar::info($request);
+
         try {
             /*$validator = Validator::make($request->all(), [
                 'fio' => 'required|min:8',

@@ -33,6 +33,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Discharge whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Discharge whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Inpatient $inpatient
  */
 class Discharge extends Model
 {

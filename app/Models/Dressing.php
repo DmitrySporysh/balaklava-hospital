@@ -7,6 +7,29 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 
+/**
+ * App\Models\Dressing
+ *
+ * @property integer $id
+ * @property string $dressing_date
+ * @property string $dressing_name
+ * @property integer $inpatient_id
+ * @property integer $doctor_id
+ * @property \Carbon\Carbon $deleted_at
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property-read \App\Models\Inpatient $inpatient
+ * @property-read \App\Models\HealthWorker $doctor
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Dressing whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Dressing whereDressingDate($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Dressing whereDressingName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Dressing whereInpatientId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Dressing whereDoctorId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Dressing whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Dressing whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Dressing whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Dressing extends Model
 {
     use SoftDeletes;

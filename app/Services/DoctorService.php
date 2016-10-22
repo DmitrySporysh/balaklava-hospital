@@ -7,6 +7,7 @@ use App\Repositories\Interfaces\HealthWorkerRepositoryInterface;
 use App\Repositories\Interfaces\InpatientRepositoryInterface;
 use App\Repositories\Interfaces\ReceivedPatientRepositoryInterface;
 use App\Services\Interfaces\DoctorServiceInterface;
+use Carbon\Carbon;
 use \Exception;
 use App\Repositories\Interfaces\PatientRepositoryInterface;
 use App\Repositories\Interfaces\DistrictDoctorRepositoryInterface;
@@ -26,13 +27,14 @@ class DoctorService implements DoctorServiceInterface
     private $doctor_repo;
 
 
-    public function  __construct(UserRepositoryInterface $user_repo,
-                                 PatientRepositoryInterface $patient_repo,
-                                 InpatientRepositoryInterface $inpatient_repo,
-                                 ReceivedPatientRepositoryInterface $received_patient_repo,
-                                 HealthWorkerRepositoryInterface $doctor_repo
+    public function __construct(UserRepositoryInterface $user_repo,
+                                PatientRepositoryInterface $patient_repo,
+                                InpatientRepositoryInterface $inpatient_repo,
+                                ReceivedPatientRepositoryInterface $received_patient_repo,
+                                HealthWorkerRepositoryInterface $doctor_repo
 
-    ){
+    )
+    {
         $this->user_repo = $user_repo;
         $this->patient_repo = $patient_repo;
         $this->inpatient_repo = $inpatient_repo;
@@ -44,71 +46,43 @@ class DoctorService implements DoctorServiceInterface
     public function getDoctorAllInpatientsSortByDateDesc($doctor_id, $page_size)
     {
         try {
-            $data =  $this->inpatient_repo->getDoctorAllInpatientsSortByDateDesc($doctor_id, $page_size);
+            $data = $this->inpatient_repo->getDoctorAllInpatientsSortByDateDesc($doctor_id, $page_size);
             return $data;
-        }
-        catch(DALException $e){
-            $message = 'Error while creating withdraw inpatient request(DAL Error)';
-            throw new DoctorServiceException($message,0,$e);
-        }
-        catch(Exception $e){
-            $message = 'Error while creating withdraw inpatient request(UnknownError)';
-            throw new DoctorServiceException($message,0,$e);
-        }
-    }
-
-    public function addNewInspectionProtocolWithPatient(Request $request)
-    {
-        try {
-            $patient_id = $this->checkInpatientExists($request->inpatients_id);
-
-
-            if ($patient_id != null) {
-                Debugbar::info('not null1');
-
-                $data = $this->received_patient_repo->create([
-                    'patient_id' => $patient_id['id'],
-                    'registration_nurse_id' => 5,
-                    'received_date' => Carbon::now()->toDateTimeString(),
-                    'fio' => $request->fio,
-                    'work_place' => $request->work_place,
-                    'marital_status' => $request->marital_status,
-                    'residential_address' => $request->residential_address,
-                    'registration_address' => $request->registration_address,
-                    'phone' => $request->phone,
-                    'complaints' => $request->complaints,
-                    'received_type' => $request->received_type
-                ]);
-
-            } else {
-                $this->received_patient_repo->createNewPatientAndReceivedPatient(
-                    [
-                        'sex' => $request->sex,
-                        'insurance_number' => $request->insurance_number,
-                        'birth_date' => '1990-10-10',
-                    ],
-                    [
-                        'patient_id' => null,
-                        'registration_nurse_id' => 5,
-                        'received_date' => Carbon::now()->toDateTimeString(),
-                        'fio' => $request->fio,
-                        'work_place' => $request->work_place,
-                        'marital_status' => $request->marital_status,
-                        'residential_address' => $request->residential_address,
-                        'registration_address' => $request->registration_address,
-                        'phone' => $request->phone,
-                        'complaints' => $request->complaints,
-                        'received_type' => $request->received_type
-                    ]
-                );
-            }
-
-            return "Пациент успешно добавлен";
         } catch (DALException $e) {
-            $message = 'Error while creating withdraw inpatient request(DAL Error)' . $e->getMessage();
+            $message = 'Error while creating withdraw inpatient request(DAL Error)';
             throw new DoctorServiceException($message, 0, $e);
         } catch (Exception $e) {
             $message = 'Error while creating withdraw inpatient request(UnknownError)';
+            throw new DoctorServiceException($message, 0, $e);
+        }
+    }
+
+    private function getInspectionProtocolDataFromRequest(Request $request, $doctor_id)
+    {
+        $data = $request->all();
+        unset($data['id']);
+        unset($data['complaints']);
+        $data['duty_doctor_id'] = $doctor_id;
+        $data['date'] = Carbon::now()->toDateTimeString();
+        return $data;
+    }
+
+    public function addNewInspectionProtocol(Request $request, $doctor_id)
+    {
+        try {
+            if ($request->complaints)
+                $this->received_patient_repo->update(['complaints' => $request->complaints], $request->id);
+
+            $inspection_protocol_data = $this->getInspectionProtocolDataFromRequest($request, $doctor_id);
+            $this->received_patient_repo->addNewInspectionProtocol($inspection_protocol_data, $request->id);
+
+            return "Протокол осмотра пациента №".$request->id.' успешно добавлен';
+        } catch (DALException $e) {
+            $message = 'Error while creating withdraw inspection protocol request(DAL Error)' . $e->getMessage();
+            throw new DoctorServiceException($message, 0, $e);
+        } catch
+        (Exception $e) {
+            $message = 'Error while creating withdraw inspection protocol request(UnknownError)';
             throw new DoctorServiceException($message, 0, $e);
         }
     }

@@ -13,6 +13,6 @@ interface DoctorServiceInterface
 {
     public function getDoctorAllInpatientsSortByDateDesc($doctor_id, $page_size);
 
-    public function addNewInspectionProtocolWithPatient(Request $request);
+    public function addNewInspectionProtocol(Request $request, $doctor_id);
 
 }

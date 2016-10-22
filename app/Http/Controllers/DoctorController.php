@@ -82,18 +82,12 @@ class DoctorController extends Controller
 
     public function addNewInspectionProtocol(Request $request)
     {
-        try {
-            $response = $this->doctor_service->addNewInspectionProtocolWithPatient($request);
-            //Debugbar::info($response);
-            return json_encode('success');
+        $doctor_id = 2; //TODO брат ид авторизованного доктора
 
-            //$request->session()->put('temp', 'ура работает');
+        $response = $this->doctor_service->addNewInspectionProtocol($request, $doctor_id);
 
-        } catch (DoctorServiceException $e) {
-            return json_encode($e->getMessage());
-        } catch (Exception $e) {
-            return json_encode($e->getMessage());
-        }
+        Debugbar::info($response);
+        return $response;
     }
 
 }

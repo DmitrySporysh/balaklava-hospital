@@ -6,6 +6,29 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
+/**
+ * App\Models\MedicalAppointment
+ *
+ * @property integer $id
+ * @property string $date
+ * @property string $description
+ * @property integer $inpatient_id
+ * @property integer $doctor_id
+ * @property \Carbon\Carbon $deleted_at
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property-read \App\Models\Inpatient $inpatient
+ * @property-read \App\Models\HealthWorker $doctor
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\MedicalAppointment whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\MedicalAppointment whereDate($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\MedicalAppointment whereDescription($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\MedicalAppointment whereInpatientId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\MedicalAppointment whereDoctorId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\MedicalAppointment whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\MedicalAppointment whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\MedicalAppointment whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class MedicalAppointment extends Model
 {
     use SoftDeletes;

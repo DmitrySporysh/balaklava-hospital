@@ -7,6 +7,31 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 
+/**
+ * App\Models\Inspection
+ *
+ * @property integer $id
+ * @property string $inspection_date
+ * @property string $state_type
+ * @property string $description_extended
+ * @property integer $inpatient_id
+ * @property integer $doctor_id
+ * @property \Carbon\Carbon $deleted_at
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property-read \App\Models\Inpatient $inpatient
+ * @property-read \App\Models\HealthWorker $doctor
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Inspection whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Inspection whereInspectionDate($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Inspection whereStateType($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Inspection whereDescriptionExtended($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Inspection whereInpatientId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Inspection whereDoctorId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Inspection whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Inspection whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Inspection whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Inspection extends Model
 {
     use SoftDeletes;
