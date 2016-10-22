@@ -78,28 +78,46 @@ class ReceivedPatientRepository extends Repository implements ReceivedPatientRep
         return array();
     }
 
-    public function getReceivedPatientWithPatientInfo($received_patient_id)
+    public function getReceivedPatientWithPatientInfo($received_patient_id, $columns)
     {
         try {
             $data = DB::table('received_patients')
-                ->where('received_patients.id','=', $received_patient_id)
+                ->where('received_patients.id', '=', $received_patient_id)
                 ->join('patients', 'received_patients.patient_id', '=', 'patients.id')
-                ->select([
-                    'received_patients.id as received_patient_id',
-                    'patients.id as patient_id',
-                    'fio',
-                    'sex',
-                    'work_place',
-                    'birth_date',
-                    'marital_status',
-                    'residential_address',
-                    'registration_address',
-                    'phone',
-                    'received_date',
-                    'received_type',
-                    'insurance_number',
-                    'complaints'
-                    ])
+                ->select($columns)
+                ->get();
+            if ($data == null) {
+                return array();
+            }
+        } catch (Exception $e) {
+            $message = 'Error while finding element using ' . $this->model() . $e->getMessage();
+            throw new DALException($message, 0, $e);
+        }
+
+        if ($data != null) return $data;
+
+        return array();
+    }
+
+    public function getReceivedPatientInspectionProtocolInfo($received_patient_id)
+    {
+        $columns = [
+            'duty_doctor_id', 'date', 'from_anamnesis', 'in_anamnesis', 'insurance_anamnesis',
+            'allergoanamnez', 'condition', 'consciousness', 'body_type', 'food', 'skin', 'turgor', 'pupils',
+            'tongue', 'auscultation', 'auscultation_extended', 'percussion_sound', 'heart_tones', 'heart_rhythm',
+            'heart_rhythm_extended', 'respiratory_movements_frequency_ChDD', 'heart_rate_ChSS', 'heart_boundaries',
+            'heart_boundaries_extended', 'muscle_tone', 'muscle_tone_extended', 'joint_motion', 'stomach_density',
+            'stomach_pain', 'stomach_extended', 'in_romberg_position', 'gait', 'gait_extended', 'stools',
+            'stools_extended', 'stools_consistency',
+            //received_patient_columns
+            'complaints'
+        ];
+
+        try {
+            $data = DB::table('received_patients')
+                ->where('received_patients.id', '=', $received_patient_id)
+                ->join('inspections_protocols', 'received_patients.inspection_protocol_id', '=', 'inspections_protocols.id')
+                ->select($columns)
                 ->get();
             if ($data == null) {
                 return array();
@@ -125,7 +143,7 @@ class ReceivedPatientRepository extends Repository implements ReceivedPatientRep
 
         } catch
         (Exception $e) {
-            $message = 'Error while finding element using ' . $this->model()."\n".$e->getMessage();
+            $message = 'Error while finding element using ' . $this->model() . "\n" . $e->getMessage();
             throw new DALException($message, 0, $e);
         }
     }

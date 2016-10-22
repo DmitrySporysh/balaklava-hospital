@@ -48,7 +48,6 @@ class CreateInspectionsProtocolsTable extends Migration
             $table->string('pupils')->nullable();
             //•	Язык
             $table->string('tongue')->nullable();
-
             $table->string('tongue_extended')->nullable();
             //•	Аускультативно над лёгкими дыхание
             $table->string('auscultation')->nullable();

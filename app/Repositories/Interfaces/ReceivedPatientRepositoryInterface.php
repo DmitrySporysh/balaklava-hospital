@@ -16,5 +16,7 @@ interface ReceivedPatientRepositoryInterface extends RepositoryInterface
 
     public function createNewPatientAndReceivedPatient($patientInfo, $receivedPatientInfo);
 
-    public function getReceivedPatientWithPatientInfo($received_patient_id);
+    public function getReceivedPatientWithPatientInfo($received_patient_id, $columns);
+
+    public function getReceivedPatientInspectionProtocolInfo($received_patient_id);
 }

@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-use App\Exceptions\HealthWorkerServiceException;
+use App\Exceptions\DepartmentChiefServiceException;
 use App\Exceptions\DALException;
 use App\Repositories\Interfaces\HealthWorkerRepositoryInterface;
 use App\Repositories\Interfaces\InpatientRepositoryInterface;
@@ -47,11 +47,11 @@ class DepartmentChiefService implements DepartmentChiefServiceInterface
         }
         catch(DALException $e){
             $message = 'Error while creating withdraw inpatient request(DAL Error)';
-            throw new HealthWorkerServiceException($message,0,$e);
+            throw new DepartmentChiefServiceException($message,0,$e);
         }
         catch(Exception $e){
             $message = 'Error while creating withdraw inpatient request(UnknownError)';
-            throw new HealthWorkerServiceException($message,0,$e);
+            throw new DepartmentChiefServiceException($message,0,$e);
         }
     }
 

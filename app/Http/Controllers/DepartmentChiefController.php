@@ -35,18 +35,8 @@ class DepartmentChiefController extends Controller
         $department_id = 1;
         $response = $this->departmentChief_service->getDepartmentAllInpatientsSortByDateDesc($department_id, $per_page);
         //Debugbar::info($response);
-       // return view('welcome', ['response' => $response]);
+        //return view('welcome', ['response' => $response]);
         return $response;
-    }
-
-    public function getAwaitingPrimaryInspectionPatients(Request $request)
-    {
-        $per_page = ($request->has('per_page')) ? $request->per_page : 20;
-
-        $response = $this->departmentChief_service->getAwaitingPrimaryInspectionPatientsSortByDatetimeAsc($per_page);
-        Debugbar::info($response);
-        return view('welcome', ['response' => $response]);
-        //return $response;
     }
 
 }

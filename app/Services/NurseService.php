@@ -18,9 +18,6 @@ use App\Repositories\Interfaces\ChamberRepositoryInterface;
 use App\Repositories\Interfaces\DressingRepositoryInterface;
 use App\Repositories\Interfaces\InspectionRepositoryInterface;
 use App\Repositories\Interfaces\OperationRepositoryInterface;
-use App\Repositories\Interfaces\SurveyRepositoryInterface;
-use App\Repositories\Interfaces\SurveyTypeRepositoryInterface;
-use App\Repositories\Interfaces\TreatmentRepositoryInterface;
 use App\Repositories\Interfaces\HealthWorkerRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 //
@@ -38,8 +35,6 @@ class NurseService implements NurseServiceInterface
     private $dressing_repo;
     private $inspection_repo;
     private $operation_repo;
-    private $survey_repo;
-    private $surveyType_repo;
     private $medical_appointment_repo;
     private $nurse_repo;
     private $department_repo;
@@ -52,8 +47,6 @@ class NurseService implements NurseServiceInterface
                                 DressingRepositoryInterface $dressing_repo,
                                 InspectionRepositoryInterface $inspection_repo,
                                 OperationRepositoryInterface $operation_repo,
-                                SurveyRepositoryInterface $survey_repo,
-                                SurveyTypeRepositoryInterface $surveyType_repo,
                                 MedicalAppointmentRepositoryInterface $medical_appointment_repo,
                                 HospitalDepartmentRepositoryInterface $department_repo,
                                 HealthWorkerRepositoryInterface $nurse_repo
@@ -67,8 +60,6 @@ class NurseService implements NurseServiceInterface
         $this->dressing_repo = $dressing_repo;
         $this->inspection_repo = $inspection_repo;
         $this->operation_repo = $operation_repo;
-        $this->survey_repo = $survey_repo;
-        $this->surveyType_repo = $surveyType_repo;
         $this->medical_appointment_repo = $medical_appointment_repo;
         $this->nurse_repo = $nurse_repo;
         $this->department_repo = $department_repo;

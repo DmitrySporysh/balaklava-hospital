@@ -33,7 +33,6 @@ class InpatientRepository extends Repository implements InpatientRepositoryInter
                 ->join('chambers', 'inpatients.chamber_id', '=', 'chambers.id')
                 ->select([
                     'inpatients.id as inpatient_id',
-                    'received_patients.id as received_patient_id',
                     'received_patients.fio',
                     'patients.birth_date',
                     'patients.sex',
@@ -48,6 +47,28 @@ class InpatientRepository extends Repository implements InpatientRepositoryInter
             }
         } catch (Exception $e) {
             $message = 'Error while finding element using ' . $this->model();
+            throw new DALException($message, 0, $e);
+        }
+
+        if ($data != null) return $data;
+
+        return array();
+    }
+
+    public function getInpatientInfoWithReceivedPatientInfoAndPatientInfo($inpatient_id, $columns)
+    {
+        try {
+            $data = DB::table('inpatients')
+                ->where('inpatients.id','=', $inpatient_id)
+                ->join('received_patients', 'inpatients.received_patient_id', '=', 'received_patients.id')
+                ->join('patients', 'received_patients.patient_id', '=', 'patients.id')
+                ->select($columns)
+                ->get();
+            if ($data == null) {
+                return array();
+            }
+        } catch (Exception $e) {
+            $message = 'Error while finding element using ' . $this->model() . $e->getMessage();
             throw new DALException($message, 0, $e);
         }
 

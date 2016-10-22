@@ -21,13 +21,15 @@ Route::get('emergency', function () {
 
 //---------Doctor-------------------
 
-Route::get('doctor/inpatients', 'DoctorController@getDoctorInpatients'); //+ 3)doctor#/patients
+Route::get('doctor/inpatients', 'DoctorController@getDoctorInpatients'); //doctor#/patients
 
-Route::get('doctor/inpatient/{id}', 'DoctorController@getInpatientFullInfo'); //+ 3)doctor#/patients
+Route::get('doctor/inpatient/{id}', 'DoctorController@getInpatientInfo');
 
-Route::get('doctor/emergency', 'DoctorController@getAwaitingPrimaryInspectionPatients'); //+ 4)doctor#/emergency
+Route::get('doctor/inpatient/{id}/inspectionProtocol', 'DoctorController@getInpatientInspectionProtocol');
 
-Route::get('doctor/received_patient/{id}', 'DoctorController@getReceivedPatient'); //+ 4)doctor#/emergency
+Route::get('doctor/emergency', 'DoctorController@getAwaitingPrimaryInspectionPatients'); //doctor#/emergency
+
+Route::get('doctor/received_patient/{id}', 'DoctorController@getReceivedPatient'); //doctor#/
 
 Route::post('doctor/addNewInspectionProtocol', 'DoctorController@addNewInspectionProtocol');
 

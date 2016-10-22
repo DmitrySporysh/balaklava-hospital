@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-use App\Exceptions\HealthWorkerServiceException;
+use App\Exceptions\EmergencyServiceException;
 use App\Exceptions\DALException;
 use App\Repositories\Interfaces\InpatientRepositoryInterface;
 use App\Repositories\Interfaces\ReceivedPatientRepositoryInterface;
@@ -47,10 +47,10 @@ class EmergencyService implements EmergencyServiceInterface
             return $data;
         } catch (DALException $e) {
             $message = 'Error while creating withdraw patient request(DAL Error)';
-            throw new HealthWorkerServiceException($message, 0, $e);
+            throw new EmergencyServiceException($message, 0, $e);
         } catch (Exception $e) {
             $message = 'Error while creating withdraw patient request(UnknownError)';
-            throw new HealthWorkerServiceException($message, 0, $e);
+            throw new EmergencyServiceException($message, 0, $e);
         }
     }
 
@@ -104,10 +104,10 @@ class EmergencyService implements EmergencyServiceInterface
             return "Пациент успешно добавлен";
         } catch (DALException $e) {
             $message = 'Error while creating withdraw inpatient request(DAL Error)' . $e->getMessage();
-            throw new HealthWorkerServiceException($message, 0, $e);
+            throw new EmergencyServiceException($message, 0, $e);
         } catch (Exception $e) {
             $message = 'Error while creating withdraw inpatient request(UnknownError)';
-            throw new HealthWorkerServiceException($message, 0, $e);
+            throw new EmergencyServiceException($message, 0, $e);
         }
     }
 
@@ -119,10 +119,10 @@ class EmergencyService implements EmergencyServiceInterface
             return $data;
         } catch (DALException $e) {
             $message = 'Error while creating withdraw money request(DAL Error)';
-            throw new HealthWorkerServiceException($message, 0, $e);
+            throw new EmergencyServiceException($message, 0, $e);
         } catch (Exception $e) {
             $message = 'Error while creating withdraw money request(UnknownError)';
-            throw new HealthWorkerServiceException($message, 0, $e);
+            throw new EmergencyServiceException($message, 0, $e);
         }
     }
 

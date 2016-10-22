@@ -39,20 +39,6 @@ class EmergencyController extends Controller
         return $response;
     }
 
-    public function getPatient($patient_id)
-    {
-        Debugbar::addMessage('HealthWorkerController/getPatient', 'mylabel');
-
-        //$response = $this->healthworker_service->getPatietnFullInfo($patient_id);
-        //$response =  $this->healthworker_service->testFunc();
-        Debugbar::info(MessageUserRole::values);
-        Debugbar::info(MessageUserRole::getValueByNumber(1));
-        Debugbar::info(MessageUserRole::getValueByNumber(0));
-        Debugbar::info(MessageUserRole::getValueByNumber(3));
-
-        return view('welcome');
-    }
-
     public function addNewInpatient(Request $request)
     {
         try {
