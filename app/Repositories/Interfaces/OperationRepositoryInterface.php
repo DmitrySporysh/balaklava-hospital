@@ -10,6 +10,6 @@ namespace App\Repositories\Interfaces;
 
 interface OperationRepositoryInterface extends RepositoryInterface
 {
-    public function getPatientOperationsWithDoctors($patient_id);
+    public function getInpatientOperationsWithDoctorsSortedByDateDESC($inpatient_id);
 
 }

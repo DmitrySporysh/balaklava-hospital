@@ -10,5 +10,5 @@ namespace App\Repositories\Interfaces;
 
 interface DressingRepositoryInterface extends RepositoryInterface
 {
-    public function getPatientDressingsWithDoctors($patient_id);
+    public function getInpatientDressingsWithDoctorsSortedByDateDESC($inpatient_id);
 }

@@ -10,6 +10,7 @@ use App\Exceptions\DALException;
 use App\Models\MedicalAppointment;
 use App\Repositories\Core\Repository;
 use App\Repositories\Interfaces\MedicalAppointmentRepositoryInterface;
+use DB;
 use Exception;
 
 
@@ -21,19 +22,20 @@ class MedicalAppointmentRepository extends Repository implements MedicalAppointm
     }
 
 
-    public function getInpatientMedicalAppointmentsWithDoctors($inpatient_id)
+    public function getInpatientMedicalAppointmentsWithDoctorsSortedByDateDESC($inpatient_id)
     {
         try {
-            $data = MedicalAppointment::where('medical_appointments.patient_id',$inpatient_id)
+            $data = DB::table('medical_appointments')
+                ->where('medical_appointments.inpatient_id', $inpatient_id)
                 ->join('health_workers as doctors', 'medical_appointments.doctor_id', '=', 'doctors.id')
                 ->select(
-                    'treatments.date',
+                    'date',
                     'medical_appointments.description',
                     'doctors.fio as doctor_fio')
                 ->orderBy('medical_appointments.date','DESC')
                 ->get();
         } catch (Exception $e) {
-            $message = 'Error while finding element using ' . $this->model();
+            $message = 'Error while finding element using ' . $this->model().$e->getMessage();
             throw new DALException($message, 0, $e);
         }
         if ($data != null) return $data;

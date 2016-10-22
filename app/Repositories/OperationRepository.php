@@ -21,10 +21,10 @@ class OperationRepository extends Repository implements OperationRepositoryInter
         return 'App\Models\Operation';
     }
 
-    public function getPatientOperationsWithDoctors($patient_id)
+    public function getInpatientOperationsWithDoctorsSortedByDateDESC($inpatient_id)
     {
         try {
-            $data = Operation::where('operations.patient_id', $patient_id)
+            $data = Operation::where('operations.inpatient_id', $inpatient_id)
                 ->join('health_workers as doctors', 'operations.doctor_id', '=', 'doctors.id')
                 ->select('operations.operation_date',
                     'operations.operation_name',

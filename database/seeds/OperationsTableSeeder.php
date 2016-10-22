@@ -19,7 +19,7 @@ class OperationsTableSeeder extends Seeder
                     'preliminary_epicrisis' => 'у пациента что-то болело, это надо было удалить/поправить',
                     'result' => 'операция прошла успешно',
                     'inpatient_id' => $index,
-                    'doctor_id' => 3 + ((($index - 1) % 4) * 4)
+                    'doctor_id' => 3 + ((($index + $day) % 4) * 4)
                 ]);
             }
         }

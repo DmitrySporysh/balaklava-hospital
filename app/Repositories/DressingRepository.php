@@ -20,13 +20,13 @@ class DressingRepository extends Repository implements DressingRepositoryInterfa
         return 'App\Models\Dressing';
     }
 
-    public function getPatientDressingsWithDoctors($patient_id)
+    public function getInpatientDressingsWithDoctorsSortedByDateDESC($inpatient_id)
     {
         try {
-            $data = Dressing::where('dressings.patient_id',$patient_id)
+            $data = Dressing::where('dressings.inpatient_id',$inpatient_id)
                 ->join('health_workers as doctors', 'dressings.doctor_id', '=', 'doctors.id')
-                ->select('dressings.dressing_date',
-                    'dressings.dressing_name',
+                ->select('dressing_date',
+                    'dressing_name',
                     'doctors.fio as doctor_fio')
                 ->orderBy('dressings.dressing_date','DESC')
                 ->get()

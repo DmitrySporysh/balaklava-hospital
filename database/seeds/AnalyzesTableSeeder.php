@@ -61,13 +61,12 @@ class AnalyzesTableSeeder extends Seeder
             foreach (range(0, count($analysis_name) - 1) as $analysis_index)
                 DB::table('analyzes')->insert([
                     'inpatient_id' => $index,
-                    'doctor_id' => 4 * (($index % 3) + 1),
+                    'doctor_id' => 4 * (($index + $analysis_index) % 3) + 1,
                     'appointment_date' => '2016-10-' . ($analysis_index + 1),
                     'ready_date' => '2016-10-' . ($analysis_index + 2),
                     'analysis_name' => $analysis_name[$analysis_index],
                     'analysis_description' => $analysis_description[$analysis_index],
                     'result_description' => $result_description[$analysis_index],
-
                     'status' => 1
                 ]);
         }

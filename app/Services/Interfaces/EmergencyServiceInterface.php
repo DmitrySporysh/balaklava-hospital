@@ -14,10 +14,7 @@ interface EmergencyServiceInterface
 
     public function getAllReceivedPatientsSortByDateDesc($page_size);
 
-    public function addNewPatient(Request $request);
-
-    public function checkPatientExists($insurance_number);
-
+    public function addNewPatient(Request $request, $registration_nurse_id);
 
     public function ediPatient(Request $request, $patient_id);
 

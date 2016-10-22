@@ -20,13 +20,14 @@ class InspectionRepository extends Repository implements InspectionRepositoryInt
         return 'App\Models\Inspection';
     }
 
-    public function getPatientInspectionsWithDoctors($patient_id)
+    public function getInpatientInspectionsWithDoctorsSortedByDateDESC($inpatient_id)
     {
         try {
-            $data = Inspection::where('inspections.patient_id',$patient_id)
+            $data = Inspection::where('inspections.inpatient_id',$inpatient_id)
                 ->join('health_workers as doctors', 'inspections.doctor_id', '=', 'doctors.id')
-                ->select('inspections.inspection_date',
-                    'inspections.result_text',
+                ->select('inspection_date',
+                    'state_type',
+                    'description_extended',
                     'doctors.fio as doctor_fio')
                 ->orderBy('inspections.inspection_date','DESC')
                 ->get();

@@ -16,16 +16,4 @@ interface NurseServiceInterface
     public function getDepartmentChambers($department_id);
 
     public function getChamberWithPatients($chamber_id);
-
-    public function getPatientWithTableInfo($patient_id);
-
-    public function getPatientDressings($patient_id);
-
-    public function getPatientInspections($patient_id );
-
-    public function getPatientOperations($patient_id);
-
-    public function getPatientSurveys($patient_id);
-
-    public function getInpatientMedicalAppointments($inpatient_id);
 }

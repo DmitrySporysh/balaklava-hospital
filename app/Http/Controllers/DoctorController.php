@@ -80,13 +80,52 @@ class DoctorController extends Controller
         return $response;
     }
 
+    public function getInpatientMedicalAppointments(Request $request, $inpatient_id)
+    {
+        $response = $this->patient_service->getInpatientMedicalAppointments($inpatient_id);
+        //Debugbar::info($response);
+        //return view('welcome', ['response' => $response]);
+        return $response;
+    }
+
+    public function getInpatientInspections(Request $request, $inpatient_id)
+    {
+        $response = $this->patient_service->getInpatientInspections($inpatient_id);
+        //Debugbar::info($response);
+        //return view('welcome', ['response' => $response]);
+        return $response;
+    }
+    public function getInpatientAnalyzes(Request $request, $inpatient_id)
+    {
+        $response = $this->patient_service->getInpatientAnalyzes($inpatient_id);
+        //Debugbar::info($response);
+        //return view('welcome', ['response' => $response]);
+        return $response;
+    }
+
+    public function getInpatientDressings(Request $request, $patient_id)
+    {
+        $response = $this->patient_service->getInpatientDressings($patient_id);
+        //Debugbar::info($response);
+        //return view('welcome', ['response' => $response]);
+        return $response;
+    }
+
+    public function getInpatientOperations(Request $request, $patient_id)
+    {
+        $response = $this->patient_service->getInpatientOperations($patient_id);
+        //Debugbar::info($response);
+        //return view('welcome', ['response' => $response]);
+        return $response;
+    }
+
     public function addNewInspectionProtocol(Request $request)
     {
-        $doctor_id = 2; //TODO брат ид авторизованного доктора
+        $doctor_id = 2; //TODO брать ид авторизованного доктора
 
         $response = $this->doctor_service->addNewInspectionProtocol($request, $doctor_id);
 
-        Debugbar::info($response);
+        //Debugbar::info($response);
         return $response;
     }
 

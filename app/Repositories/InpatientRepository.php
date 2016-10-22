@@ -77,6 +77,32 @@ class InpatientRepository extends Repository implements InpatientRepositoryInter
         return array();
     }
 
+    public function getInpatientsGeneralInfoByChamberId($chamber_id)
+    {
+        try {
+            $data = DB::table('inpatients')
+                ->where('inpatients.chamber_id','=', $chamber_id)
+                ->join('received_patients', 'inpatients.received_patient_id', '=', 'received_patients.id')
+                ->join('patients', 'received_patients.patient_id', '=', 'patients.id')
+                ->select(
+                    'inpatients.id as inpatients_id',
+                    'fio',
+                    'diagnosis'
+                )
+                ->get();
+            if ($data == null) {
+                return array();
+            }
+        } catch (Exception $e) {
+            $message = 'Error while finding element using ' . $this->model() . $e->getMessage();
+            throw new DALException($message, 0, $e);
+        }
+
+        if ($data != null) return $data;
+
+        return array();
+    }
+
     public function getDepartmentAllInpatientsSortByDateDesc($department_id, $per_page)
     {
         try {

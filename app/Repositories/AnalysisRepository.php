@@ -6,6 +6,7 @@
  * Time: 12:33
  */
 namespace App\Repositories;
+
 use App\Exceptions\DALException;
 use App\Models\Analysis;
 use App\Repositories\Core\Repository;
@@ -20,24 +21,22 @@ class AnalysisRepository extends Repository implements AnalysisRepositoryInterfa
         return 'App\Models\Analysis';
     }
 
-    public function getInpatientAnalyzesWithDoctors($inpatient_id)
+    public function getInpatientAnalyzesWithDoctorsSortedByDateDESC($inpatient_id)
     {
         try {
-            $data = null;
-            /*$data = Analysis::where('analyzes.inpatient_id',$inpatient_id)
+            $data = Analysis::where('analyzes.inpatient_id', $inpatient_id)
                 ->join('health_workers as doctors', 'analyzes.doctor_id', '=', 'doctors.id')
-                ->select('analyzes.survey_name',
-                    'analyzes.survey_date',
-                    'analyzes.status',
-                    'analyzes.result_text',
-                    'analyzes.result_file',
-                    'doctors.fio as doctor_fio',
-                    'analyzes.survey_type_name',
-                    'analyzes.description',
-                    'analyzes.room_number'
-                    )
-                ->orderBy('analyzes.survey_date','DESC')
-                ->get();*/
+                ->select('appointment_date',
+                    'ready_date',
+                    'status',
+                    'analysis_name',
+                    'analysis_description',
+                    'result_description',
+                    'paths_to_files',
+                    'doctors.fio as doctor_fio'
+                )
+                ->orderBy('analyzes.appointment_date', 'DESC')
+                ->get();
         } catch (Exception $e) {
             $message = 'Error while finding element using ' . $this->model();
             throw new DALException($message, 0, $e);

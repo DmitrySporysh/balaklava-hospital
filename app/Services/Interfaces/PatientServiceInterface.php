@@ -14,5 +14,15 @@ interface PatientServiceInterface
 
     public function getInpatientInspectionProtocolInfo($inpatient_id);
 
+    public function getInpatientMedicalAppointments($inpatient_id);
+
+    public function getInpatientInspections($inpatient_id);
+
+    public function getInpatientAnalyzes($inpatient_id);
+
+    public function getInpatientDressings($inpatient_id);
+
+    public function getInpatientOperations($inpatient_id);
+
     public function getAwaitingPrimaryInspectionPatientsSortByDatetimeAsc($page_size);
 }

@@ -41,31 +41,10 @@ class EmergencyController extends Controller
 
     public function addNewInpatient(Request $request)
     {
-        Debugbar::addMessage('fffffff');
-        Debugbar::info($request);
+        $registration_nurse_id = 5; //TODO брать ид авторизованной медсестры
 
-        try {
-            /*$validator = Validator::make($request->all(), [
-                'fio' => 'required|min:8',
-                'sex' => 'required|in:male,female'
-            ]);
-
-            $validator->validate();*/
-
-            $response = $this->emergency_service->addNewPatient($request);
-            //Debugbar::info($response);
-            return json_encode('success');
-
-            /*$request->session()->put('temp', 'ура работает');
-
-            $this->emergency_service->addNewPatient($request);
-
-            return json_encode("Success adding patient");*/
-
-        } catch (HealthWorkerServiceException $e) {
-            return json_encode($e->getMessage());
-        } catch (Exception $e) {
-            return json_encode($e->getMessage());
-        }
+        $response = $this->emergency_service->addNewPatient($request, $registration_nurse_id);
+        //Debugbar::info($response);
+        return json_encode('success');
     }
 }

@@ -10,5 +10,5 @@ namespace App\Repositories\Interfaces;
 
 interface AnalysisRepositoryInterface extends RepositoryInterface
 {
-    public function getInpatientAnalyzesWithDoctors($inpatient_id);
+    public function getInpatientAnalyzesWithDoctorsSortedByDateDESC($inpatient_id);
 }

@@ -25,7 +25,17 @@ Route::get('doctor/inpatients', 'DoctorController@getDoctorInpatients'); //docto
 
 Route::get('doctor/inpatient/{id}', 'DoctorController@getInpatientInfo');
 
-Route::get('doctor/inpatient/{id}/inspectionProtocol', 'DoctorController@getInpatientInspectionProtocol');
+Route::get('doctor/inpatient/{id}/inspection_protocol', 'DoctorController@getInpatientInspectionProtocol');
+
+Route::get('doctor/inpatient/{id}/medical_appointments', 'DoctorController@getInpatientMedicalAppointments');
+
+Route::get('doctor/inpatient/{id}/inspections', 'DoctorController@getInpatientInspections');
+
+Route::get('doctor/inpatient/{id}/analyzes', 'DoctorController@getInpatientAnalyzes');
+
+Route::get('doctor/inpatient/{id}/dressings', 'DoctorController@getInpatientDressings');
+
+Route::get('doctor/inpatient/{id}/operations', 'DoctorController@getInpatientOperations');
 
 Route::get('doctor/emergency', 'DoctorController@getAwaitingPrimaryInspectionPatients'); //doctor#/emergency
 
@@ -42,23 +52,25 @@ Route::get('department_chief/inpatients', 'DepartmentChiefController@getDepartme
 
 
 //----------Nurse-------------------------------
-Route::get('nurse/departments', 'NurseController@getDepartments');
+Route::get('nurse/departments', 'NurseController@getDepartments'); //+
 
-Route::get('nurse/department/{id}/chambers', 'NurseController@getDepartmentChambers');
+Route::get('nurse/department/{id}/chambers', 'NurseController@getDepartmentChambers');//+
 
-Route::get('nurse/chamber/{id}', 'NurseController@getChamberWithPatients');
+Route::get('nurse/chamber/{id}', 'NurseController@getChamberWithPatients');//+
 
-Route::get('nurse/patient/{id}', 'NurseController@getPatient');
+Route::get('nurse/inpatient/{id}', 'NurseController@getInpatientInfo');//+ TODO еще согласовать поля
 
-Route::get('nurse/patient/{id}/dressings', 'NurseController@dressings');
+Route::get('nurse/inpatient/{id}/inspection_protocol', 'NurseController@getInpatientInspectionProtocol');
 
-Route::get('nurse/patient/{id}/inspections', 'NurseController@inspections');
+Route::get('nurse/inpatient/{id}/medical_appointments', 'NurseController@getInpatientMedicalAppointments');
 
-Route::get('nurse/patient/{id}/operations', 'NurseController@operations');
+Route::get('nurse/inpatient/{id}/inspections', 'NurseController@getInpatientInspections');
 
-Route::get('nurse/patient/{id}/surveys', 'NurseController@surveys');
+Route::get('nurse/inpatient/{id}/analyzes', 'NurseController@getInpatientAnalyzes');
 
-Route::get('nurse/patient/{id}/appointments', 'NurseController@getInpatientMedicalAppointments');
+Route::get('nurse/inpatient/{id}/dressings', 'NurseController@getInpatientDressings');
+
+Route::get('nurse/inpatient/{id}/operations', 'NurseController@getInpatientOperations');
 
 //no important ---------------------------------------
 Route::get('nurse/chambers', 'NurseController@getNotEmptyChambers');

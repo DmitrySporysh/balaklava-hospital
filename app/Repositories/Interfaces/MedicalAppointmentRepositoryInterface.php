@@ -10,5 +10,5 @@ namespace App\Repositories\Interfaces;
 
 interface MedicalAppointmentRepositoryInterface extends RepositoryInterface
 {
-    public function getInpatientMedicalAppointmentsWithDoctors($inpatient_id);
+    public function getInpatientMedicalAppointmentsWithDoctorsSortedByDateDESC($inpatient_id);
 }
