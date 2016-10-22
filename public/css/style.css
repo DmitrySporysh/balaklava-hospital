@@ -422,6 +422,16 @@ body {
     border-style: solid;
 }
 
+.patient-form__input_inline {
+    float: left;
+    width: 275px;
+    margin-left: 20px;
+}
+
+.patient-form__select_inline {
+    float: left;
+}
+
 .patient-form__textarea {
     padding-left: 10px;
     width: 90%;

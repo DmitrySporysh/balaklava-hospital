@@ -27,13 +27,6 @@ var doctorAppControllers = angular.module('doctorAppControllers', [])
 
 doctorAppControllers.controller('PatientFullController', ['$scope', '$http', function ($scope, $http) {
     $scope.area_change = function (template){
-        $scope.response={};
-        if(template=='results'){
-                console.log('r');
-            }
-        if(template=='general'){
-            console.log('g');
-        }
         $scope.active_menu=template;
     };
 }]);
@@ -48,9 +41,14 @@ doctorAppControllers.controller('EmergencyPersonController', function ($scope, $
     $scope.save = function (patient, PatientProtocol){
         $scope.response={};
         if(PatientProtocol.$valid){
-            $http.post("/emergency/addNewInpatient", patient).success(function (answ) {
+            if (patient==undefined)
+                patient={};
+            patient.id=$scope.testFactory.patient_full_id;
+            console.log('тестим отправку');
+            console.log(patient);
+            $http.post("/doctor/addNewInspectionProtocol", patient).success(function (answ) {
                 $scope.response=answ;
-                console.log('тестим отправку');
+
             });
         }
     };
