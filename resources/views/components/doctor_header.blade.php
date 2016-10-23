@@ -74,7 +74,7 @@
                 </a>
 
             <li class="nav-list__item">
-                <a href="" class="nav-list__ref nav-list__icon nav-list__icon_catalog">
+                <a href="/doctor#/archive" class="nav-list__ref nav-list__icon nav-list__icon_catalog">
                     <span class="nav-list__item-name">Архив</span>
                 </a>
         </ul>

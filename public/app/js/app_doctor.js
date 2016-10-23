@@ -22,6 +22,10 @@ doctorApp.config(['$routeProvider', function($routeProvider) {
         templateUrl: 'app/templates/doctor/emergency_person.html',
         controller: 'EmergencyPersonController'
     }).
+    when('/archive', {
+        templateUrl: 'app/templates/doctor/archive.html',
+        controller: 'ArchiveController'
+    }).
     otherwise({
         redirectTo: '/'
     });

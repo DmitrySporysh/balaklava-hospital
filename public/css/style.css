@@ -278,6 +278,10 @@ body {
     margin-bottom: 30px;
 }
 
+.mt-30 {
+    margin-top: 30px;
+}
+
 /*-----templ-------*/
 
 .main-content {
@@ -604,4 +608,61 @@ body {
 
 .add-block_right {
     float: right;
+}
+
+
+.search-table__table {
+    width: 100%;
+}
+
+.search-table__heading th {
+    padding: 5px 10px;
+}
+
+.search-table__heading-name{
+    color: #444444;
+    background-color: #e4e8ee;
+    border: 1px solid #d7d9de;
+}
+
+.search-table__heading-name th {
+    font-weight: 500;
+}
+
+.search-table__heading-filter {
+    background: #f4f5f9;
+    border: 1px solid #d7d9de;
+}
+
+.search-table__heading-filter th {
+    border: 1px solid #d7d9de;
+    border-width: 0 1px 0 0;
+    color: #888888;
+}
+
+.search-table__input {
+    height: 20px;
+    border: 1px solid #d7d9de;
+    font-weight: 300;
+    padding-left: 5px;
+}
+
+.search-table__value td {
+    padding: 8px 10px;
+    border-width: 0 1px 0 0;
+    border-color: #d7d9de;
+    border-style: solid;
+}
+
+.search-table__value tr {
+    background: #f4f5f9;
+}
+
+.search-table__value tr:nth-child(2n-1) {
+    background-color: white;
+}
+
+.search-table__value tr:hover {
+    background-color: #f0f2ef;
+    cursor: pointer;
 }
