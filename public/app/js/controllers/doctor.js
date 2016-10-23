@@ -27,7 +27,7 @@ var doctorAppControllers = angular.module('doctorAppControllers', [])
 
 
 doctorAppControllers.controller('EmergencyController', function ($scope, $http, testFactory) {
-    $http.get('doctor/emergency').success(function(patients) {
+    $http.get('doctor/emergency?page=1').success(function(patients) {
         $scope.patients_info = patients.data;
     });
 
@@ -59,6 +59,9 @@ doctorAppControllers.controller('EmergencyPersonController', function ($scope, $
     };
 });
 
+
+
+
 doctorAppControllers.controller('PatientsController', function ($scope, $http, testFactory) {
     $http.get('doctor/inpatients').success(function(patients) {
         $scope.patients_info = patients.data;
@@ -71,7 +74,6 @@ doctorAppControllers.controller('PatientsController', function ($scope, $http, t
 
     };
 });
-
 
 doctorAppControllers.controller('PatientFullController', function ($scope, $http, testFactory) {
     $scope.testFactory=testFactory;
@@ -125,6 +127,16 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
                 break;
         }
     };
+});
+
+
+
+
+doctorAppControllers.controller('ArchiveController', function ($scope, $http, testFactory) {
+    $http.get('emergency/patients').success(function(patients) {
+        $scope.patients_info = patients.data;
+        console.log($scope.patients_info);
+    });
 });
 
 
