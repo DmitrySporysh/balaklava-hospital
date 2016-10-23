@@ -96,11 +96,11 @@ class PatientService implements PatientServiceInterface
                 'fio',
                 'insurance_number',
                 'sex',
-                'inpatient.id as inpatient_number'
+                'inpatients.id as inpatient_number'
                 //'diseases.id as disease_number'  //TODO номер болезни
             ];
 
-            $data = $this->received_patient_repo->getAllPatientsSortedAndFiltered($doctor_id, $page_size);
+            $data = $this->received_patient_repo->getAllPatientsSortedAndFiltered($per_page, $columns);
             return $data;
         } catch (DALException $e) {
             $message = 'Error while creating withdraw patient request(DAL Error)';
