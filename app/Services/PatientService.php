@@ -98,10 +98,13 @@ class PatientService implements PatientServiceInterface
                 'residential_address',
                 'registration_address',
                 'marital_status',
+                'work_place',
                 'start_date',
                 'diagnosis',
                 'insurance_number',
-                'blood_type'
+                'blood_type',
+                'sex',
+                'phone'
             ];
 
             $data =  $this->inpatient_repo->getInpatientInfoWithReceivedPatientInfoAndPatientInfo($inpatient_id, $columns);

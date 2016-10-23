@@ -28,7 +28,6 @@ class AnalysisRepository extends Repository implements AnalysisRepositoryInterfa
                 ->join('health_workers as doctors', 'analyzes.doctor_id', '=', 'doctors.id')
                 ->select('appointment_date',
                     'ready_date',
-                    'status',
                     'analysis_name',
                     'analysis_description',
                     'result_description',

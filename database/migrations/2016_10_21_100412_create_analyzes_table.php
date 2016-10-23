@@ -18,13 +18,11 @@ class CreateAnalyzesTable extends Migration
             $table->integer('inpatient_id')->unsigned();
             $table->integer('doctor_id')->unsigned();
             $table->timestamp('appointment_date');
-            $table->timestamp('ready_date');
-            $table->boolean('status')->default(0);
+            $table->timestamp('ready_date')->nullable();
             $table->string('analysis_name');
             $table->string('analysis_description')->nullable();
             $table->string('result_description');
             $table->string('paths_to_files')->nullable();
-
 
             $table->softDeletes();
             $table->timestamps();

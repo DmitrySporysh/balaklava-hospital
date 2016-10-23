@@ -63,11 +63,10 @@ class AnalyzesTableSeeder extends Seeder
                     'inpatient_id' => $index,
                     'doctor_id' => 4 * (($index + $analysis_index) % 3) + 1,
                     'appointment_date' => '2016-10-' . ($analysis_index + 1),
-                    'ready_date' => '2016-10-' . ($analysis_index + 2),
+                    'ready_date' => (($analysis_index + $index) % 3 != 0) ? ('2016-10-' . ($analysis_index + 2)) : null,
                     'analysis_name' => $analysis_name[$analysis_index],
                     'analysis_description' => $analysis_description[$analysis_index],
                     'result_description' => $result_description[$analysis_index],
-                    'status' => 1
                 ]);
         }
     }

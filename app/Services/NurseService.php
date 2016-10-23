@@ -82,8 +82,7 @@ class NurseService implements NurseServiceInterface
     public function getDepartmentChambers($department_id)
     {
         try {
-            $data['department'] = $this->department_repo->find($department_id, array('department_name'));
-            $data['chambers'] = $this->chamber_repo->getNotEmptyChambersByDepartmentNum($department_id,
+            $data = $this->chamber_repo->getNotEmptyChambersByDepartmentNum($department_id,
                 array('id', 'number', 'beds_occupied_count'));
             return $data;
         } catch (DALException $e) {
