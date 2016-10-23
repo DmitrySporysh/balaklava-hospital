@@ -74,16 +74,47 @@ doctorAppControllers.controller('PatientsController', function ($scope, $http, t
 
 
 doctorAppControllers.controller('PatientFullController', function ($scope, $http, testFactory) {
-    $scope.area_change = function (template){
-        $scope.active_menu=template;
-    };
-
     $scope.testFactory=testFactory;
-    
     $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id).success(function(patients) {
         $scope.patient_info = patients[0];
-        console.log($scope.patient_info)
     });
+
+    $scope.area_change = function (template){
+        $scope.active_menu=template;
+
+        switch(template) {
+            case 'tab-general' :
+                $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id).success(function(patients) {
+                    $scope.patient_info = patients[0];
+                    console.log($scope.patient_info)
+                });
+                break;
+            case 'tab-results' :
+                $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id+'/analyzes').success(function(patients) {
+                    $scope.analizes = patients[0];
+                    console.log($scope.analizes);
+                });
+                break;
+            case 'tab-dynamic' :
+                $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id+'/inspections').success(function(patients) {
+                    $scope.patient_info = patients[0];
+                    console.log($scope.patient_info);
+                });
+                break;
+            case 'tab-prescriptions' :
+                $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id+'/medical_appointments').success(function(patients) {
+                    $scope.patient_info = patients[0];
+                    console.log($scope.patient_info);
+                });
+                break;
+            case 'tab-first-inspection' :
+                $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id+'/inspection_protocol').success(function(patients) {
+                    $scope.patient_info = patients[0];
+                    console.log($scope.patient_info);
+                });
+                break;
+        }
+    };
 });
 
 

@@ -1,4 +1,4 @@
-<div class=" plain-table ">
+<div class=" plain-table">
     <div class="plain-table__caption">
         <span class="plain-table__icon ti-marker"></span>Результаты анализов
     </div>
@@ -6,13 +6,26 @@
         <tbody class='plain-table__value'>
             <thead class="plain-table__heading">
                 <tr>
-                    <th>Тип анализа</th>
-                    <th>Доп данные</th>
+                    <th>Анализ</th>
+                    <th>Описание</th>
+                    <th>Дата назначения</th>
+                    <th>Назначен</th>
+                    <th>Готовность</th>
                     <th>Результат</th>
-                    <th>Дата сдачи</th>
-                    <th>Дата результата</th>
+                    <th>Файлы</th>
                 </tr>
             </thead>
+        </tbody>
+        <tbody class='plain-table__value'>
+            <tr ng-repeat="analysis in analizes">
+                <td>{{analysis.analysis_name}}</td>
+                <td>{{analysis.analysis_description}}</td>
+                <td>{{analysis.appointment_date}}</td>
+                <td>{{analysis.doctor_fio}}</td>
+                <td>{{analysis.ready_date}}</td>
+                <td>{{analysis.result_description}}</td>
+                <td>{{analysis.paths_to_files}}</td>
+            </tr>
         </tbody>
     </table>
 </div>

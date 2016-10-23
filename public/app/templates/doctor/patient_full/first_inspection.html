@@ -1,21 +1,124 @@
-<div class=" plain-table ">
-    <div class="plain-table__caption">
-        <span class="plain-table__icon ti-marker"></span>Пациенты в отделении
-    </div>
-    <table class="plain-table__table">
-        <thead class="plain-table__heading">
-        <tr>
-            <th>ФИО</th>
-            <th>Дата рождения</th>
-            <th>Пол</th>
-            <th>№ Палаты</th>
-            <th>Телефон</th>
-            <th>Дата обращения</th>
-            <th>№ Страховки</th>
-        </tr>
-        </thead>
-        <tbody class='plain-table__value'>
+<ul class="accordion">
+    <li>
+        <div class="accordion__title  accordion__title_active">
+            <span class="accordion__icon ti-support"></span>Протокол осмотра
+        </div>
+        <div  class="accordion__content">
+            <div class="plain-table__table-wrapper clearfix">
+                <table class="plain-table__table">
+                    <tbody class='plain-table__value plain-table__value_non-bordered'>
+                    <tr>
+                        <td class="patient-form__label">Жалобы</td>
+                        <td class="patient-form__value">{{patient_info.complaints}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Из анамнеза</td>
+                        <td class="patient-form__value">{{patient_info.from_anamnesis}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">В анамнезе</td>
+                        <td class="patient-form__value">{{patient_info.in_anamnesis}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Страховой анамнез</td>
+                        <td class="patient-form__value">{{patient_info.insurance_anamnesis}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Алерго анамнез</td>
+                        <td class="patient-form__value">{{patient_info.allergoanamnez}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Состояние больного</td>
+                        <td class="patient-form__value">{{patient_info.condition}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Сознание</td>
+                        <td class="patient-form__value">{{patient_info.consciousness}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Телосложение</td>
+                        <td class="patient-form__value">{{patient_info.body_type}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Питание</td>
+                        <td class="patient-form__value">{{patient_info.food}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Кожные покровы</td>
+                        <td class="patient-form__value">{{patient_info.skin}}---{{patient_info.skin_extended}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Тургор</td>
+                        <td class="patient-form__value">{{patient_info.turgor}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Зрачки</td>
+                        <td class="patient-form__value">{{patient_info.pupils}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Язык</td>
+                        <td class="patient-form__value">{{patient_info.tongue}}---{{patient_info.tongue_extended}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Аускультативно над лёгкими дыхание</td>
+                        <td class="patient-form__value">{{patient_info.auscultation}}---{{patient_info.auscultation_extended}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Перкуторно над лёгкими звук</td>
+                        <td class="patient-form__value">{{patient_info.percussion_sound}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">ЧДД</td>
+                        <td class="patient-form__value">{{patient_info.respiratory_movements_frequency_ChDD}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Тоны сердца</td>
+                        <td class="patient-form__value">{{patient_info.heart_tones}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Ритм</td>
+                        <td class="patient-form__value">{{patient_info.heart_rhythm}}---{{patient_info.heart_rhythm_extended}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Границы сердца</td>
+                        <td class="patient-form__value">{{patient_info.heart_boundaries}}---{{patient_info.heart_boundaries_extended}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">ЧСС</td>
+                        <td class="patient-form__value">{{patient_info.heart_rate_ChSS}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Мышечный тонус</td>
+                        <td class="patient-form__value">{{patient_info.muscle_tone}}---{{patient_info.muscle_tone_extended}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Движение в суставах</td>
+                        <td class="patient-form__value">{{patient_info.joint_motion}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Плотность живота</td>
+                        <td class="patient-form__value">{{patient_info.stomach_density}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Болезненность живота</td>
+                        <td class="patient-form__value">{{patient_info.stomach_pain}}---{{patient_info.stomach_extended}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">В позе Ромберга</td>
+                        <td class="patient-form__value">{{patient_info.in_romberg_position}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Походка</td>
+                        <td class="patient-form__value">{{patient_info.gait}}---{{patient_info.gait_extended}}</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Стул</td>
+                        <td class="patient-form__value">{{patient_info.stools}}---{{patient_info.stools_extended}}</td>
+                    </tr>
+                    </tbody>
+                </table>
 
-        </tbody>
-    </table>
-</div>
+            </div>
+        </div>
+    </li>
+</ul>
