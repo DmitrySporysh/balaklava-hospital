@@ -89,6 +89,28 @@ class PatientService implements PatientServiceInterface
         }
     }
 
+    public function getPatientsArchive($per_page)
+    {
+        try {
+            $columns = [
+                'fio',
+                'insurance_number',
+                'sex',
+                'inpatient.id as inpatient_number'
+                //'diseases.id as disease_number'  //TODO номер болезни
+            ];
+
+            $data = $this->received_patient_repo->getAllPatientsSortedAndFiltered($doctor_id, $page_size);
+            return $data;
+        } catch (DALException $e) {
+            $message = 'Error while creating withdraw patient request(DAL Error)';
+            throw new PatientServiceException($message, 0, $e);
+        } catch (Exception $e) {
+            $message = 'Error while creating withdraw patient request(UnknownError)';
+            throw new PatientServiceException($message, 0, $e);
+        }
+    }
+
     public function getInpatientWithGeneralInfo($inpatient_id)
     {
         try {
