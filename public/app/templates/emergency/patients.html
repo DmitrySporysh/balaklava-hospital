@@ -20,10 +20,6 @@
             <thead class="plain-table__heading">
             <tr>
                 <th>ФИО</th>
-                <th>Занятость</th>
-                <th>Дата рождения</th>
-                <th>Семейное положение</th>
-                <th>Адрес</th>
                 <th>Телефон</th>
                 <th>Дата обращения</th>
                 <th>Тип обращения</th>
@@ -33,10 +29,6 @@
             <tbody class='plain-table__value'>
             <tr ng-repeat="patient in patients_info">
                 <td>{{patient.fio}}</td>
-                <td>{{patient.work_place}}</td>
-                <td>{{patient.birth_date}}</td>
-                <td>{{patient.marital_status}}</td>
-                <td>{{patient.residential_address}}</td>
                 <td>{{patient.phone}}</td>
                 <td>{{patient.received_date}}</td>
                 <td>{{patient.received_type}}</td>
