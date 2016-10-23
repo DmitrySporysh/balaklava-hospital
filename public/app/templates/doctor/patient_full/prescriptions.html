@@ -5,17 +5,17 @@
     <table class="plain-table__table">
         <thead class="plain-table__heading">
         <tr>
-            <th>ФИО</th>
-            <th>Дата рождения</th>
-            <th>Пол</th>
-            <th>№ Палаты</th>
-            <th>Телефон</th>
-            <th>Дата обращения</th>
-            <th>№ Страховки</th>
+            <th>Дата назначения</th>
+            <th>Описание</th>
+            <th>Врач</th>
         </tr>
         </thead>
         <tbody class='plain-table__value'>
-
+        <tr ng-repeat="prescription in prescriptions">
+            <td>{{prescription.date}}</td>
+            <td>{{prescription.description}}</td>
+            <td>{{prescription.doctor_fio}}</td>
+        </tr>
         </tbody>
     </table>
 </div>

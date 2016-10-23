@@ -90,21 +90,31 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
                 });
                 break;
             case 'tab-results' :
-                $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id+'/analyzes').success(function(patients) {
-                    $scope.analizes = patients[0];
+                $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id+'/analyzes').success(function(analizes) {
+                    $scope.analizes = analizes;
                     console.log($scope.analizes);
                 });
                 break;
             case 'tab-dynamic' :
-                $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id+'/inspections').success(function(patients) {
-                    $scope.patient_info = patients[0];
-                    console.log($scope.patient_info);
-                });
-                break;
+                {
+                    $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id+'/inspections').success(function(inspections) {
+                        $scope.inspections = inspections;
+                        console.log($scope.inspections);
+                    });
+                    $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id+'/dressings').success(function(dressings) {
+                        $scope.dressings = dressings;
+                        console.log($scope.dressings);
+                    });
+                    $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id+'/operations').success(function(operations) {
+                        $scope.operations = operations;
+                        console.log($scope.operations);
+                    });
+                    break;
+                }
             case 'tab-prescriptions' :
-                $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id+'/medical_appointments').success(function(patients) {
-                    $scope.patient_info = patients[0];
-                    console.log($scope.patient_info);
+                $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id+'/medical_appointments').success(function(prescriptions) {
+                    $scope.prescriptions = prescriptions;
+                    console.log($scope.prescriptions);
                 });
                 break;
             case 'tab-first-inspection' :
