@@ -79,6 +79,7 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
     };
 
     $scope.testFactory=testFactory;
+    
     $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id).success(function(patients) {
         $scope.patient_info = patients[0];
         console.log($scope.patient_info)
