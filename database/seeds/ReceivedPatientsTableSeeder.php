@@ -11,70 +11,40 @@ class ReceivedPatientsTableSeeder extends Seeder
      */
     public function run()
     {
-        $fioMale = array(
-            'Иванов Иван Иванович', 'Петров Петр Петрович', 'Сидоров Иван Петрович'
-
-        , 'Кащук Павел Иванович', 'Закипелов Дмитрий Иванович', 'Попов Дмитрий Николаевич'
-        , 'Староверов Павел Иванович', 'Староверов Анна Николаевна', 'Сидорова Юлий Павловна',
-            'Карпов Петр Петрович'
-        );
-
-        $fioFemale = array
-        (
-            'Иванова Анна Ивановна', 'Петрова Анна Петровна', 'Сидорова Анна Павловна'
-        , 'Сидорова Юлия Николаевна', 'Попова Юлия Николаевна', 'Петрова Екатерина Андреевна',
-            'Иванова Анна Ивановна', 'Петрова Анна Петровна', 'Сидорова Анна Павловна'
-        , 'Сидорова Юлия Николаевна', 'Попова Юлия Николаевна'
-        );
+        $str = Storage::get('/public/patients.txt');
+        $fios = explode("\r\n", $str);
 
         $received_types = array('плановое', 'эксренное', 'по скорой', 'другое');
         $marital_status = array('в браке', 'не в браке');
 
-        foreach (range(1, 20) as $index) {
+        foreach (range(1, 40) as $index) {
             DB::table('received_patients')->insert([
                 'patient_id' => $index,
                 'registration_nurse_id' => 1 + ((($index - 1) % 4) * 4),
-                'fio' => $fioMale[$index % 10],
+                'fio' => $fios[$index-1],
                 'marital_status' => $marital_status[$index % 2],
                 'received_date' => '2016-10-'. ($index % 30 + 1),
                 'work_place' => 'Фирма № '.($index % 8 + 1),
                 'residential_address' => 'г.Севастополь, ул.Вакуленчука №'.$index,
                 'registration_address' => 'г.Севастополь, ул.Гагарина №'.$index,
-                'phone' => '797800007'.($index % 10 * 10),
+                'phone' => '797800007'.($index % 20 * 10),
                 'complaints' => 'у пацинта что-то болит. Говорит "мне прям ваще фигово"',
                 'received_type' => $received_types[$index % 4],
                 'inspection_protocol_id' => $index
             ]);
         }
 
-        foreach (range(21, 40) as $index) {
+        foreach (range(41, 300) as $index) {
             DB::table('received_patients')->insert([
                 'patient_id' => $index,
                 'registration_nurse_id' => 1 + ((($index - 1) % 4) * 4),
-                'fio' => $fioFemale[$index % 10],
-                'marital_status' => $marital_status[$index % 2],
-                'received_date' => '2016-10-'. ($index % 30 + 1),
-                'work_place' => 'Фирма № '.($index % 8 + 1),
-                'residential_address' => 'г.Севастополь, ул.Вакуленчука №'.$index,
-                'registration_address' => 'г.Севастополь, ул.Гагарина №'.$index,
-                'phone' => '797800007'.($index % 10 * 10),
-                'complaints' => 'у пацинта что-то болит. Говорит "мне прям ваще фигово"',
-                'received_type' => $received_types[$index % 4],
-                'inspection_protocol_id' => $index
-            ]);
-        }
-
-        foreach (range(41, 65) as $index) {
-            DB::table('received_patients')->insert([
-                'patient_id' => $index,
-                'registration_nurse_id' => 1 + ((($index - 1) % 4) * 4),
-                'fio' => $fioFemale[$index % 10],
+                'fio' => $fios[$index - 1],
                 'marital_status' => $marital_status[$index % 2],
                 'received_date' => '2016-10-10 08:'.($index % 60).':00',
                 'work_place' => 'Фирма № '.($index % 25 + 1),
                 'residential_address' => 'г.Севастополь, ул.Вакуленчука №'.$index,
                 'registration_address' => 'г.Севастополь, ул.Гагарина №'.$index,
-                'phone' => '797800007'.($index % 10 * 10),
+                'phone' => '79781345'.($index * 10),
                 'complaints' => 'у пацинта что-то болит. Говорит "мне прям ваще фигово"',
                 'received_type' => $received_types[$index % 4]
             ]);
