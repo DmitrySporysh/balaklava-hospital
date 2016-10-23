@@ -77,18 +77,14 @@ class InpatientRepository extends Repository implements InpatientRepositoryInter
         return array();
     }
 
-    public function getInpatientsGeneralInfoByChamberId($chamber_id)
+    public function getInpatientsGeneralInfoByChamberId($chamber_id, $columns)
     {
         try {
             $data = DB::table('inpatients')
                 ->where('inpatients.chamber_id','=', $chamber_id)
                 ->join('received_patients', 'inpatients.received_patient_id', '=', 'received_patients.id')
                 ->join('patients', 'received_patients.patient_id', '=', 'patients.id')
-                ->select(
-                    'inpatients.id as inpatients_id',
-                    'fio',
-                    'diagnosis'
-                )
+                ->select($columns)
                 ->get();
             if ($data == null) {
                 return array();

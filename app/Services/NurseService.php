@@ -82,8 +82,10 @@ class NurseService implements NurseServiceInterface
     public function getDepartmentChambers($department_id)
     {
         try {
-            $data = $this->chamber_repo->getNotEmptyChambersByDepartmentNum($department_id,
-                array('id', 'number', 'beds_occupied_count'));
+            //$data['department'] = $this->department_repo->find($department_id, array('department_name'));
+            //$data['chambers'] = $this->chamber_repo->getNotEmptyChambersByDepartmentNum($department_id,
+            //    array('id', 'number', 'beds_occupied_count'));
+            $data = $this->chamber_repo->getNotEmptyChambersByDepartmentNum($department_id, array('id', 'number', 'beds_occupied_count'));
             return $data;
         } catch (DALException $e) {
             $message = 'Error while creating withdraw departments request(DAL Error)';
@@ -97,8 +99,9 @@ class NurseService implements NurseServiceInterface
     public function getChamberWithPatients($chamber_id)
     {
         try {
-            $data['chamber'] = $this->chamber_repo->where('id', $chamber_id, '=', array('id as chamber_id', 'number'));
-            $data['inpatients'] = $this->inpatient_repo->getInpatientsGeneralInfoByChamberId($chamber_id);
+            //$data['chamber'] = $this->chamber_repo->where('id', $chamber_id, '=', array('id as chamber_id', 'number'));
+            //$data['inpatients'] = $this->inpatient_repo->getInpatientsGeneralInfoByChamberId($chamber_id);
+            $data = $this->inpatient_repo->getInpatientsGeneralInfoByChamberId($chamber_id, ['id', 'inpatients.id']);
             return $data;
         } catch (DALException $e) {
             $message = 'Error while creating withdraw chamber request(DAL Error)';
