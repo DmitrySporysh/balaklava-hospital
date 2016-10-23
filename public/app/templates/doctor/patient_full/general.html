@@ -1,49 +1,99 @@
 <div class=" plain-table " ng-controller='PatientFullController'>
-    <div class="plain-table__caption">
-        <span class="plain-table__icon ti-marker"></span>Основные данные
-    </div>
-    <table class="plain-table__table">
-        <tbody class='plain-table__value'>
-        <tr>
-            <td>ФИО</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Дата рождения</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Пол</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>№ Палаты</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Телефон</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Дата обращения</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>№ Страховки</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-        </tr>
-        </tbody>
-    </table>
+    <ul class="accordion">
+        <li>
+            <div class="accordion__title  accordion__title_active">
+                <span class="accordion__icon ti-support"></span>Основные данные
+            </div>
+            <div  class="accordion__content">
+                <div class="plain-table__table-wrapper clearfix">
+                    <table class="plain-table__table">
+                        <tbody class='plain-table__value plain-table__value_non-bordered'>
+                        <tr>
+                            <td class="patient-form__label">ФИО</td>
+                            <td class="patient-form__value">
+                                <span >{{patient_info.fio}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="patient-form__label">Пол</td>
+                            <td class="patient-form__value">
+                                <span >{{patient_info.sex}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="patient-form__label">Место работы/учебы</td>
+                            <td class="patient-form__value">
+                                <span >{{patient_info.work_place}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="patient-form__label">Дата рождения</td>
+                            <td class="patient-form__value">
+                                <span >{{patient_info.birth_date}}</span>
+                                <!-- <span class="ti-calendar patient__icon"></span>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="patient-form__label">Семейное положение</td>
+                            <td class="patient-form__value">
+                                <span >{{patient_info.marital_status}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="patient-form__label">Адрес проживания</td>
+                            <td class="patient-form__value">
+                                <span >{{patient_info.residential_address}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="patient-form__label">Адрес по паспорту</td>
+                            <td class="patient-form__value">
+                                <span >{{patient_info.registration_address}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="patient-form__label">Телефон</td>
+                            <td class="patient-form__value">
+                                <span >{{patient_info.phone}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="patient-form__label">Дата обращения</td>
+                            <td class="patient-form__value">
+                                <span >{{patient_info.received_date}}</span>
+                                <!--<span class="ti-calendar patient__icon"></span>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="patient-form__label">Время обращения</td>
+                            <td class="patient-form__value">
+                                <span >{{patient_info.received_date}}</span>
+                                <!--<span class="ti-time patient__icon"></span>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="patient-form__label">Тип обращения</td>
+                            <td class="patient-form__value">
+                                <span >{{patient_info.received_type}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="patient-form__label">№ Страховки</td>
+                            <td class="patient-form__value">
+                                <span >{{patient_info.insurance_number}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="patient-form__label">Жалобы</td>
+                            <td class="patient-form__value">
+                                <textarea ng-model="patient.complaints" name="complaints" placeholder="{{patient_info.complaints}}" class="patient-form__textarea" rows="8" > </textarea>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </li>
+    </ul>
 </div>

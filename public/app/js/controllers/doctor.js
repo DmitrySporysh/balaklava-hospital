@@ -25,11 +25,18 @@ var doctorAppControllers = angular.module('doctorAppControllers', [])
         }
     });
 
-doctorAppControllers.controller('PatientFullController', ['$scope', '$http', function ($scope, $http) {
-    $scope.area_change = function (template){
-        $scope.active_menu=template;
+
+doctorAppControllers.controller('EmergencyController', function ($scope, $http, testFactory) {
+    $http.get('doctor/emergency').success(function(patients) {
+        $scope.patients_info = patients.data;
+    });
+
+    $scope.testFactory=testFactory;
+
+    $scope.follow_id = function (id){
+        $scope.testFactory.patient_full_id = id;
     };
-}]);
+});
 
 doctorAppControllers.controller('EmergencyPersonController', function ($scope, $http, testFactory) {
     $scope.testFactory=testFactory;
@@ -44,8 +51,6 @@ doctorAppControllers.controller('EmergencyPersonController', function ($scope, $
             if (patient==undefined)
                 patient={};
             patient.id=$scope.testFactory.patient_full_id;
-            console.log('тестим отправку');
-            console.log(patient);
             $http.post("/doctor/addNewInspectionProtocol", patient).success(function (answ) {
                 $scope.response=answ;
 
@@ -54,24 +59,31 @@ doctorAppControllers.controller('EmergencyPersonController', function ($scope, $
     };
 });
 
-doctorAppControllers.controller('EmergencyController', function ($scope, $http, testFactory) {
-    $http.get('doctor/emergency').success(function(patients) {
-        $scope.patients_info = patients.data;
-    });
-
-    $scope.testFactory=testFactory;
-
-    $scope.follow_id = function (id){
-        $scope.testFactory.patient_full_id = id;
-    };
-});
-
-doctorAppControllers.controller('PatientsController', ['$scope', '$http', function ($scope, $http) {
+doctorAppControllers.controller('PatientsController', function ($scope, $http, testFactory) {
     $http.get('doctor/inpatients').success(function(patients) {
         $scope.patients_info = patients.data;
     });
-}]);
 
+
+    $scope.testFactory=testFactory;
+    $scope.follow_id = function (id){
+        $scope.testFactory.patient_full_id = id;
+
+    };
+});
+
+
+doctorAppControllers.controller('PatientFullController', function ($scope, $http, testFactory) {
+    $scope.area_change = function (template){
+        $scope.active_menu=template;
+    };
+
+    $scope.testFactory=testFactory;
+    $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id).success(function(patients) {
+        $scope.patient_info = patients[0];
+        console.log($scope.patient_info)
+    });
+});
 
 
 /*------------FACTORIES------------*/

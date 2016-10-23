@@ -27,7 +27,7 @@
             </thead>
             <tbody class='plain-table__value'>
             <tr ng-repeat="patient in patients_info">
-                <td><a href="/doctor#/patient_full">{{patient.fio}}</a></td>
+                <td ng-click=follow_id(patient.inpatient_id)><a href="/doctor#/patient_full">{{patient.fio}}</a></td>
                 <td>{{patient.birth_date}}</td>
                 <td>{{patient.sex}}</td>
                 <td>{{patient.number}}</td>
