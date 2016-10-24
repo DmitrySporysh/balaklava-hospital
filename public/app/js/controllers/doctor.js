@@ -133,10 +133,20 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
 
 
 doctorAppControllers.controller('ArchiveController', function ($scope, $http, testFactory) {
-    $http.get('emergency/patients').success(function(patients) {
+    $http.get('doctor/archive').success(function(patients) {
         $scope.patients_info = patients.data;
-        console.log($scope.patients_info);
     });
+
+    $scope.counter = 0;
+    $scope.change = function() {
+        $scope.counter++;
+        console.log($scope.filter);
+        $http.get("/doctor/archive_filter", $scope.filter).success(function (answ) {
+            $scope.response=answ;
+            console.log(answ);
+        });
+    };
+
 });
 
 

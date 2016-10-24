@@ -14,32 +14,26 @@
             <thead class="search-table__heading">
                 <tr class="search-table__heading-name">
                     <th>ФИО</th>
-                    <th>Дата рождения</th>
-                    <th>Пол</th>
-                    <th>№ Палаты</th>
-                    <th>Телефон</th>
-                    <th>Дата обращения</th>
                     <th>№ Страховки</th>
+                    <th>Пол</th>
+                    <th>Номер карточки</th>
+                    <th>Код болезни</th>
                 </tr>
                 <tr class="search-table__heading-filter">
+                    <th><input ng-change="change()" ng-model="filter.fio" class="search-table__input" name="work_place" value="" type="text"></th>
+                    <th><input ng-change="change()" ng-model="filter.insurance_number" class="search-table__input" name="work_place" value="" type="text"></th>
+                    <th><input ng-change="change()" ng-model="filter.sex" class="search-table__input" name="work_place" value="" type="text"></th>
+                    <th><input ng-change="change()" ng-model="filter.inpatient_number" class="search-table__input" name="work_place" value="" type="text"></th>
                     <th><input  class="search-table__input" name="work_place" value="" type="text"></th>
-                    <th><input class="search-table__input" name="work_place" value="" type="text"></th>
-                    <th><input class="search-table__input" name="work_place" value="" type="text"></th>
-                    <th><input class="search-table__input" name="work_place" value="" type="text"></th>
-                    <th><input ng-model="searchText" class="search-table__input" name="work_place" value="" type="text"></th>
-                    <th><input class="search-table__input" name="work_place" value="" type="text"></th>
-                    <th><input class="search-table__input" name="work_place" value="" type="text"></th>
                 </tr>
             </thead>
             <tbody class='search-table__value'>
                 <tr ng-repeat="patient in patients_info| filter:searchText">
                     <td>{{patient.fio}}</a></td>
-                    <td>{{patient.birth_date}}</td>
-                    <td>{{patient.sex}}</td>
-                    <td>{{patient.number}}</td>
-                    <td>{{patient.phone}}</td>
-                    <td>{{patient.received_date}}</td>
                     <td>{{patient.insurance_number}}</td>
+                    <td>{{patient.sex}}</td>
+                    <td>{{patient.inpatient_number}}</td>
+                    <td>{{patient.phone}}</td>
                 </tr>
             </tbody>
         </table>
