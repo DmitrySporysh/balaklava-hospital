@@ -1,5 +1,39 @@
 <ul class="accordion">
     <li>
+        <form name="NewCondition" class="patient-form">
+            <div class="accordion__title  accordion__title_active">
+                <span class="accordion__icon ti-support"></span>Добавить состояние
+            </div>
+            <div  class="accordion__content">
+                <div class="plain-table__table-wrapper clearfix">
+                    <table class="plain-table__table">
+                        <tbody class='plain-table__value plain-table__value_non-bordered'>
+                        <tr>
+                            <td class="patient-form__label">Состоние</td>
+                            <td class="patient-form__value">
+                                <input ng-model="condition.state_type" class="search-table__input" name="work_place" value="" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="patient-form__label">результат осмотра</td>
+                            <td class="patient-form__value">
+                                <input ng-model="condition.description_extended" class="search-table__input" name="work_place" value="" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="patient-form__label">сабмить</td>
+                            <td class="patient-form__value">
+                                <input class="patient-form__submit" ng-click="save_cond(condition, NewCondition)" type="submit" value="Сохранить">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </form>
+    </li>
+    <li>
         <div class="accordion__title  accordion__title_active">
             <span class="accordion__icon ti-support"></span>Стационары
         </div>
@@ -111,3 +145,4 @@
         </div>
     </li>
 </ul>
+

@@ -81,7 +81,7 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
         $scope.patient_info = patients[0];
     });
 
-    $scope.save = function (patient, PatientProtocol){
+    $scope.save_analiz = function (patient, PatientProtocol){
         $scope.response={};
         if(PatientProtocol.$valid){
             if (patient==undefined)
@@ -94,6 +94,21 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
             });
         }
     };
+
+    $scope.save_cond = function (patient, PatientProtocol){
+        $scope.response={};
+        if(PatientProtocol.$valid){
+            if (patient==undefined)
+                patient={};
+            patient.id=$scope.testFactory.patient_full_id;
+            console.log(patient);
+            $http.post("doctor/inpatient/"+$scope.testFactory.patient_full_id+"/addDressing", patient).success(function (answ) {
+                $scope.response=answ;
+                console.log(answ);
+            });
+        }
+    };
+
 
     $scope.area_change = function (template){
         $scope.active_menu=template;
