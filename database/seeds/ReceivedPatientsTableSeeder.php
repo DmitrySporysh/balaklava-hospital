@@ -11,7 +11,7 @@ class ReceivedPatientsTableSeeder extends Seeder
      */
     public function run()
     {
-        $str = Storage::get('/public/patients.txt');
+        $str = File::get('database/seeds/patients.txt');
         $fios = explode("\r\n", $str);
 
         $received_types = array('плановое', 'эксренное', 'по скорой', 'другое');
