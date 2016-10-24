@@ -20,5 +20,7 @@ interface ReceivedPatientRepositoryInterface extends RepositoryInterface
 
     public function getReceivedPatientInspectionProtocolInfo($received_patient_id);
 
+    public function getAllPatientsSortedAndFiltered($page_size, $columns);
+
     public function addNewInspectionProtocol($inspection_protocol_data, $received_patient_id);
 }

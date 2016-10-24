@@ -100,6 +100,28 @@ class ReceivedPatientRepository extends Repository implements ReceivedPatientRep
         return array();
     }
 
+    public function getAllPatientsSortedAndFiltered($page_size, $columns)
+    {
+        try {
+            $data = DB::table('received_patients')
+                ->join('patients', 'received_patients.patient_id', '=', 'patients.id')
+                ->join('inpatients', 'inpatients.received_patient_id', '=', 'received_patients.id')
+                ->select($columns)
+                ->orderBy('received_patients.fio', 'ASC')
+                ->paginate($page_size);
+            if ($data == null) {
+                return array();
+            }
+        } catch (Exception $e) {
+            $message = 'Error while finding element using ' . $this->model() . $e->getMessage();
+            throw new DALException($message, 0, $e);
+        }
+
+        if ($data != null) return $data;
+
+        return array();
+    }
+
     public function getReceivedPatientInspectionProtocolInfo($received_patient_id)
     {
         $columns = [

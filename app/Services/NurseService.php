@@ -101,7 +101,7 @@ class NurseService implements NurseServiceInterface
         try {
             //$data['chamber'] = $this->chamber_repo->where('id', $chamber_id, '=', array('id as chamber_id', 'number'));
             //$data['inpatients'] = $this->inpatient_repo->getInpatientsGeneralInfoByChamberId($chamber_id);
-            $data = $this->inpatient_repo->getInpatientsGeneralInfoByChamberId($chamber_id, ['id', 'inpatients.id']);
+            $data = $this->inpatient_repo->getInpatientsGeneralInfoByChamberId($chamber_id, ['fio', 'inpatients.id']);
             return $data;
         } catch (DALException $e) {
             $message = 'Error while creating withdraw chamber request(DAL Error)';

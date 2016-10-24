@@ -119,6 +119,16 @@ class DoctorController extends Controller
         return $response;
     }
 
+    public function getPatientsArchive(Request $request)
+    {
+        $per_page = ($request->has('per_page')) ? $request->per_page : 20;
+
+        $response = $this->patient_service->getPatientsArchive($per_page);
+        //Debugbar::info($response);
+        //return view('welcome', ['response' => $response]);
+        return $response;
+    }
+
     public function addNewInspectionProtocol(Request $request)
     {
         $doctor_id = 2; //TODO брать ид авторизованного доктора
