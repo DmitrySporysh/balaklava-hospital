@@ -26,6 +26,28 @@ doctorApp.config(['$routeProvider', function($routeProvider) {
         templateUrl: 'app/templates/doctor/archive.html',
         controller: 'ArchiveController'
     }).
+        /*-------*/
+    when('/addInspection', {
+        templateUrl: 'app/templates/doctor/emergency_person.html',
+        controller: 'addInspection'
+    }).
+    when('/addAnalysis', {
+        templateUrl: 'app/templates/doctor/archive.html',
+        controller: 'addAnalysis'
+    })
+    .when('/addDressing', {
+        templateUrl: 'app/templates/doctor/emergency_person.html',
+        controller: 'addDressing'
+    })
+    .when('/addOperation', {
+        templateUrl: 'app/templates/doctor/archive.html',
+        controller: 'addOperation'
+    })
+    .when('/addMedicalAppointment', {
+        templateUrl: 'app/templates/doctor/archive.html',
+        controller: 'addMedicalAppointment'
+    }).
+        /*--------------*/
     otherwise({
         redirectTo: '/'
     });
