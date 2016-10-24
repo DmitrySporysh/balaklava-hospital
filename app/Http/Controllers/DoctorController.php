@@ -139,4 +139,14 @@ class DoctorController extends Controller
         return $response;
     }
 
+    public function addNewInpatientAnalysis(Request $request)
+    {
+        $doctor_id = 2; //TODO брать ид авторизованного доктора
+
+        $response = $this->doctor_service->addNewInpatientAnalysis($request, $doctor_id);
+
+        //Debugbar::info($response);
+        return $response;
+    }
+
 }

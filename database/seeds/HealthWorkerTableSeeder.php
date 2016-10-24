@@ -11,21 +11,12 @@ class HealthWorkerTableSeeder extends Seeder
      */
     public function run()
     {
-        $fio = array(
-            'Иванов Иван Иванович', 'Петров Петр Петрович', 'Сидоров Иван Петрович'
-        , 'Иванова Анна Ивановна', 'Петрова Анна Петровна', 'Сидорова Анна Павловна'
-        , 'Сидорова Юлия Николаевна', 'Попова Юлия Николаевна', 'Петрова Екатерина Андреевна'
-        , 'Кащук Павел Иванович', 'Закипелов Дмитрий Иванович', 'Попов Дмитрий Николаевич'
-        , 'Староверов Павел Иванович', 'Староверов Анна Николаевна', 'Сидорова Юлий Павловна',
-            'Карпов Петр Петрович', 'Русакова Алла Федотовна', 'Данилов Ефим Варламович',
-            'Харитонова Екатерина Митрофановна', 'Панов Протасий Сергеевич', 'Макаров Протасий Еремеевич',
-            'Зиновьев Якун Кондратович', 'Галкина Ольга Германновна', 'Горбунова Элеонора Вячеславовна',
-            'Большаков Онисим Романович', 'Харитонов Федосей Еремеевич', 'Путина Зоя Антониновна',
-            'Блинов Анатолий Алексеевич', 'Павлова Синклитикия Георгьевна', 'Жданов Валерий Юрьевич'
-        );
+        $departments_cheifs_fios = explode("\r\n", File::get('database/seeds/departments_cheifs.txt'));
+        $med_personal_fios = explode("\r\n", File::get('database/seeds/med_personal.txt'));
+
 
         $post = array(
-            'заведующий отделением', 'медсестра', 'врач', 'мед персонал'
+            'Медсестра', 'врач', 'Мед персонал'
         );
 
         $description = [
@@ -39,12 +30,22 @@ class HealthWorkerTableSeeder extends Seeder
             'Усидчивый, внимательный'
         ];
 
-        foreach (range(1, 30) as $index) {
+        foreach (range(1, 18) as $index) {
             DB::table('health_workers')->insert([
-                'fio' => $fio[$index % count($fio)],
+                'fio' => $departments_cheifs_fios[$index],
                 'address' => 'г.Севастополь, ул.Вакуленчука №' . $index . ', д.' . ($index + 7) . ', кв.' . ($index + 37),
                 'birth_date' => '19' . (65 + $index) . '-' . ($index % 12 + 1) . '-' . $index,
-                'post' => $post[$index % 4],
+                'post' => 'Заведующий отделением',
+                'description' => $description[$index % 8]
+            ]);
+        }
+
+        foreach (range(1, count($med_personal_fios) - 1) as $index) {
+            DB::table('health_workers')->insert([
+                'fio' => $med_personal_fios[$index],
+                'address' => 'г.Севастополь, ул.Вакуленчука №' . $index . ', д.' . ($index + 7) . ', кв.' . ($index + 37),
+                'birth_date' => '19' . (65 + $index % 32) . '-' . ($index % 12 + 1) . '-' . $index,
+                'post' => $post[$index % 3],
                 'description' => $description[$index % 8]
             ]);
         }

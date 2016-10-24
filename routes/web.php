@@ -45,6 +45,10 @@ Route::get('doctor/archive', 'DoctorController@getPatientsArchive'); //doctor#/
 
 Route::post('doctor/addNewInspectionProtocol', 'DoctorController@addNewInspectionProtocol');
 
+Route::post('doctor/inpatient/{id}/addAnalysis', 'DoctorController@addNewInpatientAnalysis');
+
+Route::post('doctor/inpatient/{id}/addDressing', 'DoctorController@addNewInspectionDressing');
+
 Route::get('doctor', function () {
     return view('layouts.doctor_room');
 });
