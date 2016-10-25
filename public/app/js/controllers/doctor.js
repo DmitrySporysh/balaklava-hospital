@@ -91,7 +91,8 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
             console.log(patient);
             $http.post("doctor/inpatient/addAnalysis", patient).success(function (answ) {
                 $scope.response=answ;
-                    console.log(answ);
+                $scope.analizes.unshift(answ);
+                console.log($scope.analizes);
             });
         }
     };
@@ -105,22 +106,7 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
             console.log(patient);
             $http.post("doctor/inpatient/addInspection", patient).success(function (answ) {
                 $scope.response=answ;
-                console.log(answ);
-                /*('#inspection-table').insertAfter('<p>123123</p>');*/
-                /*var mess = document.getElementById("inspection-table");
-                var tr31 = document.createElement('tr');*/
-                /*mess.appendChild(tr31);
-                mess = mess.firstChild;*/
-                /*mess=mess.insertBefore("<tr></tr>", mess.firstChild);*/
-
-                /*var row = mess.insertRow(-1);*/
-
-
                 $scope.inspections.unshift(answ);
-
-                console.log('1');
-                console.log($scope.inspections);
-                console.log('2');
             });
         }
     };
@@ -135,6 +121,7 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
             $http.post("doctor/inpatient/addOperation", patient).success(function (answ) {
                 $scope.response=answ;
                 console.log(answ);
+                $scope.operations.unshift(answ);
             });
         }
     };
@@ -148,7 +135,7 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
             console.log(patient);
             $http.post("doctor/inpatient/addMedicalAppointment", patient).success(function (answ) {
                 $scope.response=answ;
-                console.log(answ);
+                $scope.prescriptions.unshift(answ);
             });
         }
     };
@@ -162,7 +149,7 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
             console.log(patient);
             $http.post("doctor/inpatient/addProcedure", patient).success(function (answ) {
                 $scope.response=answ;
-                console.log(answ);
+                $scope.dressings.unshift(answ);
             });
         }
     };
