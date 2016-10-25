@@ -335,13 +335,18 @@ body {
     font: 13px Arial;
     font-size: 16px;
     border: none;
+    padding: 10px;
+    display: block;
+}
+
+.button_right {
+    margin-left: 10px;
+    float: right;
 }
 
 .add-block__button {
-    float: right;
     margin-top: 35px;
-    display: block;
-    padding: 10px;
+    float: right;
 }
 
 .add-block__button:hover {
@@ -591,7 +596,6 @@ body {
 
 .inner-tabs {
     margin-left: 30px;
-    margin-top: 85px;
     width: 70%;
     float: left;
 }
@@ -665,4 +669,18 @@ body {
 .search-table__value tr:hover {
     background-color: #f0f2ef;
     cursor: pointer;
+}
+
+.tabs-button {
+    width: 100%;
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+.modal__submit {
+margin-left: 10px;
+}
+
+.help-block_85 {
+    margin-top: 85px;
 }

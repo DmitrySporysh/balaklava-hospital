@@ -137,6 +137,20 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
         }
     };
 
+    $scope.save_procedure = function (patient, PatientProtocol){
+        $scope.response={};
+        if(PatientProtocol.$valid){
+            if (patient==undefined)
+                patient={};
+            patient.inpatient_id=$scope.testFactory.patient_full_id;
+            console.log(patient);
+            $http.post("doctor/inpatient/addProcedure", patient).success(function (answ) {
+                $scope.response=answ;
+                console.log(answ);
+            });
+        }
+    };
+
 
     $scope.area_change = function (template){
         $scope.active_menu=template;
@@ -160,7 +174,7 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
                         $scope.inspections = inspections;
                         console.log($scope.inspections);
                     });
-                    $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id+'/dressings').success(function(dressings) {
+                    $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id+'/procedures').success(function(dressings) {
                         $scope.dressings = dressings;
                         console.log($scope.dressings);
                     });
