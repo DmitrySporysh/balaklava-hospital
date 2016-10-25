@@ -59,9 +59,9 @@ class DoctorController extends Controller
     public function getReceivedPatient(Request $request, $received_patient_id)
     {
         $response = $this->patient_service->getReceivedPatientFullInfo($received_patient_id);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        Debugbar::info($response);
+        return view('welcome', ['response' => $response]);
+        //return $response;
     }
 
     public function getInpatientInfo(Request $request, $inpatient_id)
@@ -74,7 +74,8 @@ class DoctorController extends Controller
 
     public function getPatientsArchive(Request $request)
     {
-        Debugbar::info($request);
+        Debugbar::info($request->all());
+
         $per_page = ($request->has('per_page')) ? $request->per_page : 20;
 
         $response = $this->patient_service->getPatientsArchive($per_page);
@@ -85,6 +86,7 @@ class DoctorController extends Controller
 
     public function getInpatientAllInfo(Request $request, $inpatient_id)
     {
+
         $response = $this->patient_service->getInpatientAllInfo($inpatient_id);
         Debugbar::info($response);
         return view('welcome', ['response' => $response]);
