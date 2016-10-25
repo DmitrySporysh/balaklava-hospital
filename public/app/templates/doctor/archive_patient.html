@@ -9,34 +9,28 @@
     </div>
 </div>
 
+    <div class="patients-wrapper plain-table plain-table_full">
+        <div class="container">
+            <div class="plain-table__caption">
+                <span class="plain-table__icon ti-marker"></span>Ход лечения в стационаре
+            </div>
+            <table class="plain-table__table">
+                <thead class="plain-table__heading">
+                <tr>
+                    <th>Дата</th>
+                    <th>Тип</th>
+                    <th>Описание</th>
 
-    <div class="container">
-        <div class="plain-table__caption">
-            <span class="plain-table__icon ti-marker"></span>Ход лечения в стационаре
+                </tr>
+                </thead>
+                <tbody class='plain-table__value'>
+                <tr ng-repeat="row in date_sort">
+                    <td> {{full_info[row.block][row.row][date_comp[row.block]]}}</td>
+                    <td> {{type_comp[row.block]}}</td>
+                    <td> {{full_info[row.block][row.row][name_comp[row.block]]}}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-        <table class="plain-table__table">
-            <thead class="plain-table__heading">
-            <tr>
-                <th>ФИО</th>
-                <th>Дата рождения</th>
-                <th>Пол</th>
-                <th>№ Палаты</th>
-                <th>Телефон</th>
-                <th>Дата обращения</th>
-                <th>№ Страховки</th>
-            </tr>
-            </thead>
-            <tbody class='plain-table__value'>
-            <!--<tr ng-repeat="patient in patients_info">
-                <td ng-click=follow_id(patient.inpatient_id)><a href="/doctor#/patient_full">{{patient.fio}}</a></td>
-                <td>{{patient.birth_date}}</td>
-                <td>{{patient.sex}}</td>
-                <td>{{patient.number}}</td>
-                <td>{{patient.phone}}</td>
-                <td>{{patient.start_date}}</td>
-                <td>{{patient.insurance_number}}</td>
-            </tr>-->
-            </tbody>
-        </table>
     </div>
 </div>

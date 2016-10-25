@@ -25,7 +25,7 @@ doctorApp.config(['$routeProvider', function($routeProvider) {
         templateUrl: 'app/templates/doctor/archive.html'
     }).
     when('/archive_patient', {
-        templateUrl: 'app/templates/doctor/archive_patient.html',
+        templateUrl: 'app/templates/doctor/archive_patient.html'
     }).
         /*--------------*/
     otherwise({
