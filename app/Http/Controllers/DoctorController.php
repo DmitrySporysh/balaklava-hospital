@@ -72,6 +72,24 @@ class DoctorController extends Controller
         return $response;
     }
 
+    public function getPatientsArchive(Request $request)
+    {
+        $per_page = ($request->has('per_page')) ? $request->per_page : 20;
+
+        $response = $this->patient_service->getPatientsArchive($per_page);
+        //Debugbar::info($response);
+        //return view('welcome', ['response' => $response]);
+        return $response;
+    }
+
+    public function getInpatientAllInfo(Request $request, $inpatient_id)
+    {
+        $response = $this->patient_service->getInpatientAllInfo($inpatient_id);
+        Debugbar::info($response);
+        return view('welcome', ['response' => $response]);
+        //return $response;
+    }
+
     public function getInpatientInspectionProtocol(Request $request, $inpatient_id)
     {
         $response = $this->patient_service->getInpatientInspectionProtocolInfo($inpatient_id);
@@ -119,15 +137,7 @@ class DoctorController extends Controller
         return $response;
     }
 
-    public function getPatientsArchive(Request $request)
-    {
-        $per_page = ($request->has('per_page')) ? $request->per_page : 20;
 
-        $response = $this->patient_service->getPatientsArchive($per_page);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
-    }
 
     //----------------------------------------------------------------------------------
     //TODO Post requests
