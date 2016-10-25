@@ -25,6 +25,8 @@ Route::get('doctor/inpatients', 'DoctorController@getDoctorInpatients'); //docto
 
 Route::get('doctor/inpatient/{id}', 'DoctorController@getInpatientInfo');
 
+Route::get('doctor/getInpatientAllInfo/{id}', 'DoctorController@getInpatientAllInfo');
+
 Route::get('doctor/inpatient/{id}/inspection_protocol', 'DoctorController@getInpatientInspectionProtocol');
 
 Route::get('doctor/inpatient/{id}/medical_appointments', 'DoctorController@getInpatientMedicalAppointments');

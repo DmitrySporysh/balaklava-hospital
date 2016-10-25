@@ -11,6 +11,7 @@ use App\Exceptions\DALException;
 use App\Models\Operation;
 use App\Repositories\Core\Repository;
 use App\Repositories\Interfaces\OperationRepositoryInterface;
+use DB;
 use Exception;
 
 
@@ -24,7 +25,8 @@ class OperationRepository extends Repository implements OperationRepositoryInter
     public function getInpatientOperationsWithDoctorsSortedByDateDESC($inpatient_id)
     {
         try {
-            $data = Operation::where('operations.inpatient_id', $inpatient_id)
+            $data = DB::table('operations')
+                ->where('operations.inpatient_id', $inpatient_id)
                 ->join('health_workers as doctors', 'operations.doctor_id', '=', 'doctors.id')
                 ->select(
                     'appointment_date',

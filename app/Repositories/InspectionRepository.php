@@ -10,6 +10,7 @@ use App\Exceptions\DALException;
 use App\Models\Inspection;
 use App\Repositories\Core\Repository;
 use App\Repositories\Interfaces\InspectionRepositoryInterface;
+use DB;
 use Exception;
 
 
@@ -23,7 +24,8 @@ class InspectionRepository extends Repository implements InspectionRepositoryInt
     public function getInpatientInspectionsWithDoctorsSortedByDateDESC($inpatient_id)
     {
         try {
-            $data = Inspection::where('inspections.inpatient_id',$inpatient_id)
+            $data = DB::table('inspections')
+            ->where('inspections.inpatient_id',$inpatient_id)
                 ->join('health_workers as doctors', 'inspections.doctor_id', '=', 'doctors.id')
                 ->select('inspection_date',
                     'state_type',

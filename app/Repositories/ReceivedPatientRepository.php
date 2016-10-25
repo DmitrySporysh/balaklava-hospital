@@ -105,7 +105,7 @@ class ReceivedPatientRepository extends Repository implements ReceivedPatientRep
         try {
             $data = DB::table('received_patients')
                 ->join('patients', 'received_patients.patient_id', '=', 'patients.id')
-                ->join('inpatients', 'inpatients.received_patient_id', '=', 'received_patients.id')
+                ->leftJoin('inpatients', 'inpatients.received_patient_id', '=', 'received_patients.id')
                 ->select($columns)
                 ->orderBy('received_patients.fio', 'ASC')
                 ->paginate($page_size);

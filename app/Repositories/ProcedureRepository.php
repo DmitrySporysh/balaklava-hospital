@@ -11,6 +11,7 @@ use App\Exceptions\DALException;
 use App\Models\Procedure;
 use App\Repositories\Core\Repository;
 use App\Repositories\Interfaces\ProcedureRepositoryInterface;
+use DB;
 use Exception;
 
 
@@ -24,7 +25,8 @@ class ProcedureRepository extends Repository implements ProcedureRepositoryInter
     public function getInpatientProceduresWithDoctorsSortedByDateDESC($inpatient_id)
     {
         try {
-            $data = Procedure::where('procedures.inpatient_id', $inpatient_id)
+            $data = DB::table('procedures')
+                ->where('procedures.inpatient_id', $inpatient_id)
                 ->join('health_workers as doctors', 'procedures.doctor_id', '=', 'doctors.id')
                 ->select('procedure_date',
                     'procedure_name',

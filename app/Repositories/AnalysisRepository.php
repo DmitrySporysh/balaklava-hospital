@@ -11,6 +11,7 @@ use App\Exceptions\DALException;
 use App\Models\Analysis;
 use App\Repositories\Core\Repository;
 use App\Repositories\Interfaces\AnalysisRepositoryInterface;
+use DB;
 use Exception;
 
 
@@ -24,7 +25,8 @@ class AnalysisRepository extends Repository implements AnalysisRepositoryInterfa
     public function getInpatientAnalyzesWithDoctorsSortedByDateDESC($inpatient_id)
     {
         try {
-            $data = Analysis::where('analyzes.inpatient_id', $inpatient_id)
+            $data = DB::table('analyzes')
+                ->where('analyzes.inpatient_id', $inpatient_id)
                 ->join('health_workers as doctors', 'analyzes.doctor_id', '=', 'doctors.id')
                 ->select('appointment_date',
                     'ready_date',
