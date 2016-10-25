@@ -79,10 +79,7 @@ abstract class Repository implements RepositoryInterface
     public function create(array $data)
     {
         try {
-            $createdElement = $this->model->create($data);
-
-            return $createdElement->id;
-
+            return $createdElement = $this->model->create($data);
         } catch (Exception $e) {
             $message = 'Error while creating element using ' . $this->model() ."\n". $e->getMessage();
             throw new DALException($message, 0, $e);

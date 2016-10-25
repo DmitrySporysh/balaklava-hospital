@@ -144,9 +144,7 @@ class DoctorService implements DoctorServiceInterface
     {
         try {
             $procedureDataFromRequest = $this->getProcedureDataFromRequest($request, $doctor_id);
-            $this->procedureRepository->create($procedureDataFromRequest);
-
-            return "Процедура успешно назначен";
+            return $this->procedureRepository->create($procedureDataFromRequest);
         } catch (DALException $e) {
             $message = 'Error while creating withdraw procedure request(DAL Error)' . $e->getMessage();
             throw new DoctorServiceException($message, 0, $e);
@@ -169,9 +167,7 @@ class DoctorService implements DoctorServiceInterface
     {
         try {
             $inspectionDataFromRequest = $this->getInspectionDataFromRequest($request, $doctor_id);
-            $this->inspectionRepository->create($inspectionDataFromRequest);
-
-            return "Осмотр успешно добавлен";
+            return $this->inspectionRepository->create($inspectionDataFromRequest);
         } catch (DALException $e) {
             $message = 'Error while creating withdraw inspection request(DAL Error)' . $e->getMessage();
             throw new DoctorServiceException($message, 0, $e);
@@ -194,9 +190,7 @@ class DoctorService implements DoctorServiceInterface
     {
         try {
             $operationDataFromRequest = $this->getOperationDataFromRequest($request, $doctor_id);
-            $this->operationRepository->create($operationDataFromRequest);
-
-            return "Операция успешно назначена";
+            return $this->operationRepository->create($operationDataFromRequest);
         } catch (DALException $e) {
             $message = 'Error while creating withdraw operation request(DAL Error)' . $e->getMessage();
             throw new DoctorServiceException($message, 0, $e);
@@ -219,9 +213,7 @@ class DoctorService implements DoctorServiceInterface
     {
         try {
             $medicalAppointmentsDataFromRequest = $this->getMedicalAppointmentDataFromRequest($request, $doctor_id);
-            $this->medicalAppointmentRepository->create($medicalAppointmentsDataFromRequest);
-
-            return "Назначение успешно добавлено";
+            return $this->medicalAppointmentRepository->create($medicalAppointmentsDataFromRequest);
         } catch (DALException $e) {
             $message = 'Error while creating withdraw Medical Appointment request(DAL Error)' . $e->getMessage();
             throw new DoctorServiceException($message, 0, $e);
