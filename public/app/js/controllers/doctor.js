@@ -88,14 +88,13 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
             if (patient==undefined)
                 patient={};
             patient.inpatient_id=$scope.testFactory.patient_full_id;
-            console.log(patient);
             $http.post("doctor/inpatient/addAnalysis", patient).success(function (answ) {
                 $scope.response=answ;
                 $scope.analizes.unshift(answ);
-                console.log($scope.analizes);
             });
         }
     };
+
 
     $scope.save_cond = function (patient, PatientProtocol){
         $scope.response={};
@@ -103,7 +102,6 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
             if (patient==undefined)
                 patient={};
             patient.inpatient_id=$scope.testFactory.patient_full_id;
-            console.log(patient);
             $http.post("doctor/inpatient/addInspection", patient).success(function (answ) {
                 $scope.response=answ;
                 $scope.inspections.unshift(answ);
@@ -117,10 +115,8 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
             if (patient==undefined)
                 patient={};
             patient.inpatient_id=$scope.testFactory.patient_full_id;
-            console.log(patient);
             $http.post("doctor/inpatient/addOperation", patient).success(function (answ) {
                 $scope.response=answ;
-                console.log(answ);
                 $scope.operations.unshift(answ);
             });
         }
@@ -132,7 +128,6 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
             if (patient==undefined)
                 patient={};
             patient.inpatient_id=$scope.testFactory.patient_full_id;
-            console.log(patient);
             $http.post("doctor/inpatient/addMedicalAppointment", patient).success(function (answ) {
                 $scope.response=answ;
                 $scope.prescriptions.unshift(answ);
@@ -146,7 +141,6 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
             if (patient==undefined)
                 patient={};
             patient.inpatient_id=$scope.testFactory.patient_full_id;
-            console.log(patient);
             $http.post("doctor/inpatient/addProcedure", patient).success(function (answ) {
                 $scope.response=answ;
                 $scope.dressings.unshift(answ);
@@ -225,6 +219,18 @@ doctorAppControllers.controller('ArchiveController', function ($scope, $http, te
 /*------------FACTORIES------------*/
 doctorAppControllers.factory('testFactory', function() {
     return {
-        patient_full_id: 'null'
+        patient_full_id: 'null',
+        new_action: function (post, form, url, model){
+            $scope.response={};
+            if(form.$valid){
+                if (post==undefined)
+                    post={};
+                post.inpatient_id=$scope.testFactory.patient_full_id;
+                $http.post("doctor/inpatient/"+url, model).success(function (answ) {
+                    $scope.response=answ;
+                    $scope.model.unshift(answ);
+                });
+            }
+        }
     }
 });
