@@ -1,70 +1,7 @@
-<!--<div class=" plain-table">
-    <div class="plain-table__caption">
-        <span class="plain-table__icon ti-marker"></span>Результаты анализов
-    </div>
-    <table class="plain-table__table">
-        <tbody class='plain-table__value'>
-            <thead class="plain-table__heading">
-                <tr>
-                    <th>Анализ</th>
-                    <th>Описание</th>
-                    <th>Дата назначения</th>
-                    <th>Назначен</th>
-                    <th>Готовность</th>
-                    <th>Результат</th>
-                    <th>Файлы</th>
-                </tr>
-            </thead>
-        </tbody>
-        <tbody class='plain-table__value'>
-            <tr ng-repeat="analysis in analizes">
-                <td>{{analysis.analysis_name}}</td>
-                <td>{{analysis.analysis_description}}</td>
-                <td>{{analysis.appointment_date}}</td>
-                <td>{{analysis.doctor_fio}}</td>
-                <td>{{analysis.ready_date}}</td>
-                <td>{{analysis.result_description}}</td>
-                <td>{{analysis.paths_to_files}}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>-->
-
+<div class="clearfix tabs-button">
+    <a class=" button button_right" data-toggle="modal" data-target="#addAnalysis"><span class="ti-plus add-block__icon"></span>Анализ</a>
+</div>
 <ul class="accordion">
-    <li>
-        <form name="NewAnalise" class="patient-form">
-            <div class="accordion__title  accordion__title_active">
-                <span class="accordion__icon ti-support"></span>Добавить анализ
-            </div>
-            <div  class="accordion__content">
-                <div class="plain-table__table-wrapper clearfix">
-                    <table class="plain-table__table">
-                        <tbody class='plain-table__value plain-table__value_non-bordered'>
-                            <tr>
-                                <td class="patient-form__label">Название анализа</td>
-                                <td class="patient-form__value">
-                                <input ng-model="new_analysis.analysis_name" class="search-table__input" name="work_place" value="" type="text">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="patient-form__label">Описание</td>
-                                <td class="patient-form__value">
-                                    <input ng-model="new_analysis.analysis_description" class="search-table__input" name="work_place" value="" type="text">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="patient-form__label">сабмить</td>
-                                <td class="patient-form__value">
-                                    <input class="patient-form__submit" ng-click="save_analiz(new_analysis, NewAnalise)" type="submit" value="Сохранить">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-        </form>
-    </li>
     <li>
         <div class="accordion__title  accordion__title_active">
             <span class="accordion__icon ti-support"></span>Результаты анализов

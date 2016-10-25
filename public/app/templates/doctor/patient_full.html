@@ -51,4 +51,195 @@
         </div>
     </div>
 </div>
+
+
+    <div class="modal fade" id="addAnalysis">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Добавить направление на анализ</h4>
+                </div>
+                <div class="modal-body">
+                    <form name="NewAnalise" class="patient-form">
+                        <div  class="accordion__content">
+                            <div class="plain-table__table-wrapper clearfix">
+                                <table class="plain-table__table">
+                                    <tbody class='plain-table__value plain-table__value_non-bordered'>
+                                    <tr>
+                                        <td class="patient-form__label">Название анализа</td>
+                                        <td class="patient-form__value">
+                                            <input ng-model="new_analysis.analysis_name" class="search-table__input" name="work_place" value="" type="text">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="patient-form__label">Описание</td>
+                                        <td class="patient-form__value">
+                                            <input ng-model="new_analysis.analysis_description" class="search-table__input" name="work_place" value="" type="text">
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <a class="add-block__button button" href="">
+                                    <span class="ti-save-alt patient__icon_white"></span>
+                                    <input class="patient-form__submit" ng-click="save_analiz(new_analysis, NewAnalise)" data-dismiss="modal" type="submit" value="Добавить">
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="addCondition">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Добавить результат обхода </h4>
+                </div>
+                <div class="modal-body">
+                    <form name="NewCondition" class="patient-form">
+                        <div  class="accordion__content">
+                            <div class="plain-table__table-wrapper clearfix">
+                                <table class="plain-table__table">
+                                    <tbody class='plain-table__value plain-table__value_non-bordered'>
+                                    <tr>
+                                        <td class="patient-form__label">Состояние</td>
+                                        <td class="patient-form__value">
+                                            <input ng-model="condition.state_type" class="search-table__input" name="work_place" value="" type="text">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="patient-form__label">Результат осмотра</td>
+                                        <td class="patient-form__value">
+                                            <input ng-model="condition.description_extended" class="search-table__input" name="work_place" value="" type="text">
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <a class="add-block__button button" href="">
+                                    <span class="ti-save-alt patient__icon_white"></span>
+                                    <input class="patient-form__submit " ng-click="save_cond(condition, NewCondition)" type="submit" value="Сохранить" data-dismiss="modal">
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addOperation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Добавить направление на операцию </h4>
+                </div>
+                <div class="modal-body">
+                    <form name="NewOperation" class="patient-form">
+                        <div  class="accordion__content">
+                            <div class="plain-table__table-wrapper clearfix">
+                                <table class="plain-table__table">
+                                    <tbody class='plain-table__value plain-table__value_non-bordered'>
+                                    <tr>
+                                        <td class="patient-form__label">Операция</td>
+                                        <td class="patient-form__value">
+                                            <input ng-model="operation.operation_name" class="search-table__input" name="work_place" value="" type="text">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="patient-form__label">Эпикриз</td>
+                                        <td class="patient-form__value">
+                                            <input ng-model="operation.preliminary_epicrisis" class="search-table__input" name="work_place" value="" type="text">
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <a class="add-block__button button" href="">
+                                    <span class="ti-save-alt patient__icon_white"></span>
+                                    <input class="patient-form__submit" ng-click="save_oper(operation, NewOperation)" type="submit" value="Сохранить" data-dismiss="modal">
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addPresscription">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Добавить назначение</h4>
+                </div>
+                <div class="modal-body">
+                    <form name="NewPrescr" class="patient-form">
+                        <div  class="accordion__content">
+                            <div class="plain-table__table-wrapper clearfix">
+                                <table class="plain-table__table">
+                                    <tbody class='plain-table__value plain-table__value_non-bordered'>
+                                    <tr>
+                                        <td class="patient-form__label">Назначение</td>
+                                        <td class="patient-form__value">
+                                            <input ng-model="prescription.description" class="search-table__input" name="work_place" value="" type="text">
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <a class="add-block__button button" href="">
+                                    <span class="ti-save-alt patient__icon_white"></span>
+                                    <input class="patient-form__submit" ng-click="save_appoint(prescription, NewPrescr)" type="submit" value="Сохранить" data-dismiss="modal">
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addProcedure">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Добавить назначение</h4>
+                </div>
+                <div class="modal-body">
+                    <form name="NewProcedure" class="patient-form">
+                        <div  class="accordion__content">
+                            <div class="plain-table__table-wrapper clearfix">
+                                <table class="plain-table__table">
+                                    <tbody class='plain-table__value plain-table__value_non-bordered'>
+                                    <tr>
+                                        <td class="patient-form__label">Название</td>
+                                        <td class="patient-form__value">
+                                            <input ng-model="procedure.procedure_name" class="search-table__input" name="work_place" value="" type="text">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="patient-form__label">Доп. информация</td>
+                                        <td class="patient-form__value">
+                                            <input ng-model="procedure.procedure_description" class="search-table__input" name="work_place" value="" type="text">
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <a class="add-block__button button" href="">
+                                    <span class="ti-save-alt patient__icon_white"></span>
+                                    <input class="patient-form__submit" ng-click="save_procedure(procedure, NewProcedure)" type="submit" value="Сохранить" data-dismiss="modal">
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
