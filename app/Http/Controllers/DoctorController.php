@@ -74,6 +74,7 @@ class DoctorController extends Controller
 
     public function getPatientsArchive(Request $request)
     {
+        Debugbar::info($request);
         $per_page = ($request->has('per_page')) ? $request->per_page : 20;
 
         $response = $this->patient_service->getPatientsArchive($per_page);

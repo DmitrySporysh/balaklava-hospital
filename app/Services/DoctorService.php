@@ -119,9 +119,7 @@ class DoctorService implements DoctorServiceInterface
     {
         try {
             $analysis_data = $this->getAnalisisDataFromRequest($request, $doctor_id);
-            $this->analysisRepository->create($analysis_data);
-
-            return "Анализ успешно назначен";
+            return $this->analysisRepository->create($analysis_data);
         } catch (DALException $e) {
             $message = 'Error while creating withdraw analysis request(DAL Error)' . $e->getMessage();
             throw new DoctorServiceException($message, 0, $e);

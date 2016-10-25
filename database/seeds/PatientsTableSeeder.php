@@ -20,7 +20,7 @@ class PatientsTableSeeder extends Seeder
 
         foreach (range(1, 300) as $index) {
             DB::table('patients')->insert([
-                'sex' => ($index % 2) ? 'male' : 'female',
+                'sex' => ($index % 2) ? 'Мужской' : 'Женский',
                 'birth_date' => '1990-10-'.($index % 30 + 1),
                 'insurance_number' => $index*1000,
                 'blood_type' => $blood_type[$index%8]
