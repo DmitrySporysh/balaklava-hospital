@@ -211,7 +211,7 @@ doctorAppControllers.controller('ArchiveController', function ($scope, $http, te
             $scope.response=answ;
             console.log(answ);
         });*/
-        $http({method:'GET', url:'/doctor/archive', params: {'fio': 'sho podelat'}})
+        $http({method:'GET', url:'/doctor/archive', params: $scope.filter})
             .success(function (answ) {
                 $scope.response=answ;
                 console.log(answ);
