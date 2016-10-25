@@ -86,9 +86,9 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
         if(PatientProtocol.$valid){
             if (patient==undefined)
                 patient={};
-            patient.id=$scope.testFactory.patient_full_id;
+            patient.inpatient_id=$scope.testFactory.patient_full_id;
             console.log(patient);
-            $http.post("doctor/inpatient/"+$scope.testFactory.patient_full_id+"/addAnalysis", patient).success(function (answ) {
+            $http.post("doctor/inpatient/addAnalysis", patient).success(function (answ) {
                 $scope.response=answ;
                     console.log(answ);
             });
@@ -100,9 +100,37 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
         if(PatientProtocol.$valid){
             if (patient==undefined)
                 patient={};
-            patient.id=$scope.testFactory.patient_full_id;
+            patient.inpatient_id=$scope.testFactory.patient_full_id;
             console.log(patient);
-            $http.post("doctor/inpatient/"+$scope.testFactory.patient_full_id+"/addDressing", patient).success(function (answ) {
+            $http.post("doctor/inpatient/addInspection", patient).success(function (answ) {
+                $scope.response=answ;
+                console.log(answ);
+            });
+        }
+    };
+
+    $scope.save_oper = function (patient, PatientProtocol){
+        $scope.response={};
+        if(PatientProtocol.$valid){
+            if (patient==undefined)
+                patient={};
+            patient.inpatient_id=$scope.testFactory.patient_full_id;
+            console.log(patient);
+            $http.post("doctor/inpatient/addOperation", patient).success(function (answ) {
+                $scope.response=answ;
+                console.log(answ);
+            });
+        }
+    };
+
+    $scope.save_appoint = function (patient, PatientProtocol){
+        $scope.response={};
+        if(PatientProtocol.$valid){
+            if (patient==undefined)
+                patient={};
+            patient.inpatient_id=$scope.testFactory.patient_full_id;
+            console.log(patient);
+            $http.post("doctor/inpatient/addMedicalAppointment", patient).success(function (answ) {
                 $scope.response=answ;
                 console.log(answ);
             });
