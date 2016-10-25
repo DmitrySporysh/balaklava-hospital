@@ -19,7 +19,7 @@ class InpatientsTableSeeder extends Seeder
                 'diagnosis' => 'Чем-то он явно болеет',
                 'district_doctor_id' => $index % 20 + 1,
                 'received_patient_id' => $index,
-                'attending_doctor_id' => 2 + 4 * ($index % 4),
+                'attending_doctor_id' => 2 + 3 * ($index % 10) + 17,
                 'hospital_department_id' => ((integer)(($index - 1) / 10)) + 1,
                 'chamber_id' => $beds_occupied_count[$index % 10]  + (10 * (integer)(($index - 1) / 10.0))
             ]);

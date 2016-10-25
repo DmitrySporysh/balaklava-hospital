@@ -34,7 +34,7 @@ class MedicalAppointmentsTableSeeder extends Seeder
                     'description' => $descriptions[$description],
                     'date' => '2016-10-' . ($description + 1),
                     'inpatient_id' => $index,
-                    'doctor_id' => 4 * ((($description+$index) % 3) + 1)
+                    'doctor_id' => 2 + 3 * (($index + $description) % 10) + 17,
                 ]);
             }
 

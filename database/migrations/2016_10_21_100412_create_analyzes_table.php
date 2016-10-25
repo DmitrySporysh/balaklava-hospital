@@ -21,7 +21,7 @@ class CreateAnalyzesTable extends Migration
             $table->timestamp('ready_date')->nullable();
             $table->string('analysis_name');
             $table->string('analysis_description')->nullable();
-            $table->string('result_description');
+            $table->string('result_description')->nullable();
             $table->string('paths_to_files')->nullable();
 
             $table->softDeletes();

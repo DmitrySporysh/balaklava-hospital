@@ -11,8 +11,10 @@ class HealthWorkerTableSeeder extends Seeder
      */
     public function run()
     {
-        $departments_cheifs_fios = explode("\r\n", File::get('database/seeds/departments_cheifs.txt'));
-        $med_personal_fios = explode("\r\n", File::get('database/seeds/med_personal.txt'));
+        $str = File::get('database/seeds/departments_cheifs.txt');
+        $departments_cheifs_fios = explode("\r\n", $str);
+        $str = File::get('database/seeds/med_personal.txt');
+        $med_personal_fios = explode("\r\n", $str);
 
 
         $post = array(

@@ -39,7 +39,7 @@ class DoctorController extends Controller
     {
         $per_page = ($request->has('per_page')) ? $request->per_page : 20;
 
-        $doctor_id = 2;
+        $doctor_id = 19; //TODO брать ид авторизованного доктора
         $response = $this->doctor_service->getDoctorAllInpatientsSortByDateDesc($doctor_id, $per_page);
         //Debugbar::info($response);
         //return view('welcome', ['response' => $response]);
@@ -131,22 +131,32 @@ class DoctorController extends Controller
 
     public function addNewInspectionProtocol(Request $request)
     {
-        $doctor_id = 2; //TODO брать ид авторизованного доктора
+        $doctor_id = 19; //TODO брать ид авторизованного доктора
 
         $response = $this->doctor_service->addNewInspectionProtocol($request, $doctor_id);
 
-        //Debugbar::info($response);
+        Debugbar::info($response);
         return $response;
     }
 
     public function addNewInpatientAnalysis(Request $request)
     {
-        $doctor_id = 2; //TODO брать ид авторизованного доктора
+        $doctor_id = 19; //TODO брать ид авторизованного доктора
 
         $response = $this->doctor_service->addNewInpatientAnalysis($request, $doctor_id);
 
         //Debugbar::info($response);
         return $response;
     }
+
+    /*public function addNewInpatientAnalysis(Request $request)
+    {
+        $doctor_id = 19; //TODO брать ид авторизованного доктора
+
+        $response = $this->doctor_service->addNewInpatientAnalysis($request, $doctor_id);
+
+        //Debugbar::info($response);
+        return $response;
+    }*/
 
 }

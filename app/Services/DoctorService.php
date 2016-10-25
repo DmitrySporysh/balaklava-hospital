@@ -3,6 +3,8 @@ namespace App\Services;
 
 use App\Exceptions\DoctorServiceException;
 use App\Exceptions\DALException;
+use App\Repositories\Interfaces\AnalysisRepositoryInterface;
+use App\Repositories\Interfaces\DressingRepositoryInterface;
 use App\Repositories\Interfaces\HealthWorkerRepositoryInterface;
 use App\Repositories\Interfaces\InpatientRepositoryInterface;
 use App\Repositories\Interfaces\ReceivedPatientRepositoryInterface;
@@ -25,13 +27,17 @@ class DoctorService implements DoctorServiceInterface
     private $inpatient_repo;
     private $received_patient_repo;
     private $doctor_repo;
+    private $analysisRepository;
+    private $dressingRepository;
 
 
     public function __construct(UserRepositoryInterface $user_repo,
                                 PatientRepositoryInterface $patient_repo,
                                 InpatientRepositoryInterface $inpatient_repo,
                                 ReceivedPatientRepositoryInterface $received_patient_repo,
-                                HealthWorkerRepositoryInterface $doctor_repo
+                                HealthWorkerRepositoryInterface $doctor_repo,
+                                AnalysisRepositoryInterface $analysisRepository,
+                                DressingRepositoryInterface $dressingRepository
 
     )
     {
@@ -40,6 +46,8 @@ class DoctorService implements DoctorServiceInterface
         $this->inpatient_repo = $inpatient_repo;
         $this->received_patient_repo = $received_patient_repo;
         $this->doctor_repo = $doctor_repo;
+        $this->analysisRepository = $analysisRepository;
+        $this->dressingRepository = $dressingRepository;
     }
 
 
@@ -68,6 +76,63 @@ class DoctorService implements DoctorServiceInterface
     }
 
     public function addNewInspectionProtocol(Request $request, $doctor_id)
+    {
+        try {
+            if ($request->complaints)
+                $this->received_patient_repo->update(['complaints' => $request->complaints], $request->id);
+
+            $inspection_protocol_data = $this->getInspectionProtocolDataFromRequest($request, $doctor_id);
+            $this->received_patient_repo->addNewInspectionProtocol($inspection_protocol_data, $request->id);
+
+            return "Протокол осмотра пациента №".$request->id.' успешно добавлен';
+        } catch (DALException $e) {
+            $message = 'Error while creating withdraw inspection protocol request(DAL Error)' . $e->getMessage();
+            throw new DoctorServiceException($message, 0, $e);
+        } catch
+        (Exception $e) {
+            $message = 'Error while creating withdraw inspection protocol request(UnknownError)';
+            throw new DoctorServiceException($message, 0, $e);
+        }
+    }
+
+    private function getAnalisisDataFromRequest(Request $request, $doctor_id)
+    {
+        $data = $request->all();
+        $data['inpatient_id'] = $data['id'];
+        unset($data['id']);
+        $data['doctor_id'] = $doctor_id;
+        $data['appointment_date'] = Carbon::now()->toDateTimeString();
+        return $data;
+    }
+
+    public function addNewInpatientAnalysis($request, $doctor_id)
+    {
+        try {
+            $analysis_data = $this->getAnalisisDataFromRequest($request, $doctor_id);
+            $this->analysisRepository->create($analysis_data);
+
+            return "Анализ успешно назначен";
+        } catch (DALException $e) {
+            $message = 'Error while creating withdraw analysis request(DAL Error)' . $e->getMessage();
+            throw new DoctorServiceException($message, 0, $e);
+        } catch
+        (Exception $e) {
+            $message = 'Error while creating withdraw analysis request(UnknownError)';
+            throw new DoctorServiceException($message, 0, $e);
+        }
+    }
+
+    private function getDressingDataFromRequest(Request $request, $doctor_id)
+    {
+        $data = $request->all();
+        $data['inpatient_id'] = $data['id'];
+        unset($data['id']);
+        $data['doctor_id'] = $doctor_id;
+        $data['dressing_date'] = Carbon::now()->toDateTimeString();
+        return $data;
+    }
+
+    public function addNewInpatientDressings($request, $doctor_id)
     {
         try {
             if ($request->complaints)

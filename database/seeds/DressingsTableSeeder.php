@@ -17,7 +17,7 @@ class DressingsTableSeeder extends Seeder
                     'dressing_date' => '2016-10-'.$day,
                     'dressing_name' => 'перевязка пациента  ',
                     'inpatient_id' => $index,
-                    'doctor_id' => 1 + ((($index - 1) % 4) * 4)
+                    'doctor_id' => 2 + 3 * (($index + $day) % 10) + 17,
                 ]);
             }
     }

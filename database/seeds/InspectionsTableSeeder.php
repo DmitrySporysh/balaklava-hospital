@@ -24,7 +24,7 @@ class InspectionsTableSeeder extends Seeder
                     'state_type' => ($day % 3 == 0) ? 'улучшилось' : 'ухудшилось',
                     'description_extended' => $description_extended[$index % 2],
                     'inpatient_id' => $index,
-                    'doctor_id' => 4 * ((($day+$index) % 3) + 1)
+                    'doctor_id' => 2 + 3 * (($index + $day) % 10) + 17,
                 ]);
             }
     }

@@ -63,7 +63,7 @@ class InspectionsProtocolsTableSeeder extends Seeder
 
         foreach (range(1, 40) as $index) {
             DB::table('inspections_protocols')->insert([
-                'duty_doctor_id' => 2 + 4 * ($index % 4),
+                'duty_doctor_id' => 2 + 3 * (($index) % 10) + 17,
                 'date' => '2016-10-'.($index % 30 + 1).' 08:'.($index + 9).':00',
                 'from_anamnesis' => 'тут какой-то текст',
                 'in_anamnesis' => 'тут какой-то текст',

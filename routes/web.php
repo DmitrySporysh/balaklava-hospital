@@ -41,13 +41,17 @@ Route::get('doctor/emergency', 'DoctorController@getAwaitingPrimaryInspectionPat
 
 Route::get('doctor/received_patient/{id}', 'DoctorController@getReceivedPatient'); //doctor#/
 
-Route::get('doctor/archive', 'DoctorController@getPatientsArchive'); //doctor#/
+Route::get('doctor/archive/', 'DoctorController@getPatientsArchive'); //doctor#/
 
 Route::post('doctor/addNewInspectionProtocol', 'DoctorController@addNewInspectionProtocol');
 
 Route::post('doctor/inpatient/{id}/addAnalysis', 'DoctorController@addNewInpatientAnalysis');
 
 Route::post('doctor/inpatient/{id}/addDressing', 'DoctorController@addNewInspectionDressing');
+
+Route::post('doctor/inpatient/{id}/addInspection', 'DoctorController@addNewInspectionDressing');
+
+Route::post('doctor/inpatient/{id}/addInspection', 'DoctorController@addNewInspectionDressing');
 
 Route::get('doctor', function () {
     return view('layouts.doctor_room');
