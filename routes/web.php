@@ -41,7 +41,7 @@ Route::get('doctor/emergency', 'DoctorController@getAwaitingPrimaryInspectionPat
 
 Route::get('doctor/received_patient/{id}', 'DoctorController@getReceivedPatient'); //doctor#/
 
-Route::get('doctor/archive/', 'DoctorController@getPatientsArchive'); //doctor#/
+Route::get('doctor/archive', 'DoctorController@getPatientsArchive'); //doctor#/
 
 Route::post('doctor/addNewInspectionProtocol', 'DoctorController@addNewInspectionProtocol');
 

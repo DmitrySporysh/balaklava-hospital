@@ -27,7 +27,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read \App\Models\HospitalDepartment $hospital_department
  * @property-read \App\Models\Chamber $chamber
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Operation[] $operations
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Dressing[] $dressings
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Procedure[] $procedures
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Inspection[] $inspection
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\MedicalAppointment[] $medical_appointments
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Analysis[] $analyzes
@@ -92,8 +92,8 @@ class Inpatient extends Model
         return $this->hasMany('App\Models\Operation','inpatient_id');
     }
 
-    public function dressings(){
-        return $this->hasMany('App\Models\Dressing','inpatient_id');
+    public function procedures(){
+        return $this->hasMany('App\Models\Procedure','inpatient_id');
     }
 
     public function inspection(){

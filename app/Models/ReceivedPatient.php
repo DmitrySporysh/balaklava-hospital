@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Filtration;
+use App\Filtration\Filterable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -45,10 +47,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @mixin \Eloquent
  * @property string $marital_status
  * @method static \Illuminate\Database\Query\Builder|\App\Models\ReceivedPatient whereMaritalStatus($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ReceivedPatient filter($filters)
  */
 class ReceivedPatient extends Model
 {
     use SoftDeletes;
+
+    use Filterable;
 
     protected $dates = ['deleted_at'];
 
