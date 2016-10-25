@@ -88,9 +88,9 @@ class DoctorController extends Controller
     {
 
         $response = $this->patient_service->getInpatientAllInfo($inpatient_id);
-        Debugbar::info($response);
-        return view('welcome', ['response' => $response]);
-        //return $response;
+        ///Debugbar::info($response);
+        //return view('welcome', ['response' => $response]);
+        return $response;
     }
 
     public function getInpatientInspectionProtocol(Request $request, $inpatient_id)
