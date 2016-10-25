@@ -201,12 +201,14 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
 doctorAppControllers.controller('ArchiveController', function ($scope, $http, testFactory) {
     $http.get('doctor/archive').success(function(patients) {
         $scope.patients_info = patients.data;
-        console.log(patients.data);
     });
 
-    $scope.counter = 0;
+    $scope.testFactory=testFactory;
+    $scope.follow_id = function (inpatient_number){
+        $scope.testFactory.inpatient_number = inpatient_number;
+    };
+
     $scope.change = function() {
-        $scope.counter++;
         console.log($scope.filter);
         $http({method:'GET', url:'/doctor/archive', params: $scope.filter})
             .success(function (answ) {
@@ -214,6 +216,26 @@ doctorAppControllers.controller('ArchiveController', function ($scope, $http, te
                 console.log(answ);
             });
     };
+
+});
+
+
+doctorAppControllers.controller('ArchivePatientController', function ($scope, $http, testFactory) {
+
+    /*$scope.testFactory=testFactory;
+    console.log($scope.testFactory.inpatient_number);*/
+
+    /*$http.get('/doctor/getInpatientAllInfo/8').success(function(patients) {
+        $scope.patient_info = patients[0];
+
+        /!*console.log($scope.patient_info);*!/
+    });*/
+
+    $http.get('doctor/getInpatientAllInfo/8').success(function(patients) {
+        $scope.patients_info = patients.data;
+        console.log($scope.patients_info);
+    });
+
 
 });
 
