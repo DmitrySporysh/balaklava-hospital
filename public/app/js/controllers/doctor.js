@@ -79,6 +79,7 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
     $scope.testFactory=testFactory;
     $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id).success(function(patients) {
         $scope.patient_info = patients[0];
+        console.log(patients[0]);
     });
 
     $scope.save_analiz = function (patient, PatientProtocol){
@@ -105,6 +106,21 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
             $http.post("doctor/inpatient/addInspection", patient).success(function (answ) {
                 $scope.response=answ;
                 console.log(answ);
+                /*('#inspection-table').insertAfter('<p>123123</p>');*/
+                /*var mess = document.getElementById("inspection-table");
+                var tr31 = document.createElement('tr');*/
+                /*mess.appendChild(tr31);
+                mess = mess.firstChild;*/
+                /*mess=mess.insertBefore("<tr></tr>", mess.firstChild);*/
+
+                /*var row = mess.insertRow(-1);*/
+
+
+                $scope.inspections.unshift(answ);
+
+                console.log('1');
+                console.log($scope.inspections);
+                console.log('2');
             });
         }
     };
@@ -176,11 +192,9 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
                     });
                     $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id+'/procedures').success(function(dressings) {
                         $scope.dressings = dressings;
-                        console.log($scope.dressings);
                     });
                     $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id+'/operations').success(function(operations) {
                         $scope.operations = operations;
-                        console.log($scope.operations);
                     });
                     break;
                 }
