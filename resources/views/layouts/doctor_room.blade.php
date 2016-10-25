@@ -24,6 +24,7 @@
 
 
     <script src="/js/accordeon.js"></script>
+    <script src="/js/ready-table.js"></script>
 
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/font-awesome.css">

@@ -15,37 +15,17 @@ doctorApp.config(['$routeProvider', function($routeProvider) {
         controller: 'EmergencyController'
     }).
     when('/patient_full', {
-        templateUrl: 'app/templates/doctor/patient_full.html',
-        controller: 'PatientFullController'
+        templateUrl: 'app/templates/doctor/patient_full.html'
     }).
     when('/emergency_person', {
         templateUrl: 'app/templates/doctor/emergency_person.html',
         controller: 'EmergencyPersonController'
     }).
     when('/archive', {
-        templateUrl: 'app/templates/doctor/archive.html',
-        controller: 'ArchiveController'
+        templateUrl: 'app/templates/doctor/archive.html'
     }).
-        /*-------*/
-    when('/addInspection', {
-        templateUrl: 'app/templates/doctor/emergency_person.html',
-        controller: 'addInspection'
-    }).
-    when('/addAnalysis', {
-        templateUrl: 'app/templates/doctor/archive.html',
-        controller: 'addAnalysis'
-    })
-    .when('/addDressing', {
-        templateUrl: 'app/templates/doctor/emergency_person.html',
-        controller: 'addDressing'
-    })
-    .when('/addOperation', {
-        templateUrl: 'app/templates/doctor/archive.html',
-        controller: 'addOperation'
-    })
-    .when('/addMedicalAppointment', {
-        templateUrl: 'app/templates/doctor/archive.html',
-        controller: 'addMedicalAppointment'
+    when('/archive_patients', {
+        templateUrl: 'app/templates/doctor/archive_patient.html'
     }).
         /*--------------*/
     otherwise({

@@ -201,16 +201,13 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
 doctorAppControllers.controller('ArchiveController', function ($scope, $http, testFactory) {
     $http.get('doctor/archive').success(function(patients) {
         $scope.patients_info = patients.data;
+        console.log(patients.data);
     });
 
     $scope.counter = 0;
     $scope.change = function() {
         $scope.counter++;
         console.log($scope.filter);
-        /*$http.get("/doctor/archive", $scope.filter).success(function (answ) {
-            $scope.response=answ;
-            console.log(answ);
-        });*/
         $http({method:'GET', url:'/doctor/archive', params: $scope.filter})
             .success(function (answ) {
                 $scope.response=answ;
