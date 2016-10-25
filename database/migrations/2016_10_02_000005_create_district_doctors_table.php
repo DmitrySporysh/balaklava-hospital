@@ -38,6 +38,6 @@ class CreateDistrictDoctorsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('district_doctors');
+        Schema::dropIfExists('district_doctors');
     }
 }

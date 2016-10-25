@@ -52,7 +52,7 @@ class CreateInpatientsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('inpatients');
+        Schema::dropIfExists('inpatients');
     }
 }
 

@@ -26,10 +26,14 @@ class OperationRepository extends Repository implements OperationRepositoryInter
         try {
             $data = Operation::where('operations.inpatient_id', $inpatient_id)
                 ->join('health_workers as doctors', 'operations.doctor_id', '=', 'doctors.id')
-                ->select('operations.operation_date',
-                    'operations.operation_name',
-                    'operations.preliminary_epicrisis',
-                    'operations.result',
+                ->select(
+                    'appointment_date',
+                    'operation_date',
+                    'operation_name',
+                    'operation_description',
+                    'preliminary_epicrisis',
+                    'result',
+                    'paths_to_files',
                     'doctors.fio as doctor_fio')
                 ->orderBy('operations.operation_date', 'DESC')
                 ->get();

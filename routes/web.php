@@ -33,7 +33,7 @@ Route::get('doctor/inpatient/{id}/inspections', 'DoctorController@getInpatientIn
 
 Route::get('doctor/inpatient/{id}/analyzes', 'DoctorController@getInpatientAnalyzes');
 
-Route::get('doctor/inpatient/{id}/dressings', 'DoctorController@getInpatientDressings');
+Route::get('doctor/inpatient/{id}/procedures', 'DoctorController@getInpatientProcedures');
 
 Route::get('doctor/inpatient/{id}/operations', 'DoctorController@getInpatientOperations');
 
@@ -45,13 +45,15 @@ Route::get('doctor/archive/', 'DoctorController@getPatientsArchive'); //doctor#/
 
 Route::post('doctor/addNewInspectionProtocol', 'DoctorController@addNewInspectionProtocol');
 
-Route::post('doctor/inpatient/{id}/addAnalysis', 'DoctorController@addNewInpatientAnalysis');
+Route::post('doctor/inpatient/addAnalysis', 'DoctorController@addNewInpatientAnalysis');
 
-Route::post('doctor/inpatient/{id}/addDressing', 'DoctorController@addNewInspectionDressing');
+Route::post('doctor/inpatient/addProcedure', 'DoctorController@addNewInpatientProcedure');
 
-Route::post('doctor/inpatient/{id}/addInspection', 'DoctorController@addNewInspectionDressing');
+Route::post('doctor/inpatient/addInspection', 'DoctorController@addNewInpatientInspection');
 
-Route::post('doctor/inpatient/{id}/addInspection', 'DoctorController@addNewInspectionDressing');
+Route::post('doctor/inpatient/addOperation', 'DoctorController@addNewInpatientOperation');
+
+Route::post('doctor/inpatient/addMedicalAppointment', 'DoctorController@addNewInpatientMedicalAppointment');
 
 Route::get('doctor', function () {
     return view('layouts.doctor_room');
@@ -78,7 +80,7 @@ Route::get('nurse/inpatient/{id}/inspections', 'NurseController@getInpatientInsp
 
 Route::get('nurse/inpatient/{id}/analyzes', 'NurseController@getInpatientAnalyzes');
 
-Route::get('nurse/inpatient/{id}/dressings', 'NurseController@getInpatientDressings');
+Route::get('nurse/inpatient/{id}/procedures', 'NurseController@getInpatientProcedures');
 
 Route::get('nurse/inpatient/{id}/operations', 'NurseController@getInpatientOperations');
 

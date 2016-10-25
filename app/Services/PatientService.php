@@ -4,7 +4,7 @@ namespace App\Services;
 use App\Exceptions\PatientServiceException;
 use App\Exceptions\DALException;
 use App\Repositories\Interfaces\AnalysisRepositoryInterface;
-use App\Repositories\Interfaces\DressingRepositoryInterface;
+use App\Repositories\Interfaces\ProcedureRepositoryInterface;
 use App\Repositories\Interfaces\HealthWorkerRepositoryInterface;
 use App\Repositories\Interfaces\InpatientRepositoryInterface;
 use App\Repositories\Interfaces\InspectionRepositoryInterface;
@@ -28,7 +28,7 @@ class PatientService implements PatientServiceInterface
     private $medical_appointment_repo;
     private $inspection_repo;
     private $analysis_repo;
-    private $dressing_repo;
+    private $procedureRepository;
     private $operation_repo;
     private $doctor_repo;
 
@@ -39,7 +39,7 @@ class PatientService implements PatientServiceInterface
                                  MedicalAppointmentRepositoryInterface $medical_appointment_repo,
                                  InspectionRepositoryInterface $inspection_repo,
                                  AnalysisRepositoryInterface $analysis_repo,
-                                 DressingRepositoryInterface $dressing_repo,
+                                 ProcedureRepositoryInterface $procedureRepository,
                                  OperationRepositoryInterface $operation_repo,
                                  HealthWorkerRepositoryInterface $doctor_repo
 
@@ -50,7 +50,7 @@ class PatientService implements PatientServiceInterface
         $this->medical_appointment_repo = $medical_appointment_repo;
         $this->inspection_repo = $inspection_repo;
         $this->analysis_repo = $analysis_repo;
-        $this->dressing_repo = $dressing_repo;
+        $this->procedureRepository = $procedureRepository;
         $this->operation_repo = $operation_repo;
         $this->doctor_repo = $doctor_repo;
     }
@@ -223,16 +223,16 @@ class PatientService implements PatientServiceInterface
         }
     }
 
-    public function getInpatientDressings($inpatient_id)
+    public function getInpatientProcedures($inpatient_id)
     {
         try {
-            $data =  $this->dressing_repo->getInpatientDressingsWithDoctorsSortedByDateDESC($inpatient_id);
+            $data =  $this->procedureRepository->getInpatientProceduresWithDoctorsSortedByDateDESC($inpatient_id);
             return $data;
         } catch (DALException $e) {
-            $message = 'Error while creating withdraw patient dressings request(DAL Error)';
+            $message = 'Error while creating withdraw patient procedures request(DAL Error)';
             throw new PatientServiceException($message, 0, $e);
         } catch (Exception $e) {
-            $message = 'Error while creating withdraw patient dressings request(UnknownError)';
+            $message = 'Error while creating withdraw patient procedures request(UnknownError)';
             throw new PatientServiceException($message, 0, $e);
         }
     }

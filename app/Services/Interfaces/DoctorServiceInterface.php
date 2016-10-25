@@ -17,6 +17,12 @@ interface DoctorServiceInterface
 
     public function addNewInpatientAnalysis($request, $doctor_id);
 
-    public function addNewInpatientDressings($request, $doctor_id);
+    public function addNewInpatientProcedure($request, $doctor_id);
+
+    public function addNewInpatientInspection($request, $doctor_id);
+
+    public function addNewInpatientOperation($request, $doctor_id);
+
+    public function addNewInpatientMedicalAppointment($request, $doctor_id);
 
 }

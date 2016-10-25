@@ -37,6 +37,6 @@ class CreateHospitalDepartmentsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('hospital_departments');
+        Schema::dropIfExists('hospital_departments');
     }
 }

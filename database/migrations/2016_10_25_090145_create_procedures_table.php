@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDressingsTable extends Migration
+class CreateProceduresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateDressingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('dressings', function (Blueprint $table) {
+        Schema::create('procedures', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamp('dressing_date');
-            $table->string('dressing_name');
+            $table->timestamp('procedure_date');
+            $table->string('procedure_name');
+            $table->string('procedure_description')->nullable();
 
             $table->integer('inpatient_id')->unsigned();
             $table->integer('doctor_id')->unsigned();
@@ -25,7 +26,7 @@ class CreateDressingsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('dressings',function (Blueprint $table){
+        Schema::table('procedures',function (Blueprint $table){
             $table->foreign('inpatient_id')->references('id')->on('inpatients')
                 ->onUpdate('cascade');
             $table->foreign('doctor_id')->references('id')->on('health_workers')
@@ -40,6 +41,6 @@ class CreateDressingsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('dressings');
+        Schema::dropIfExists('procedures');
     }
 }

@@ -5,22 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
-
-class Operation extends Model
+class Procedure extends Model
 {
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
 
-    protected $table = 'operations';
+    protected $table = 'procedures';
 
     protected $guarded = ['id'];
 
     protected $fillable = [
-        'appointment_date', 'operation_date', 'operation_name',
-        'preliminary_epicrisis', 'operation_description', 'result',
-        'inpatient_id', 'doctor_id', 'paths_to_files'
+        'procedure_date', 'procedure_name', 'procedure_description', 'inpatient_id', 'doctor_id'
     ];
 
     public function inpatient(){

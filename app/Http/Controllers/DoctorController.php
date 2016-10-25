@@ -103,9 +103,9 @@ class DoctorController extends Controller
         return $response;
     }
 
-    public function getInpatientDressings(Request $request, $patient_id)
+    public function getInpatientProcedures(Request $request, $patient_id)
     {
-        $response = $this->patient_service->getInpatientDressings($patient_id);
+        $response = $this->patient_service->getInpatientProcedures($patient_id);
         //Debugbar::info($response);
         //return view('welcome', ['response' => $response]);
         return $response;
@@ -129,34 +129,64 @@ class DoctorController extends Controller
         return $response;
     }
 
-    public function addNewInspectionProtocol(Request $request)
-    {
-        $doctor_id = 19; //TODO брать ид авторизованного доктора
-
-        $response = $this->doctor_service->addNewInspectionProtocol($request, $doctor_id);
-
-        Debugbar::info($response);
-        return $response;
-    }
-
+    //----------------------------------------------------------------------------------
+    //TODO Post requests
+    //---------------------------------------------------------------------------------
     public function addNewInpatientAnalysis(Request $request)
     {
         $doctor_id = 19; //TODO брать ид авторизованного доктора
 
         $response = $this->doctor_service->addNewInpatientAnalysis($request, $doctor_id);
 
-        //Debugbar::info($response);
         return $response;
     }
 
-    /*public function addNewInpatientAnalysis(Request $request)
+    public function addNewInpatientProcedure(Request $request)
     {
         $doctor_id = 19; //TODO брать ид авторизованного доктора
 
-        $response = $this->doctor_service->addNewInpatientAnalysis($request, $doctor_id);
+        $response = $this->doctor_service->addNewInpatientProcedure($request, $doctor_id);
 
-        //Debugbar::info($response);
         return $response;
-    }*/
+    }
+
+    public function addNewInpatientInspection(Request $request)
+    {
+        $doctor_id = 19; //TODO брать ид авторизованного доктора
+
+        $response = $this->doctor_service->addNewInpatientInspection($request, $doctor_id);
+
+        return $response;
+    }
+
+    public function addNewInpatientOperation(Request $request)
+    {
+        $doctor_id = 19; //TODO брать ид авторизованного доктора
+
+        $response = $this->doctor_service->addNewInpatientOperation($request, $doctor_id);
+
+        return $response;
+    }
+
+    public function addNewInpatientMedicalAppointment(Request $request)
+    {
+        $doctor_id = 19; //TODO брать ид авторизованного доктора
+
+        $response = $this->doctor_service->addNewInpatientMedicalAppointment($request, $doctor_id);
+
+        return $response;
+    }
+
+
+    public function addNewInspectionProtocol(Request $request)
+    {
+        $doctor_id = 19; //TODO брать ид авторизованного доктора
+
+        $response = $this->doctor_service->addNewInspectionProtocol($request, $doctor_id);
+
+        return $response;
+    }
+
+
 
 }

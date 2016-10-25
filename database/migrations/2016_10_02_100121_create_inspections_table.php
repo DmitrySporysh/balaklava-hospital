@@ -41,6 +41,6 @@ class CreateInspectionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('inspections');
+        Schema::dropIfExists('inspections');
     }
 }

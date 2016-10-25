@@ -43,6 +43,6 @@ class CreateHealthWorkersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('health_workers');
+        Schema::dropIfExists('health_workers');
     }
 }

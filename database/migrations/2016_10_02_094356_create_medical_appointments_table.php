@@ -15,7 +15,7 @@ class CreateMedicalAppointmentsTable extends Migration
     {
         Schema::create('medical_appointments', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('date');
+            $table->timestamp('date');
             $table->string('description');
 
             $table->integer('inpatient_id')->unsigned();
@@ -40,6 +40,6 @@ class CreateMedicalAppointmentsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('medical_appointments');
+        Schema::dropIfExists('medical_appointments');
     }
 }

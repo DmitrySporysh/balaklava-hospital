@@ -56,7 +56,7 @@ class CreateReceivedPatientsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('received_patients');
+        Schema::dropIfExists('received_patients');
     }
 }
 

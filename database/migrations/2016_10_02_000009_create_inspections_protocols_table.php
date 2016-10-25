@@ -110,7 +110,7 @@ class CreateInspectionsProtocolsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('inspections_protocols');
+        Schema::dropIfExists('inspections_protocols');
     }
 }
 

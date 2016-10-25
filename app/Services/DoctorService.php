@@ -4,7 +4,10 @@ namespace App\Services;
 use App\Exceptions\DoctorServiceException;
 use App\Exceptions\DALException;
 use App\Repositories\Interfaces\AnalysisRepositoryInterface;
-use App\Repositories\Interfaces\DressingRepositoryInterface;
+use App\Repositories\Interfaces\InspectionRepositoryInterface;
+use App\Repositories\Interfaces\MedicalAppointmentRepositoryInterface;
+use App\Repositories\Interfaces\OperationRepositoryInterface;
+use App\Repositories\Interfaces\ProcedureRepositoryInterface;
 use App\Repositories\Interfaces\HealthWorkerRepositoryInterface;
 use App\Repositories\Interfaces\InpatientRepositoryInterface;
 use App\Repositories\Interfaces\ReceivedPatientRepositoryInterface;
@@ -28,7 +31,10 @@ class DoctorService implements DoctorServiceInterface
     private $received_patient_repo;
     private $doctor_repo;
     private $analysisRepository;
-    private $dressingRepository;
+    private $procedureRepository;
+    private $inspectionRepository;
+    private $operationRepository;
+    private $medicalAppointmentRepository;
 
 
     public function __construct(UserRepositoryInterface $user_repo,
@@ -37,7 +43,10 @@ class DoctorService implements DoctorServiceInterface
                                 ReceivedPatientRepositoryInterface $received_patient_repo,
                                 HealthWorkerRepositoryInterface $doctor_repo,
                                 AnalysisRepositoryInterface $analysisRepository,
-                                DressingRepositoryInterface $dressingRepository
+                                ProcedureRepositoryInterface $procedureRepository,
+                                InspectionRepositoryInterface $inspectionRepository,
+                                OperationRepositoryInterface $operationRepository,
+                                MedicalAppointmentRepositoryInterface $medicalAppointmentRepository
 
     )
     {
@@ -47,7 +56,10 @@ class DoctorService implements DoctorServiceInterface
         $this->received_patient_repo = $received_patient_repo;
         $this->doctor_repo = $doctor_repo;
         $this->analysisRepository = $analysisRepository;
-        $this->dressingRepository = $dressingRepository;
+        $this->procedureRepository = $procedureRepository;
+        $this->inspectionRepository = $inspectionRepository;
+        $this->operationRepository = $operationRepository;
+        $this->medicalAppointmentRepository = $medicalAppointmentRepository;
     }
 
 
@@ -98,8 +110,6 @@ class DoctorService implements DoctorServiceInterface
     private function getAnalisisDataFromRequest(Request $request, $doctor_id)
     {
         $data = $request->all();
-        $data['inpatient_id'] = $data['id'];
-        unset($data['id']);
         $data['doctor_id'] = $doctor_id;
         $data['appointment_date'] = Carbon::now()->toDateTimeString();
         return $data;
@@ -122,32 +132,102 @@ class DoctorService implements DoctorServiceInterface
         }
     }
 
-    private function getDressingDataFromRequest(Request $request, $doctor_id)
+    private function getProcedureDataFromRequest(Request $request, $doctor_id)
     {
         $data = $request->all();
-        $data['inpatient_id'] = $data['id'];
-        unset($data['id']);
         $data['doctor_id'] = $doctor_id;
-        $data['dressing_date'] = Carbon::now()->toDateTimeString();
+        $data['procedure_date'] = Carbon::now()->toDateTimeString();
         return $data;
     }
 
-    public function addNewInpatientDressings($request, $doctor_id)
+    public function addNewInpatientProcedure($request, $doctor_id)
     {
         try {
-            if ($request->complaints)
-                $this->received_patient_repo->update(['complaints' => $request->complaints], $request->id);
+            $procedureDataFromRequest = $this->getProcedureDataFromRequest($request, $doctor_id);
+            $this->procedureRepository->create($procedureDataFromRequest);
 
-            $inspection_protocol_data = $this->getInspectionProtocolDataFromRequest($request, $doctor_id);
-            $this->received_patient_repo->addNewInspectionProtocol($inspection_protocol_data, $request->id);
-
-            return "Протокол осмотра пациента №".$request->id.' успешно добавлен';
+            return "Процедура успешно назначен";
         } catch (DALException $e) {
-            $message = 'Error while creating withdraw inspection protocol request(DAL Error)' . $e->getMessage();
+            $message = 'Error while creating withdraw procedure request(DAL Error)' . $e->getMessage();
             throw new DoctorServiceException($message, 0, $e);
         } catch
         (Exception $e) {
-            $message = 'Error while creating withdraw inspection protocol request(UnknownError)';
+            $message = 'Error while creating withdraw procedure request(UnknownError)';
+            throw new DoctorServiceException($message, 0, $e);
+        }
+    }
+
+    private function getInspectionDataFromRequest(Request $request, $doctor_id)
+    {
+        $data = $request->all();
+        $data['doctor_id'] = $doctor_id;
+        $data['inspection_date'] = Carbon::now()->toDateTimeString();
+        return $data;
+    }
+
+    public function addNewInpatientInspection($request, $doctor_id)
+    {
+        try {
+            $inspectionDataFromRequest = $this->getInspectionDataFromRequest($request, $doctor_id);
+            $this->inspectionRepository->create($inspectionDataFromRequest);
+
+            return "Осмотр успешно добавлен";
+        } catch (DALException $e) {
+            $message = 'Error while creating withdraw inspection request(DAL Error)' . $e->getMessage();
+            throw new DoctorServiceException($message, 0, $e);
+        } catch
+        (Exception $e) {
+            $message = 'Error while creating withdraw inspection request(UnknownError)';
+            throw new DoctorServiceException($message, 0, $e);
+        }
+    }
+
+    private function getOperationDataFromRequest(Request $request, $doctor_id)
+    {
+        $data = $request->all();
+        $data['doctor_id'] = $doctor_id;
+        $data['appointment_date'] = Carbon::now()->toDateTimeString();
+        return $data;
+    }
+
+    public function addNewInpatientOperation($request, $doctor_id)
+    {
+        try {
+            $operationDataFromRequest = $this->getOperationDataFromRequest($request, $doctor_id);
+            $this->operationRepository->create($operationDataFromRequest);
+
+            return "Операция успешно назначена";
+        } catch (DALException $e) {
+            $message = 'Error while creating withdraw operation request(DAL Error)' . $e->getMessage();
+            throw new DoctorServiceException($message, 0, $e);
+        } catch
+        (Exception $e) {
+            $message = 'Error while creating withdraw operation request(UnknownError)';
+            throw new DoctorServiceException($message, 0, $e);
+        }
+    }
+
+    private function getMedicalAppointmentDataFromRequest(Request $request, $doctor_id)
+    {
+        $data = $request->all();
+        $data['doctor_id'] = $doctor_id;
+        $data['date'] = Carbon::now()->toDateTimeString();
+        return $data;
+    }
+
+    public function addNewInpatientMedicalAppointment($request, $doctor_id)
+    {
+        try {
+            $medicalAppointmentsDataFromRequest = $this->getMedicalAppointmentDataFromRequest($request, $doctor_id);
+            $this->medicalAppointmentRepository->create($medicalAppointmentsDataFromRequest);
+
+            return "Назначение успешно добавлено";
+        } catch (DALException $e) {
+            $message = 'Error while creating withdraw Medical Appointment request(DAL Error)' . $e->getMessage();
+            throw new DoctorServiceException($message, 0, $e);
+        } catch
+        (Exception $e) {
+            $message = 'Error while creating withdraw Medical Appointment request(UnknownError)';
             throw new DoctorServiceException($message, 0, $e);
         }
     }

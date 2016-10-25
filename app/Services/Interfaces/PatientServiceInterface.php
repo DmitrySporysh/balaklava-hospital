@@ -20,7 +20,7 @@ interface PatientServiceInterface
 
     public function getInpatientAnalyzes($inpatient_id);
 
-    public function getInpatientDressings($inpatient_id);
+    public function getInpatientProcedures($inpatient_id);
 
     public function getInpatientOperations($inpatient_id);
 

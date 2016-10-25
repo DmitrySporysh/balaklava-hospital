@@ -44,6 +44,6 @@ class CreateDischargesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('discharges');
+        Schema::dropIfExists('discharges');
     }
 }

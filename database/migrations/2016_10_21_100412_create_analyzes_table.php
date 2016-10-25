@@ -43,6 +43,6 @@ class CreateAnalyzesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('analyzes');
+        Schema::dropIfExists('analyzes');
     }
 }

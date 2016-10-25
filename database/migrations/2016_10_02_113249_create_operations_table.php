@@ -15,13 +15,17 @@ class CreateOperationsTable extends Migration
     {
         Schema::create('operations', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamp('operation_date');
-            $table->string('operation_name');
-            $table->string('preliminary_epicrisis');
-            $table->string('result');
-
             $table->integer('inpatient_id')->unsigned();
             $table->integer('doctor_id')->unsigned();
+
+            $table->timestamp('appointment_date');
+            $table->timestamp('operation_date')->nullable();
+
+            $table->string('operation_name');
+            $table->string('preliminary_epicrisis');
+            $table->string('operation_description')->nullable();
+            $table->string('result')->nullable();
+            $table->string('paths_to_files')->nullable();
 
             $table->softDeletes();
             $table->timestamps();
@@ -42,6 +46,6 @@ class CreateOperationsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('operations');
+        Schema::dropIfExists('operations');
     }
 }

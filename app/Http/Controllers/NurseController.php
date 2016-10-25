@@ -100,9 +100,9 @@ class NurseController extends Controller
         return $response;
     }
 
-    public function getInpatientDressings(Request $request, $patient_id)
+    public function getInpatientProcedures(Request $request, $patient_id)
     {
-        $response = $this->patient_service->getInpatientDressings($patient_id);
+        $response = $this->patient_service->getInpatientProcedures($patient_id);
         //Debugbar::info($response);
         //return view('welcome', ['response' => $response]);
         return $response;

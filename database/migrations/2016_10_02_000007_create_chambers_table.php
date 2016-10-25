@@ -43,6 +43,6 @@ class CreateChambersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('chambers');
+        Schema::dropIfExists('chambers');
     }
 }
