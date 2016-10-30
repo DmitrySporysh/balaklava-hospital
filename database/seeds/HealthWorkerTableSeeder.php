@@ -18,10 +18,10 @@ class HealthWorkerTableSeeder extends Seeder
 
 
         $post = array(
-            'Медсестра', 'врач', 'Мед персонал'
+            'Медсестра', 'Врач', 'Мед персонал'
         );
 
-        $description = [
+        /*$description = [
             'Ответственный, исполнительный',
             'Пунктуальный, справедливый',
             'Дружелюбный, профессиональный',
@@ -30,25 +30,25 @@ class HealthWorkerTableSeeder extends Seeder
             'Действенный, уверенный',
             'Понимающий, ответсвтенный',
             'Усидчивый, внимательный'
-        ];
+        ];*/
 
         foreach (range(1, 18) as $index) {
             DB::table('health_workers')->insert([
                 'fio' => $departments_cheifs_fios[$index],
-                'address' => 'г.Севастополь, ул.Вакуленчука №' . $index . ', д.' . ($index + 7) . ', кв.' . ($index + 37),
                 'birth_date' => '19' . (65 + $index) . '-' . ($index % 12 + 1) . '-' . $index,
+                'sex' => ($index % 2) ? 'Мужской' : 'Женский',
                 'post' => 'Заведующий отделением',
-                'description' => $description[$index % 8]
+                'login_id' => $index
             ]);
         }
 
         foreach (range(1, count($med_personal_fios) - 1) as $index) {
             DB::table('health_workers')->insert([
                 'fio' => $med_personal_fios[$index],
-                'address' => 'г.Севастополь, ул.Вакуленчука №' . $index . ', д.' . ($index + 7) . ', кв.' . ($index + 37),
+                'sex' => ($index % 2) ? 'Мужской' : 'Женский',
                 'birth_date' => '19' . (65 + $index % 32) . '-' . ($index % 12 + 1) . '-' . $index,
                 'post' => $post[$index % 3],
-                'description' => $description[$index % 8]
+                'login_id' => $index
             ]);
         }
     }

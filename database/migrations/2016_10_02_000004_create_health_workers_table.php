@@ -16,12 +16,11 @@ class CreateHealthWorkersTable extends Migration
         Schema::create('health_workers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('fio');
-            $table->integer('login_id')->unsigned()->nullable();
-            $table->string('address');
+            $table->string('sex');
             $table->date('birth_date');
+            $table->string('post');
 
-            $table->string('post')->nullable();
-            $table->string('description')->nullable();
+            $table->integer('login_id')->unsigned()->nullable();
 
             $table->softDeletes();
             $table->timestamps();

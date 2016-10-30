@@ -13,7 +13,5 @@ interface RegistrationServiceInterface
 {
     public function registerConfirmUser(Request $request);
 
-    public function checkIfConfirmUserExist($token);
-
     public function register(Request $request);
 }

@@ -10,6 +10,39 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+
+//Auth-Register routes
+
+Route::get('/register','RegistrationController@showRegistrationForm');
+
+Route::post('/register','RegistrationController@register');
+
+
+
+
+Route::post('/login','Auth\AuthController@login');
+
+Route::get('/logout','Auth\AuthController@logout');
+
+Route::get('/forgetpassword','EntryController@getForgetPasswordPage');
+
+Route::get('/confirm/{token}','RegistrationController@confirm');
+
+Route::post('/registerConfirmUser','RegistrationController@registerConfirmUser');
+
+
+Route::post('/reset','Auth\PasswordController@forgetAccept@reset');
+
+Route::get('/newPassword','Auth\PasswordController@forget');
+
+Route::get('/reset/{token}','Auth\PasswordController@forgetAccept');
+
+Route::post('/forget','Auth\PasswordController@resetForget');
+
+Route::get('/profile','EntryController@profile');
+//
+
+
 //----------Emergency-----------------
 Route::get('emergency/patients', 'EmergencyController@getReceivedPatients'); //
 

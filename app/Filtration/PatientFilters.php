@@ -1,5 +1,6 @@
 <?php
 namespace App\Filtration;
+
 use Illuminate\Database\Eloquent\Builder;
 
 class PatientFilters extends QueryFilters
@@ -7,31 +8,51 @@ class PatientFilters extends QueryFilters
     /**
      * Filter by popularity.
      *
-     * @param  string $order
+     * @param  string $fio
      * @return Builder
      */
-    public function popular($order = 'desc')
+    public function fio($fio = null)
     {
-        return $this->builder->orderBy('views', $order);
+        if (trim($fio) !== '')
+            return $this->builder->where('fio', 'LIKE', trim($fio . '%'));
     }
+
     /**
      * Filter by difficulty.
      *
-     * @param  string $level
+     * @param  integer $inpatient_number
      * @return Builder
      */
-    public function difficulty($level)
+   /* public function inpatient_number($inpatient_number = null)
     {
-        return $this->builder->where('difficulty', $level);
-    }
+        return $this->builder->with('inpatients' => function ($query)
+    {
+        $query->where('inpatients.id', '=', $inpatient_number);
+    });
+    }*/
+
     /**
      * Filter by length.
      *
-     * @param  string $order
+     * @param  integer $insurance_number
      * @return Builder
      */
-    public function length($order = 'asc')
+    public function insurance_number($insurance_number = null)
     {
-        return $this->builder->orderBy('length', $order);
+        return $this->builder->where('insurance_number', $insurance_number);
     }
+
+    /**
+     * Filter by sex.
+     *
+     * @param  string $sex
+     * @return Builder
+     */
+    public function sex($sex = null)
+    {
+        if (trim($sex) !== '')
+            return $this->builder->where('sex', 'LIKE', trim($sex . '%'));
+    }
+
+
 }
