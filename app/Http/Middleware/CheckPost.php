@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
 
-class CheckRole
+class CheckPost
 {
     /**
      * Handle an incoming request.
@@ -16,15 +16,15 @@ class CheckRole
      * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $role)
+    public function handle($request, Closure $next, $post)
     {
        
         if(Auth::guest())
         {
             return redirect('/');
         }
-        if ((Auth::user()->role != $role)) {
-            return new Response(view('/errors/authenticationError'));
+        if ((Auth::user()->health_worker->post != $post)) {
+            return new Response(view('/')->withErrors('ошибка авторизации'));
         }
         
 

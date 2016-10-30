@@ -41,6 +41,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $sex
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereSex($value)
  */
 class HealthWorker extends Model
 {

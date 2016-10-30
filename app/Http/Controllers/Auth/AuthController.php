@@ -15,6 +15,9 @@ use Mail;
 use Hasdh;
 use App\Services\Interfaces\AuthorizationServiceInterface;
 
+use Barryvdh\Debugbar\Facade;
+use Debugbar;
+
 
 
 class AuthController extends Controller
@@ -29,35 +32,40 @@ class AuthController extends Controller
      
     }
 
-    private function redirectToUserRolePage()
+    public function showLoginForm()
     {
-
+        return view('auth.login');
     }
+
     public function login(Request $request){
 
         try {
             $errors = $this->auth_service->login($request);
+
             if(!empty($errors)) {
-                return redirect('/entry')->withErrors($errors)->withInput();
+                Debugbar::info($errors);
+                return view('auth.login');
             }
 
             if(Auth::guest()){
-                return redirect('/index');
+                return redirect('/');
             }
-            $role = Auth::user()->role;
-            if($role == UserRole::WEBMASTER){
-                
-                return redirect('/webmaster');
-            }
-            if($role == UserRole::MODERATOR){
 
-                return redirect('/moderator/banners');
+
+            $role = Auth::user()->health_worker->post;
+            if($role == UserRole::getValueByNumber(0)){
+                
+                return redirect('/department_chief');
             }
-            if($role == UserRole::ADMIN){
-                return redirect('/admin/applications');
+            if($role == UserRole::getValueByNumber(1)){
+
+                return redirect('/nurse');
             }
-            if($role == UserRole::ADVERTISER){
-                return redirect('/advertiser/profile');
+            if($role == UserRole::getValueByNumber(2)){
+                return redirect('/doctor');
+            }
+            if($role == UserRole::getValueByNumber(3)){
+                return redirect('/emergency');
             }
         }
         catch(AuthServiceException $e) {
@@ -70,9 +78,9 @@ class AuthController extends Controller
 
    
 
-    public function logout()
+    public function logout(Request $request)
     {
-        $this->auth_service->logout();
+        $this->auth_service->logout($request);
         return redirect('/');
     }
 

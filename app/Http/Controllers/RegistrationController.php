@@ -30,15 +30,13 @@ class RegistrationController extends Controller
     public function register(Request $request)
     {
         Debugbar::info($request->all());
-        return 'ui';
         //return view('welcome', ['response' => $response]);
 
         $messages = $this->reg_service->register($request);
 
-        if(!empty($messages)) {
-            return redirect()->back()->withErrors($messages)->withInput($request->toArray());
-        }
-        return  redirect ('/profile');
+        Debugbar::info($messages);
+
+        return  $messages;
 
     }
 }

@@ -48,7 +48,7 @@ class HealthWorkerTableSeeder extends Seeder
                 'sex' => ($index % 2) ? 'Мужской' : 'Женский',
                 'birth_date' => '19' . (65 + $index % 32) . '-' . ($index % 12 + 1) . '-' . $index,
                 'post' => $post[$index % 3],
-                'login_id' => $index
+                'login_id' => $index + 18
             ]);
         }
     }

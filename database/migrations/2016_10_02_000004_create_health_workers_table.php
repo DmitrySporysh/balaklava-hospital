@@ -29,7 +29,7 @@ class CreateHealthWorkersTable extends Migration
 
         Schema::table('health_workers',function (Blueprint $table){
             $table->foreign('login_id')->references('id')->on('users')
-                ->onUpdate('cascade');
+                ->onUpdate('set null');
 
         });
 

@@ -17,12 +17,12 @@ Route::get('/register','RegistrationController@showRegistrationForm');
 
 Route::post('/register','RegistrationController@register');
 
-
-
+Route::get('/login','Auth\AuthController@showLoginForm');
 
 Route::post('/login','Auth\AuthController@login');
 
 Route::get('/logout','Auth\AuthController@logout');
+/*
 
 Route::get('/forgetpassword','EntryController@getForgetPasswordPage');
 
@@ -39,7 +39,7 @@ Route::get('/reset/{token}','Auth\PasswordController@forgetAccept');
 
 Route::post('/forget','Auth\PasswordController@resetForget');
 
-Route::get('/profile','EntryController@profile');
+Route::get('/profile','EntryController@profile');*/
 //
 
 
@@ -53,6 +53,8 @@ Route::get('emergency', function () {
 });
 
 //---------Doctor-------------------
+
+Route::get('/doctor', 'DoctorController@getDoctorInpatients'); //doctor#/patients
 
 Route::get('doctor/inpatients', 'DoctorController@getDoctorInpatients'); //doctor#/patients
 
@@ -98,7 +100,17 @@ Route::get('doctor', function () {
 Route::get('department_chief/inpatients', 'DepartmentChiefController@getDepartmentInpatients');
 
 
+Route::get('department_chief', 'DepartmentChiefController@getDepartmentInpatients');
+/*Route::get('doctor', function () {
+    return view('layouts.doctor_room');
+});*/
+
 //----------Nurse-------------------------------
+Route::get('nurse', 'DepartmentChiefController@getDepartments');
+/*Route::get('doctor', function () {
+    return view('layouts.doctor_room');
+});*/
+
 Route::get('nurse/departments', 'NurseController@getDepartments'); //+
 
 Route::get('nurse/department/{id}/chambers', 'NurseController@getDepartmentChambers');//+

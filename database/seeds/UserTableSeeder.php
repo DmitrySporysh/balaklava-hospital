@@ -15,7 +15,7 @@ class UserTableSeeder extends Seeder
             DB::table('users')->insert([
                 'login' => 'user'.$index,
                 'email' => 'someemail'.$index.'@mail.ru',
-                'password' => '123456',
+                'password' => bcrypt('123456'),
                 'remember_token' =>NULL,
             ]);
         }

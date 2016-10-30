@@ -10,5 +10,5 @@ namespace App\Repositories\Interfaces;
 
 interface UserRepositoryInterface extends RepositoryInterface
 {
-
+    public function createUserWithHealthWorker($health_worker, $user);
 }

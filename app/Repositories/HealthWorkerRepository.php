@@ -19,4 +19,5 @@ class HealthWorkerRepository extends Repository implements HealthWorkerRepositor
     {
         return 'App\Models\HealthWorker';
     }
+
 }

@@ -13,5 +13,5 @@ interface AuthorizationServiceInterface
 {
     public function login(Request $request);
     
-    public function logout();
+    public function logout(Request $request);
 }
