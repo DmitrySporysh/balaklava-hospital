@@ -1,7 +1,9 @@
 <?php
 namespace App\Filtration;
 
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Query\Builder;
+use Barryvdh\Debugbar\Facade;
+use Debugbar;
 
 class PatientFilters extends QueryFilters
 {
@@ -13,8 +15,8 @@ class PatientFilters extends QueryFilters
      */
     public function fio($fio = null)
     {
-        if (trim($fio) !== '')
-            return $this->builder->where('fio', 'LIKE', trim($fio . '%'));
+        if ($fio && trim($fio) !== '')
+            return $this->builder->where('fio', 'LIKE', trim('%' . $fio . '%'));
     }
 
     /**
@@ -23,13 +25,11 @@ class PatientFilters extends QueryFilters
      * @param  integer $inpatient_number
      * @return Builder
      */
-   /* public function inpatient_number($inpatient_number = null)
+    public function inpatient_number($inpatient_number = null)
     {
-        return $this->builder->with('inpatients' => function ($query)
-    {
-        $query->where('inpatients.id', '=', $inpatient_number);
-    });
-    }*/
+        if ($inpatient_number)
+            return $this->builder->where('inpatients.id', '=', $inpatient_number);
+    }
 
     /**
      * Filter by length.
@@ -37,9 +37,11 @@ class PatientFilters extends QueryFilters
      * @param  integer $insurance_number
      * @return Builder
      */
+
     public function insurance_number($insurance_number = null)
     {
-        return $this->builder->where('insurance_number', $insurance_number);
+        if ($insurance_number)
+            return $this->builder->where('patients.insurance_number', '=', $insurance_number);
     }
 
     /**
@@ -48,10 +50,11 @@ class PatientFilters extends QueryFilters
      * @param  string $sex
      * @return Builder
      */
+
     public function sex($sex = null)
     {
-        if (trim($sex) !== '')
-            return $this->builder->where('sex', 'LIKE', trim($sex . '%'));
+        if ($sex)
+            return $this->builder->where('patients.sex', 'LIKE', trim($sex . '%'));
     }
 
 

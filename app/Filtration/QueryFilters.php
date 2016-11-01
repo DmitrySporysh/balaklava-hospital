@@ -1,17 +1,15 @@
 <?php
 namespace App\Filtration;
 
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 
 abstract class QueryFilters
 {
     /**
-     * The request object.
-     *
-     * @var Request
+     * Array of all filters
      */
-    protected $request;
+    protected $filters;
     /**
      * The builder instance.
      *
@@ -23,9 +21,9 @@ abstract class QueryFilters
      *
      * @param Request $request
      */
-    public function __construct(Request $request)
+    public function __construct($filters)
     {
-        $this->request = $request;
+        $this->filters = $filters;
     }
     /**
      * Apply the filters to the builder.
@@ -36,10 +34,7 @@ abstract class QueryFilters
     public function apply(Builder $builder)
     {
         $this->builder = $builder;
-        foreach ($this->filters() as $name => $value) {
-            if (! method_exists($this, $name)) {
-                continue;
-            }
+        foreach ($this->filters as $name => $value) {
             if (strlen($value)) {
                 $this->$name($value);
             } else {
@@ -47,14 +42,5 @@ abstract class QueryFilters
             }
         }
         return $this->builder;
-    }
-    /**
-     * Get all request filters data.
-     *
-     * @return array
-     */
-    public function filters()
-    {
-        return $this->request->all();
     }
 }

@@ -26,7 +26,7 @@ interface PatientServiceInterface
 
     public function getInpatientOperations($inpatient_id);
 
-    public function getPatientsArchive($per_page);
+    public function getPatientsArchive($per_page, Request $request);
 
     public function getAwaitingPrimaryInspectionPatientsSortByDatetimeAsc($page_size);
 }

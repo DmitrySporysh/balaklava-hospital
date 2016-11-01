@@ -89,7 +89,7 @@ class PatientService implements PatientServiceInterface
         }
     }
 
-    public function getPatientsArchive($per_page)
+    public function getPatientsArchive($per_page, Request $request)
     {
         try {
             $columns = [
@@ -100,7 +100,9 @@ class PatientService implements PatientServiceInterface
                 //'diseases.id as disease_number'  //TODO номер болезни
             ];
 
-            $data = $this->received_patient_repo->getAllPatientsSortedAndFiltered($per_page, $columns);
+            $filters = $request->all();
+
+            $data = $this->received_patient_repo->getAllPatientsSortedAndFiltered($per_page, $columns, $filters);
             return $data;
         } catch (DALException $e) {
             $message = 'Error while creating withdraw patient request(DAL Error)';

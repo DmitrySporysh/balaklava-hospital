@@ -2,21 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Common\Enums\MessageUserRole;
-use App\Exceptions\DoctorServiceException;
 use App\Http\Requests;
 use App\Services\Interfaces\DoctorServiceInterface;
-use App\Services\Interfaces\EmergencyServiceInterface;
 use App\Services\Interfaces\PatientServiceInterface;
-use App\Services\Interfaces\UserServiceInterface;
-use App\Exceptions\DALException;
 use Illuminate\Http\Request;
-use Exception;
 use Illuminate\Support\Facades\Input;
 
 use Barryvdh\Debugbar\Facade;
 use Debugbar;
-use Validator;
 
 class DoctorController extends Controller
 {
@@ -74,12 +67,10 @@ class DoctorController extends Controller
 
     public function getPatientsArchive(Request $request)
     {
-        Debugbar::info($request->all());
-
         $per_page = ($request->has('per_page')) ? $request->per_page : 20;
 
-        $response = $this->patient_service->getPatientsArchive($per_page);
-        //Debugbar::info($response);
+        $response = $this->patient_service->getPatientsArchive($per_page, $request);
+        Debugbar::info($response);
         //return view('welcome', ['response' => $response]);
         return $response;
     }

@@ -8,6 +8,7 @@
 namespace App\Repositories;
 
 use App\Exceptions\DALException;
+use App\Filtration\PatientFilters;
 use App\Models\InspectionProtocol;
 use App\Models\Patient;
 use App\Models\ReceivedPatient;
@@ -15,8 +16,7 @@ use App\Repositories\Core\Repository;
 use App\Repositories\Interfaces\ReceivedPatientRepositoryInterface;
 use DB;
 use Exception;
-use phpDocumentor\Reflection\Types\Null_;
-
+use Illuminate\Database\Query\Builder;
 
 class ReceivedPatientRepository extends Repository implements ReceivedPatientRepositoryInterface
 {
@@ -100,15 +100,20 @@ class ReceivedPatientRepository extends Repository implements ReceivedPatientRep
         return array();
     }
 
-    public function getAllPatientsSortedAndFiltered($page_size, $columns)
+    public function getAllPatientsSortedAndFiltered($page_size, $columns, $filters = null)
     {
         try {
-            $data = DB::table('received_patients')
+            $builder = DB::table('received_patients')
                 ->join('patients', 'received_patients.patient_id', '=', 'patients.id')
-                ->leftJoin('inpatients', 'inpatients.received_patient_id', '=', 'received_patients.id')
+                ->leftJoin('inpatients', 'inpatients.received_patient_id', '=', 'received_patients.id');
+
+            $query = (new PatientFilters($filters))->apply($builder);
+
+            $data= $query
                 ->select($columns)
                 ->orderBy('received_patients.fio', 'ASC')
                 ->paginate($page_size);
+
             if ($data == null) {
                 return array();
             }

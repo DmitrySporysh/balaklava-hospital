@@ -1,6 +1,6 @@
 <?php
 namespace App\Filtration;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Query\Builder;
 
 trait Filterable
 {
