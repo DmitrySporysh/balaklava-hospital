@@ -55,15 +55,35 @@ class InpatientRepository extends Repository implements InpatientRepositoryInter
         return array();
     }
 
-    public function getInpatientInfoWithReceivedPatientInfoAndPatientInfo($inpatient_id, $columns)
+    public function getInpatientInfoGeneralInfo($inpatient_id, $columns, $joins)
     {
         try {
-            $data = DB::table('inpatients')
-                ->where('inpatients.id','=', $inpatient_id)
-                ->join('received_patients', 'inpatients.received_patient_id', '=', 'received_patients.id')
-                ->join('patients', 'received_patients.patient_id', '=', 'patients.id')
-                ->select($columns)
-                ->get();
+            $query = DB::table('inpatients')
+                ->where('inpatients.id','=', $inpatient_id);
+
+            foreach ($joins as $join)
+            switch ($join) {
+                case 'received_patients':
+                    $query = $query->join('received_patients', 'inpatients.received_patient_id', '=', 'received_patients.id');
+                    break;
+                case 'patients':
+                    $query = $query->join('patients', 'received_patients.patient_id', '=', 'patients.id');
+                    break;
+                case 'health_workers':
+                    $query = $query->join('health_workers', 'inpatients.attending_doctor_id', '=', 'health_workers.id');
+                    break;
+                case 'district_doctors':
+                    $query = $query->join('district_doctors', 'inpatients.district_doctor_id', '=', 'district_doctors.id');
+                    break;
+                case 'hospital_departments':
+                    $query = $query->join('hospital_departments', 'inpatients.hospital_department_id', '=', 'hospital_departments.id');
+                    break;
+                case 'chambers':
+                    $query = $query->join('chambers', 'inpatients.chamber_id', '=', 'chambers.id');
+                    break;
+            }
+
+            $data = $query->select($columns)->get();
             if ($data == null) {
                 return array();
             }

@@ -37,7 +37,7 @@ class RegistrationService implements RegistrationServiceInterface
             //$remember_me = false;
             //Auth::attempt($data['user'], $remember_me);
 
-            return 'Пользователь '. $request->login.' успешно зарегистрирован';
+            return ['success' => true, 'message' => 'Пользователь '. $request->login.' успешно зарегистрирован'];
         }
         catch(Exception $e) {
             $message = 'Registration failed';

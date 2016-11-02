@@ -34,6 +34,7 @@ class AuthorizationService implements AuthorizationServiceInterface
             $remember = $this->checkRememberMe($request);
             if (Auth::attempt(['login' => $request->login, 'password' => $request->password], $remember)) {
                 $request->session()->put('fio',  Auth::user()->health_worker->fio);
+                $request->session()->put('post',  Auth::user()->health_worker->post);
                 return;
             }
 

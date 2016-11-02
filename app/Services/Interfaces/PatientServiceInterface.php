@@ -10,7 +10,9 @@ interface PatientServiceInterface
 {
     public function getReceivedPatientFullInfo($received_patient_id);
 
-    public function getInpatientWithGeneralInfo($inpatient_id);
+    public function getInpatientGeneralInfo($inpatient_id);
+
+    public function getInpatientWithGeneralInfoAndAttendingDoctor($inpatient_id);
 
     public function getInpatientAllInfo($inpatient_id);
 
@@ -25,6 +27,8 @@ interface PatientServiceInterface
     public function getInpatientProcedures($inpatient_id);
 
     public function getInpatientOperations($inpatient_id);
+
+    public function getInpatientTemperatureLog($inpatient_id);
 
     public function getPatientsArchive($per_page, Request $request);
 

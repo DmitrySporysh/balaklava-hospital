@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProceduresTable extends Migration
+class CreateTemperatureLogTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,18 @@ class CreateProceduresTable extends Migration
      */
     public function up()
     {
-        Schema::create('procedures', function (Blueprint $table) {
+        Schema::create('temperature_log', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamp('procedure_date');
-            $table->string('procedure_name');
-            $table->string('procedure_description')->nullable();
-            $table->string('paths_to_files')->nullable();
-
-
             $table->integer('inpatient_id')->unsigned();
+            $table->timestamp('date');
+            $table->float('temperature_value', 3, 1);
             $table->integer('doctor_id')->unsigned();
 
             $table->softDeletes();
             $table->timestamps();
         });
 
-        Schema::table('procedures',function (Blueprint $table){
+        Schema::table('temperature_log',function (Blueprint $table){
             $table->foreign('inpatient_id')->references('id')->on('inpatients')
                 ->onUpdate('cascade');
             $table->foreign('doctor_id')->references('id')->on('health_workers')
@@ -43,6 +39,6 @@ class CreateProceduresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('procedures');
+        Schema::dropIfExists('temperature_log');
     }
 }

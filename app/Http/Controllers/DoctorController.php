@@ -59,7 +59,7 @@ class DoctorController extends Controller
 
     public function getInpatientInfo(Request $request, $inpatient_id)
     {
-        $response = $this->patient_service->getInpatientWithGeneralInfo($inpatient_id);
+        $response = $this->patient_service->getInpatientGeneralInfo($inpatient_id);
         //Debugbar::info($response);
         //return view('welcome', ['response' => $response]);
         return $response;

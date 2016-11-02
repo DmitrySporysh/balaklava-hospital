@@ -11,6 +11,7 @@ use App\Repositories\Interfaces\InspectionRepositoryInterface;
 use App\Repositories\Interfaces\MedicalAppointmentRepositoryInterface;
 use App\Repositories\Interfaces\OperationRepositoryInterface;
 use App\Repositories\Interfaces\ReceivedPatientRepositoryInterface;
+use App\Repositories\Interfaces\TemperatureLogRepositoryInterface;
 use App\Services\Interfaces\PatientServiceInterface;
 use \Exception;
 use App\Repositories\Interfaces\PatientRepositoryInterface;
@@ -31,6 +32,7 @@ class PatientService implements PatientServiceInterface
     private $procedureRepository;
     private $operation_repo;
     private $doctor_repo;
+    private $temperatureLogRepository;
 
 
     public function  __construct(PatientRepositoryInterface $patient_repo,
@@ -41,7 +43,8 @@ class PatientService implements PatientServiceInterface
                                  AnalysisRepositoryInterface $analysis_repo,
                                  ProcedureRepositoryInterface $procedureRepository,
                                  OperationRepositoryInterface $operation_repo,
-                                 HealthWorkerRepositoryInterface $doctor_repo
+                                 HealthWorkerRepositoryInterface $doctor_repo,
+                                 TemperatureLogRepositoryInterface $temperatureLogRepository
 
     ){
         $this->patient_repo = $patient_repo;
@@ -53,6 +56,7 @@ class PatientService implements PatientServiceInterface
         $this->procedureRepository = $procedureRepository;
         $this->operation_repo = $operation_repo;
         $this->doctor_repo = $doctor_repo;
+        $this->temperatureLogRepository = $temperatureLogRepository;
     }
 
 
@@ -113,32 +117,10 @@ class PatientService implements PatientServiceInterface
         }
     }
 
-    public function getInpatient($per_page)
+    public function getInpatientGeneralInfo($inpatient_id)
     {
         try {
             $columns = [
-                'fio',
-                'insurance_number',
-                'sex',
-                'inpatients.id as inpatient_number'
-                //'diseases.id as disease_number'  //TODO номер болезни
-            ];
-
-            $data = $this->received_patient_repo->getAllPatientsSortedAndFiltered($per_page, $columns);
-            return $data;
-        } catch (DALException $e) {
-            $message = 'Error while creating withdraw patient request(DAL Error)';
-            throw new PatientServiceException($message, 0, $e);
-        } catch (Exception $e) {
-            $message = 'Error while creating withdraw patient request(UnknownError)';
-            throw new PatientServiceException($message, 0, $e);
-        }
-    }
-
-    public function getInpatientWithGeneralInfo($inpatient_id)
-    {
-        try {
-            $columnsInpatient = [
                 'fio',
                 'birth_date',
                 'residential_address',
@@ -153,7 +135,41 @@ class PatientService implements PatientServiceInterface
                 'phone'
             ];
 
-            $data =  $this->inpatient_repo->getInpatientInfoWithReceivedPatientInfoAndPatientInfo($inpatient_id, $columnsInpatient);
+            $data =  $this->inpatient_repo->getInpatientInfoGeneralInfo($inpatient_id, $columns,
+                ['received_patients', 'patients']);
+            return $data;
+        }
+        catch(DALException $e){
+            $message = 'Error while creating withdraw inpatient request(DAL Error)';
+            throw new PatientServiceException($message,0,$e);
+        }
+        catch(Exception $e){
+            $message = 'Error while creating withdraw inpatient request(UnknownError)';
+            throw new PatientServiceException($message,0,$e);
+        }
+    }
+
+    public function getInpatientWithGeneralInfoAndAttendingDoctor($inpatient_id)
+    {
+        try {
+            $columns = [
+                'received_patients.fio',
+                'patients.birth_date',
+                'residential_address',
+                'registration_address',
+                'marital_status',
+                'work_place',
+                'start_date',
+                'diagnosis',
+                'insurance_number',
+                'blood_type',
+                'patients.sex',
+                'phone',
+                'health_workers.fio as attending_doctor_fio'
+            ];
+
+            $data =  $this->inpatient_repo->getInpatientInfoGeneralInfo($inpatient_id, $columns,
+                ['received_patients', 'patients', 'health_workers']);
             return $data;
         }
         catch(DALException $e){
@@ -184,7 +200,8 @@ class PatientService implements PatientServiceInterface
                 'phone'
             ];
             //general patient info
-            $data['inpatient_info'] =  $this->inpatient_repo->getInpatientInfoWithReceivedPatientInfoAndPatientInfo($inpatient_id, $columnsInpatient);
+            $data['inpatient_info'] =  $this->inpatient_repo->getInpatientInfoGeneralInfo($inpatient_id, $columnsInpatient,
+                ['received_patients', 'patients']);
             //inspection_protocol
             $received_patient_id = $this->getReceivedPatientByInpatient($inpatient_id);
             if(!$received_patient_id)
@@ -308,7 +325,6 @@ class PatientService implements PatientServiceInterface
         }
     }
 
-
     public function getInpatientOperations($inpatient_id)
     {
         try {
@@ -319,6 +335,20 @@ class PatientService implements PatientServiceInterface
             throw new PatientServiceException($message, 0, $e);
         } catch (Exception $e) {
             $message = 'Error while creating withdraw patient operations request(UnknownError)';
+            throw new PatientServiceException($message, 0, $e);
+        }
+    }
+
+    public function getInpatientTemperatureLog($inpatient_id)
+    {
+        try {
+            $data = $this->temperatureLogRepository->getInpatientTemperatureLogWithDoctorsSortedByDateDESC($inpatient_id);
+            return $data;
+        } catch (DALException $e) {
+            $message = 'Error while creating withdraw inpatient TemperatureLog request(DAL Error)';
+            throw new PatientServiceException($message, 0, $e);
+        } catch (Exception $e) {
+            $message = 'Error while creating withdraw inpatient TemperatureLog request(UnknownError)';
             throw new PatientServiceException($message, 0, $e);
         }
     }

@@ -131,6 +131,8 @@ Route::get('nurse/inpatient/{id}/procedures', 'NurseController@getInpatientProce
 
 Route::get('nurse/inpatient/{id}/operations', 'NurseController@getInpatientOperations');
 
+Route::get('nurse/inpatient/{id}/temperature_log', 'NurseController@getInpatientTemperatureLog');
+
 //no important ---------------------------------------
 Route::get('nurse/chambers', 'NurseController@getNotEmptyChambers');
 
@@ -142,3 +144,5 @@ Route::get('nurse/testFunc', 'NurseController@testFunc');
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('files/getFile', 'FileController@getFile');

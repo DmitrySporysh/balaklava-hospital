@@ -12,7 +12,7 @@ interface InpatientRepositoryInterface extends RepositoryInterface
 {
     public function getDoctorAllInpatientsSortByDateDesc($doctor_id, $per_page);
 
-    public function getInpatientInfoWithReceivedPatientInfoAndPatientInfo($inpatient_id, $columns);
+    public function getInpatientInfoGeneralInfo($inpatient_id, $columns, $joins);
 
     public function getInpatientsGeneralInfoByChamberId($chamber_id, $columns);
 

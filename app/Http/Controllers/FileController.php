@@ -15,4 +15,8 @@ class FileController extends Controller
         Storage::put('file.jpg', $file);
         dd(Storage::get('file.jpg'));
     }
+
+    public function getFile(){
+        dd(Storage::get('procedures/patients.txt'));
+    }
 }

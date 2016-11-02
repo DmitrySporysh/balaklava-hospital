@@ -63,7 +63,7 @@ class NurseController extends Controller
 
     public function getInpatientInfo(Request $request, $inpatient_id)
     {
-        $response = $this->patient_service->getInpatientWithGeneralInfo($inpatient_id);
+        $response = $this->patient_service->getInpatientWithGeneralInfoAndAttendingDoctor($inpatient_id);
         //Debugbar::info($response);
         //return view('welcome', ['response' => $response]);
         return $response;
@@ -114,5 +114,13 @@ class NurseController extends Controller
         //Debugbar::info($response);
         //return view('welcome', ['response' => $response]);
         return $response;
+    }
+
+    public function getInpatientTemperatureLog(Request $request, $patient_id)
+    {
+        $response = $this->patient_service->getInpatientTemperatureLog($patient_id);
+        Debugbar::info($response);
+        return view('welcome', ['response' => $response]);
+        //return $response;
     }
 }

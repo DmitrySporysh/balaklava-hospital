@@ -51,8 +51,9 @@ class AuthController extends Controller
                 return redirect('/');
             }
 
+            return ['success' => true];
 
-            $role = Auth::user()->health_worker->post;
+            /*$role = Auth::user()->health_worker->post;
             if($role == UserRole::getValueByNumber(0)){
                 
                 return redirect('/department_chief');
@@ -66,7 +67,7 @@ class AuthController extends Controller
             }
             if($role == UserRole::getValueByNumber(3)){
                 return redirect('/emergency');
-            }
+            }*/
         }
         catch(AuthServiceException $e) {
             return 'Ошибка при логине. Временная заглушка.';
