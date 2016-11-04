@@ -15,14 +15,14 @@ class CreateProceduresTable extends Migration
     {
         Schema::create('procedures', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('inpatient_id')->unsigned();
+            $table->integer('doctor_who_appointed')->unsigned();
+            $table->integer('doctor_who_performed')->unsigned();
+
             $table->timestamp('procedure_date');
             $table->string('procedure_name');
             $table->string('procedure_description')->nullable();
             $table->string('paths_to_files')->nullable();
-
-
-            $table->integer('inpatient_id')->unsigned();
-            $table->integer('doctor_id')->unsigned();
 
             $table->softDeletes();
             $table->timestamps();
@@ -31,7 +31,9 @@ class CreateProceduresTable extends Migration
         Schema::table('procedures',function (Blueprint $table){
             $table->foreign('inpatient_id')->references('id')->on('inpatients')
                 ->onUpdate('cascade');
-            $table->foreign('doctor_id')->references('id')->on('health_workers')
+            $table->foreign('doctor_who_appointed')->references('id')->on('health_workers')
+                ->onUpdate('cascade');
+            $table->foreign('doctor_who_performed')->references('id')->on('health_workers')
                 ->onUpdate('cascade');
         });
     }

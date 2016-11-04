@@ -11,10 +11,10 @@ class TemperatureLogTableSeeder extends Seeder
      */
     public function run()
     {
-        $hours = ['07', '12', '16', '20'];
+        $hours = ['07', '15', '20'];
 
         foreach (range(1, 40) as $index) {
-            foreach (range(1, 30) as $day)
+            foreach (range(1, 15) as $day)
                 foreach ($hours as $hour)
                     DB::table('temperature_log')->insert([
                         'date' => '2016-10-' . ($day % 31 + 1).' '.$hour.':00:00',

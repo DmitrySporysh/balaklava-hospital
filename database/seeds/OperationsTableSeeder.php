@@ -27,7 +27,8 @@ class OperationsTableSeeder extends Seeder
             foreach (range(1, $index % count($operation_name) + 1) as $day) {
                 DB::table('operations')->insert([
                     'inpatient_id' => $index,
-                    'doctor_id' => 3 + 3 * (($index + $day) % 10) + 17,
+                    'doctor_who_appointed' => 2 + 3 * (($index + $day) % 10) + 17,
+                    'doctor_who_performed' => 2 + 3 * (($index + $day + 2) % 10) + 17,
 
                     'appointment_date' => '2016-10-' . $day,
                     'operation_date' => $day % 3 != 0 ? '2016-10-' . ($day + 4) : null,

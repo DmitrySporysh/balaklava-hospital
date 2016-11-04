@@ -11,7 +11,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *
  * @property integer $id
  * @property integer $inpatient_id
- * @property integer $doctor_id
+ * @property integer $doctor_who_appointed
+ * @property integer $doctor_who_performed
  * @property string $appointment_date
  * @property string $ready_date
  * @property string $analysis_name
@@ -25,7 +26,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read \App\Models\HealthWorker $doctor
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Analysis whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Analysis whereInpatientId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Analysis whereDoctorId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Analysis whereDoctorWhoAppointed($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Analysis whereDoctorWhoPerformed($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Analysis whereAppointmentDate($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Analysis whereReadyDate($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Analysis whereAnalysisName($value)
@@ -50,14 +52,16 @@ class Analysis extends Model
     protected $fillable = [
         'appointment_date', 'ready_date', 'analysis_name',
         'analysis_description', 'result_description', 'paths_to_files',
-        'inpatient_id', 'doctor_id'
+        'inpatient_id', 'doctor_who_appointed', 'doctor_who_performed'
     ];
 
-    public function patient(){
+    public function patient()
+    {
         return $this->belongsTo('App\Models\Inpatient');
     }
 
-    public function doctor(){
+    public function doctor()
+    {
         return $this->belongsTo('App\Models\HealthWorker');
     }
 }

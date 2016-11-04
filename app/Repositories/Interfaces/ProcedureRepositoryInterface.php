@@ -11,4 +11,6 @@ namespace App\Repositories\Interfaces;
 interface ProcedureRepositoryInterface extends RepositoryInterface
 {
     public function getInpatientProceduresWithDoctorsSortedByDateDESC($inpatient_id);
+
+    public function getInpatientProcedureWithDoctor($procedure_id);
 }

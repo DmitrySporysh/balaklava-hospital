@@ -6,12 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
-
 /**
  * App\Models\Patient
  *
  * @property integer $id
- * @property integer $insurance_number
+ * @property string $insurance_number
  * @property string $sex
  * @property string $birth_date
  * @property string $blood_type

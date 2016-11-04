@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
-
 /**
  * App\Models\Operation
  *
  * @property integer $id
  * @property integer $inpatient_id
- * @property integer $doctor_id
+ * @property integer $doctor_who_appointed
+ * @property integer $doctor_who_performed
  * @property string $appointment_date
  * @property string $operation_date
  * @property string $operation_name
@@ -27,7 +27,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read \App\Models\HealthWorker $doctor
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Operation whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Operation whereInpatientId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Operation whereDoctorId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Operation whereDoctorWhoAppointed($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Operation whereDoctorWhoPerformed($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Operation whereAppointmentDate($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Operation whereOperationDate($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Operation whereOperationName($value)
@@ -53,7 +54,7 @@ class Operation extends Model
     protected $fillable = [
         'appointment_date', 'operation_date', 'operation_name',
         'preliminary_epicrisis', 'operation_description', 'result',
-        'inpatient_id', 'doctor_id', 'paths_to_files'
+        'inpatient_id', 'doctor_who_appointed', 'doctor_who_performed', 'paths_to_files'
     ];
 
     public function inpatient(){

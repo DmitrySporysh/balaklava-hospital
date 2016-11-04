@@ -29,14 +29,8 @@ class RegistrationController extends Controller
 
     public function register(Request $request)
     {
-        Debugbar::info($request->all());
-        //return view('welcome', ['response' => $response]);
-
         $messages = $this->reg_service->register($request);
-
-        Debugbar::info($messages);
-
+        //Debugbar::info($messages);
         return  $messages;
-
     }
 }

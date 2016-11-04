@@ -12,6 +12,7 @@ use App\Repositories\Interfaces\MedicalAppointmentRepositoryInterface;
 use App\Repositories\Interfaces\OperationRepositoryInterface;
 use App\Repositories\Interfaces\ReceivedPatientRepositoryInterface;
 use App\Repositories\Interfaces\TemperatureLogRepositoryInterface;
+use App\Services\Interfaces\FileServiceInterface;
 use App\Services\Interfaces\PatientServiceInterface;
 use \Exception;
 use App\Repositories\Interfaces\PatientRepositoryInterface;
@@ -33,6 +34,7 @@ class PatientService implements PatientServiceInterface
     private $operation_repo;
     private $doctor_repo;
     private $temperatureLogRepository;
+    private $fileService;
 
 
     public function  __construct(PatientRepositoryInterface $patient_repo,
@@ -44,7 +46,9 @@ class PatientService implements PatientServiceInterface
                                  ProcedureRepositoryInterface $procedureRepository,
                                  OperationRepositoryInterface $operation_repo,
                                  HealthWorkerRepositoryInterface $doctor_repo,
-                                 TemperatureLogRepositoryInterface $temperatureLogRepository
+                                 TemperatureLogRepositoryInterface $temperatureLogRepository,
+                                 FileServiceInterface $fileService
+
 
     ){
         $this->patient_repo = $patient_repo;
@@ -57,6 +61,7 @@ class PatientService implements PatientServiceInterface
         $this->operation_repo = $operation_repo;
         $this->doctor_repo = $doctor_repo;
         $this->temperatureLogRepository = $temperatureLogRepository;
+        $this->fileService = $fileService;
     }
 
 
@@ -295,7 +300,7 @@ class PatientService implements PatientServiceInterface
         }
     }
 
-    public function getInpatientAnalyzes($inpatient_id)
+    public function getInpatientAllAnalyzes($inpatient_id)
     {
         try {
             $data =  $this->analysis_repo->getInpatientAnalyzesWithDoctorsSortedByDateDESC($inpatient_id);
@@ -311,10 +316,40 @@ class PatientService implements PatientServiceInterface
         }
     }
 
-    public function getInpatientProcedures($inpatient_id)
+    public function getInpatientAnalyses($inpatient_id, $analyses_id)
+    {
+        try {
+            $data =  $this->analysis_repo->getInpatientAnalysesWithDoctor($analyses_id);
+            return $data;
+        }
+        catch(DALException $e){
+            $message = 'Error while creating withdraw analyzes request(DAL Error)';
+            throw new PatientServiceException($message,0,$e);
+        }
+        catch(Exception $e){
+            $message = 'Error while creating withdraw analyzes request(UnknownError)';
+            throw new PatientServiceException($message,0,$e);
+        }
+    }
+
+    public function getInpatientAllProcedures($inpatient_id)
     {
         try {
             $data =  $this->procedureRepository->getInpatientProceduresWithDoctorsSortedByDateDESC($inpatient_id);
+            return $data;
+        } catch (DALException $e) {
+            $message = 'Error while creating withdraw patient procedures request(DAL Error)';
+            throw new PatientServiceException($message, 0, $e);
+        } catch (Exception $e) {
+            $message = 'Error while creating withdraw patient procedures request(UnknownError)';
+            throw new PatientServiceException($message, 0, $e);
+        }
+    }
+
+    public function getInpatientProcedure($inpatient_id, $procedure_id)
+    {
+        try {
+            $data =  $this->procedureRepository->getInpatientProcedureWithDoctor($procedure_id);
             return $data;
         } catch (DALException $e) {
             $message = 'Error while creating withdraw patient procedures request(DAL Error)';

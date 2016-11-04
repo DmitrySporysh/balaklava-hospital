@@ -2,20 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Repositories\Interfaces\HealthWorkerRepositoryInterface;
-use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\Services\Interfaces\NurseServiceInterface;
 use App\Services\Interfaces\PatientServiceInterface;
-use App\Services\Interfaces\UserServiceInterface;
-//Exceptions
-use App\Exceptions\DALException;
-use App\Exceptions\NurseServiceException;
 
 use Illuminate\Http\Request;
-use Exception;
-use Illuminate\Support\Facades\Input;
-//Debufbar
+
+//Debugbar
 use Barryvdh\Debugbar\Facade;
 use Debugbar;
 
@@ -92,33 +84,50 @@ class NurseController extends Controller
         //return view('welcome', ['response' => $response]);
         return $response;
     }
-    public function getInpatientAnalyzes(Request $request, $inpatient_id)
+
+    public function getInpatientAllAnalyzes(Request $request, $inpatient_id)
     {
-        $response = $this->patient_service->getInpatientAnalyzes($inpatient_id);
+        $response = $this->patient_service->getInpatientAllAnalyzes($inpatient_id);
         //Debugbar::info($response);
         //return view('welcome', ['response' => $response]);
         return $response;
     }
 
-    public function getInpatientProcedures(Request $request, $patient_id)
+    public function getInpatientAnalyses(Request $request, $inpatient_id, $analyses_id)
     {
-        $response = $this->patient_service->getInpatientProcedures($patient_id);
+        $response = $this->patient_service->getInpatientAnalyses($inpatient_id, $analyses_id);
         //Debugbar::info($response);
         //return view('welcome', ['response' => $response]);
         return $response;
     }
 
-    public function getInpatientOperations(Request $request, $patient_id)
+    public function getInpatientAllProcedures(Request $request, $inpatient_id)
     {
-        $response = $this->patient_service->getInpatientOperations($patient_id);
+        $response = $this->patient_service->getInpatientAllProcedures($inpatient_id);
         //Debugbar::info($response);
         //return view('welcome', ['response' => $response]);
         return $response;
     }
 
-    public function getInpatientTemperatureLog(Request $request, $patient_id)
+    public function getInpatientProcedure(Request $request, $inpatient_id, $procedure_id)
     {
-        $response = $this->patient_service->getInpatientTemperatureLog($patient_id);
+        $response = $this->patient_service->getInpatientProcedure($inpatient_id, $procedure_id);
+        //Debugbar::info($response);
+        //return view('welcome', ['response' => $response]);
+        return $response;
+    }
+
+    public function getInpatientOperations(Request $request, $inpatient_id)
+    {
+        $response = $this->patient_service->getInpatientOperations($inpatient_id);
+        //Debugbar::info($response);
+        //return view('welcome', ['response' => $response]);
+        return $response;
+    }
+
+    public function getInpatientTemperatureLog(Request $request, $inpatient_id)
+    {
+        $response = $this->patient_service->getInpatientTemperatureLog($inpatient_id);
         Debugbar::info($response);
         return view('welcome', ['response' => $response]);
         //return $response;

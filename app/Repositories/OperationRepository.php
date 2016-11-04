@@ -27,7 +27,8 @@ class OperationRepository extends Repository implements OperationRepositoryInter
         try {
             $data = DB::table('operations')
                 ->where('operations.inpatient_id', $inpatient_id)
-                ->join('health_workers as doctors', 'operations.doctor_id', '=', 'doctors.id')
+                ->join('health_workers as doctor_who_appointed', 'analyzes.doctor_who_appointed', '=', 'doctor_who_appointed.id')
+                ->leftJoin('health_workers as doctor_who_performed', 'analyzes.doctor_who_performed', '=', 'doctor_who_performed.id')
                 ->select(
                     'appointment_date',
                     'operation_date',
@@ -36,7 +37,9 @@ class OperationRepository extends Repository implements OperationRepositoryInter
                     'preliminary_epicrisis',
                     'result',
                     'paths_to_files',
-                    'doctors.fio as doctor_fio')
+                    'doctor_who_appointed.fio as doctor_fio_who_appointed',
+                    'doctor_who_performed.fio as doctor_fio_who_performed'
+                )
                 ->orderBy('operations.operation_date', 'DESC')
                 ->get();
         } catch (Exception $e) {

@@ -16,7 +16,8 @@ class CreateOperationsTable extends Migration
         Schema::create('operations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('inpatient_id')->unsigned();
-            $table->integer('doctor_id')->unsigned();
+            $table->integer('doctor_who_appointed')->unsigned();
+            $table->integer('doctor_who_performed')->unsigned();
 
             $table->timestamp('appointment_date');
             $table->timestamp('operation_date')->nullable();
@@ -34,7 +35,9 @@ class CreateOperationsTable extends Migration
         Schema::table('operations',function (Blueprint $table){
             $table->foreign('inpatient_id')->references('id')->on('inpatients')
                 ->onUpdate('cascade');
-            $table->foreign('doctor_id')->references('id')->on('health_workers')
+            $table->foreign('doctor_who_appointed')->references('id')->on('health_workers')
+                ->onUpdate('cascade');
+            $table->foreign('doctor_who_performed')->references('id')->on('health_workers')
                 ->onUpdate('cascade');
         });
     }

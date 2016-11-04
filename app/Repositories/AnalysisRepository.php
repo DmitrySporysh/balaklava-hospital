@@ -27,16 +27,45 @@ class AnalysisRepository extends Repository implements AnalysisRepositoryInterfa
         try {
             $data = DB::table('analyzes')
                 ->where('analyzes.inpatient_id', $inpatient_id)
-                ->join('health_workers as doctors', 'analyzes.doctor_id', '=', 'doctors.id')
+                ->join('health_workers as doctor_who_appointed', 'analyzes.doctor_who_appointed', '=', 'doctor_who_appointed.id')
+                ->leftJoin('health_workers as doctor_who_performed', 'analyzes.doctor_who_performed', '=', 'doctor_who_performed.id')
+                ->select(
+                    'analyzes.id as analyses_id',
+                    'appointment_date',
+                    'ready_date',
+                    'analysis_name',
+                    'analysis_description',
+                    'result_description',
+                    'paths_to_files',
+                    'doctor_who_appointed.fio as doctor_fio_who_appointed',
+                    'doctor_who_performed.fio as doctor_fio_who_performed'
+                )
+                ->orderBy('analyzes.appointment_date', 'DESC')
+                ->get();
+        } catch (Exception $e) {
+            $message = 'Error while finding element using ' . $this->model();
+            throw new DALException($message, 0, $e);
+        }
+        if ($data != null) return $data;
+        return array();
+    }
+
+    public function getInpatientAnalysesWithDoctor($analyses_id)
+    {
+        try {
+            $data = DB::table('analyzes')
+                ->where('analyzes.id', $analyses_id)
+                ->join('health_workers as doctor_who_appointed', 'analyzes.doctor_who_appointed', '=', 'doctor_who_appointed.id')
+                ->leftJoin('health_workers as doctor_who_performed', 'analyzes.doctor_who_performed', '=', 'doctor_who_performed.id')
                 ->select('appointment_date',
                     'ready_date',
                     'analysis_name',
                     'analysis_description',
                     'result_description',
                     'paths_to_files',
-                    'doctors.fio as doctor_fio'
+                    'doctor_who_appointed.fio as doctor_fio_who_appointed',
+                    'doctor_who_performed.fio as doctor_fio_who_performed'
                 )
-                ->orderBy('analyzes.appointment_date', 'DESC')
                 ->get();
         } catch (Exception $e) {
             $message = 'Error while finding element using ' . $this->model();

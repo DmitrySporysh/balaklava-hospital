@@ -13,15 +13,15 @@
 
 //Auth-Register routes
 
-Route::get('/register','RegistrationController@showRegistrationForm');
+Route::get('/register', 'RegistrationController@showRegistrationForm');
 
-Route::post('/register','RegistrationController@register');
+Route::post('/register', 'RegistrationController@register');
 
-Route::get('/login','Auth\AuthController@showLoginForm');
+Route::get('/login', 'Auth\AuthController@showLoginForm');
 
-Route::post('/login','Auth\AuthController@login');
+Route::post('/login', 'Auth\AuthController@login');
 
-Route::get('/logout','Auth\AuthController@logout');
+Route::get('/logout', 'Auth\AuthController@logout');
 /*
 
 Route::get('/forgetpassword','EntryController@getForgetPasswordPage');
@@ -125,13 +125,17 @@ Route::get('nurse/inpatient/{id}/medical_appointments', 'NurseController@getInpa
 
 Route::get('nurse/inpatient/{id}/inspections', 'NurseController@getInpatientInspections');
 
-Route::get('nurse/inpatient/{id}/analyzes', 'NurseController@getInpatientAnalyzes');
+Route::get('nurse/inpatient/{id}/analyzes', 'NurseController@getInpatientAllAnalyzes');//получить список всех анализов пациента
 
-Route::get('nurse/inpatient/{id}/procedures', 'NurseController@getInpatientProcedures');
+Route::get('nurse/inpatient/{id}/analyzes/{analyses_id}', 'NurseController@getInpatientAnalyses');//получить информацию по конретному анализу по его id
+
+Route::get('nurse/inpatient/{id}/procedures', 'NurseController@getInpatientAllProcedures');//получить список всех процедур пациента
+
+Route::get('nurse/inpatient/{id}/procedures/{procedure_id}', 'NurseController@getInpatientProcedure');//получить информацию по конретной процедуре по его id
 
 Route::get('nurse/inpatient/{id}/operations', 'NurseController@getInpatientOperations');
 
-Route::get('nurse/inpatient/{id}/temperature_log', 'NurseController@getInpatientTemperatureLog');
+Route::get('nurse/inpatient/{id}/temperature_log', 'NurseController@getInpatientTemperatureLog'); // получить все измерения температур пациента
 
 //no important ---------------------------------------
 Route::get('nurse/chambers', 'NurseController@getNotEmptyChambers');
@@ -145,4 +149,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('files/getFile', 'FileController@getFile');
+Route::get('files/getFile', 'FileController@getFile'); //получить файл по его урлу {file_path}
+
+Route::post('files/saveFile', 'FileController@saveFile');

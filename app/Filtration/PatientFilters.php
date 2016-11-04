@@ -41,7 +41,7 @@ class PatientFilters extends QueryFilters
     public function insurance_number($insurance_number = null)
     {
         if ($insurance_number)
-            return $this->builder->where('patients.insurance_number', '=', $insurance_number);
+            return $this->builder->where('patients.insurance_number', 'LIKE', trim($insurance_number . '%'));
     }
 
     /**

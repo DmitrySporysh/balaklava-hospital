@@ -20,12 +20,11 @@ class FileService implements FileServiceInterface
 
     public function save($file)
     {
-
-        $extension = explode('/',explode(';',$file)['0'])[1];
+        $extension = explode('/', explode(';', $file)['0'])[1];
         date_default_timezone_set('Europe/Moscow');
         $date = date('m/d/Y h:i:s a', time());
-        $name = bcrypt(Auth::user()->id.$date.str_random(16)).'.'.$extension;
-        Storage::put($name,$file);
+        $name = bcrypt(Auth::user()->id . $date . str_random(16)) . '.' . $extension;
+        Storage::put($name, $file);
         return $name;
     }
 
@@ -36,6 +35,8 @@ class FileService implements FileServiceInterface
 
     public function get($path)
     {
-       return Storage::get($path);
+        if ($this->has($path))
+            return Storage::get($path);
+        else return null;
     }
 }

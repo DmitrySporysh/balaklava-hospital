@@ -27,13 +27,40 @@ class ProcedureRepository extends Repository implements ProcedureRepositoryInter
         try {
             $data = DB::table('procedures')
                 ->where('procedures.inpatient_id', $inpatient_id)
-                ->join('health_workers as doctors', 'procedures.doctor_id', '=', 'doctors.id')
+                ->join('health_workers as doctor_who_appointed', 'analyzes.doctor_who_appointed', '=', 'doctor_who_appointed.id')
+                ->leftJoin('health_workers as doctor_who_performed', 'analyzes.doctor_who_performed', '=', 'doctor_who_performed.id')
+                ->select(
+                    'procedures.id as procedure_id',
+                    'procedure_date',
+                    'procedure_name',
+                    'procedure_description',
+                    'doctor_who_appointed.fio as doctor_fio_who_appointed',
+                    'doctor_who_performed.fio as doctor_fio_who_performed'
+                )
+                ->orderBy('procedures.procedure_date', 'DESC')
+                ->get();
+        } catch (Exception $e) {
+            $message = 'Error while finding element using ' . $this->model();
+            throw new DALException($message, 0, $e);
+        }
+        if ($data != null) return $data;
+        return array();
+    }
+
+    public function getInpatientProcedureWithDoctor($procedure_id)
+    {
+        try {
+            $data = DB::table('procedures')
+                ->where('procedures.id', $procedure_id)
+                ->join('health_workers as doctor_who_appointed', 'analyzes.doctor_who_appointed', '=', 'doctor_who_appointed.id')
+                ->leftJoin('health_workers as doctor_who_performed', 'analyzes.doctor_who_performed', '=', 'doctor_who_performed.id')
                 ->select('procedure_date',
                     'procedure_name',
                     'procedure_description',
-                    'doctors.fio as doctor_fio')
-                ->orderBy('procedures.procedure_date', 'DESC')
-                ->get();
+                    'doctor_who_appointed.fio as doctor_fio_who_appointed',
+                    'doctor_who_performed.fio as doctor_fio_who_performed'
+                )
+                ->first();
         } catch (Exception $e) {
             $message = 'Error while finding element using ' . $this->model();
             throw new DALException($message, 0, $e);

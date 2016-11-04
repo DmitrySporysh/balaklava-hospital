@@ -47,7 +47,7 @@ class AnalyzesTableSeeder extends Seeder
             'Глюкоза: 4.2; Общ. билирубин: 19.0; АСТ: 18;	АЛТ: 60; Мочевина: 3.9;	Креатинин: 120;	Амилаза: 670; Общ. белок: 59;',
             'Цвет: желт; Прозрачность: мутная; кислотность: 7.0; Удельный вес: 1015; Эритроциты: не обнаруж; бактерии: -; ацетон: -; эпителий: следы; белок: следы;',
             'Ритм синусовый, правильный. Вольтаж достаточный. ЭОС не отклонена. Нарушение процесса реполяризации боковой стенки ЛЖ. ЧСС 72 в мин.',
-            'Без динамики от',
+            'Без динамики от 05.10.2016',
             'Отрицательно',
             'Отрицательно',
             'II(А), Rh+, фенотип D+ d+ E+ e- C+ c-, Kell-фактор - отрицательный.',
@@ -61,12 +61,15 @@ class AnalyzesTableSeeder extends Seeder
             foreach (range(0, count($analysis_name) - 1) as $analysis_index)
                 DB::table('analyzes')->insert([
                     'inpatient_id' => $index,
-                    'doctor_id' => 2 + 3 * (($index + $analysis_index) % 10) + 17,
+                    'doctor_who_appointed' => 2 + 3 * (($index + $analysis_index) % 10) + 17,
+                    'doctor_who_performed' => 2 + 3 * (($index + $analysis_index + 2) % 10) + 17,
                     'appointment_date' => '2016-10-' . ($analysis_index + 1),
                     'ready_date' => (($analysis_index + $index) % 3 != 0) ? ('2016-10-' . ($analysis_index + 2)) : null,
                     'analysis_name' => $analysis_name[$analysis_index],
                     'analysis_description' => $analysis_description[$analysis_index],
                     'result_description' => $result_description[$analysis_index],
+                    'paths_to_files' => 'analyzes/'.$analysis_index.'.jpg'
+
                 ]);
         }
     }

@@ -16,7 +16,9 @@ class CreateAnalyzesTable extends Migration
         Schema::create('analyzes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('inpatient_id')->unsigned();
-            $table->integer('doctor_id')->unsigned();
+            $table->integer('doctor_who_appointed')->unsigned();
+            $table->integer('doctor_who_performed')->unsigned();
+
             $table->timestamp('appointment_date');
             $table->timestamp('ready_date')->nullable();
             $table->string('analysis_name');
@@ -31,7 +33,9 @@ class CreateAnalyzesTable extends Migration
         Schema::table('analyzes',function (Blueprint $table){
             $table->foreign('inpatient_id')->references('id')->on('inpatients')
                 ->onUpdate('cascade');
-            $table->foreign('doctor_id')->references('id')->on('health_workers')
+            $table->foreign('doctor_who_appointed')->references('id')->on('health_workers')
+                ->onUpdate('cascade');
+            $table->foreign('doctor_who_performed')->references('id')->on('health_workers')
                 ->onUpdate('cascade');
         });
     }

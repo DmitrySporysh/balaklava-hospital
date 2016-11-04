@@ -39,7 +39,6 @@ class NurseService implements NurseServiceInterface
     private $nurse_repo;
     private $department_repo;
 
-
     public function __construct(UserRepositoryInterface $user_repo,
                                 PatientRepositoryInterface $patient_repo,
                                 InpatientRepositoryInterface $inpatient_repo,

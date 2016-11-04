@@ -22,9 +22,13 @@ interface PatientServiceInterface
 
     public function getInpatientInspections($inpatient_id);
 
-    public function getInpatientAnalyzes($inpatient_id);
+    public function getInpatientAllAnalyzes($inpatient_id);
 
-    public function getInpatientProcedures($inpatient_id);
+    public function getInpatientAnalyses($inpatient_id, $analyses_id);
+
+    public function getInpatientAllProcedures($inpatient_id);
+
+    public function getInpatientProcedure($inpatient_id, $procedure_id);
 
     public function getInpatientOperations($inpatient_id);
 

@@ -109,7 +109,7 @@ class DoctorController extends Controller
     }
     public function getInpatientAnalyzes(Request $request, $inpatient_id)
     {
-        $response = $this->patient_service->getInpatientAnalyzes($inpatient_id);
+        $response = $this->patient_service->getInpatientAllAnalyzes($inpatient_id);
         //Debugbar::info($response);
         //return view('welcome', ['response' => $response]);
         return $response;
@@ -117,7 +117,7 @@ class DoctorController extends Controller
 
     public function getInpatientProcedures(Request $request, $patient_id)
     {
-        $response = $this->patient_service->getInpatientProcedures($patient_id);
+        $response = $this->patient_service->getInpatientAllProcedures($patient_id);
         //Debugbar::info($response);
         //return view('welcome', ['response' => $response]);
         return $response;
