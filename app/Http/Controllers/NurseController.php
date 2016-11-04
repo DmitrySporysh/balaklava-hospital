@@ -128,8 +128,8 @@ class NurseController extends Controller
     public function getInpatientTemperatureLog(Request $request, $inpatient_id)
     {
         $response = $this->patient_service->getInpatientTemperatureLog($inpatient_id);
-        Debugbar::info($response);
-        return view('welcome', ['response' => $response]);
-        //return $response;
+        //Debugbar::info($response);
+        //return view('welcome', ['response' => $response]);
+        return $response;
     }
 }
