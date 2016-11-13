@@ -43,8 +43,7 @@ class AuthController extends Controller
             $errors = $this->auth_service->login($request);
 
             if(!empty($errors)) {
-                Debugbar::info($errors);
-                return view('auth.login');
+                return $errors;
             }
 
             if(Auth::guest()){
@@ -70,10 +69,10 @@ class AuthController extends Controller
             }*/
         }
         catch(AuthServiceException $e) {
-            return 'Ошибка при логине. Временная заглушка.';
+            return $e->getMessage();
         }
         catch(Exception $e) {
-            return 'Неизвестная ошибка логина. Временная заглушка.';
+            return 'Неизвестная ошибка логина.';
         }
     }
 

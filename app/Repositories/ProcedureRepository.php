@@ -27,13 +27,14 @@ class ProcedureRepository extends Repository implements ProcedureRepositoryInter
         try {
             $data = DB::table('procedures')
                 ->where('procedures.inpatient_id', $inpatient_id)
-                ->join('health_workers as doctor_who_appointed', 'analyzes.doctor_who_appointed', '=', 'doctor_who_appointed.id')
-                ->leftJoin('health_workers as doctor_who_performed', 'analyzes.doctor_who_performed', '=', 'doctor_who_performed.id')
+                ->join('health_workers as doctor_who_appointed', 'procedures.doctor_who_appointed', '=', 'doctor_who_appointed.id')
+                ->leftJoin('health_workers as doctor_who_performed', 'procedures.doctor_who_performed', '=', 'doctor_who_performed.id')
                 ->select(
                     'procedures.id as procedure_id',
                     'procedure_date',
                     'procedure_name',
                     'procedure_description',
+                    'paths_to_files',
                     'doctor_who_appointed.fio as doctor_fio_who_appointed',
                     'doctor_who_performed.fio as doctor_fio_who_performed'
                 )
@@ -52,11 +53,12 @@ class ProcedureRepository extends Repository implements ProcedureRepositoryInter
         try {
             $data = DB::table('procedures')
                 ->where('procedures.id', $procedure_id)
-                ->join('health_workers as doctor_who_appointed', 'analyzes.doctor_who_appointed', '=', 'doctor_who_appointed.id')
-                ->leftJoin('health_workers as doctor_who_performed', 'analyzes.doctor_who_performed', '=', 'doctor_who_performed.id')
+                ->join('health_workers as doctor_who_appointed', 'procedures.doctor_who_appointed', '=', 'doctor_who_appointed.id')
+                ->leftJoin('health_workers as doctor_who_performed', 'procedures.doctor_who_performed', '=', 'doctor_who_performed.id')
                 ->select('procedure_date',
                     'procedure_name',
                     'procedure_description',
+                    'paths_to_files',
                     'doctor_who_appointed.fio as doctor_fio_who_appointed',
                     'doctor_who_performed.fio as doctor_fio_who_performed'
                 )

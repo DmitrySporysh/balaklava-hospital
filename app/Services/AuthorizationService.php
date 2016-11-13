@@ -38,7 +38,8 @@ class AuthorizationService implements AuthorizationServiceInterface
                 return;
             }
 
-            return ['other' => 'Такого пользователя не существует.'];
+            return ['error' => 'Неверный логин или пароль'];
+
         } catch (Exception $e) {
             $message = 'Login error';
             throw new AuthServiceException($message, 0, $e);

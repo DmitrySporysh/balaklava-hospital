@@ -152,3 +152,4 @@ Route::get('/', function () {
 Route::get('files/getFile', 'FileController@getFile'); //получить файл по его урлу {file_path}
 
 Route::post('files/saveFile', 'FileController@saveFile');
+

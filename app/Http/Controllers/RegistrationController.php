@@ -30,7 +30,6 @@ class RegistrationController extends Controller
     public function register(Request $request)
     {
         $messages = $this->reg_service->register($request);
-        //Debugbar::info($messages);
         return  $messages;
     }
 }

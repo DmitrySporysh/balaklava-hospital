@@ -29,10 +29,10 @@ class PasswordController extends Controller
             return redirect('/webmaster/profile');
         }
         catch(PasswordServiceException $e) {
-            return 'Ошибка при регистрации. Временная заглушка.';
+            return 'Ошибка при регистрации';
         }
         catch(Exception $e) {
-            return 'Неизвестная ошибка регистрации. Временная заглушка.';
+            return 'Неизвестная ошибка регистрации';
         }
     }
 

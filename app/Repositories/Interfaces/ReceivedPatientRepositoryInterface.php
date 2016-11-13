@@ -11,7 +11,7 @@ namespace App\Repositories\Interfaces;
 interface ReceivedPatientRepositoryInterface extends RepositoryInterface
 {
     public function getReceivedPatientsWithPatientInfoSortByDateDesc_Paginate($per_page);
-
+    
     public function getAwaitingPrimaryInspectionReceivedPatientsSortByDatetimeAsc($per_page);
 
     public function createNewPatientAndReceivedPatient($patientInfo, $receivedPatientInfo);
