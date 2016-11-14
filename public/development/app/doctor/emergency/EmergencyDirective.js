@@ -4,8 +4,8 @@ angular
         return {
             restrict: "AE",
             templateUrl: PATHDIR+"/emergency/emergency.html",
-          /*  controller: 'DoctorEmergencyCtrl',
-            controllerAs: 'doctorEmCtrl'*/
+            controller: 'DoctorEmergencyCtrl',
+            controllerAs: 'doctorEmCtrl'
         };
     });
 

@@ -1,11 +1,11 @@
 angular
  .module('doctorApp')
-    .directive('emergency', function (PATHDIR) {
+    .directive('emergencyPerson', function (PATHDIR) {
         return {
             restrict: "AE",
-            templateUrl: PATHDIR+"/emergency/emergency.html",
-            controller: 'DoctorEmergencyCtrl',
-            controllerAs: 'doctorEmCtrl'
+            templateUrl: PATHDIR+"/emergency_person/emergency_p.html",
+            controller: 'DoctorEmergencyPersonCtrl',
+            controllerAs: 'doctorEmPersonCtrl'
         };
     });
 

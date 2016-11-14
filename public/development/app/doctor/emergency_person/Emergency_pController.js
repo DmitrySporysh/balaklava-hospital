@@ -1,12 +1,9 @@
 angular
-    .module('doctorApp')
-    .controller('DoctorEmergencyCtrl', function($scope,DoctorEmergencyService) {
+ .module('doctorApp')
+    .controller('DoctorEmergencyPersonCtrl', function($stateParams, DoctorEmergencyPersonService) {
         var self = this;
 
-        DoctorEmergencyService.getEmergencyPeople()
-            .then(function(people) {
-                self.emergPeople = people.data;
-            });
-/*
-        this.showEmerPerson = DoctorEmergencyService.EmerPersonInfo();*/
+        self.emPerson_id = $stateParams.id;
+
+        DoctorEmergencyPersonService.getInfoFromEmergency(self.emPerson_id);
     });

@@ -14,6 +14,10 @@ angular
             .state('emergency',{
                 url: '/emergency',
                 template: '<emergency></emergency>'
+            })
+            .state('emergency_person',{
+                url: '/emergency_person/:id',
+                template: '<emergency-person></emergency-person>'
             });
     });
 

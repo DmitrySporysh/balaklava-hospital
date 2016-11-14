@@ -15,7 +15,7 @@ body {
     font-family: "Roboto";
     font-weight: 300;
     font-size: 14px;
-    color: #444444
+    color: #444444;
 }
 
 .header {
@@ -415,6 +415,7 @@ body {
 
 .plain-table__table{
     width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.298039) 0px 4px 12px -5px;
 }
 
 .patient-form__label {

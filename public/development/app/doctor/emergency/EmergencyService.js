@@ -1,46 +1,23 @@
 angular
  .module('doctorApp')
-    .service('DoctorEmergencyService', function($http, $sessionStorage, $window, $q) {
+    .service('DoctorEmergencyService', function($http, $q) {
 
-        function login(login, password) {
-            var info = {login: login, password: password};
+        function getEmergencyPeople() {
             var defer=$q.defer();
 
-            $http.post("/login", info)
-                .success(function (answ) {
-                    defer.resolve(answ);
-                }).error(function(err) {
-                defer.reject(err);
-            });
+            $http.get('doctor/emergency?page=1')
+                .success(function(patients) {
+                    defer.resolve(patients);
 
+                })
+                .error(function(err) {
+                    defer.reject(err);
+                });
             return defer.promise;
         }
 
-        function cahngeSessionInfo() {
-            $sessionStorage.$reset({
-                name: sessionStorage.getItem('fio'),
-                post: sessionStorage.getItem('post'),
-            });
-        }
-
-        function getPost() {
-            return $sessionStorage.post;
-        }
-
-        function redirection() {
-            if (getPost() == 'Врач') {
-                $window.location.href =  "/doctor";
-            }
-            if (getPost()  == 'Приемный') {
-                $window.location.href =  "/emergency";
-            }
-        }
-
         return {
-            login: login,
-            redirection: redirection,
-            getPost: getPost,
-            cahngeSessionInfo: cahngeSessionInfo
+            getEmergencyPeople: getEmergencyPeople
         };
 
     });
