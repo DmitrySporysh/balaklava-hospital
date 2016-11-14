@@ -1,0 +1,14 @@
+<form role="form" method="POST" action="{{ url('/login') }}">
+    {{ csrf_field() }}
+
+    <h1>Вход</h1>
+
+    <label for="login" class="col-md-4 control-label">login</label>
+    <input id="emailLogin" type="login" name="login" value="{{ old('login') }}">
+
+
+    <label for="password">Пароль</label>
+    <input id="password" type="password" class="form-control" name="password">
+
+    <button type="submit" >ОК</button>
+</form>
