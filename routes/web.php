@@ -49,7 +49,8 @@ Route::get('emergency/patients', 'EmergencyController@getReceivedPatients'); //
 Route::post('emergency/addNewInpatient', 'EmergencyController@addNewInpatient');
 
 Route::get('emergency', function () {
-    return view('layouts.emergency_room');
+    /*return view('layouts.emergency_room');*/
+    return view('emergency');
 });
 
 //---------Doctor-------------------
@@ -93,7 +94,7 @@ Route::post('doctor/inpatient/addOperation', 'DoctorController@addNewInpatientOp
 Route::post('doctor/inpatient/addMedicalAppointment', 'DoctorController@addNewInpatientMedicalAppointment');
 
 Route::get('doctor', function () {
-    return view('layouts.doctor_room');
+    return view('doctor');
 });
 
 //---------DepartmentChief-------------------
