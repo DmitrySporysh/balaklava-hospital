@@ -50,9 +50,11 @@ class AuthController extends Controller
                 return redirect('/');
             }
 
-            return ['success' => true];
+            $post = Auth::user()->health_worker->post;
 
-            /*$role = Auth::user()->health_worker->post;
+            return ['success' => true, 'post' => $post];
+
+            /*
             if($role == UserRole::getValueByNumber(0)){
                 
                 return redirect('/department_chief');
