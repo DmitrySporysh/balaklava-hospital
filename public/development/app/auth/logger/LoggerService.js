@@ -12,7 +12,6 @@ angular
                     }).error(function(err) {
                         defer.reject(err);
                     });
-
                 return defer.promise;
             }
 
@@ -27,11 +26,11 @@ angular
                 return $sessionStorage.post;
             }
 
-            function redirection() {
-                if (getPost() == 'Врач') {
-                    $window.location.href =  "/doctor";
+            function redirection(post) {
+                if (post == 'Врач') {
+                    $window.location.href =  "/doctor#/emergency";
                 }
-                if (getPost()  == 'Приемный') {
+                if (post  == 'Приемный') {
                     $window.location.href =  "/emergency";
                 }
             }

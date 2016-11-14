@@ -8,9 +8,7 @@ angular
                     .then (function(access) {
                         if (access.success) {
                             loginService.cahngeSessionInfo();
-                            console.log($sessionStorage);
-
-                            loginService.redirection();
+                            loginService.redirection(access.post);
                         }
                     });
             };

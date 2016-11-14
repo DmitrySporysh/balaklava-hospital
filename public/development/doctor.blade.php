@@ -12,14 +12,19 @@
     <script src="../development/app/doctor/emergency/EmergencyController.js"></script>
     <script src="../development/app/doctor/emergency/EmergencyDirective.js"></script>
     <script src="../development/app/doctor/emergency/EmergencyService.js"></script>
+
+    <link rel="stylesheet" href="development/css/style.css">
+    <link rel="stylesheet" href="development/css/font-awesome.css">
+ {{--   <link rel="stylesheet" href="development/fonts/themify/themify-icons.css">--}}
+    <link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700" media="all" />
 </head>
 <body ng-app="doctorApp">
-
-<ng-include src="components/header.html"></ng-include>
-
-    <ui-view></ui-view>
-
-
+    <div class="wrapper">
+        <div ng-include src="'/development/components/header.html'"></div>
+    </div>
+    <div class="main-content">
+        <ui-view></ui-view>
+    </div>
 
 
 </body>
