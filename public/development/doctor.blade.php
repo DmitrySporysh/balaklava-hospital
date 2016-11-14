@@ -7,13 +7,20 @@
     <script src="../bower_components/angular/angular.min.js"></script>
     <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
-    <script src="development/app/auth/Auth.js"></script>
-    <script src="../development/app/auth/logger/LoggerController.js"></script>
-    <script src="../development/app/auth/logger/LoggerDirective.js"></script>
-    <script src="../development/app/auth/logger/LoggerService.js"></script>
-    <style>.active { color: red; font-weight: bold; }</style>
+    <script src="development/app/doctor/Doctor.js"></script>
+
+    <script src="../development/app/doctor/emergency/EmergencyController.js"></script>
+    <script src="../development/app/doctor/emergency/EmergencyDirective.js"></script>
+    <script src="../development/app/doctor/emergency/EmergencyService.js"></script>
 </head>
-<body ng-app="auth">
+<body ng-app="doctorApp">
+
+<ng-include src="components/header.html"></ng-include>
+
     <ui-view></ui-view>
+
+
+
+
 </body>
 </html>

@@ -1,14 +1,11 @@
-<form role="form" method="POST" action="{{ url('/login') }}">
-    {{ csrf_field() }}
 
-    <h1>Вход</h1>
+<span>{{loginCtrl.$storage.name}}</span>
+<span>{{loginCtrl.$storage.post}}</span>
 
-    <label for="login" class="col-md-4 control-label">login</label>
-    <input id="emailLogin" type="login" name="login" value="{{ old('login') }}">
+<form name="LoginForm">
+    <input ng-model="loginCtrl.login_info.login"   name="login" value="" title="Person Name" type="text">
 
+    <input ng-model="loginCtrl.login_info.password"   name="password" value="" title="Person Name" type="text">
 
-    <label for="password">Пароль</label>
-    <input id="password" type="password" class="form-control" name="password">
-
-    <button type="submit" >ОК</button>
+    <input  id='test' ng-click="loginCtrl.login()" type="submit" value="Сохранить">
 </form>

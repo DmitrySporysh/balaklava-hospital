@@ -4,10 +4,31 @@
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="/public/development/app/auth/logger/Logger.js"></script>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="../bower_components/ngstorage/ngStorage.min.js"></script>
+
+    <script src="development/app/auth/Auth.js"></script>
+    <script src="../development/app/auth/logger/LoggerController.js"></script>
+    <script src="../development/app/auth/logger/LoggerDirective.js"></script>
+    <script src="../development/app/auth/logger/LoggerService.js"></script>
+    <style>.active { color: red; font-weight: bold; }</style>
 </head>
-<body ng-app="LoginRouteApp">
-    <div ng-view></div>
+
+<script type="text/javascript">
+    $( document ).ready(function() {
+        $('#test').on('click', function () {
+            console.log(12);
+            sessionStorage.setItem('fio', '{{Session::get('fio')}}');
+            sessionStorage.setItem('post', '{{Session::get('post')}}');
+        })
+    });
+</script>
+{{Session::get('fio')}}
+<body ng-app="authApp">
+    <ui-view></ui-view>
 </body>
+
+
 </html>

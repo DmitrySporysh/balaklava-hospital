@@ -1,3 +1,12 @@
-/**
- * Created by LISBON on 14.11.2016.
- */
+angular
+ .module('doctorApp')
+    .directive('emergency', function (PATHDIR) {
+        return {
+            restrict: "AE",
+            templateUrl: PATHDIR+"/emergency/emergency.html",
+          /*  controller: 'DoctorEmergencyCtrl',
+            controllerAs: 'doctorEmCtrl'*/
+        };
+    });
+
+

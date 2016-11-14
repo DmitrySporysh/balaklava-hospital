@@ -17,6 +17,6 @@
     <ui-view></ui-view>
 </body>--}}
 <body >
-    <h1>doctor</h1>
+    <h1>emergency</h1>
 </body>
 </html>

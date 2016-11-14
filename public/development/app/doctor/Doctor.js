@@ -1,15 +1,19 @@
 angular
-    .module('auth', ['ui.router'])
-    .constant('PATHDIR', 'development/app/auth')
+    .module('doctorApp', ['ui.router'])
+    .constant('PATHDIR', 'development/app/doctor')
     .config(function($stateProvider) { //Because $stateProvider is an Angular Provider, you must inject it into a .config() block using Angular 1 Dependency Injection.
         $stateProvider
-            .state('login',{
-                url: '/login',
-                template: '<login-form></login-form>'
+            .state('inpatients',{
+                url: '/inpatients',
+                template: '<inpatients></inpatients>'
             })
-            .state('registration',{
-                url: '/registration',
-                template: '<registration></registration>'
+            .state('inpatient',{
+                url: '/inpatient',
+                template: '<inpatient></inpatient>'
+            })
+            .state('emergency',{
+                url: '/emergency',
+                template: '<emergency></emergency>'
             });
     });
 

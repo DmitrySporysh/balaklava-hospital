@@ -4,11 +4,6 @@
 /** Environment shortcut. */
 var env = process.env;
 
-if (env.TRAVIS_SECURE_ENV_VARS == 'false') {
-  console.log('Skipping Sauce Labs jobs; secure environment variables are unavailable');
-  process.exit(0);
-}
-
 /** Load Node.js modules. */
 var EventEmitter = require('events').EventEmitter,
     http = require('http'),
@@ -82,7 +77,7 @@ var advisor = getOption('advisor', false),
     queueTimeout = getOption('queueTimeout', 240),
     recordVideo = getOption('recordVideo', true),
     recordScreenshots = getOption('recordScreenshots', false),
-    runner = getOption('runner', 'test/patients.html').replace(/^\W+/, ''),
+    runner = getOption('runner', 'test/index.html').replace(/^\W+/, ''),
     runnerUrl = getOption('runnerUrl', 'http://localhost:' + port + '/' + runner),
     statusInterval = getOption('statusInterval', 5),
     tags = getOption('tags', []),
@@ -104,11 +99,11 @@ var browserNameMap = {
 /** List of platforms to load the runner on. */
 var platforms = [
   ['Linux', 'android', '5.1'],
+  ['Windows 10', 'chrome', '54'],
   ['Windows 10', 'chrome', '53'],
-  ['Windows 10', 'chrome', '52'],
   ['Windows 10', 'firefox', '49'],
   ['Windows 10', 'firefox', '48'],
-  ['Windows 10', 'microsoftedge', '13'],
+  ['Windows 10', 'microsoftedge', '14'],
   ['Windows 10', 'internet explorer', '11'],
   ['Windows 8', 'internet explorer', '10'],
   ['Windows 7', 'internet explorer', '9'],
