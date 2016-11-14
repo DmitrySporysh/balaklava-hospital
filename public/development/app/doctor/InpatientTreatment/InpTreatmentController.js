@@ -41,9 +41,9 @@ angular
         InpatientTreatmentService.getOperations(self.emPerson_id)
             .then(function(operations){
                 self.operations = operations;
-                console.log(self.operations);
             });
     })
+
     .controller('InpatientTreatmentCtrlPrescr', function(InpatientTreatmentService, $stateParams) {
         var self = this;
         self.emPerson_id = $stateParams.id;
@@ -51,7 +51,16 @@ angular
         InpatientTreatmentService.getPrescriptions(self.emPerson_id)
             .then(function(prescriptions){
                 self.prescriptions = prescriptions;
-
+            });
+    })
+    
+    .controller('InpatientTreatmentFirstInspect', function(InpatientTreatmentService, $stateParams) {
+        var self = this;
+        self.emPerson_id = $stateParams.id;
+    
+        InpatientTreatmentService.getInspectionProtocol(self.emPerson_id)
+            .then(function(firstInsp){
+                self.firstInsp = firstInsp[0];
             });
     });
 

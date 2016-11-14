@@ -82,6 +82,20 @@ angular
             return defer.promise;
         }
 
+        function getInspectionProtocol(id) {
+            var defer=$q.defer();
+
+            $http.get('doctor/inpatient/'+id+'/inspection_protocol')
+                .success(function(response) {
+                    defer.resolve(response);
+                })
+                .error(function(err) {
+                    defer.reject(err);
+                });
+            return defer.promise;
+        }
+        
+
 
 
 
@@ -91,7 +105,8 @@ angular
             getInspections: getInspections,
             getProcedures: getProcedures,
             getOperations: getOperations,
-            getPrescriptions: getPrescriptions
+            getPrescriptions: getPrescriptions,
+            getInspectionProtocol: getInspectionProtocol
         };
 
     });

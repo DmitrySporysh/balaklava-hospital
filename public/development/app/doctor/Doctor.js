@@ -31,9 +31,9 @@ angular
                     url: '/prescriptions',
                     template: '<prescriptions></prescriptions>'
                 })
-                .state('inpatient_treatment.inspections',{
+                .state('inpatient_treatment.first_inspect',{
                     url: '/inspections',
-                    template: '<inpections></inpections>'
+                    template: '<first-inspect></first-inspect>'
                 })
 
             .state('emergency',{

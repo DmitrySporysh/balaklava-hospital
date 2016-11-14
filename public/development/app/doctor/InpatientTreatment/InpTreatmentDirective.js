@@ -10,7 +10,7 @@ angular
     })
 
 
-/*tabs*/
+/*--------------------------------------------------------tabs-----------------------------------------------------------------*/
 
     .directive('general', function (PATHDIR) {
         return {
@@ -40,15 +40,15 @@ angular
         return {
             restrict: "AE",
             templateUrl: PATHDIR+"/InpatientTreatment/tabs/prescriptions.html",
-            /*controller: 'InpatientTreatmentCtrl',
-             controllerAs: 'inpatientTreatmentCtrl'*/
+            controller: 'InpatientTreatmentCtrlPrescr',
+             controllerAs: 'treatmentPrescr'
         };
     })
-    .directive('inspections', function (PATHDIR) {
+    .directive('firstInspect', function (PATHDIR) {
         return {
             restrict: "AE",
-            templateUrl: PATHDIR+"/InpatientTreatment/tabs/inspections.html",
-            /*controller: 'InpatientTreatmentCtrl',
-             controllerAs: 'inpatientTreatmentCtrl'*/
+            templateUrl: PATHDIR+"/InpatientTreatment/tabs/first_inspect.html",
+            controller: 'InpatientTreatmentFirstInspect',
+             controllerAs: 'inpatientTreatmentFirstInspect'
         };
     });
