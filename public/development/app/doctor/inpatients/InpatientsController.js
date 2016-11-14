@@ -1,10 +1,10 @@
 angular
-    .module('doctorApp')
-    .controller('DoctorEmergencyCtrl', function(DoctorEmergencyService) {
+ .module('doctorApp')
+    .controller('InpatientsCtrl', function(InpatientsService) {
         var self = this;
 
-        DoctorEmergencyService.getEmergencyPeople()
-            .then(function(people) {
-                self.emergPeople = people.data;
+        InpatientsService.getInpatients()
+            .then(function(inpatients) {
+                self.inpatients = inpatients.data;
             });
     });

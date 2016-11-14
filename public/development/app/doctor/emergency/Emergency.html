@@ -24,7 +24,7 @@
                 </thead>
                 <tbody class='plain-table__value'>
                 <tr ng-repeat="patient in doctorEmCtrl.emergPeople">
-                    <td ng-click=doctorEmCtrl.showEmerPerson(patient.id)>
+                    <td>
                         <a  href="doctor#/emergency_person/{{patient.id}}">{{patient.fio}}</a>
                     </td>
                     <td>{{patient.sex}}</td>

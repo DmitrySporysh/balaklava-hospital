@@ -1,13 +1,13 @@
 angular
  .module('doctorApp')
-    .service('DoctorEmergencyService', function($http, $q) {
+    .service('InpatientsService', function($http, $q) {
 
-        function getEmergencyPeople() {
+        function getInpatients() {
             var defer=$q.defer();
 
-            $http.get('doctor/emergency?page=1')
-                .success(function(patients) {
-                    defer.resolve(patients);
+            $http.get('doctor/inpatients')
+                .success(function(inpatients) {
+                    defer.resolve(inpatients);
 
                 })
                 .error(function(err) {
@@ -17,7 +17,7 @@ angular
         }
 
         return {
-            getEmergencyPeople: getEmergencyPeople
+            getInpatients: getInpatients
         };
 
     });

@@ -21,6 +21,15 @@
     <script src="../development/app/doctor/emergency_person/Emergency_pController.js"></script>
     <script src="../development/app/doctor/emergency_person/Emergency_pService.js"></script>
 
+
+    <script src="../development/app/doctor/inpatients/InpatientsDirective.js"></script>
+    <script src="../development/app/doctor/inpatients/InpatientsController.js"></script>
+    <script src="../development/app/doctor/inpatients/InpatientsService.js"></script>
+
+    <script src="../development/app/doctor/InpatientTreatment/InpTreatmentDirective.js"></script>
+    <script src="../development/app/doctor/InpatientTreatment/InpTreatmentController.js"></script>
+    <script src="../development/app/doctor/InpatientTreatment/InpTreatmentService.js"></script>
+
     <link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700" media="all" />
     <link rel="stylesheet" href="../development/fonts/themify/themify-icons.css">
     <link rel="stylesheet" href="../development/css/font-awesome.css">
