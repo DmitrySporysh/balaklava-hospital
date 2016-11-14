@@ -51,7 +51,7 @@
                     </tr>
                     </thead>
                     <tbody class='plain-table__value'>
-                    <tr ng-repeat="operation in operations">
+                    <tr ng-repeat="operation in treatmentDynamic.operations">
                         <td>{{operation.operation_date}}</td>
                         <td>{{operation.operation_name}}</td>
                         <td>{{operation.preliminary_epicrisis}}</td>
@@ -74,14 +74,16 @@
                     <tr>
                         <th>Дата процедуры</th>
                         <th>Название</th>
-                        <th>Мед работник</th>
+                        <th>Назначен</th>
+                        <th>Выполнен</th>
                     </tr>
                     </thead>
                     <tbody class='plain-table__value'>
-                    <tr ng-repeat="dressing in dressings">
+                    <tr ng-repeat="dressing in treatmentDynamic.procedures">
                         <td>{{dressing.procedure_date}}</td>
                         <td>{{dressing.procedure_name}}</td>
-                        <td>{{dressing.doctor_fio}}</td>
+                        <td>{{dressing.doctor_fio_who_appointed}}</td>
+                        <td>{{dressing.doctor_fio_who_performed}}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -104,7 +106,7 @@
                     </tr>
                     </thead>
                     <tbody class='plain-table__value' id="inspection-table">
-                    <tr ng-repeat="inspection in inspections">
+                    <tr ng-repeat="inspection in treatmentDynamic.inspections">
                         <td>{{inspection.inspection_date}}</td>
                         <td>{{inspection.state_type}}</td>
                         <td>{{inspection.description_extended}}</td>

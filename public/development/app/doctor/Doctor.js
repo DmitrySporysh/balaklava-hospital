@@ -27,9 +27,9 @@ angular
                     url: '/dynamic',
                     template: '<dynamic></dynamic>'
                 })
-                .state('inpatient_treatment.recipes',{
-                    url: '/recipes',
-                    template: '<recipes></recipes>'
+                .state('inpatient_treatment.prescriptions',{
+                    url: '/prescriptions',
+                    template: '<prescriptions></prescriptions>'
                 })
                 .state('inpatient_treatment.inspections',{
                     url: '/inspections',

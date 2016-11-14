@@ -32,14 +32,14 @@ angular
         return {
             restrict: "AE",
             templateUrl: PATHDIR+"/InpatientTreatment/tabs/dynamic.html",
-            /*controller: 'InpatientTreatmentCtrl',
-             controllerAs: 'inpatientTreatmentCtrl'*/
+            controller: 'InpatientTreatmentCtrlDynamic',
+             controllerAs: 'treatmentDynamic'
         };
     })
-    .directive('recipes', function (PATHDIR) {
+    .directive('prescriptions', function (PATHDIR) {
         return {
             restrict: "AE",
-            templateUrl: PATHDIR+"/InpatientTreatment/tabs/recipes.html",
+            templateUrl: PATHDIR+"/InpatientTreatment/tabs/prescriptions.html",
             /*controller: 'InpatientTreatmentCtrl',
              controllerAs: 'inpatientTreatmentCtrl'*/
         };

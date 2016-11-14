@@ -26,28 +26,72 @@ angular
                 .error(function(err) {
                     defer.reject(err);
                 });
-            console.log(defer.promise);
-            /*return defer.promise;*/
+
+            return defer.promise;
         }
 
-        function getAnalyzes(id) {
+        function getInspections(id) {
             var defer=$q.defer();
 
-            $http.get('doctor/inpatient/'+id+'/analyzes')
-                .success(function(analyzes) {
-                    defer.resolve(analyzes);
+            $http.get('doctor/inpatient/'+id+'/inspections')
+                .success(function(response) {
+                    defer.resolve(response);
                 })
                 .error(function(err) {
                     defer.reject(err);
                 });
-            console.log(defer.promise);
-            /*return defer.promise;*/
+            return defer.promise;
         }
+
+        function getProcedures(id) {
+            var defer=$q.defer();
+
+            $http.get('doctor/inpatient/'+id+'/procedures')
+                .success(function(response) {
+                    defer.resolve(response);
+                })
+                .error(function(err) {
+                    defer.reject(err);
+                });
+            return defer.promise;
+        }
+
+        function getOperations(id) {
+            var defer=$q.defer();
+
+            $http.get('doctor/inpatient/'+id+'/operations')
+                .success(function(response) {
+                    defer.resolve(response);
+                })
+                .error(function(err) {
+                    defer.reject(err);
+                });
+            return defer.promise;
+        }
+
+        function getPrescriptions(id) {
+            var defer=$q.defer();
+
+            $http.get('doctor/inpatient/'+id+'/medical_appointments')
+                .success(function(response) {
+                    defer.resolve(response);
+                })
+                .error(function(err) {
+                    defer.reject(err);
+                });
+            return defer.promise;
+        }
+
+
 
 
         return {
             getGeneralInfo: getGeneralInfo,
-            getAnalyzes: getAnalyzes
+            getAnalyzes: getAnalyzes,
+            getInspections: getInspections,
+            getProcedures: getProcedures,
+            getOperations: getOperations,
+            getPrescriptions: getPrescriptions
         };
 
     });
