@@ -27,8 +27,8 @@ class OperationRepository extends Repository implements OperationRepositoryInter
         try {
             $data = DB::table('operations')
                 ->where('operations.inpatient_id', $inpatient_id)
-                ->join('health_workers as doctor_who_appointed', 'analyzes.doctor_who_appointed', '=', 'doctor_who_appointed.id')
-                ->leftJoin('health_workers as doctor_who_performed', 'analyzes.doctor_who_performed', '=', 'doctor_who_performed.id')
+                ->join('health_workers as doctor_who_appointed', 'operations.doctor_who_appointed', '=', 'doctor_who_appointed.id')
+                ->leftJoin('health_workers as doctor_who_performed', 'operations.doctor_who_performed', '=', 'doctor_who_performed.id')
                 ->select(
                     'appointment_date',
                     'operation_date',
