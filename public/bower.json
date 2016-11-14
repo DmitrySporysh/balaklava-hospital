@@ -1,0 +1,21 @@
+{
+  "name": "balaklava-hosp",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Golubenko Liza <golubenko@extertech.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/DmitrySporysh/balaklava-hospital",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-ui-router": "^0.3.2"
+  }
+}
