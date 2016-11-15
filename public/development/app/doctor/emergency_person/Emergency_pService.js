@@ -2,8 +2,6 @@ angular
  .module('doctorApp')
     .service('DoctorEmergencyPersonService', function($http, $q) {
 
-
-
         function getInfoFromEmergency(id) {
             var defer=$q.defer();
 
@@ -14,36 +12,26 @@ angular
                 .error(function(err) {
                     defer.reject(err);
                 });
-
-            console.log(defer.promise);
-            /*return defer.promise;*/
+            return defer.promise;
         }
 
+        function postInfoFromEmergency(patientInfo, id) {
+            patientInfo.id = id;
+            var defer=$q.defer();
 
-
-        /*function temp() {
-            $scope.testFactory=testFactory;
-
-            $http.get('doctor/received_patient/'+$scope.testFactory.patient_full_id).success(function(patients) {
-                $scope.patient_info = patients[0];
-            });
-
-            $scope.save = function (patient, PatientProtocol){
-                $scope.response={};
-                if(PatientProtocol.$valid){
-                    if (patient==undefined)
-                        patient={};
-                    patient.id=$scope.testFactory.patient_full_id;
-                    $http.post("/doctor/addNewInspectionProtocol", patient).success(function (answ) {
-                        $scope.response=answ;
-
-                    });
-                }
-            };
-        }*/
+            $http.post('/doctor/addNewInspectionProtocol',patientInfo)
+                .success(function(response) {
+                    defer.resolve(response);
+                })
+                .error(function(err) {
+                    defer.reject(err);
+                });
+            return defer.promise;
+        }
 
         return {
-            getInfoFromEmergency: getInfoFromEmergency
+            getInfoFromEmergency: getInfoFromEmergency,
+            postInfoFromEmergency: postInfoFromEmergency
         };
 
     });

@@ -26,82 +26,82 @@
                                         <tr>
                                             <td class="patient-form__label">ФИО</td>
                                             <td class="patient-form__value">
-                                                <span >{{patient_info.fio}}</span>
+                                                <span >{{doctorEmPersonCtrl.patient_info.fio}}</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">Пол</td>
                                             <td class="patient-form__value">
-                                                <span >{{patient_info.sex}}</span>
+                                                <span >{{doctorEmPersonCtrl.patient_info.sex}}</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">Место работы/учебы</td>
                                             <td class="patient-form__value">
-                                                <span >{{patient_info.work_place}}</span>
+                                                <span >{{doctorEmPersonCtrl.patient_info.work_place}}</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">Дата рождения</td>
                                             <td class="patient-form__value">
-                                                <span >{{patient_info.birth_date}}</span>
+                                                <span >{{doctorEmPersonCtrl.patient_info.birth_date}}</span>
                                                 <!-- <span class="ti-calendar patient__icon"></span>-->
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">Семейное положение</td>
                                             <td class="patient-form__value">
-                                                <span >{{patient_info.marital_status}}</span>
+                                                <span >{{doctorEmPersonCtrl.patient_info.marital_status}}</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">Адрес проживания</td>
                                             <td class="patient-form__value">
-                                                <span >{{patient_info.residential_address}}</span>
+                                                <span >{{doctorEmPersonCtrl.patient_info.residential_address}}</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">Адрес по паспорту</td>
                                             <td class="patient-form__value">
-                                                <span >{{patient_info.registration_address}}</span>
+                                                <span >{{doctorEmPersonCtrl.patient_info.registration_address}}</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">Телефон</td>
                                             <td class="patient-form__value">
-                                                <span >{{patient_info.phone}}</span>
+                                                <span >{{doctorEmPersonCtrl.patient_info.phone}}</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">Дата обращения</td>
                                             <td class="patient-form__value">
-                                                <span >{{patient_info.received_date}}</span>
+                                                <span >{{doctorEmPersonCtrl.patient_info.received_date}}</span>
                                                 <!--<span class="ti-calendar patient__icon"></span>-->
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">Время обращения</td>
                                             <td class="patient-form__value">
-                                                <span >{{patient_info.received_date}}</span>
+                                                <span >{{doctorEmPersonCtrl.patient_info.received_date}}</span>
                                                 <!--<span class="ti-time patient__icon"></span>-->
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">Тип обращения</td>
                                             <td class="patient-form__value">
-                                                <span >{{patient_info.received_type}}</span>
+                                                <span >{{doctorEmPersonCtrl.patient_info.received_type}}</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">№ Страховки</td>
                                             <td class="patient-form__value">
-                                                <span >{{patient_info.insurance_number}}</span>
+                                                <span >{{doctorEmPersonCtrl.patient_info.insurance_number}}</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">Жалобы</td>
                                             <td class="patient-form__value">
-                                                <textarea ng-model="patient.complaints" name="complaints" placeholder="{{patient_info.complaints}}" class="patient-form__textarea" rows="8" > </textarea>
+                                                <textarea ng-model="doctorEmPersonCtrl.patientProtocol.complaints" name="complaints" placeholder="{{doctorEmPersonCtrl.patient_info.complaints}}" class="patient-form__textarea" rows="8" > </textarea>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -121,31 +121,31 @@
                                         <tr>
                                             <td class="patient-form__label">Из анамнеза</td>
                                             <td class="patient-form__value">
-                                                <textarea ng-model="patient.from_anamnesis" name="from_anamnesis" class="patient-form__textarea" rows="4" > </textarea>
+                                                <textarea ng-model="doctorEmPersonCtrl.patientProtocol.from_anamnesis" name="from_anamnesis" class="patient-form__textarea" rows="4" > </textarea>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">В анамнезе</td>
                                             <td class="patient-form__value">
-                                                <textarea ng-model="patient.in_anamnesis" name="in_anamnesis" class="patient-form__textarea" rows="4" > </textarea>
+                                                <textarea ng-model="doctorEmPersonCtrl.patientProtocol.in_anamnesis" name="in_anamnesis" class="patient-form__textarea" rows="4" > </textarea>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">Страховой анамнез</td>
                                             <td class="patient-form__value">
-                                                <textarea ng-model="patient.insurance_anamnesis" name="insurance_anamnesis" class="patient-form__textarea" rows="4" > </textarea>
+                                                <textarea ng-model="doctorEmPersonCtrl.patientProtocol.insurance_anamnesis" name="insurance_anamnesis" class="patient-form__textarea" rows="4" > </textarea>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">Алерго анамнез</td>
                                             <td class="patient-form__value">
-                                                <textarea ng-model="patient.allergoanamnez" name="allergoanamnez" class="patient-form__textarea" rows="4" > </textarea>
+                                                <textarea ng-model="doctorEmPersonCtrl.patientProtocol.allergoanamnez" name="allergoanamnez" class="patient-form__textarea" rows="4" > </textarea>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">Состояние больного</td>
                                             <td class="patient-form__value">
-                                                <select class="patient-form__select" name="condition" ng-model="patient.condition">
+                                                <select class="patient-form__select" name="condition" ng-model="doctorEmPersonCtrl.patientProtocol.condition">
                                                     <option value="" selected="selected">-- Выберите вариант --</option>
                                                     <option value="удовлетворительное">Удовлетворительное</option>
                                                     <option value="ср. тяжести">Средней тяжести</option>
@@ -156,7 +156,7 @@
                                         <tr>
                                             <td class="patient-form__label">Сознание</td>
                                             <td class="patient-form__value">
-                                                <select class="patient-form__select" name="consciousness" ng-model="patient.consciousness">
+                                                <select class="patient-form__select" name="consciousness" ng-model="doctorEmPersonCtrl.patientProtocol.consciousness">
                                                     <option value="" selected="selected">-- Выберите вариант --</option>
                                                     <option value="ясное">Ясное</option>
                                                     <option value="нарушенное (заторможен)">Нарушенное (заторможен)</option>
@@ -171,7 +171,7 @@
                                         <tr>
                                             <td class="patient-form__label">Телосложение</td>
                                             <td class="patient-form__value">
-                                                <select class="patient-form__select" name="body_type" ng-model="patient.body_type">
+                                                <select class="patient-form__select" name="body_type" ng-model="doctorEmPersonCtrl.patientProtocol.body_type">
                                                     <option value="" selected="selected">-- Выберите вариант --</option>
                                                     <option value="астеническое">Астеническое</option>
                                                     <option value="нормостеническое">Нормостеническое</option>
@@ -182,7 +182,7 @@
                                         <tr>
                                             <td class="patient-form__label">Питание</td>
                                             <td class="patient-form__value">
-                                                <select class="patient-form__select" name="food" ng-model="patient.food">
+                                                <select class="patient-form__select" name="food" ng-model="doctorEmPersonCtrl.patientProtocol.food">
                                                     <option value="" selected="selected">-- Выберите вариант --</option>
                                                     <option value="пониженное">Пониженное</option>
                                                     <option value="нормальное">Нормальное</option>
@@ -193,7 +193,7 @@
                                         <tr>
                                             <td class="patient-form__label">Кожные покровы</td>
                                             <td class="patient-form__value">
-                                                <select class="patient-form__select patient-form__select_inline" name="skin" ng-model="patient.skin">
+                                                <select class="patient-form__select patient-form__select_inline" name="skin" ng-model="doctorEmPersonCtrl.patientProtocol.skin">
                                                     <option value="" selected="selected">-- Выберите вариант --</option>
                                                     <option value="нормальной окраски">Нормальной окраски</option>
                                                     <option value="желтушные">Желтушные</option>
@@ -202,13 +202,13 @@
                                                     <option value="сухие">Сухие </option>
                                                     <option value="влажные">Влажные </option>
                                                 </select>
-                                                <input ng-model="patient.skin_extended" name="skin_extended" class="patient-form__input patient-form__input_inline" value="" title="Person Name" type="text">
+                                                <input ng-model="doctorEmPersonCtrl.patientProtocol.skin_extended" name="skin_extended" class="patient-form__input patient-form__input_inline" value="" title="Person Name" type="text">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">Тургор</td>
                                             <td class="patient-form__value">
-                                                <select class="patient-form__select" name="turgor" ng-model="patient.turgor">
+                                                <select class="patient-form__select" name="turgor" ng-model="doctorEmPersonCtrl.patientProtocol.turgor">
                                                     <option value="" selected="selected">-- Выберите вариант --</option>
                                                     <option value="эластичная">Эластичная</option>
                                                     <option value="дряблая">Дряблая</option>
@@ -218,7 +218,7 @@
                                         <tr>
                                             <td class="patient-form__label">Зрачки</td>
                                             <td class="patient-form__value">
-                                                <select class="patient-form__select" name="pupils" ng-model="patient.pupils">
+                                                <select class="patient-form__select" name="pupils" ng-model="doctorEmPersonCtrl.patientProtocol.pupils">
                                                     <option value="" selected="selected">-- Выберите вариант --</option>
                                                     <option value="не увеличены">Не увеличены</option>
                                                     <option value="расширены">Расширены</option>
@@ -230,19 +230,19 @@
                                         <tr>
                                             <td class="patient-form__label">Язык</td>
                                             <td class="patient-form__value">
-                                                <select class="patient-form__select patient-form__select_inline" name="tongue" ng-model="patient.tongue">
+                                                <select class="patient-form__select patient-form__select_inline" name="tongue" ng-model="doctorEmPersonCtrl.patientProtocol.tongue">
                                                     <option value="" selected="selected">-- Выберите вариант --</option>
                                                     <option value="сухой">Сухой</option>
                                                     <option value="влажный">Влажный</option>
                                                     <option value="обложен налётом">Обложен налётом </option>
                                                 </select>
-                                                <input ng-model="patient.tongue_extended" name="tongue_extended" class="patient-form__input patient-form__input_inline" value="" type="text">
+                                                <input ng-model="doctorEmPersonCtrl.patientProtocol.tongue_extended" name="tongue_extended" class="patient-form__input patient-form__input_inline" value="" type="text">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">Аускультативно над лёгкими дыхание</td>
                                             <td class="patient-form__value">
-                                                <select class="patient-form__select patient-form__select_inline" name="auscultation" ng-model="patient.auscultation">
+                                                <select class="patient-form__select patient-form__select_inline" name="auscultation" ng-model="doctorEmPersonCtrl.patientProtocol.auscultation">
                                                     <option value="" selected="selected">-- Выберите вариант --</option>
                                                     <option value="везикулярное">Везикулярное</option>
                                                     <option value="выслушиваются сухие хрипы">Выслушиваются сухие хрипы</option>
@@ -252,13 +252,13 @@
                                                     <option value="шум трения перикарда"> Шум трения перикарда </option>
                                                     <option value="посторонние шумы"> Посторонние шумы</option>
                                                 </select>
-                                                <input ng-model="patient.auscultation_extended" name="auscultation_extended" class="patient-form__input patient-form__input_inline" value="" type="text">
+                                                <input ng-model="doctorEmPersonCtrl.patientProtocol.auscultation_extended" name="auscultation_extended" class="patient-form__input patient-form__input_inline" value="" type="text">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">Перкуторно над лёгкими звук</td>
                                             <td class="patient-form__value">
-                                                <select class="patient-form__select" name="percussion_sound" ng-model="patient.percussion_sound">
+                                                <select class="patient-form__select" name="percussion_sound" ng-model="doctorEmPersonCtrl.patientProtocol.percussion_sound">
                                                     <option value="" selected="selected">-- Выберите вариант --</option>
                                                     <option value="легочный" selected="selected">Легочный</option>
                                                     <option value="тимпанический">Тимпанический</option>
@@ -270,13 +270,13 @@
                                         <tr>
                                             <td class="patient-form__label">ЧДД</td>
                                             <td class="patient-form__value">
-                                                <input ng-model="patient.respiratory_movements_frequency_ChDD"  class="patient-form__input" name="respiratory_movements_frequency_ChDD" value="" title="Person Name" type="text">
+                                                <input ng-model="doctorEmPersonCtrl.patientProtocol.respiratory_movements_frequency_ChDD"  class="patient-form__input" name="respiratory_movements_frequency_ChDD" value="" title="Person Name" type="text">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">Тоны сердца</td>
                                             <td class="patient-form__value">
-                                                <select class="patient-form__select" name="heart_tones" ng-model="patient.heart_tones">
+                                                <select class="patient-form__select" name="heart_tones" ng-model="doctorEmPersonCtrl.patientProtocol.heart_tones">
                                                     <option value="" selected="selected">-- Выберите вариант --</option>
                                                     <option value="ясные">Ясные</option>
                                                     <option value="приглушены">Приглушены</option>
@@ -288,49 +288,49 @@
                                         <tr>
                                             <td class="patient-form__label">Ритм</td>
                                             <td class="patient-form__value">
-                                                <select class="patient-form__select patient-form__select_inline" name="heart_rhythm" ng-model="patient.heart_rhythm">
+                                                <select class="patient-form__select patient-form__select_inline" name="heart_rhythm" ng-model="doctorEmPersonCtrl.patientProtocol.heart_rhythm">
                                                     <option value="" selected="selected">-- Выберите вариант --</option>
                                                     <option value="правильный" selected="selected">Правильный </option>
                                                     <option value="неправильный">Неправильный </option>
                                                     <option value="синусовый">Синусовый </option>
                                                     <option value="несинусовый">Несинусовый</option>
                                                 </select>
-                                                <input ng-model="patient.heart_rhythm_extended" name="heart_rhythm_extended" class="patient-form__input patient-form__input_inline" value="" type="text">
+                                                <input ng-model="doctorEmPersonCtrl.patientProtocol.heart_rhythm_extended" name="heart_rhythm_extended" class="patient-form__input patient-form__input_inline" value="" type="text">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">Границы сердца</td>
                                             <td class="patient-form__value">
-                                                <select class="patient-form__select patient-form__select_inline" name="heart_boundaries" ng-model="patient.heart_boundaries">
+                                                <select class="patient-form__select patient-form__select_inline" name="heart_boundaries" ng-model="doctorEmPersonCtrl.patientProtocol.heart_boundaries">
                                                     <option value="" selected="selected">-- Выберите вариант --</option>
                                                     <option value="не отклонены" selected="selected"> Не отклонены</option>
                                                     <option value="отклонены на х см">Отклонены на х см</option>
                                                 </select>
-                                                <input ng-model="patient.heart_boundaries_extended" name="heart_boundaries_extended" class="patient-form__input patient-form__input_inline" value="" type="text">
+                                                <input ng-model="doctorEmPersonCtrl.patientProtocol.heart_boundaries_extended" name="heart_boundaries_extended" class="patient-form__input patient-form__input_inline" value="" type="text">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">ЧСС</td>
                                             <td class="patient-form__value">
-                                                <input ng-model="patient.heart_rate_ChSS"  class="patient-form__input" name="heart_rate_ChSS" value="" title="Person Name" type="text">
+                                                <input ng-model="doctorEmPersonCtrl.patientProtocol.heart_rate_ChSS"  class="patient-form__input" name="heart_rate_ChSS" value="" title="Person Name" type="text">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">Мышечный тонус</td>
                                             <td class="patient-form__value">
-                                                <select class="patient-form__select patient-form__select_inline" name="muscle_tone" ng-model="patient.muscle_tone">
+                                                <select class="patient-form__select patient-form__select_inline" name="muscle_tone" ng-model="doctorEmPersonCtrl.patientProtocol.muscle_tone">
                                                     <option value="" selected="selected">-- Выберите вариант --</option>
                                                     <option value="нормальный">Нормальный</option>
                                                     <option value="снижен">Снижен</option>
                                                     <option value="повышен">Повышен</option>
                                                 </select>
-                                                <input ng-model="patient.muscle_tone_extended" name="muscle_tone_extended" class="patient-form__input patient-form__input_inline" value="" type="text">
+                                                <input ng-model="doctorEmPersonCtrl.patientProtocol.muscle_tone_extended" name="muscle_tone_extended" class="patient-form__input patient-form__input_inline" value="" type="text">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">Движение в суставах</td>
                                             <td class="patient-form__value">
-                                                <select class="patient-form__select" name="joint_motion" ng-model="patient.joint_motion">
+                                                <select class="patient-form__select" name="joint_motion" ng-model="doctorEmPersonCtrl.patientProtocol.joint_motion">
                                                     <option value="" selected="selected">-- Выберите вариант --</option>
                                                     <option value="сохранено">Сохранено</option>
                                                     <option value="ограничено">Ограничено</option>
@@ -340,7 +340,7 @@
                                         <tr>
                                             <td class="patient-form__label">Плотность живота</td>
                                             <td class="patient-form__value">
-                                                <select class="patient-form__select" name="stomach_density" ng-model="patient.stomach_density">
+                                                <select class="patient-form__select" name="stomach_density" ng-model="doctorEmPersonCtrl.patientProtocol.stomach_density">
                                                     <option value="" selected="selected">-- Выберите вариант --</option>
                                                     <option value="мягкий">Мягкий</option>
                                                     <option value="твёрдый">Твёрдый</option>
@@ -350,18 +350,18 @@
                                         <tr>
                                             <td class="patient-form__label">Болезненность живота</td>
                                             <td class="patient-form__value">
-                                                <select class="patient-form__select patient-form__select_inline" name="stomach_pain" ng-model="patient.stomach_pain">
+                                                <select class="patient-form__select patient-form__select_inline" name="stomach_pain" ng-model="doctorEmPersonCtrl.patientProtocol.stomach_pain">
                                                     <option value="" selected="selected">-- Выберите вариант --</option>
                                                     <option value="болезненный">Болезненный </option>
                                                     <option value="безболезненный">Безболезненный</option>
                                                 </select>
-                                                <input ng-model="patient.stomach_extended" name="stomach_extended" class="patient-form__input patient-form__input_inline" value="" type="text">
+                                                <input ng-model="doctorEmPersonCtrl.patientProtocol.stomach_extended" name="stomach_extended" class="patient-form__input patient-form__input_inline" value="" type="text">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">В позе Ромберга</td>
                                             <td class="patient-form__value">
-                                                <select class="patient-form__select" name="in_romberg_position" ng-model="patient.in_romberg_position">
+                                                <select class="patient-form__select" name="in_romberg_position" ng-model="doctorEmPersonCtrl.patientProtocol.in_romberg_position">
                                                     <option value="" selected="selected">-- Выберите вариант --</option>
                                                     <option value="устойчив">Устойчив</option>
                                                     <option value="неустойчив">Неустойчив</option>
@@ -372,24 +372,24 @@
                                         <tr>
                                             <td class="patient-form__label">Походка</td>
                                             <td class="patient-form__value">
-                                                <select class="patient-form__select patient-form__select_inline" name="gait" ng-model="patient.gait">
+                                                <select class="patient-form__select patient-form__select_inline" name="gait" ng-model="doctorEmPersonCtrl.patientProtocol.gait">
                                                     <option value="" selected="selected">-- Выберите вариант --</option>
                                                     <option value="обычная">Обычная</option>
                                                     <option value="нарушенная">Нарушенная </option>
                                                 </select>
-                                                <input ng-model="patient.gait_extended" name="gait_extended" class="patient-form__input patient-form__input_inline" value="" type="text">
+                                                <input ng-model="doctorEmPersonCtrl.patientProtocol.gait_extended" name="gait_extended" class="patient-form__input patient-form__input_inline" value="" type="text">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="patient-form__label">Стул</td>
                                             <td class="patient-form__value">
-                                                <select class="patient-form__select patient-form__select_inline" name="stools" ng-model="patient.stools">
+                                                <select class="patient-form__select patient-form__select_inline" name="stools" ng-model="doctorEmPersonCtrl.patientProtocol.stools">
                                                     <option value="" selected="selected">-- Выберите вариант --</option>
                                                     <option value="норма">Норма</option>
                                                     <option value="учащен">Учащен</option>
                                                     <option value="задержка">Задержка</option>
                                                 </select>
-                                                <input ng-model="patient.stools_extended" name="stools_extended" class="patient-form__input patient-form__input_inline" value="" type="text">
+                                                <input ng-model="doctorEmPersonCtrl.patientProtocol.stools_extended" name="stools_extended" class="patient-form__input patient-form__input_inline" value="" type="text">
                                             </td>
                                         </tr>
                                         </tbody>
@@ -397,7 +397,7 @@
                                     <div class="content-header__add content-header__add_right add-block">
                                         <a class='add-block__button button' href="" >
                                             <span class="ti-save-alt patient__icon_white"></span>
-                                            <input class="patient-form__submit" ng-click="save(patient, PatientProtocol)" type="submit" value="Сохранить">
+                                            <input class="patient-form__submit" ng-click="doctorEmPersonCtrl.saveProtocol()" type="submit" value="Сохранить">
                                         </a>
                                     </div>
                                 </div>
@@ -407,8 +407,7 @@
                 </div>
             </div>
             <div>Ответ:</div>
-            <p ng-bind="response.text">{{response}}</p>
-            <p ng-bind="response.text">{{test}}</p>
+            <p ng-bind="doctorEmPersonCtrl.response"></p>
         </div>
     </div>
     </div>

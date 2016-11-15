@@ -6,12 +6,16 @@ angular
         self.emPerson_id = $stateParams.id;
 
 
-        $http.get('doctor/received_patient/240').success(function(patients) {
-            $scope.patient_info = patients[0];
-            console.log($scope.patient_info);
+        DoctorEmergencyPersonService.getInfoFromEmergency(self.emPerson_id)
+            .then(function(info) {
+                self.patient_info = info[0];
+            });
 
-        });
+        self.saveProtocol = function (){
+            DoctorEmergencyPersonService.postInfoFromEmergency(self.patientProtocol,self.emPerson_id)
+                .then(function(response) {
+                    self.response = response;
+                });
+        };
 
-
-        /*DoctorEmergencyPersonService.getInfoFromEmergency(self.emPerson_id);*/
     });
