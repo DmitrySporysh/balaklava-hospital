@@ -111,7 +111,7 @@ angular
 
         function newCondition(id, data) {
             var defer=$q.defer();
-            data.id = id;
+            data.inpatient_id = id;
 
             $http.post('doctor/inpatient/addInspection',data)
                 .success(function(response) {
@@ -153,7 +153,7 @@ angular
 
         function newPrescription(id, data) {
             var defer=$q.defer();
-            data.id = id;
+            data.inpatient_id = id;
 
             $http.post('doctor/inpatient/addMedicalAppointment',data)
                 .success(function(response) {

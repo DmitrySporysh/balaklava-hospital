@@ -32,7 +32,10 @@ angular
                     $window.location.href =  "/doctor#/inpatients";
                 }
                 if (post  == 'Медсестра') {
-                    $window.location.href =  "/emergency#/received_patients";
+                    $window.location.href =  "/nurse#/received_patients";
+                }
+                if (post  == 'Заведующий отделением') {
+                    $window.location.href =  "/head_physician#/inpatients";
                 }
             }
 

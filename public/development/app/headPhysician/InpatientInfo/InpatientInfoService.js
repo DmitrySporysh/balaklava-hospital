@@ -19,7 +19,7 @@ angular
         function getGeneralInfo(id) {
             var defer=$q.defer();
 
-            $http.get('doctor/inpatient/'+id)
+            $http.get('department_chief/inpatient/'+id)
                 .success(function(generalInfo) {
                     defer.resolve(generalInfo);
                 })
@@ -30,9 +30,24 @@ angular
             return defer.promise;
         }
 
+        function getDoctors() {
+            var defer=$q.defer();
+
+            $http.get('department_chief/doctors')
+                .success(function(doctors) {
+                    defer.resolve(doctors);
+                })
+                .error(function(err) {
+                    defer.reject(err);
+                });
+
+            return defer.promise;
+        }
+
         return {
             getInpatients: getInpatients,
-            getGeneralInfo: getGeneralInfo
+            getGeneralInfo: getGeneralInfo,
+            getDoctors: getDoctors
         };
 
     });

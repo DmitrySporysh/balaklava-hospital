@@ -1,11 +1,11 @@
 angular
-    .module('emergencyApp')
+    .module('nurseApp')
     .service('NewPatientService', function($http, $q) {
 
         function postGeneralEmergInfo(patientInfo) {
             var defer=$q.defer();
 
-            $http.post('emergency/addNewInpatient',patientInfo)
+            $http.post('medial_nurse/addNewInpatient',patientInfo)
                 .success(function(response) {
                     defer.resolve(response);
                 })

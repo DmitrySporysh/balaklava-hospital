@@ -49,11 +49,6 @@
                 </a>
 
             <li class="nav-list__item">
-                <a ui-sref="emergency" ui-sref-active="nav-list__ref_active" class="nav-list__ref nav-list__icon nav-list__icon_register">
-                    <span class="nav-list__item-name">Приемный покой</span>
-                </a>
-
-            <li class="nav-list__item">
                 <a href="" class="nav-list__ref nav-list__icon nav-list__icon_news">
                     <span class="nav-list__item-name">Уведомления</span>
                 </a>

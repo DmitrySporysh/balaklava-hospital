@@ -1,5 +1,5 @@
 angular
- .module('emergencyApp')
+ .module('nurseApp')
     .controller('ReceivedPatientsCtrl', function(ReceivedPatientsService) {
         var self = this;
 

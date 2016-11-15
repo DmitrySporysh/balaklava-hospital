@@ -93,6 +93,10 @@ Route::get('medical_nurse/received_patients', 'MedicalNurseController@getReceive
 
 Route::post('medial_nurse/addNewInpatient', 'MedicalNurseController@addNewInpatient');
 
+Route::get('nurse', function () {
+    return view('nurse');
+});
+
 
 //---------DepartmentChief-------------------
 Route::get('department_chief/inpatients', 'DepartmentChiefController@getDepartmentInpatients');
@@ -102,6 +106,10 @@ Route::get('department_chief/inpatient/{id}', 'DepartmentChiefController@getInpa
 Route::get('department_chief/doctors', 'DepartmentChiefController@getDepartmentDoctors');
 
 Route::get('department_chief', 'DepartmentChiefController@getDepartmentInpatients');
+
+Route::get('head_physician', function () {
+    return view('headPhysician');
+});
 
 //----------Nurse-------------------------------
 

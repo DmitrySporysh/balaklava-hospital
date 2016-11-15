@@ -1,5 +1,5 @@
 angular
- .module('emergencyApp')
+ .module('nurseApp')
     .directive('receivedPatients', function (PATHDIR) {
         return {
             restrict: "AE",

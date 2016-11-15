@@ -1,11 +1,11 @@
 angular
- .module('emergencyApp')
+ .module('nurseApp')
     .service('ReceivedPatientsService', function($http, $q) {
 
         function getRecievedPatients() {
             var defer=$q.defer();
 
-            $http.get('/emergency/patients')
+            $http.get('medical_nurse/received_patients')
                 .success(function(inpatients) {
                     defer.resolve(inpatients);
                 })

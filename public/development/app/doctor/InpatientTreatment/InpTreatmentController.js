@@ -30,7 +30,11 @@ angular
             InpatientTreatmentService.newAnalysis(self.emPerson_id, self.analysisInfo)
                 .then(function(response) {
                     self.response = response;
+                    console.log('12');
                     console.log(self.response)
+                    console.log('12');
+
+                    self.analyzes.unshift(response);
                 });
         };
 
@@ -46,7 +50,6 @@ angular
         InpatientTreatmentService.getInspections(self.emPerson_id)
             .then(function(inspections){
                 self.inspections = inspections;
-
             });
         InpatientTreatmentService.getProcedures(self.emPerson_id)
             .then(function(procedures){
@@ -61,7 +64,8 @@ angular
             InpatientTreatmentService.newCondition(self.emPerson_id, self.condition)
                 .then(function(response) {
                     self.response = response;
-                    console.log(self.response)
+                    console.log(self.response);
+                    self.inspections.unshift(response);
                 });
         };
 
@@ -69,7 +73,8 @@ angular
             InpatientTreatmentService.newOperation(self.emPerson_id, self.operation)
                 .then(function(response) {
                     self.response = response;
-                    console.log(self.response)
+                    console.log(self.response);
+                    self.operations.unshift(response);
                 });
         };
 
@@ -77,7 +82,8 @@ angular
             InpatientTreatmentService.newProcedure(self.emPerson_id, self.procedure)
                 .then(function(response) {
                     self.response = response;
-                    console.log(self.response)
+                    console.log(self.response);
+                    self.procedures.unshift(response);
                 });
         };
     })
@@ -95,7 +101,8 @@ angular
             InpatientTreatmentService.newPrescription(self.emPerson_id, self.prescription)
                 .then(function(response) {
                     self.response = response;
-                    console.log(self.response)
+                    console.log(self.response);
+                    self.prescriptions.unshift(response);
                 });
         };
     })

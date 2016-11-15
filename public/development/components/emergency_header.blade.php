@@ -44,13 +44,13 @@
     <div class="nav">
         <ul class="nav__list nav__list_left nav-list">
             <li class="nav-list__item" >
-                <a ui-sref="inpatients" ui-sref-active="nav-list__ref_active" class="nav-list__ref nav-list__icon nav-list__icon_patients">
-                    <span class="nav-list__item-name">Пациенты</span>
+                <a ui-sref="received_patients" ui-sref-active="nav-list__ref_active" class="nav-list__ref nav-list__icon nav-list__icon_patients">
+                    <span class="nav-list__item-name">Поступившие</span>
                 </a>
 
             <li class="nav-list__item">
-                <a ui-sref="emergency" ui-sref-active="nav-list__ref_active" class="nav-list__ref nav-list__icon nav-list__icon_register">
-                    <span class="nav-list__item-name">Приемный покой</span>
+                <a ui-sref="new_patient" ui-sref-active="nav-list__ref_active"  class="nav-list__ref nav-list__icon nav-list__icon_register">
+                    <span class="nav-list__item-name">Новая регистрация</span>
                 </a>
 
             <li class="nav-list__item">
@@ -74,7 +74,7 @@
                 </a>
 
             <li class="nav-list__item">
-                <a ui-sref="archive" ui-sref-active="nav-list__ref_active" class="nav-list__ref nav-list__icon nav-list__icon_catalog">
+                <a href="" class="nav-list__ref nav-list__icon nav-list__icon_catalog">
                     <span class="nav-list__item-name">Архив</span>
                 </a>
         </ul>

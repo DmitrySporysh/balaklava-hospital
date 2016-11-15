@@ -1,6 +1,6 @@
 angular
-    .module('emergencyApp', ['ui.router'])
-    .constant('PATHDIR', 'development/app/emergency')
+    .module('nurseApp', ['ui.router'])
+    .constant('PATHDIR', 'development/app/nurse')
     .config(function($stateProvider) { //Because $stateProvider is an Angular Provider, you must inject it into a .config() block using Angular 1 Dependency Injection.
         $stateProvider
             .state('received_patients',{

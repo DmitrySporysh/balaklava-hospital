@@ -34,7 +34,8 @@
 
 <body>
     <div class="wrapper" ng-app="headPhysicianApp">
-        <div class='wrapper' ng-include src="'/development/components/headPhysician_header.html'"></div>
+        @include('components.headPhysician_header')
+        {{--<div class='wrapper' ng-include src="'/development/components/headPhysician_header.html'"></div>--}}
 
         <div class="main-content">
             <ui-view></ui-view>

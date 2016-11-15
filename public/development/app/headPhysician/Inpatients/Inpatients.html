@@ -19,17 +19,19 @@
                 <th>ФИО</th>
                 <th>Дата заселения</th>
                 <th>Диагноз</th>
+                <th>Палата</th>
                 <th>Лечащий врач</th>
             </tr>
             </thead>
             <tbody class='plain-table__value'>
             <tr ng-repeat="patient in inpatientsCtrl.inpatients">
                 <td >
-                    <a href="head_physician#/inpatients/{{patient.inpatient_id}}/general">{{patient.fio}}</a>
+                    <a href="head_physician#/inpatients/{{patient.id}}/general">{{patient.fio}}</a>
                 </td>
-                <td>{{patient.birth_date}}</td>
-                <td>{{patient.sex}}</td>
+                <td>{{patient.start_date}}</td>
+                <td>{{patient.diagnosis}}</td>
                 <td>{{patient.number}}</td>
+                <td></td>
             </tr>
             </tbody>
         </table>

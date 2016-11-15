@@ -5,10 +5,9 @@ angular
         function getInpatients() {
             var defer=$q.defer();
 
-            $http.get('doctor/inpatients')
+            $http.get('department_chief/inpatients')
                 .success(function(inpatients) {
                     defer.resolve(inpatients);
-
                 })
                 .error(function(err) {
                     defer.reject(err);
