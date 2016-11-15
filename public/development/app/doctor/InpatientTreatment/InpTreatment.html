@@ -46,46 +46,7 @@
 
 
 
-
-
-    <div class="modal fade" id="addAnalysis">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Добавить направление на анализ</h4>
-                </div>
-                <div class="modal-body">
-                    <form name="NewAnalise" class="patient-form">
-                        <div  class="accordion__content">
-                            <div class="plain-table__table-wrapper clearfix">
-                                <table class="plain-table__table">
-                                    <tbody class='plain-table__value plain-table__value_non-bordered'>
-                                    <tr>
-                                        <td class="patient-form__label">Название анализа</td>
-                                        <td class="patient-form__value">
-                                            <input ng-model="new_analysis.analysis_name" class="search-table__input" name="work_place" value="" type="text">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="patient-form__label">Описание</td>
-                                        <td class="patient-form__value">
-                                            <input ng-model="new_analysis.analysis_description" class="search-table__input" name="work_place" value="" type="text">
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <a class="add-block__button button" href="">
-                                    <span class="ti-save-alt patient__icon_white"></span>
-                                    <input class="patient-form__submit" ng-click="save_analiz(new_analysis, NewAnalise)" data-dismiss="modal" type="submit" value="Добавить">
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
 
     <div class="modal fade" id="addCondition">

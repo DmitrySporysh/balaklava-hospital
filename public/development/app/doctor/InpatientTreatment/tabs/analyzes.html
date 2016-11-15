@@ -56,20 +56,20 @@
                                 <tr>
                                     <td class="patient-form__label">Название анализа</td>
                                     <td class="patient-form__value">
-                                        <input ng-model="new_analysis.analysis_name" class="search-table__input" name="work_place" value="" type="text">
+                                        <input ng-model="treatmentAnalyzes.analysisInfo.analysis_name" class="search-table__input" name="work_place" value="" type="text">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="patient-form__label">Описание</td>
                                     <td class="patient-form__value">
-                                        <input ng-model="new_analysis.analysis_description" class="search-table__input" name="work_place" value="" type="text">
+                                        <input ng-model="treatmentAnalyzes.analysisInfo.analysis_description" class="search-table__input" name="work_place" value="" type="text">
                                     </td>
                                 </tr>
                                 </tbody>
                             </table>
                             <a class="add-block__button button" href="">
                                 <span class="ti-save-alt patient__icon_white"></span>
-                                <input class="patient-form__submit" ng-click="save_analiz(new_analysis, NewAnalise)" data-dismiss="modal" type="submit" value="Добавить">
+                                <input class="patient-form__submit" ng-click="treatmentAnalyzes.new_analysis()" data-dismiss="modal" type="submit" value="Добавить">
                             </a>
                         </div>
                     </div>

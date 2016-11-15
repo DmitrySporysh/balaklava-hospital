@@ -1,0 +1,155 @@
+<div class="content-header">
+    <div class="container">
+        <div class="content-header__title-block content-header__title-block_left">
+            <h3 class="content-header__title block-title">Имя</h3>
+            <span class="content-header__subtitle block-subtitle">Карта пациента</span>
+        </div>
+        <div class="content-header__add content-header__add_right add-block">
+            <a class='add-block__button button ml-15' data-toggle="modal" data-target="#WriteOutPatient"><span class="ti-plus add-block__icon"></span>Выписать</a>
+            <a class='add-block__button button' data-toggle="modal" data-target="#designateDoctor"><span class="ti-plus add-block__icon"></span>Назначить врача</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="WriteOutPatient">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Выписка пациента</h4>
+            </div>
+            <div class="modal-body">
+                <form name="NewAnalise" class="patient-form">
+                    <div  class="accordion__content">
+                        <div class="plain-table__table-wrapper clearfix">
+                            <table class="plain-table__table">
+                                <tbody class='plain-table__value plain-table__value_non-bordered'>
+                                <tr>
+                                    <td class="patient-form__label">Результирующий епикриз</td>
+                                    <td class="patient-form__value">
+                                        <textarea ng-model="newPatientCtrl.patient_info.complaints" name="complaints" class="patient-form__textarea" rows="8" > </textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Тип выписки</td>
+                                    <td class="patient-form__value">
+                                        <select class="patient-form__select" name="received_type" ng-model="newPatientCtrl.patient_info.received_type">
+                                            <option value="" selected="selected">-- Выберите вариант --</option>                                            <option value="По скорой">Выписан</option>
+                                            <option value="По скорой">Выписан</option>
+                                            <option value="Планово">Перевод  в больницу</option>
+                                            <option value="Экстренно">Перевод в отделение</option>
+                                            <option value="По скорой">Умер</option>
+                                        </select>                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Перевод в отедение</td>
+                                    <td class="patient-form__value">
+                                        <select class="patient-form__select" name="received_type" ng-model="newPatientCtrl.patient_info.received_type">
+                                            <option value="" selected="selected">-- Выберите вариант --</option>
+                                            <option value="Планово">Планово</option>
+                                            <option value="Экстренно">Экстренно</option>
+                                            <option value="По скорой">По скорой</option>
+                                        </select>                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Перевод в больницу</td>
+                                    <td class="patient-form__value">
+                                        <select class="patient-form__select" name="received_type" ng-model="newPatientCtrl.patient_info.received_type">
+                                            <option value="" selected="selected">-- Выберите вариант --</option>
+                                            <option value="Планово">Планово</option>
+                                            <option value="Экстренно">Экстренно</option>
+                                            <option value="По скорой">По скорой</option>
+                                        </select>                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <a class="add-block__button button" href="">
+                                <span class="ti-save-alt patient__icon_white"></span>
+                                <input class="patient-form__submit" ng-click="save_analiz(new_analysis, NewAnalise)" data-dismiss="modal" type="submit" value="Добавить">
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="designateDoctor">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Назначить врача</h4>
+            </div>
+            <div class="modal-body">
+                <form name="NewAnalise" class="patient-form">
+                    <div  class="accordion__content">
+                        <div class="plain-table__table-wrapper clearfix">
+                            <table class="plain-table__table">
+                                <tbody class='plain-table__value plain-table__value_non-bordered'>
+                                    <tr>
+                                        <td class="patient-form__label">Лечащий врач</td>
+                                        <td class="patient-form__value">
+                                            <select class="patient-form__select" name="received_type" ng-model="newPatientCtrl.patient_info.received_type">
+                                                <option value="" selected="selected">-- Выберите вариант --</option>
+                                                <option value="Планово">Планово</option>
+                                                <option value="Экстренно">Экстренно</option>
+                                                <option value="По скорой">По скорой</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a class="add-block__button button" href="">
+                                <span class="ti-save-alt patient__icon_white"></span>
+                                <input class="patient-form__submit" ng-click="save_analiz(new_analysis, NewAnalise)" data-dismiss="modal" type="submit" value="Добавить">
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="container">
+    <div class="vert-menu">
+        <div class="vert-menu__title">Информация о пациенте</div>
+        <div class="plain-table" >
+            <div class="plain-table__caption vert-menu__caption">
+                <span class="plain-table__icon vert-menu__icon ti-marker"></span>История лечения
+            </div>
+            <table class="plain-table__table vert-menu__table">
+                <tbody class='plain-table__value'>
+                <tr>
+                    <td><a ui-sref="inpatient_info.general" href="">Основыне данные</a></td>
+                </tr>
+                <tr>
+                    <td><a ui-sref="inpatient_info.analyzes" href="">Результаты анализов</a></td>
+                </tr>
+                <tr>
+                    <td><a ui-sref="inpatient_info.dynamic" href="">Динамика лечения</a></td>
+                </tr>
+                <tr>
+                    <td><a ui-sref="inpatient_info.prescriptions" href="">Назначения</a></td>
+                </tr>
+                <tr>
+                    <td><a ui-sref="inpatient_info.first_inspect" href="">Первичный осмотр</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="inner-tabs">
+        <ui-view></ui-view>
+    </div>
+</div>
+
