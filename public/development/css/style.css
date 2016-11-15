@@ -341,6 +341,14 @@ body {
     border: none;
     padding: 10px;
     display: block;
+    transition: 0.5s;
+}
+
+.button:hover {
+    color: white;
+    text-decoration: none;
+    background: rgb(53, 167, 201);
+
 }
 
 .button_right {
@@ -688,4 +696,15 @@ margin-left: 10px;
 
 .help-block_85 {
     margin-top: 85px;
+}
+
+.file-table__cell {
+    width: 120px;
+    float: left;
+    margin-right: 20px;
+}
+
+.file-table__img {
+    height: 100%;
+    width: 100%;
 }

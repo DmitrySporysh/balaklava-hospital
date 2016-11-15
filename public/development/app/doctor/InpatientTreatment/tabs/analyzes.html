@@ -13,6 +13,7 @@
                     <thead class="plain-table__heading">
                     <tr>
                         <th>Анализ</th>
+                        <th>Анализ</th>
                         <th>Описание</th>
                         <th>Дата назначения</th>
                         <th>Назначен</th>
@@ -24,13 +25,14 @@
                     </tbody>
                     <tbody class='plain-table__value' id="analysis-table">
                     <tr ng-repeat="analysis in treatmentAnalyzes.analyzes">
+                        <td data-toggle="modal" data-target="#analysisInfo" ng-click="treatmentAnalyzes.setShownAnalyses($index+1)">{{$index+1}}</td>
                         <td>{{analysis.analysis_name}}</td>
                         <td>{{analysis.analysis_description}}</td>
                         <td>{{analysis.appointment_date}}</td>
                         <td>{{analysis.doctor_fio}}</td>
                         <td class="ready_date">{{analysis.ready_date}}</td>
                         <td>{{analysis.result_description}}</td>
-                        <td>{{analysis.paths_to_files}}</td>
+                        <td ng-click="treatmentAnalyzes.setShownAnalyses($index+1)"><a data-toggle="modal" data-target="#AnalysisFiles">Файлы</a></td>
                     </tr>
                     </tbody>
                 </table>
@@ -80,5 +82,99 @@
 </div>
 
 
+<div class="modal fade" id="analysisInfo">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{treatmentAnalyzes.shownAnalyses.analysis_name}}</h4>
+            </div>
+            <div class="modal-body">
+                <form name="NewAnalise" class="patient-form">
+                    <div  class="accordion__content">
+                        <div class="plain-table__table-wrapper clearfix">
+                            <table class="plain-table__table">
+                                <tbody class='plain-table__value plain-table__value_non-bordered'>
+                                <tr>
+                                    <td class="patient-form__label">Описание анализа</td>
+                                    <td class="patient-form__value">
+                                        <span>{{treatmentAnalyzes.shownAnalyses.analysis_description}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Дата назначения</td>
+                                    <td class="patient-form__value">
+                                        <span>{{treatmentAnalyzes.shownAnalyses.appointment_date}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Назначен</td>
+                                    <td class="patient-form__value">
+                                        <span>{{treatmentAnalyzes.shownAnalyses.doctor_fio_who_appointed}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Выполнен</td>
+                                    <td class="patient-form__value">
+                                        <span>{{treatmentAnalyzes.shownAnalyses.doctor_fio_who_performed}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Дата готовности</td>
+                                    <td class="patient-form__value">
+                                        <span>{{treatmentAnalyzes.shownAnalyses.ready_date}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Описание результата</td>
+                                    <td class="patient-form__value">
+                                        <span>{{treatmentAnalyzes.shownAnalyses.result_description}}</span>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <a class="add-block__button button" href="">
+                                <span class="ti-save-alt patient__icon_white"></span>
+                                <input class="patient-form__submit" data-dismiss="modal" type="submit" value="Закрыть">
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="AnalysisFiles">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Приложенные файлы</h4>
+            </div>
+            <div class="modal-body">
+                <form name="NewAnalise" class="patient-form">
+                    <div  class="accordion__content">
+                        <div class="plain-table__table-wrapper clearfix">
+                            <div class="clearfix">
+                                <div class="file-table__cell">
+                                    <a download href="/development/img/{{treatmentAnalyzes.shownAnalyses.paths_to_files}}">
+                                        <img class="file-table__img" src="/development/img/{{treatmentAnalyzes.shownAnalyses.paths_to_files}}" alt="">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <a class="add-block__button button" href="">
+                                <span class="ti-save-alt patient__icon_white"></span>
+                                <input class="patient-form__submit" ng-click="treatmentAnalyzes.new_analysis()" data-dismiss="modal" type="submit" value="Закрыть">
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 

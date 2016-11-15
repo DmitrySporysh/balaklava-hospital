@@ -109,7 +109,61 @@ angular
             return defer.promise;
         }
 
+        function newCondition(id, data) {
+            var defer=$q.defer();
+            data.id = id;
 
+            $http.post('doctor/inpatient/addInspection',data)
+                .success(function(response) {
+                    defer.resolve(response);
+                })
+                .error(function(err) {
+                    defer.reject(err);
+                });
+            return defer.promise;
+        }
+
+        function newProcedure(id, data) {
+            var defer=$q.defer();
+            data.id = id;
+
+            $http.post('doctor/inpatient/addProcedure',data)
+                .success(function(response) {
+                    defer.resolve(response);
+                })
+                .error(function(err) {
+                    defer.reject(err);
+                });
+            return defer.promise;
+        }
+
+        function newOperation(id, data) {
+            var defer=$q.defer();
+            data.id = id;
+
+            $http.post('doctor/inpatient/addOperation',data)
+                .success(function(response) {
+                    defer.resolve(response);
+                })
+                .error(function(err) {
+                    defer.reject(err);
+                });
+            return defer.promise;
+        }
+
+        function newPrescription(id, data) {
+            var defer=$q.defer();
+            data.id = id;
+
+            $http.post('doctor/inpatient/addMedicalAppointment',data)
+                .success(function(response) {
+                    defer.resolve(response);
+                })
+                .error(function(err) {
+                    defer.reject(err);
+                });
+            return defer.promise;
+        }
 
         return {
             getGeneralInfo: getGeneralInfo,
@@ -119,7 +173,11 @@ angular
             getOperations: getOperations,
             getPrescriptions: getPrescriptions,
             getInspectionProtocol: getInspectionProtocol,
-            newAnalysis: newAnalysis
+            newAnalysis: newAnalysis,
+            newCondition: newCondition,
+            newProcedure: newProcedure,
+            newOperation: newOperation,
+            newPrescription: newPrescription
         };
 
     });
