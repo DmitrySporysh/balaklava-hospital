@@ -110,7 +110,7 @@ class DoctorService implements DoctorServiceInterface
     private function getAnalisisDataFromRequest(Request $request, $doctor_id)
     {
         $data = $request->all();
-        $data['doctor_id'] = $doctor_id;
+        $data['doctor_who_appointed'] = $doctor_id;
         $data['appointment_date'] = Carbon::now()->toDateTimeString();
         return $data;
     }
@@ -119,6 +119,7 @@ class DoctorService implements DoctorServiceInterface
     {
         try {
             $analysis_data = $this->getAnalisisDataFromRequest($request, $doctor_id);
+            Debugbar::info($analysis_data);
             return $this->analysisRepository->create($analysis_data);
         } catch (DALException $e) {
             $message = 'Error while creating withdraw analysis request(DAL Error)' . $e->getMessage();
@@ -133,7 +134,7 @@ class DoctorService implements DoctorServiceInterface
     private function getProcedureDataFromRequest(Request $request, $doctor_id)
     {
         $data = $request->all();
-        $data['doctor_id'] = $doctor_id;
+        $data['doctor_who_appointed'] = $doctor_id;
         $data['procedure_date'] = Carbon::now()->toDateTimeString();
         return $data;
     }
@@ -179,7 +180,7 @@ class DoctorService implements DoctorServiceInterface
     private function getOperationDataFromRequest(Request $request, $doctor_id)
     {
         $data = $request->all();
-        $data['doctor_id'] = $doctor_id;
+        $data['doctor_who_appointed'] = $doctor_id;
         $data['appointment_date'] = Carbon::now()->toDateTimeString();
         return $data;
     }
