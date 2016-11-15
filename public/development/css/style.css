@@ -708,3 +708,14 @@ margin-left: 10px;
     height: 100%;
     width: 100%;
 }
+
+.file-icon {
+    background: #25bce9;
+    display: block;
+    width: 41px;
+    height: 40px;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 10% 10%;
+    color: white;
+}
