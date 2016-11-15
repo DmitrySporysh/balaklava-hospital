@@ -92,7 +92,6 @@ class DoctorService implements DoctorServiceInterface
         try {
             if ($request->complaints)
                 $this->received_patient_repo->update(['complaints' => $request->complaints], $request->id);
-
             $inspection_protocol_data = $this->getInspectionProtocolDataFromRequest($request, $doctor_id);
             $this->received_patient_repo->addNewInspectionProtocol($inspection_protocol_data, $request->id);
 
@@ -119,7 +118,6 @@ class DoctorService implements DoctorServiceInterface
     {
         try {
             $analysis_data = $this->getAnalisisDataFromRequest($request, $doctor_id);
-            Debugbar::info($analysis_data);
             return $this->analysisRepository->create($analysis_data);
         } catch (DALException $e) {
             $message = 'Error while creating withdraw analysis request(DAL Error)' . $e->getMessage();
