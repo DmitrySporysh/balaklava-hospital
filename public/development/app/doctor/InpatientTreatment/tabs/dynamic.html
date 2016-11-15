@@ -1,0 +1,121 @@
+<div class="clearfix tabs-button">
+    <a class=" button button_right" data-toggle="modal" data-target="#addCondition"><span class="ti-plus add-block__icon"></span>Обход</a>
+    <a class=" button button_right" data-toggle="modal" data-target="#addOperation"><span class="ti-plus add-block__icon"></span>Операция</a>
+    <a class=" button button_right" data-toggle="modal" data-target="#addProcedure"><span class="ti-plus add-block__icon"></span>Процедура</a>
+</div>
+<ul class="accordion">
+    <li>
+        <div class="accordion__title  accordion__title_active">
+            <span class="accordion__icon ti-support"></span>Стационары
+        </div>
+        <div  class="accordion__content">
+            <div class="plain-table__table-wrapper clearfix">
+                <table class="plain-table__table">
+                    <thead class="plain-table__heading">
+                    <tr>
+                        <th>Отделение</th>
+                        <th>Дата заселение</th>
+                        <th>Дата выписки</th>
+                        <th>Направлен в</th>
+                    </tr>
+                    </thead>
+                    <tbody class='plain-table__value'>
+                    <!--<tr ng-repeat="analysis in analizes">
+                        <td>{{analysis.analysis_name}}</td>
+                        <td>{{analysis.analysis_description}}</td>
+                        <td>{{analysis.appointment_date}}</td>
+                        <td>{{analysis.doctor_fio}}</td>
+                        <td>{{analysis.ready_date}}</td>
+                        <td>{{analysis.result_description}}</td>
+                        <td>{{analysis.paths_to_files}}</td>
+                    </tr>-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="accordion__title  accordion__title_active">
+            <span class="accordion__icon ti-support"></span>Операции
+        </div>
+        <div  class="accordion__content">
+            <div class="plain-table__table-wrapper clearfix">
+                <table class="plain-table__table">
+                    <thead class="plain-table__heading">
+                    <tr>
+                        <th>Дата проведения</th>
+                        <th>Операция</th>
+                        <th>Предоперационный эпикриз</th>
+                        <th>Результат</th>
+                        <th>Хирург</th>
+                    </tr>
+                    </thead>
+                    <tbody class='plain-table__value'>
+                    <tr ng-repeat="operation in treatmentDynamic.operations">
+                        <td>{{operation.operation_date}}</td>
+                        <td>{{operation.operation_name}}</td>
+                        <td>{{operation.preliminary_epicrisis}}</td>
+                        <td>{{operation.result}}</td>
+                        <td>{{operation.doctor_fio_who_performed}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="accordion__title  accordion__title_active">
+            <span class="accordion__icon ti-support"></span>Процедуры
+        </div>
+        <div  class="accordion__content">
+            <div class="plain-table__table-wrapper clearfix">
+                <table class="plain-table__table">
+                    <thead class="plain-table__heading">
+                    <tr>
+                        <th>Дата процедуры</th>
+                        <th>Название</th>
+                        <th>Назначен</th>
+                        <th>Выполнен</th>
+                    </tr>
+                    </thead>
+                    <tbody class='plain-table__value'>
+                    <tr ng-repeat="dressing in treatmentDynamic.procedures">
+                        <td>{{dressing.procedure_date}}</td>
+                        <td>{{dressing.procedure_name}}</td>
+                        <td>{{dressing.doctor_fio_who_appointed}}</td>
+                        <td>{{dressing.doctor_fio_who_performed}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="accordion__title  accordion__title_active">
+            <span class="accordion__icon ti-support"></span>Изменения состояния
+        </div>
+        <div  class="accordion__content">
+            <div class="plain-table__table-wrapper clearfix">
+                <table class="plain-table__table">
+                    <thead class="plain-table__heading">
+                    <tr>
+                        <th>Дата осмотра</th>
+                        <th>Состояние</th>
+                        <th>Результат осмотра</th>
+                        <th>Врач</th>
+                    </tr>
+                    </thead>
+                    <tbody class='plain-table__value' id="inspection-table">
+                    <tr ng-repeat="inspection in treatmentDynamic.inspections">
+                        <td>{{inspection.inspection_date}}</td>
+                        <td>{{inspection.state_type}}</td>
+                        <td>{{inspection.description_extended}}</td>
+                        <td>{{inspection.doctor_fio}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </li>
+</ul>
+

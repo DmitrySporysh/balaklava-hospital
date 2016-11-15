@@ -1,0 +1,24 @@
+<div class="clearfix tabs-button">
+    <a class=" button button_right" data-toggle="modal" data-target="#addPresscription"><span class="ti-plus add-block__icon"></span>Назначение</a>
+</div>
+<div class=" plain-table ">
+    <div class="plain-table__caption">
+        <span class="plain-table__icon ti-marker"></span>Назначения
+    </div>
+    <table class="plain-table__table">
+        <thead class="plain-table__heading">
+        <tr>
+            <th>Дата назначения</th>
+            <th>Описание</th>
+            <th>Врач</th>
+        </tr>
+        </thead>
+        <tbody class='plain-table__value'>
+        <tr ng-repeat="prescription in treatmentPrescr.prescriptions">
+            <td>{{prescription.date}}</td>
+            <td>{{prescription.description}}</td>
+            <td>{{prescription.doctor_fio}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
