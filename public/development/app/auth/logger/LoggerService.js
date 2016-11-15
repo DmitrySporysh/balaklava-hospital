@@ -29,10 +29,10 @@ angular
 
             function redirection(post) {
                 if (post == 'Врач') {
-                    $window.location.href =  "/doctor#/emergency";
+                    $window.location.href =  "/doctor#/inpatients";
                 }
-                if (post  == 'Приемный') {
-                    $window.location.href =  "/emergency";
+                if (post  == 'Медсестра') {
+                    $window.location.href =  "/emergency#/received_patients";
                 }
             }
 

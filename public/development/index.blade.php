@@ -17,7 +17,15 @@
     <script src="../development/app/auth/Register/RegisterController.js"></script>
     <script src="../development/app/auth/Register/RegisterDirective.js"></script>
     <script src="../development/app/auth/Register/RegisterService.js"></script>
-    <style>.active { color: red; font-weight: bold; }</style>
+
+
+    <script src="../development/js/effects.js"></script>
+
+    <link rel="stylesheet" href="../development/css/font-awesome.css">
+
+
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../development/css/login.css">
 </head>
 
 <script type="text/javascript">
@@ -26,12 +34,16 @@
             console.log(12);
             sessionStorage.setItem('fio', '{{Session::get('fio')}}');
             sessionStorage.setItem('post', '{{Session::get('post')}}');
-        })
+        });
     });
 </script>
-{{Session::get('fio')}}
-<body ng-app="authApp">
-    <ui-view></ui-view>
+{{--{{Session::get('fio')}}--}}
+<body  id='bg_change'>
+    <div  class="login-container">
+        <div ng-app="authApp">
+            <ui-view></ui-view>
+        </div>
+    </div>
 </body>
 
 
