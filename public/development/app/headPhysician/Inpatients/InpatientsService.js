@@ -1,5 +1,5 @@
 angular
- .module('doctorApp')
+ .module('headPhysicianApp')
     .service('InpatientsService', function($http, $q) {
 
         function getInpatients() {
