@@ -8,6 +8,9 @@
 
     <script src="../bower_components/angular/angular.min.js"></script>
     <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
 
 
     <script src="../development/app/headPhysician/HeadPhysician.js"></script>
@@ -15,6 +18,10 @@
     <script src="../development/app/headPhysician/Inpatients/InpatientsDirective.js"></script>
     <script src="../development/app/headPhysician/Inpatients/InpatientsController.js"></script>
     <script src="../development/app/headPhysician/Inpatients/InpatientsService.js"></script>
+
+    <script src="../development/app/headPhysician/InpatientInfo/InpatientInfoDirective.js"></script>
+    <script src="../development/app/headPhysician/InpatientInfo/InpatientInfoController.js"></script>
+    <script src="../development/app/headPhysician/InpatientInfo/InpatientInfoService.js"></script>
 
     <link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700" media="all" />
     <link rel="stylesheet" href="../development/fonts/themify/themify-icons.css">
@@ -25,19 +32,13 @@
     <link rel="stylesheet" href="../development/css/style.css">
 </head>
 
-<body ng-app="headPhysicianApp">
-<div class="wrapper">
-{{--    @include('components.doctor_header')--}}
+<body>
+    <div class="wrapper" ng-app="headPhysicianApp">
+        <div class='wrapper' ng-include src="'/development/components/headPhysician_header.html'"></div>
 
-    <div class='wrapper' ng-include src="'/development/components/headPhysician_header.html'"></div>
-    <div class="main-content">
-        <ui-view></ui-view>
+        <div class="main-content">
+            <ui-view></ui-view>
+        </div>
     </div>
-</div>
-
-
-
-
-
 </body>
 </html>

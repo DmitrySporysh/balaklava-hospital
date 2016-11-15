@@ -2,7 +2,7 @@
     <div class="container">
         <div class="content-header__title-block content-header__title-block_left">
             <h3 class="content-header__title block-title">Пациенты</h3>
-            <span class="content-header__subtitle block-subtitle">Перечень больных в стационаре</span>
+            <span class="content-header__subtitle block-subtitle">Перечень больных в отделении</span>
         </div>
     </div>
 </div>
@@ -17,25 +17,19 @@
             <thead class="plain-table__heading">
             <tr>
                 <th>ФИО</th>
-                <th>Дата рождения</th>
-                <th>Пол</th>
-                <th>№ Палаты</th>
-                <th>Телефон</th>
-                <th>Дата обращения</th>
-                <th>№ Страховки</th>
+                <th>Дата заселения</th>
+                <th>Диагноз</th>
+                <th>Лечащий врач</th>
             </tr>
             </thead>
             <tbody class='plain-table__value'>
             <tr ng-repeat="patient in inpatientsCtrl.inpatients">
                 <td >
-                    <a href="doctor#/inpatient_treatment/{{patient.inpatient_id}}/general">{{patient.fio}}</a>
+                    <a href="head_physician#/inpatients/{{patient.inpatient_id}}/general">{{patient.fio}}</a>
                 </td>
                 <td>{{patient.birth_date}}</td>
                 <td>{{patient.sex}}</td>
                 <td>{{patient.number}}</td>
-                <td>{{patient.phone}}</td>
-                <td>{{patient.start_date}}</td>
-                <td>{{patient.insurance_number}}</td>
             </tr>
             </tbody>
         </table>
