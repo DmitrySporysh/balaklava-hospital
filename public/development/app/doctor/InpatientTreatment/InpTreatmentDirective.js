@@ -25,7 +25,20 @@ angular
             restrict: "AE",
             templateUrl: PATHDIR+"/InpatientTreatment/tabs/analyzes.html",
             controller: 'InpatientTreatmentCtrlAnalyzes',
-             controllerAs: 'treatmentAnalyzes'
+            controllerAs: 'treatmentAnalyzes',
+            /*compile: function(element, attributes){
+                return {
+                    pre: function(scope, element, attributes, controller){
+                        var text = element.text();
+                        element.text( ' Third' );
+                    },
+                    post: function(scope, element, attributes, controller){
+                        var text = element.text();
+                        element.text( ' Forth' );
+                    }
+                }
+            }*/
+
         };
     })
     .directive('dynamic', function (PATHDIR) {

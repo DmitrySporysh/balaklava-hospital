@@ -689,3 +689,14 @@ margin-left: 10px;
 .help-block_85 {
     margin-top: 85px;
 }
+
+.file-table__cell {
+    width: 120px;
+    float: left;
+    margin-right: 20px;
+}
+
+.file-table__img {
+    height: 100%;
+    width: 100%;
+}
