@@ -13,6 +13,10 @@
     <script src="../development/app/auth/logger/LoggerController.js"></script>
     <script src="../development/app/auth/logger/LoggerDirective.js"></script>
     <script src="../development/app/auth/logger/LoggerService.js"></script>
+
+    <script src="../development/app/auth/Register/RegisterController.js"></script>
+    <script src="../development/app/auth/Register/RegisterDirective.js"></script>
+    <script src="../development/app/auth/Register/RegisterService.js"></script>
     <style>.active { color: red; font-weight: bold; }</style>
 </head>
 

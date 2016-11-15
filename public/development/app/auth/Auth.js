@@ -9,7 +9,7 @@ angular
             })
             .state('registration',{
                 url: '/registration',
-                template: '<registration></registration>'
+                template: '<register-form></register-form>'
             });
     });
 
