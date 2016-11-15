@@ -106,6 +106,10 @@ Route::get('department_chief', 'DepartmentChiefController@getDepartmentInpatient
     return view('layouts.doctor_room');
 });*/
 
+Route::get('head_physician', function () {
+    return view('headPhysician');
+});
+
 //----------Nurse-------------------------------
 Route::get('nurse', 'DepartmentChiefController@getDepartments');
 /*Route::get('doctor', function () {
