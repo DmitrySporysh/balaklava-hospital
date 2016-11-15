@@ -23,6 +23,14 @@ angular
             .then(function(analyzes){
                  self.analyzes = analyzes;
              });
+
+        self.new_analysis = function (){
+            InpatientTreatmentService.newAnalysis(self.emPerson_id, self.analysisInfo)
+                .then(function(response) {
+                    self.response = response;
+                    console.log(self.response)
+                });
+        };
     })
 
     .controller('InpatientTreatmentCtrlDynamic', function(InpatientTreatmentService, $stateParams) {

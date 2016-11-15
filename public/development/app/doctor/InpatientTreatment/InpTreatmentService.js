@@ -94,8 +94,20 @@ angular
                 });
             return defer.promise;
         }
-        
 
+        function newAnalysis(id, analysisInfo) {
+            var defer=$q.defer();
+            analysisInfo.id = id;
+
+            $http.post('doctor/inpatient/addAnalysis',analysisInfo)
+                .success(function(response) {
+                    defer.resolve(response);
+                })
+                .error(function(err) {
+                    defer.reject(err);
+                });
+            return defer.promise;
+        }
 
 
 
@@ -106,7 +118,8 @@ angular
             getProcedures: getProcedures,
             getOperations: getOperations,
             getPrescriptions: getPrescriptions,
-            getInspectionProtocol: getInspectionProtocol
+            getInspectionProtocol: getInspectionProtocol,
+            newAnalysis: newAnalysis
         };
 
     });
