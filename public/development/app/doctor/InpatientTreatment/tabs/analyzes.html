@@ -24,7 +24,7 @@
                     </thead>
                     </tbody>
                     <tbody class='plain-table__value' id="analysis-table">
-                    <tr ng-repeat="analysis in treatmentAnalyzes.analyzes" id="analyses{{$index+1}}">
+                    <tr ng-repeat="analysis in treatmentAnalyzes.analyzes">
                         <td data-toggle="modal" data-target="#analysisInfo" ng-click="treatmentAnalyzes.setShownAnalyses($index+1)">{{$index+1}}</td>
                         <td>{{analysis.analysis_name}}</td>
                         <td>{{analysis.analysis_description}}</td>
