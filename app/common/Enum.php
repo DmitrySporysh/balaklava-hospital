@@ -25,6 +25,15 @@ abstract class Enum {
 
         return array_search($value, $values, $strict);
     }
+
+    public static function checkExsist($value, $strict = true) {
+        $class = new ReflectionClass(get_called_class());
+        $values = array_values($class->getConstants())[0];
+
+        return array_search($value, $values, $strict);
+    }
+
+
 }
 
 

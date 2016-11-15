@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Common\Enums\UserRole;
 use App\Http\Requests;
 use App\Services\Interfaces\DoctorServiceInterface;
 use App\Services\Interfaces\PatientServiceInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
 use Barryvdh\Debugbar\Facade;
@@ -20,21 +22,21 @@ class DoctorController extends Controller
                                 PatientServiceInterface $patient_service
     )
     {
-        Debugbar::addMessage('Another message', 'mylabel');
+        $this->middleware('auth');
+        $this->middleware('checkPost:'.UserRole::DOCTOR);
+
         $this->doctor_service = $doctor_service;
         $this->patient_service = $patient_service;
-
-        //$this->middleware('auth');
-        //$this->middleware('checkRole:'.UserRole::WEBMASTER);
     }
 
     public function getDoctorInpatients(Request $request)
     {
         $per_page = ($request->has('per_page')) ? $request->per_page : 20;
 
-        $doctor_id = 19; //TODO брать ид авторизованного доктора
+        $doctor_id = Auth::user()->health_worker->id;
+
         $response = $this->doctor_service->getDoctorAllInpatientsSortByDateDesc($doctor_id, $per_page);
-        //Debugbar::info($response);
+
         //return view('welcome', ['response' => $response]);
         return $response;
     }
@@ -138,7 +140,7 @@ class DoctorController extends Controller
     //---------------------------------------------------------------------------------
     public function addNewInpatientAnalysis(Request $request)
     {
-        $doctor_id = 19; //TODO брать ид авторизованного доктора
+        $doctor_id = Auth::user()->health_worker->id;
 
         $response = $this->doctor_service->addNewInpatientAnalysis($request, $doctor_id);
 
@@ -147,7 +149,7 @@ class DoctorController extends Controller
 
     public function addNewInpatientProcedure(Request $request)
     {
-        $doctor_id = 19; //TODO брать ид авторизованного доктора
+        $doctor_id = Auth::user()->health_worker->id;
 
         $response = $this->doctor_service->addNewInpatientProcedure($request, $doctor_id);
 
@@ -156,7 +158,7 @@ class DoctorController extends Controller
 
     public function addNewInpatientInspection(Request $request)
     {
-        $doctor_id = 19; //TODO брать ид авторизованного доктора
+        $doctor_id = Auth::user()->health_worker->id;
 
         $response = $this->doctor_service->addNewInpatientInspection($request, $doctor_id);
 
@@ -165,7 +167,7 @@ class DoctorController extends Controller
 
     public function addNewInpatientOperation(Request $request)
     {
-        $doctor_id = 19; //TODO брать ид авторизованного доктора
+        $doctor_id = Auth::user()->health_worker->id;
 
         $response = $this->doctor_service->addNewInpatientOperation($request, $doctor_id);
 
@@ -174,7 +176,7 @@ class DoctorController extends Controller
 
     public function addNewInpatientMedicalAppointment(Request $request)
     {
-        $doctor_id = 19; //TODO брать ид авторизованного доктора
+        $doctor_id = Auth::user()->health_worker->id;
 
         $response = $this->doctor_service->addNewInpatientMedicalAppointment($request, $doctor_id);
 
@@ -184,7 +186,7 @@ class DoctorController extends Controller
 
     public function addNewInspectionProtocol(Request $request)
     {
-        $doctor_id = 19; //TODO брать ид авторизованного доктора
+        $doctor_id = Auth::user()->health_worker->id;
 
         $response = $this->doctor_service->addNewInspectionProtocol($request, $doctor_id);
 

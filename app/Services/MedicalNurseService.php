@@ -5,7 +5,7 @@ use App\Exceptions\EmergencyServiceException;
 use App\Exceptions\DALException;
 use App\Repositories\Interfaces\InpatientRepositoryInterface;
 use App\Repositories\Interfaces\ReceivedPatientRepositoryInterface;
-use App\Services\Interfaces\EmergencyServiceInterface;
+use App\Services\Interfaces\MedicalNurseServiceInterface;
 use Carbon\Carbon;
 use \Exception;
 use App\Repositories\Interfaces\PatientRepositoryInterface;
@@ -18,7 +18,7 @@ use Barryvdh\Debugbar\Facade;
 use Debugbar;
 
 
-class EmergencyService implements EmergencyServiceInterface
+class MedicalNurseService implements MedicalNurseServiceInterface
 {
     private $user_repo;
     private $patient_repo;

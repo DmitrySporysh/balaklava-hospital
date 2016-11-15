@@ -55,4 +55,20 @@ class DepartmentChiefService implements DepartmentChiefServiceInterface
         }
     }
 
+    public function getDepartmentAllDoctorsSortByFio($department_id, $page_size)
+    {
+        try {
+            $data =  $this->doctor_repo->getDepartmentAllDoctorsSortByFio($department_id, $page_size);
+            return $data;
+        }
+        catch(DALException $e){
+            $message = 'Error while creating withdraw inpatient request(DAL Error)';
+            throw new DepartmentChiefServiceException($message,0,$e);
+        }
+        catch(Exception $e){
+            $message = 'Error while creating withdraw inpatient request(UnknownError)';
+            throw new DepartmentChiefServiceException($message,0,$e);
+        }
+    }
+
 }

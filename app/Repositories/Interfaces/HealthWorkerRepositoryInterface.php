@@ -10,4 +10,5 @@ namespace App\Repositories\Interfaces;
 
 interface HealthWorkerRepositoryInterface extends RepositoryInterface
 {
+    public function getDepartmentAllDoctorsSortByFio($department_id, $page_size);
 }

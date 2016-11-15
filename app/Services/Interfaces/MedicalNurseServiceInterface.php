@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 
 
-interface EmergencyServiceInterface
+interface MedicalNurseServiceInterface
 {
     public function getAllReceivedPatientsSortByDateDesc($page_size);
 

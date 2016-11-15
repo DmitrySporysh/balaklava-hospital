@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
 
+
 class CheckPost
 {
     /**
@@ -13,21 +14,22 @@ class CheckPost
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
-     * @param  string|null  $guard
+     * @param  string|null  $post
      * @return mixed
      */
     public function handle($request, Closure $next, $post)
     {
-       
         if(Auth::guest())
         {
             return redirect('/');
         }
         if ((Auth::user()->health_worker->post != $post)) {
-            return new Response(view('/')->withErrors('ошибка авторизации'));
+
+            return redirect('login#/login');
         }
-        
 
         return $next($request);
     }
 }
+
+

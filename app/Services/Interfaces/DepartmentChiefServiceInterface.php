@@ -12,4 +12,6 @@ use Hash;
 interface DepartmentChiefServiceInterface
 {
     public function getDepartmentAllInpatientsSortByDateDesc($department_id, $page_size);
+
+    public function getDepartmentAllDoctorsSortByFio($department_id, $page_size);
 }

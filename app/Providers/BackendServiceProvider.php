@@ -80,8 +80,8 @@ class BackendServiceProvider extends ServiceProvider
         $this->app->bind('App\Services\Interfaces\DoctorServiceInterface',
             'App\Services\DoctorService');
 
-        $this->app->bind('App\Services\Interfaces\EmergencyServiceInterface',
-            'App\Services\EmergencyService');
+        $this->app->bind('App\Services\Interfaces\MedicalNurseServiceInterface',
+            'App\Services\MedicalNurseService');
 
         $this->app->bind('App\Services\Interfaces\FileServiceInterface',
             'App\Services\FileService');

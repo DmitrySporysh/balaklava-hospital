@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 //Debugbar
 use Barryvdh\Debugbar\Facade;
 use Debugbar;
+use Illuminate\Support\Facades\Auth;
 
 
 class NurseController extends Controller
@@ -25,8 +26,9 @@ class NurseController extends Controller
         $this->patient_service = $patient_service;
 
         //$this->middleware('auth');
-        //$this->middleware('checkRole:'.UserRole::WEBMASTER);
+        //$this->middleware('checkRole:'.'Медсестра');
     }
+
 
     public function getDepartments(Request $request)
     {

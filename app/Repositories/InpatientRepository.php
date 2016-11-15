@@ -125,17 +125,16 @@ class InpatientRepository extends Repository implements InpatientRepositoryInter
             $data = DB::table('inpatients')
                 ->where('inpatients.hospital_department_id', $department_id)
                 ->join('received_patients', 'inpatients.received_patient_id', '=', 'received_patients.id')
-                ->join('patients', 'received_patients.patient_id', '=', 'patients.id')
                 ->join('chambers', 'inpatients.chamber_id', '=', 'chambers.id')
+                ->join('health_workers', 'inpatients.attending_doctor_id', '=', 'health_workers.id')
                 ->select([
                     'inpatients.id',
                     'received_patients.fio',
-                    'patients.birth_date',
-                    'patients.sex',
                     'chambers.number',
-                    'received_patients.phone',
-                    'inpatients.start_date',
-                    'patients.insurance_number'])
+                    'start_date',
+                    'diagnosis',
+                    'health_workers.fio'
+                ])
                 ->orderBy('inpatients.start_date', 'DESC')
                 ->paginate($per_page);
             if ($data == null) {

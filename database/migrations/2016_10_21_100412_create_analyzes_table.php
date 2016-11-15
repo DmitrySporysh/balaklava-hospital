@@ -17,7 +17,7 @@ class CreateAnalyzesTable extends Migration
             $table->increments('id');
             $table->integer('inpatient_id')->unsigned();
             $table->integer('doctor_who_appointed')->unsigned();
-            $table->integer('doctor_who_performed')->unsigned();
+            $table->integer('doctor_who_performed')->unsigned()->nullable();
 
             $table->timestamp('appointment_date');
             $table->timestamp('ready_date')->nullable();
