@@ -57,8 +57,9 @@ class EmergencyService implements EmergencyServiceInterface
     private function checkPatientExists($insurance_number)
     {
         try {
-            $data = $this->patient_repo->findBy('insurance_number', $insurance_number, '=', ['id'])['id'];
-
+            $data = $this->patient_repo->where('insurance_number', $insurance_number, '=', ['id']);
+            if($data != null)
+                return $data[0]['id'];
             return $data;
         } catch (DALException $e) {
             $message = 'Error while creating withdraw patient request(DAL Error)';
@@ -102,7 +103,6 @@ class EmergencyService implements EmergencyServiceInterface
                 $this->received_patient_repo->create($received_patient_data);
 
             } else {
-
                 $patient_data = $this->getPatientDataFromRequest($request);
                 $received_patient_data = $this->getReceivedPatientDataFromRequest($request, $registration_nurse_id);
 
@@ -124,11 +124,4 @@ class EmergencyService implements EmergencyServiceInterface
     {
         // TODO: Implement ediPatient() method.
     }
-
-    public function deletePatient($patient_id)
-    {
-        // TODO: Implement deletePatient() method.
-    }
-
-
 }

@@ -109,7 +109,7 @@ class ReceivedPatientRepository extends Repository implements ReceivedPatientRep
 
             $query = (new PatientFilters($filters))->apply($builder);
 
-            $data= $query
+            $data = $query
                 ->select($columns)
                 ->orderBy('received_patients.fio', 'ASC')
                 ->paginate($page_size);
@@ -171,7 +171,7 @@ class ReceivedPatientRepository extends Repository implements ReceivedPatientRep
 
         } catch
         (Exception $e) {
-            $message = 'Error while finding element using ' . $this->model() . "\n" . $e->getMessage();
+            $message = 'Error while creating element using ' . $this->model() . "\n" . $e->getMessage();
             throw new DALException($message, 0, $e);
         }
     }

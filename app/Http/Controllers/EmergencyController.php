@@ -34,8 +34,6 @@ class EmergencyController extends Controller
         $per_page = ($request->has('per_page')) ? $request->per_page : 20;
 
         $response = $this->emergency_service->getAllReceivedPatientsSortByDateDesc($per_page);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
         return $response;
     }
 
@@ -43,8 +41,7 @@ class EmergencyController extends Controller
     {
         $registration_nurse_id = 5; //TODO брать ид авторизованной медсестры
 
-        $response = $this->emergency_service->addNewPatient($request, $registration_nurse_id);
-        //Debugbar::info($response);
-        return json_encode('success');
+        $this->emergency_service->addNewPatient($request, $registration_nurse_id);
+        return json_encode(['success' => true]);
     }
 }
