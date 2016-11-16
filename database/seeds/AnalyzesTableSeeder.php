@@ -27,18 +27,18 @@ class AnalyzesTableSeeder extends Seeder
         ];
 
         $analysis_description = [
-            '',
-            '',
-            '',
-            '',
-            '',
+            'Необходимо провести общий анализ крове на Hb, RBC, Тромбоциты и тд.',
+            'Анализ крове на глюкозу, мочевину, креатин и т.д.',
+            'Анализ мочи на цвет, прозрачность, кислотность, эритроциты и т.д.',
+            'Провести ЭКГ в кабинете №4',
+            'Повторно провести ЭКГ №4',
             'Кровь на РМП с кардиолипидным антигеном' .
             'Кровь на маркеры гепатитов, ВИЧ-инфекции',
             'Кровь на группу, резус фактор',
-            '',
-            '',
-            '',
-            '',
+            'Получить данныео потологиях и внегоспитальных болезнях',
+            'Узнать о потологиях и предыдущих болезнях',
+            'Провести Рентген ОГК',
+            'Провести ФЛЮ ОГК',
             ''
         ];
 
@@ -54,20 +54,21 @@ class AnalyzesTableSeeder extends Seeder
             'Данные за внегоспитальную левостороннюю нижнедолевую пневмонию.',
             'Данных за острую хирургическую патологию на момент осмотра не обнаружено.',
             'Корни легких тяжисты. Инфильтративная тень слева в нижнем отделе (пневмония?). Сердце - возрастные изменения. Острой патологии нет.',
-            'Наличие нечетких инфильтративных контуров в передненижней доле левого лёгкого. Нельзя исключить левостороннюю нижнедолевую пневмонию. '
+            'Наличие нечетких инфильтративных контуров в передненижней доле левого лёгкого. Нельзя исключить левостороннюю нижнедолевую пневмонию. ',
+            ''
         ];
 
         foreach (range(1, 40) as $index) {
-            foreach (range(0, count($analysis_name) - 1) as $analysis_index)
+            foreach (range(1, count($analysis_name)) as $analysis_index)
                 DB::table('analyzes')->insert([
                     'inpatient_id' => $index,
                     'doctor_who_appointed' => 2 + 3 * (($index + $analysis_index) % 10) + 17,
                     'doctor_who_performed' => 2 + 3 * (($index + $analysis_index + 2) % 10) + 17,
-                    'appointment_date' => '2016-10-' . ($analysis_index + 1),
-                    'ready_date' => (($analysis_index + $index) % 3 != 0) ? ('2016-10-' . ($analysis_index + 2)) : null,
-                    'analysis_name' => $analysis_name[$analysis_index],
-                    'analysis_description' => $analysis_description[$analysis_index],
-                    'result_description' => $result_description[$analysis_index],
+                    'appointment_date' => '2016-10-' . (($analysis_index + 1) % 30 + 1),
+                    'ready_date' => '2016-10-' . (($analysis_index + 3) % 30 + 1),
+                    'analysis_name' => $analysis_name[$analysis_index-1],
+                    'analysis_description' => $analysis_description[$analysis_index-1],
+                    'result_description' => $result_description[$analysis_index-1],
                     'paths_to_files' => 'analyzes/'.$analysis_index.'.jpg'
 
                 ]);

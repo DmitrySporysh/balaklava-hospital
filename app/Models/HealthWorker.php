@@ -5,17 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
 /**
  * App\Models\HealthWorker
  *
  * @property integer $id
  * @property string $fio
- * @property integer $login_id
- * @property string $address
+ * @property string $sex
  * @property string $birth_date
  * @property string $post
- * @property string $description
+ * @property integer $login_id
  * @property \Carbon\Carbon $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
@@ -32,17 +30,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Note[] $notes
  * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereFio($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereLoginId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereAddress($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereSex($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereBirthDate($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker wherePost($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereDescription($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereLoginId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereDeletedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereUpdatedAt($value)
  * @mixin \Eloquent
- * @property string $sex
- * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereSex($value)
  */
 class HealthWorker extends Model
 {

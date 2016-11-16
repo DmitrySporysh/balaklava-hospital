@@ -99,13 +99,23 @@ Route::get('nurse', function () {
 
 
 //---------DepartmentChief-------------------
+Route::get('department_chief', 'DepartmentChiefController@getDepartmentInpatients');
+
 Route::get('department_chief/inpatients', 'DepartmentChiefController@getDepartmentInpatients');
 
 Route::get('department_chief/inpatient/{id}', 'DepartmentChiefController@getInpatientInfo');
 
 Route::get('department_chief/doctors', 'DepartmentChiefController@getDepartmentDoctors');
 
+Route::get('department_chief/departments', 'DepartmentChiefController@getAllDepartments');
+
+Route::get('department_chief/hospitals', 'DepartmentChiefController@getAllHospitals');
+
 Route::get('department_chief', 'DepartmentChiefController@getDepartmentInpatients');
+
+Route::post('department_chief/addAttendingDoctorToInpatient', 'DepartmentChiefController@addAttendingDoctorToInpatient');
+
+Route::post('department_chief/dischargeInpatient', 'DepartmentChiefController@dischargeInpatientFromDepartment');
 
 Route::get('head_physician', function () {
     return view('headPhysician');

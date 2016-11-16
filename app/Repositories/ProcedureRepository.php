@@ -31,14 +31,15 @@ class ProcedureRepository extends Repository implements ProcedureRepositoryInter
                 ->leftJoin('health_workers as doctor_who_performed', 'procedures.doctor_who_performed', '=', 'doctor_who_performed.id')
                 ->select(
                     'procedures.id as procedure_id',
-                    'procedure_date',
+                    'appointment_date',
+                    'ready_date',
                     'procedure_name',
                     'procedure_description',
                     'paths_to_files',
                     'doctor_who_appointed.fio as doctor_fio_who_appointed',
                     'doctor_who_performed.fio as doctor_fio_who_performed'
                 )
-                ->orderBy('procedures.procedure_date', 'DESC')
+                ->orderBy('procedures.appointment_date', 'DESC')
                 ->get();
         } catch (Exception $e) {
             $message = 'Error while finding element using ' . $this->model();
@@ -55,7 +56,8 @@ class ProcedureRepository extends Repository implements ProcedureRepositoryInter
                 ->where('procedures.id', $procedure_id)
                 ->join('health_workers as doctor_who_appointed', 'procedures.doctor_who_appointed', '=', 'doctor_who_appointed.id')
                 ->leftJoin('health_workers as doctor_who_performed', 'procedures.doctor_who_performed', '=', 'doctor_who_performed.id')
-                ->select('procedure_date',
+                ->select('appointment_date',
+                    'ready_date',
                     'procedure_name',
                     'procedure_description',
                     'paths_to_files',

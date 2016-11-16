@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use Barryvdh\Debugbar\Facade;
 use Debugbar;
+use Illuminate\Support\Facades\Auth;
 
 class DoctorService implements DoctorServiceInterface
 {
@@ -114,11 +115,21 @@ class DoctorService implements DoctorServiceInterface
         return $data;
     }
 
+    private function getAnalysisDataForResponse($newAnalysis)
+    {
+        $response['appointment_date'] =$newAnalysis['appointment_date'];
+        $response['analysis_name'] =$newAnalysis['analysis_name'];
+        $response['analysis_description'] =$newAnalysis['analysis_description'];
+        return $response;
+    }
+
     public function addNewInpatientAnalysis($request, $doctor_id)
     {
         try {
             $analysis_data = $this->getAnalisisDataFromRequest($request, $doctor_id);
-            return $this->analysisRepository->create($analysis_data);
+            $newAnalysis = $this->analysisRepository->create($analysis_data);
+            $response = $this->getAnalysisDataForResponse($newAnalysis);
+            return $response;
         } catch (DALException $e) {
             $message = 'Error while creating withdraw analysis request(DAL Error)' . $e->getMessage();
             throw new DoctorServiceException($message, 0, $e);
@@ -133,15 +144,26 @@ class DoctorService implements DoctorServiceInterface
     {
         $data = $request->all();
         $data['doctor_who_appointed'] = $doctor_id;
-        $data['procedure_date'] = Carbon::now()->toDateTimeString();
+        $data['appointment_date'] = Carbon::now()->toDateTimeString();
         return $data;
+    }
+
+    private function getProcedureDataForResponse($newProcedure)
+    {
+        $response['procedure_name'] =$newProcedure['procedure_name'];
+        $response['procedure_description'] =$newProcedure['procedure_description'];
+        $response['appointment_date'] =$newProcedure['appointment_date'];
+        $response['doctor_fio_who_appointed'] = Auth::user()->health_worker->fio;
+        return $response;
     }
 
     public function addNewInpatientProcedure($request, $doctor_id)
     {
         try {
             $procedureDataFromRequest = $this->getProcedureDataFromRequest($request, $doctor_id);
-            return $this->procedureRepository->create($procedureDataFromRequest);
+            $newProcedure = $this->procedureRepository->create($procedureDataFromRequest);
+            $response = $this->getProcedureDataForResponse($newProcedure);
+            return $response;
         } catch (DALException $e) {
             $message = 'Error while creating withdraw procedure request(DAL Error)' . $e->getMessage();
             throw new DoctorServiceException($message, 0, $e);
@@ -160,11 +182,21 @@ class DoctorService implements DoctorServiceInterface
         return $data;
     }
 
+    private function getInspectionDataForResponse($newInspection)
+    {
+        $response['inspection_date'] =$newInspection['inspection_date'];
+        $response['state_type'] =$newInspection['state_type'];
+        $response['description_extended'] =$newInspection['description_extended'];
+        return $response;
+    }
+
     public function addNewInpatientInspection($request, $doctor_id)
     {
         try {
             $inspectionDataFromRequest = $this->getInspectionDataFromRequest($request, $doctor_id);
-            return $this->inspectionRepository->create($inspectionDataFromRequest);
+            $newInspection = $this->inspectionRepository->create($inspectionDataFromRequest);
+            $response = $this->getInspectionDataForResponse($newInspection);
+            return $response;
         } catch (DALException $e) {
             $message = 'Error while creating withdraw inspection request(DAL Error)' . $e->getMessage();
             throw new DoctorServiceException($message, 0, $e);
@@ -183,11 +215,23 @@ class DoctorService implements DoctorServiceInterface
         return $data;
     }
 
+    private function getOperationDataForResponse($newOperation)
+    {
+        $response['operation_name'] =$newOperation['operation_name'];
+        $response['appointment_date'] =$newOperation['appointment_date'];
+        $response['preliminary_epicrisis'] =$newOperation['preliminary_epicrisis'];
+        $response['operation_description'] =$newOperation['operation_description'];
+        return $response;
+    }
+
+
     public function addNewInpatientOperation($request, $doctor_id)
     {
         try {
             $operationDataFromRequest = $this->getOperationDataFromRequest($request, $doctor_id);
-            return $this->operationRepository->create($operationDataFromRequest);
+            $newOperation = $this->operationRepository->create($operationDataFromRequest);
+            $response = $this->getOperationDataForResponse($newOperation);
+            return $response;
         } catch (DALException $e) {
             $message = 'Error while creating withdraw operation request(DAL Error)' . $e->getMessage();
             throw new DoctorServiceException($message, 0, $e);
@@ -206,11 +250,21 @@ class DoctorService implements DoctorServiceInterface
         return $data;
     }
 
+    private function getMedicalAppointmentDataForResponse($newMedicalAppointment)
+    {
+        $response['date'] =$newMedicalAppointment['date'];
+        $response['description'] =$newMedicalAppointment['description'];
+        $response['doctor_fio'] = Auth::user()->health_worker->fio;
+        return $response;
+    }
+
     public function addNewInpatientMedicalAppointment($request, $doctor_id)
     {
         try {
             $medicalAppointmentsDataFromRequest = $this->getMedicalAppointmentDataFromRequest($request, $doctor_id);
-            return $this->medicalAppointmentRepository->create($medicalAppointmentsDataFromRequest);
+            $newMedicalAppointment = $this->medicalAppointmentRepository->create($medicalAppointmentsDataFromRequest);
+            $response = $this->getMedicalAppointmentDataForResponse($newMedicalAppointment);
+            return $response;
         } catch (DALException $e) {
             $message = 'Error while creating withdraw Medical Appointment request(DAL Error)' . $e->getMessage();
             throw new DoctorServiceException($message, 0, $e);
@@ -220,5 +274,4 @@ class DoctorService implements DoctorServiceInterface
             throw new DoctorServiceException($message, 0, $e);
         }
     }
-
 }

@@ -35,10 +35,12 @@ class ProceduresTableSeeder extends Seeder
 
 
         foreach (range(1, 40) as $index) {
-            foreach (range(1, count($procedures) - 1 ) as $day)
+            foreach (range(1, count($procedures)) as $day)
                 DB::table('procedures')->insert([
-                    'procedure_date' => '2016-10-' . ($day % 31 + 1),
-                    'procedure_name' => $procedures[$day],
+
+                    'appointment_date' => '2016-10-' . (($day + 1) % 30 + 1),
+                    'ready_date' => '2016-10-' . (($day + 3) % 30 + 1),
+                    'procedure_name' => $procedures[$day-1],
                     'procedure_description' => '..описание процедуры №'.$day,
                     'inpatient_id' => $index,
                     'doctor_who_appointed' => 2 + 3 * (($index + $day) % 10) + 17,

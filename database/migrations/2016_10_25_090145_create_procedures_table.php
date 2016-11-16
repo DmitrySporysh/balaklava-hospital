@@ -19,7 +19,8 @@ class CreateProceduresTable extends Migration
             $table->integer('doctor_who_appointed')->unsigned();
             $table->integer('doctor_who_performed')->unsigned()->nullable();
 
-            $table->timestamp('procedure_date');
+            $table->timestamp('appointment_date');
+            $table->timestamp('ready_date')->nullable();
             $table->string('procedure_name');
             $table->string('procedure_description')->nullable();
             $table->string('paths_to_files')->nullable();

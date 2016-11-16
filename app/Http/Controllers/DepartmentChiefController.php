@@ -24,23 +24,20 @@ class DepartmentChiefController extends Controller
     private $patientService;
 
     public function __construct(DepartmentChiefServiceInterface $departmentChief_service,
-    PatientServiceInterface $patientService
-)
+    PatientServiceInterface $patientService)
     {
-        Debugbar::addMessage('Another message', 'mylabel');
+        $this->middleware('auth');
+        $this->middleware('checkPost:'.UserRole::DEPARTMENT_CHIEF);
+
         $this->departmentChief_service = $departmentChief_service;
         $this->patientService = $patientService;
-
-        //$this->middleware('auth');
-        //$this->middleware('checkRole:'.UserRole::DEPARTMENT_CHIEF);
     }
 
     public function getDepartmentInpatients(Request $request)
     {
         $per_page = ($request->has('per_page')) ? $request->per_page : 20;
 
-        //$department_id = Auth::user()->health_worker->hospital_department->id; //TODO берем id отделения, которым управляет наш зав
-        $department_id = 1;
+        $department_id = Auth::user()->health_worker->hospital_department->id; //TODO берем id отделения, которым управляет наш зав
         $response = $this->departmentChief_service->getDepartmentAllInpatientsSortByDateDesc($department_id, $per_page);
         //Debugbar::info($response);
         //return view('index', ['response' => $response]);
@@ -59,12 +56,42 @@ class DepartmentChiefController extends Controller
     {
         $per_page = ($request->has('per_page')) ? $request->per_page : 20;
 
-        //$department_id = Auth::user()->health_worker->hospital_department->id; //TODO берем id отделения, которым управляет наш зав
-        $department_id = 1;
+        $department_id = Auth::user()->health_worker->hospital_department->id; //TODO берем id отделения, которым управляет наш зав
         $response = $this->departmentChief_service->getDepartmentAllDoctorsSortByFio($department_id, $per_page);
-        Debugbar::info($response);
-        return view('index', ['response' => $response]);
-        //return $response;
+        //Debugbar::info($response);
+        //return view('index', ['response' => $response]);
+        return $response;
+    }
+
+    public function getAllDepartments(Request $request)
+    {
+        $response = $this->departmentChief_service->getAllDepartments();
+        //Debugbar::info($response);
+        //return view('index', ['response' => $response]);
+        return $response;
+    }
+
+    public function getAllHospitals(Request $request)
+    {
+        $response = $this->departmentChief_service->getAllHospitals();
+        //Debugbar::info($response);
+        //return view('index', ['response' => $response]);
+        return $response;
+    }
+
+    //----------------------------------------------------------------------------------
+    //TODO Post requests
+    //---------------------------------------------------------------------------------
+    public function addAttendingDoctorToInpatient(Request $request)
+    {
+        $response = $this->departmentChief_service->addAttendingDoctorToInpatient($request->doctor_id, $request->inpatient_id);
+        return $response;
+    }
+
+    public function dischargeInpatientFromDepartment(Request $request)
+    {
+        $response = $this->departmentChief_service->dischargeInpatientFromDepartment($request->all());
+        return $response;
     }
 
 }

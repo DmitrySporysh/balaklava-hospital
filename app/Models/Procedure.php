@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
 /**
  * App\Models\Procedure
  *
@@ -12,7 +13,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer $inpatient_id
  * @property integer $doctor_who_appointed
  * @property integer $doctor_who_performed
- * @property string $procedure_date
+ * @property string $appointment_date
+ * @property string $ready_date
  * @property string $procedure_name
  * @property string $procedure_description
  * @property string $paths_to_files
@@ -25,7 +27,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Procedure whereInpatientId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Procedure whereDoctorWhoAppointed($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Procedure whereDoctorWhoPerformed($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Procedure whereProcedureDate($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Procedure whereAppointmentDate($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Procedure whereReadyDate($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Procedure whereProcedureName($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Procedure whereProcedureDescription($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Procedure wherePathsToFiles($value)
@@ -45,7 +48,7 @@ class Procedure extends Model
     protected $guarded = ['id'];
 
     protected $fillable = [
-        'procedure_date', 'procedure_name', 'procedure_description', 'inpatient_id', 'doctor_who_appointed', 'doctor_who_performed'
+        'appointment_date', 'ready_date', 'procedure_name', 'procedure_description', 'inpatient_id', 'doctor_who_appointed', 'doctor_who_performed'
     ];
 
     public function inpatient()

@@ -35,6 +35,9 @@ class BackendServiceProvider extends ServiceProvider
         $this->app->bind('App\Repositories\Interfaces\HospitalDepartmentRepositoryInterface',
             'App\Repositories\HospitalDepartmentRepository');
 
+        $this->app->bind('App\Repositories\Interfaces\HospitalRepositoryInterface',
+            'App\Repositories\HospitalRepository');
+
         $this->app->bind('App\Repositories\Interfaces\InpatientRepositoryInterface',
             'App\Repositories\InpatientRepository');
 

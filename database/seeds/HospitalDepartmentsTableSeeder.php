@@ -20,7 +20,7 @@ class HospitalDepartmentsTableSeeder extends Seeder
             'Урологическое отделение',
             'Отделение оториноларингологии',
             'Отделение косметической, пластической хирургии',
-            'Кабинет терапевтической косметологии',
+            'Отделение терапевтической косметологии',
             'Отделение неврологии',
             'Пульмонологическое отделение',
             'Отделение ортопедической стоматологии',
@@ -34,9 +34,9 @@ class HospitalDepartmentsTableSeeder extends Seeder
 
         foreach (range(1, count($departments)) as $index) {
             DB::table('hospital_departments')->insert([
-                'department_name' => 'Отделение №' . $index,
+                'department_name' => $departments[$index-1],
                 'address' => 'г.Севастополь, ул.Гагарина №' . $index,
-                'department_chief_id' => 4 * (($index % 3) + 1)
+                'department_chief_id' => $index
             ]);
         }
     }
