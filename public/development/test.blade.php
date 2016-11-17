@@ -38,7 +38,7 @@
     });
 </script>
 {{--{{Session::get('fio')}}--}}
-<body  id='bg_change' class="transition-1">
+<body  id='bg_change'>
     <div  class="login-container">
         <div ng-app="authApp">
             <ui-view></ui-view>

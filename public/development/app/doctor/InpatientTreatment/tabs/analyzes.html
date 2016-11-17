@@ -8,6 +8,7 @@
         </div>
         <div  class="accordion__content">
             <div class="plain-table__table-wrapper clearfix">
+                <input type="checkbox" ng-model="treatmentAnalyzes.insane">
                 <table class="plain-table__table">
                     <tbody class='plain-table__value'>
                     <thead class="plain-table__heading">
@@ -23,19 +24,19 @@
                     </thead>
                     </tbody>
                     <tbody class='plain-table__value' id="analysis-table">
-                    <tr ng-repeat="analysis in treatmentAnalyzes.analyzes" >
-                        <td data-toggle="modal" data-target="#analysisInfo" ng-click="treatmentAnalyzes.setShownAnalyses($index+1)">{{analysis.analysis_name}}</td>
-                        <td data-toggle="modal" data-target="#analysisInfo" ng-click="treatmentAnalyzes.setShownAnalyses($index+1)">{{analysis.analysis_description}}</td>
-                        <td data-toggle="modal" data-target="#analysisInfo" ng-click="treatmentAnalyzes.setShownAnalyses($index+1)">{{analysis.appointment_date}}</td>
-                        <td data-toggle="modal" data-target="#analysisInfo" ng-click="treatmentAnalyzes.setShownAnalyses($index+1)">{{analysis.doctor_fio}}</td>
-                        <td data-toggle="modal" data-target="#analysisInfo" ng-click="treatmentAnalyzes.setShownAnalyses($index+1)">{{analysis.ready_date}}</td>
-                        <td data-toggle="modal" data-target="#analysisInfo" ng-click="treatmentAnalyzes.setShownAnalyses($index+1)">{{analysis.result_description}}</td>
-                        <td ng-click="treatmentAnalyzes.setShownAnalyses($index+1)">
-                            <a data-toggle="modal" data-target="#AnalysisFiles">
-                                <span class="ti-save-alt file-icon" ng-show='analysis.paths_to_files'></span>
-                            </a>
-                        </td>
-                    </tr>
+                        <tr ng-repeat="analysis in treatmentAnalyzes.analyzes"  ng-class=" treatmentAnalyzes.lightColor(analysis.ready_date) ">
+                            <td data-toggle="modal" data-target="#analysisInfo" ng-click="treatmentAnalyzes.setShownAnalyses($index+1)">{{analysis.analysis_name}}</td>
+                            <td data-toggle="modal" data-target="#analysisInfo" ng-click="treatmentAnalyzes.setShownAnalyses($index+1)">{{analysis.analysis_description}}</td>
+                            <td data-toggle="modal" data-target="#analysisInfo" ng-click="treatmentAnalyzes.setShownAnalyses($index+1)">{{analysis.appointment_date}}</td>
+                            <td data-toggle="modal" data-target="#analysisInfo" ng-click="treatmentAnalyzes.setShownAnalyses($index+1)">{{analysis.doctor_fio}}</td>
+                            <td data-toggle="modal" data-target="#analysisInfo" ng-click="treatmentAnalyzes.setShownAnalyses($index+1)">{{analysis.ready_date}}</td>
+                            <td data-toggle="modal" data-target="#analysisInfo" ng-click="treatmentAnalyzes.setShownAnalyses($index+1)">{{analysis.result_description}}</td>
+                            <td ng-click="treatmentAnalyzes.setShownAnalyses($index+1)">
+                                <a data-toggle="modal" data-target="#AnalysisFiles">
+                                    <span class="ti-save-alt file-icon" ng-show='analysis.paths_to_files'></span>
+                                </a>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

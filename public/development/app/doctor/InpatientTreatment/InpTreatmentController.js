@@ -30,10 +30,6 @@ angular
             InpatientTreatmentService.newAnalysis(self.emPerson_id, self.analysisInfo)
                 .then(function(response) {
                     self.response = response;
-                    console.log('12');
-                    console.log(self.response)
-                    console.log('12');
-
                     self.analyzes.unshift(response);
                 });
         };
@@ -41,6 +37,10 @@ angular
         self.setShownAnalyses = function (analysis_id){
             self.shownAnalyses = self.analyzes[analysis_id-1];
         };
+
+        self.lightColor = function (dateReady) {
+            return InpatientTreatmentService.lightColor(dateReady);
+        }
     })
 
     .controller('InpatientTreatmentCtrlDynamic', function(InpatientTreatmentService, $stateParams) {

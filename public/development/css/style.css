@@ -720,3 +720,12 @@ margin-left: 10px;
     border-radius: 10% 10%;
     color: white;
 }
+
+.green {
+    background: rgba(0, 128, 0, 0.19) !important;
+}
+
+.red {
+    background: rgba(255, 0, 0, 0.07) !important
+}
+

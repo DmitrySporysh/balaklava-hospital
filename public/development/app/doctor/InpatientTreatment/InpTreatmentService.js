@@ -165,6 +165,16 @@ angular
             return defer.promise;
         }
 
+        function lightColor (date) {
+            if (date != null)
+                return 'green';
+
+            else
+                console.log(0);
+                return 'red';
+
+        }
+
         return {
             getGeneralInfo: getGeneralInfo,
             getAnalyzes: getAnalyzes,
@@ -177,7 +187,8 @@ angular
             newCondition: newCondition,
             newProcedure: newProcedure,
             newOperation: newOperation,
-            newPrescription: newPrescription
+            newPrescription: newPrescription,
+            lightColor: lightColor
         };
 
     });
