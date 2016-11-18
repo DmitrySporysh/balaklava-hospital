@@ -4,7 +4,9 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -42,9 +44,23 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
+    public function render($request, Exception $e)
     {
-        return parent::render($request, $exception);
+        if ($e instanceof ModelNotFoundException) {
+            $e = new NotFoundHttpException($e->getMessage(), $e);
+        }
+
+        // handle Angular routes when accessed directly from the browser without the need of the '#'
+        if ($e instanceof NotFoundHttpException) {
+
+            $url = parse_url($request->url());
+
+            $angular_url = $url['scheme'] . '://' . $url['host'] . '/#' . $url['path'];
+
+            return response()->redirectTo($angular_url);
+        }
+
+        return parent::render($request, $e);
     }
 
     /**
