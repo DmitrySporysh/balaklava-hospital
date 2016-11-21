@@ -44,6 +44,33 @@ angular
                 url: '/emergency_person/:id',
                 template: '<emergency-person></emergency-person>'
             });
+    })
+    .controller('doctorAppController', function (doctorAppService, $scope) {
+        var self = this;
+
+        $scope.logout = function () {
+            doctorAppService.logout();
+        }
+    })
+    .service('doctorAppService', function ($http, $q) {
+
+        function logout() {
+            var defer=$q.defer();
+
+            $http.post('/logout',{})
+                .success(function(response) {
+                    defer.resolve(response);
+                })
+                .error(function(err) {
+                    defer.reject(err);
+                });
+            console.log(defer.promise);
+        }
+
+        return {
+            logout: logout
+        }
+
     });
 
     
