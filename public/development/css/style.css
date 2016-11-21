@@ -782,3 +782,46 @@ margin-left: 10px;
     left: 20px;
     color: #25bce9;
 }
+
+
+/*------------DATEPICKER------------*/
+
+
+
+.md-button.md-icon-button {
+    float: right;
+    /* position: absolute; */
+    /* right: -50px; */
+    /* color: aliceblue; */
+    margin: 0;
+}
+
+.md-icon-button+.md-datepicker-input-container {
+    margin-left: 0;
+    width: 110px;
+    height: 35px;
+    padding-left: 10px;
+    margin-right: 5px;
+    border-color: #d7d9de;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.md-datepicker-input {
+
+    color: rgb(136, 136, 136);
+    height:  40px
+}
+
+svg {
+    color: #25bce9 !important;
+}
+
+.date-picker__wrapper {
+    width: 155px;
+    position: relative;
+}
+
+.md-datepicker-triangle-button.md-button.md-icon-button {
+    margin-right: 10px;
+}

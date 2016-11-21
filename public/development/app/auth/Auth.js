@@ -7,6 +7,10 @@ angular
                 url: '/login',
                 template: '<login-form></login-form>'
             })
+            .state('/',{
+                url: '/login',
+                template: '<login-form></login-form>'
+            })
             .state('registration',{
                 url: '/registration',
                 template: '<register-form></register-form>'
