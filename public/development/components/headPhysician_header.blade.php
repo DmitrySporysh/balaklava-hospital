@@ -26,11 +26,23 @@
 
                     <li class="user-menu__item user-menu__item_right user-info">
                         <img class="user-info__photo user-info__photo_left" src="/img/user-icons/adminav.png" alt="user-photo">
+                        <span class="ti-angle-down user-info__arrow"></span>
                         <div class="user-info__badge user-info__badge_right user-badge">
                             <span class="user-badge__name">{{Session::get('fio')}}</span>
                             <span class="user-badge__post">{{Session::get('post')}}</span>
                         </div>
-
+                        <div class="drop-profile">
+                            <div class="drop-profile__item-wrapper">
+                                <a class="drop-profile__item" href="#">
+                                    <span class="ti-user drop-profile__icon"></span>
+                                    Мой профиль
+                                </a>
+                                <a class="drop-profile__item" href="/login#/login">
+                                    <span class="ti-key drop-profile__icon"></span>
+                                    Выйти
+                                </a>
+                            </div>
+                        </div>
                 </ul>
                 <div class="header-top__search header-top__search_right search">
                     <fieldset>

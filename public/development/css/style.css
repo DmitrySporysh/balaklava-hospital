@@ -10,6 +10,11 @@
     font-style: normal;
 }
 
+[class^="ti-"], [class*=" ti-"] {
+    font-size: 18px;
+    color: #444444;
+}
+
 
 body {
     font-family: "Roboto";
@@ -60,6 +65,7 @@ body {
     vertical-align: top;
     border-left: 1px solid #c5c7cc;
     display: inline-block;
+    position: relative;
 }
 
 .user-menu__item:hover {
@@ -113,7 +119,16 @@ body {
 
 .user-menu__item_right {
     padding: 13px;
-    padding-right: 30px;
+}
+
+.user-info__arrow {
+    float: right;
+    font-size: 9px;
+    padding-left: 10px;
+    display: block;
+    padding-top: 17px;
+    color: #25bce9;
+    font-weight: bold;
 }
 
 .header-top__search_right{
@@ -130,6 +145,10 @@ body {
 
 .user-info__badge_right {
     float: right;
+}
+
+.user-info:hover .drop-profile{
+    display: block;
 }
 
 .user-badge__name {
@@ -507,11 +526,6 @@ body {
 }
 
 
-[class^="ti-"], [class*=" ti-"] {
-    font-size: 18px;
-    color: #444444;
-}
-
 .patient__icon {
     color: #888888;
 }
@@ -729,3 +743,42 @@ margin-left: 10px;
     background: rgba(255, 0, 0, 0.07) !important
 }
 
+
+
+/*-----------------drop-down profile--------------*/
+
+.drop-profile {
+    display: none;
+    position: absolute;
+    top: 64px;
+    right: 0;
+    width: 100%;
+    padding-top: 10px;
+    box-shadow: 0px 4px 12px -5px rgba(0,0,0, 0.3);
+    -webkit-box-shadow: 0px 4px 12px -5px rgba(0,0,0, 0.3);
+}
+
+.drop-profile__item-wrapper {
+    padding: 15px 0;
+    background: white;
+}
+
+.drop-profile__item {
+    padding: 7px 48px;
+    display: block;
+    color: #888888;
+}
+
+.drop-profile__item:hover {
+    color: #888888;
+    color: white;
+    text-decoration: none;
+    font-weight: 300;
+    background: #323945;
+}
+
+.drop-profile__icon {
+    position: absolute;
+    left: 20px;
+    color: #25bce9;
+}
