@@ -44,10 +44,70 @@ angular
             return defer.promise;
         }
 
+        function getDepartments() {
+            var defer=$q.defer();
+
+            $http.get('department_chief/departments')
+                .success(function(doctors) {
+                    defer.resolve(doctors);
+                })
+                .error(function(err) {
+                    defer.reject(err);
+                });
+            return defer.promise;
+        }
+
+        function getHospitals() {
+            var defer=$q.defer();
+
+            $http.get('department_chief/hospitals')
+                .success(function(doctors) {
+                    defer.resolve(doctors);
+                })
+                .error(function(err) {
+                    defer.reject(err);
+                });
+            return defer.promise;
+        }
+
+        function designateTheDoctor(data, p_id) {
+            var defer=$q.defer();
+
+            data.inpatient_id = p_id;
+
+            $http.post('department_chief/addAttendingDoctorToInpatient',data)
+                .success(function(response) {
+                    defer.resolve(response);
+                })
+                .error(function(err) {
+                    defer.reject(err);
+                });
+            return defer.promise;
+        }
+
+        function writeOutPatient(data, p_id) {
+            var defer=$q.defer();
+
+            data.inpatient_id = p_id;
+
+            $http.post('department_chief/dischargeInpatient',data)
+                .success(function(response) {
+                    defer.resolve(response);
+                })
+                .error(function(err) {
+                    defer.reject(err);
+                });
+            return defer.promise;
+        }
+
         return {
             getInpatients: getInpatients,
             getGeneralInfo: getGeneralInfo,
-            getDoctors: getDoctors
+            getDoctors: getDoctors,
+            designateTheDoctor: designateTheDoctor,
+            writeOutPatient: writeOutPatient,
+            getDepartments: getDepartments,
+            getHospitals: getHospitals
         };
 
     });
