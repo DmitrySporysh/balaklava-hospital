@@ -21,7 +21,7 @@ Route::get('/login', 'Auth\AuthController@showLoginForm');
 
 Route::post('/login', 'Auth\AuthController@login');
 
-Route::get('/logout', 'Auth\AuthController@logout');
+Route::post('/logout', 'Auth\AuthController@logout');
 /*
 
 Route::get('/forgetpassword','EntryController@getForgetPasswordPage');

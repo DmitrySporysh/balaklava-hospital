@@ -87,7 +87,7 @@ class AuthorizationService implements AuthorizationServiceInterface
 
         $request->session()->regenerate();
 
-        return redirect('/');
+        return redirect('login#/login');
     }
 
     protected function guard()
