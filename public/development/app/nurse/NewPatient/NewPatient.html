@@ -46,8 +46,9 @@
                             <tr>
                                 <td>Дата рождения</td>
                                 <td>
-                                    <input ng-model="newPatientCtrl.patient_info.birth_date"  class="patient-form__input-date" name="birth_date" value="" title="Person Name" type="text">
-                                    <span class="ti-calendar patient__icon"></span>
+                                    <div class="date-picker__wrapper">
+                                        <md-datepicker ng-model="newPatientCtrl.patient_info.birth_date"></md-datepicker>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>

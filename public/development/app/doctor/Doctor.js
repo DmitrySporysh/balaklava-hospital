@@ -1,5 +1,5 @@
 angular
-    .module('doctorApp', ['ui.router'])
+    .module('doctorApp', ['ui.router','ngMaterial'])
     .constant('PATHDIR', 'development/app/doctor')
     .config(function($stateProvider) { //Because $stateProvider is an Angular Provider, you must inject it into a .config() block using Angular 1 Dependency Injection.
         $stateProvider
