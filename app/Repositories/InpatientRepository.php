@@ -128,12 +128,12 @@ class InpatientRepository extends Repository implements InpatientRepositoryInter
                 ->join('chambers', 'inpatients.chamber_id', '=', 'chambers.id')
                 ->join('health_workers', 'inpatients.attending_doctor_id', '=', 'health_workers.id')
                 ->select([
-                    'inpatients.id',
-                    'received_patients.fio',
+                    'inpatients.id as inpatient_id',
+                    'received_patients.fio as patient_fio',
                     'chambers.number',
                     'start_date',
                     'diagnosis',
-                    'health_workers.fio'
+                    'health_workers.fio as doctor_fio'
                 ])
                 ->orderBy('inpatients.start_date', 'DESC')
                 ->paginate($per_page);
