@@ -39,7 +39,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">{{analyses.analysis_name}}</h4>
+                <h4 class="modal-title">{{analyzesCtrl.analyses[analyzesCtrl.index].analysis_name}}</h4>
             </div>
             <div class="modal-body">
                 <form name="NewProcedure" class="patient-form">
@@ -48,20 +48,26 @@
                             <table class="plain-table__table">
                                 <tbody class='plain-table__value plain-table__value_non-bordered'>
                                 <tr>
-                                    <td class="patient-form__label">Результат анализа</td>
-                                    <td class="patient-form__value">{{analyzesCtrl.analyses[analyzesCtrl.analyses_id].patient_fio}}</td>
+                                    <td class="patient-form__label">ФИО</td>
+                                    <td class="patient-form__value">{{analyzesCtrl.analyses[analyzesCtrl.index].patient_fio}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="patient-form__label">Результат анализа</td>
-                                    <td class="patient-form__value">{{analyzesCtrl.analyses[analyzesCtrl.analyses_id].doctor_fio_who_appointed}}</td>
+                                    <td class="patient-form__label">Кем назначен</td>
+                                    <td class="patient-form__value">{{analyzesCtrl.analyses[analyzesCtrl.index].doctor_fio_who_appointed}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="patient-form__label">Результат анализа</td>
-                                    <td class="patient-form__value">{{analyzesCtrl.analyses[analyzesCtrl.analyses_id].analysis_description}}</td>
+                                    <td class="patient-form__label">Описание анализа</td>
+                                    <td class="patient-form__value">{{analyzesCtrl.analyses[analyzesCtrl.index].analysis_description}}</td>
                                 </tr>
                                     <td class="patient-form__label">Результат анализа</td>
                                     <td class="patient-form__value">
-                                        <textarea ng-model="analyzesCtrl.AnalysesResult.result" class="patient-form__textarea" rows="8" > </textarea>
+                                        <textarea ng-model="analyzesCtrl.analysesResult.result" class="patient-form__textarea" rows="8" > </textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Приложение</td>
+                                    <td class="patient-form__value">
+                                        <input ng-model="analyzesCtrl.analysesResult.pictures" type="file" name="img" accept="image/jpeg,image/png,image/gif">
                                     </td>
                                 </tr>
                                 </tbody>

@@ -8,11 +8,12 @@ angular
                 self.analyses = analyses;
             });
 
-        self.setShownAnalyses = function (id) {
-            self.analyses_id = id;
+        self.setShownAnalyses = function (index) {
+            self.index = index;
+            self.analyses_id = self.analyses[index].analyses_id;
         };
 
-        self.postAnalysesResult = function (id) {
-            self.analyses_id = id;
+        self.postAnalysesResult = function () {
+            AnalyzesService.postAnalysesResult(this.analysesResult, self.analyses_id);
         }
     });

@@ -12,14 +12,14 @@ angular
                 .error(function(err) {
                     defer.reject(err);
                 });
-            console.log(defer.promise);
-            /*return defer.promise;*/
+            return defer.promise;
         }
 
-        function postOperationsResult(analysesInfo) {
+        function addOperationResult(date, id) {
             var defer=$q.defer();
+            date.operation_id  = id;
 
-            $http.post('medial_nurse/addNewInpatient',analysesInfo)
+            $http.post('doctor/addOperationResult',date)
                 .success(function(response) {
                     defer.resolve(response);
                 })
@@ -28,13 +28,13 @@ angular
                 });
 
             console.log(defer.promise);
-            /*return defer.promise;*/
+            return defer.promise;
         }
 
 
         return {
             getAllNotReadyOperations: getAllNotReadyOperations,
-            postOperationsResult: postOperationsResult
+            addOperationResult: addOperationResult
         };
 
     });

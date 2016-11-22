@@ -9,11 +9,13 @@ angular
                 console.log(operations);
             });
 
-        self.setShownAnalyses = function (id) {
-            self.analyses_id = id;
+        self.setShownOperationIndex = function (index) {
+            self.operation_index = index;
+            self.operation_id = self.operations[index].operation_id;
         };
 
-        self.postAnalysesResult = function (id) {
-            self.analyses_id = id;
+        self.addOperationResult = function () {
+            OperationsService.addOperationResult(self.operationResult,self.operation_id);
         }
+        
     });

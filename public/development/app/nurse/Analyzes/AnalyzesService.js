@@ -15,10 +15,10 @@ angular
             return defer.promise;
         }
 
-        function postAnalysesResult(analysesInfo) {
+        function postAnalysesResult(date, id) {
             var defer=$q.defer();
-
-            $http.post('medial_nurse/addNewInpatient',analysesInfo)
+            date.analyses_id = id;
+            $http.post('medial_nurse/addAnalysisResult',date)
                 .success(function(response) {
                     defer.resolve(response);
                 })
