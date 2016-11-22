@@ -40,6 +40,33 @@ angular
                 })
 
 
+    })
+    .controller('nurseAppController', function (nurseAppService, $scope) {
+        var self = this;
+
+        $scope.logout = function () {
+            nurseAppService.logout();
+        }
+    })
+    .service('nurseAppService', function ($http, $q) {
+
+        function logout() {
+            var defer=$q.defer();
+
+            $http.post('/logout',{})
+                .success(function(response) {
+                    defer.resolve(response);
+                })
+                .error(function(err) {
+                    defer.reject(err);
+                });
+            console.log(defer.promise);
+        }
+
+        return {
+            logout: logout
+        }
+
     });
 
     
