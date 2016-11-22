@@ -48,6 +48,10 @@ angular
                 url: '/archive',
                 template: '<archive></archive>'
             })
+            .state('archive_person',{
+                url: '/archive/:id',
+                template: '<archive-person></archive-person>'
+            })
             .state('operations',{
                 url: '/operations',
                 template: '<operations></operations>'

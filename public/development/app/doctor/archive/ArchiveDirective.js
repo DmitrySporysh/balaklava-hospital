@@ -1,5 +1,5 @@
 angular
- .module('doctorApp')
+    .module('doctorApp')
     .directive('archive', function (PATHDIR) {
         return {
             restrict: "AE",
@@ -8,5 +8,3 @@ angular
             controllerAs: 'archiveCtrl'
         };
     });
-
-
