@@ -59,6 +59,7 @@ class OperationRepository extends Repository implements OperationRepositoryInter
                 ->join('received_patients', 'inpatients.received_patient_id', '=', 'received_patients.id')
                 ->join('health_workers as doctor_who_appointed', 'operations.doctor_who_appointed', '=', 'doctor_who_appointed.id')
                 ->select([
+                        'operations.id as operation_id',
                         'inpatients.id as inpatient_id',
                         'received_patients.fio as patient_fio',
                         'appointment_date',

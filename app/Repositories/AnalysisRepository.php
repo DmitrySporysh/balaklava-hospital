@@ -84,6 +84,7 @@ class AnalysisRepository extends Repository implements AnalysisRepositoryInterfa
                 ->join('received_patients', 'inpatients.received_patient_id', '=', 'received_patients.id')
                 ->join('health_workers as doctor_who_appointed', 'analyzes.doctor_who_appointed', '=', 'doctor_who_appointed.id')
                 ->select([
+                        'analyzes.id as analyses_id',
                         'inpatients.id as inpatient_id',
                         'received_patients.fio as patient_fio',
                         'analysis_name',
