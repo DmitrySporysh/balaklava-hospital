@@ -2,64 +2,18 @@ angular
     .module('doctorApp')
     .service('archivePersonService', function($http, $q) {
 
-        var date_comp={
-            'analyzes':'appointment_date',
-            'inpatient_info':'start_date',
-            'inspection_protocol':'date',
-            'inspections':'inspection_date',
-            'medical_appointments':'date',
-            'operations':'appointment_date',
-            'procedures':'procedure_date'
-        };
-        var name_comp={
-            'analyzes':'analysis_name',
-            'inpatient_info':'fio',
-            'inspection_protocol':'complaints',
-            'inspections':'description_extended',
-            'medical_appointments':'description',
-            'operations':'operation_name',
-            'procedures':'procedure_name'
-        };
-
-        var type_comp={
-            'analyzes':'Анализ',
-            'inpatient_info':'Информ???',
-            'inspection_protocol':'Протокол',
-            'inspections':'Осмотр',
-            'medical_appointments':'Назначение',
-            'operations':'Операция',
-            'procedures':'Процедура'
-        };
-
-        var full_data = [];
-
-
-
-        function getPersonInfo(archId) {
+        function getPersonInfo(id) {
             var defer=$q.defer();
 
-            $http.get('doctor/getInpatientAllInfo/'+archId)
+            $http.get('doctor/getInpatientAllInfo/'+id)
                 .success(function(patients) {
                     defer.resolve(patients);
 
                 })
                 .error(function(err) {
                     defer.reject(err);
-                })
-                .then(function(data) {
-                    full_data = data.data;
-                    console.log(full_data);
-
-                    for (block in full_data) {
-                        for (temp  in block)
-                        {
-                            console.log(temp);
-                        }
-                    }
                 });
-
-
-
+            return defer.promise;
         }
 
         return {

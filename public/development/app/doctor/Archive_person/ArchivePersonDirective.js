@@ -6,7 +6,7 @@ angular
             restrict: "AE",
             templateUrl: PATHDIR+"/Archive_person/ArchivePerson.html",
             controller: 'ArchivePersonCtrl',
-            controllerAs: 'archiveCtrl'
+            controllerAs: 'archivePersonCtrl'
         };
     });
 

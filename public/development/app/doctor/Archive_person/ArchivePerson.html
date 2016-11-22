@@ -24,10 +24,10 @@
                 </tr>
                 </thead>
                 <tbody class='plain-table__value'>
-                <tr ng-repeat="row in date_sort">
-                    <td> {{full_info[row.block][row.row][date_comp[row.block]]}}</td>
-                    <td> {{type_comp[row.block]}}</td>
-                    <td> {{full_info[row.block][row.row][name_comp[row.block]]}}</td>
+                <tr ng-repeat="row in archivePersonCtrl.date_sort">
+                    <td> {{archivePersonCtrl.full_info[row.block][row.row][archivePersonCtrl.date_comp[row.block]]}}</td>
+                    <td> {{archivePersonCtrl.type_comp[row.block]}}</td>
+                    <td> {{archivePersonCtrl.full_info[row.block][row.row][archivePersonCtrl.name_comp[row.block]]}}</td>
                 </tr>
                 </tbody>
             </table>
