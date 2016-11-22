@@ -51,7 +51,7 @@ angular
             nurseAppService.logout();
         }
     })
-    .service('nurseAppService', function ($http, $q) {
+    .service('nurseAppService', function ($http, $q, $window) {
 
         function logout() {
             var defer=$q.defer();

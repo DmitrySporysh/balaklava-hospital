@@ -48,6 +48,10 @@ angular
                 url: '/archive',
                 template: '<archive></archive>'
             })
+            .state('operations',{
+                url: '/operations',
+                template: '<operations></operations>'
+            })
     })
     .controller('doctorAppController', function (doctorAppService, $scope) {
         var self = this;

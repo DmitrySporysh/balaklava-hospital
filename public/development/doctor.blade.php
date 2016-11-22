@@ -26,6 +26,10 @@
     <script src="../development/app/doctor/archive/ArchiveController.js"></script>
     <script src="../development/app/doctor/archive/ArchiveService.js"></script>
 
+    <script src="../development/app/doctor/Operations/OperationsDirective.js"></script>
+    <script src="../development/app/doctor/Operations/OperationsController.js"></script>
+    <script src="../development/app/doctor/Operations/OperationsService.js"></script>
+
     <script src="../development/app/doctor/emergency_person/Emergency_pDirective.js"></script>
     <script src="../development/app/doctor/emergency_person/Emergency_pController.js"></script>
     <script src="../development/app/doctor/emergency_person/Emergency_pService.js"></script>

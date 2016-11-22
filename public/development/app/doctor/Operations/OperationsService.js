@@ -1,21 +1,22 @@
 angular
-    .module('nurseApp')
-    .service('AnalyzesService', function($http, $q) {
+    .module('doctorApp')
+    .service('OperationsService', function($http, $q) {
 
-        function getAllNotReadyAnalyzes() {
+        function getAllNotReadyOperations() {
             var defer=$q.defer();
 
-            $http.get('medical_nurse/getAllNotReadyAnalyzes')
+            $http.get('doctor/getAllNotReadyOperations')
                 .success(function(inpatients) {
                     defer.resolve(inpatients);
                 })
                 .error(function(err) {
                     defer.reject(err);
                 });
-            return defer.promise;
+            console.log(defer.promise);
+            /*return defer.promise;*/
         }
 
-        function postAnalysesResult(analysesInfo) {
+        function postOperationsResult(analysesInfo) {
             var defer=$q.defer();
 
             $http.post('medial_nurse/addNewInpatient',analysesInfo)
@@ -32,8 +33,8 @@ angular
 
 
         return {
-            getAllNotReadyAnalyzes: getAllNotReadyAnalyzes,
-            postAnalysesResult:postAnalysesResult
+            getAllNotReadyOperations: getAllNotReadyOperations,
+            postOperationsResult: postOperationsResult
         };
 
     });

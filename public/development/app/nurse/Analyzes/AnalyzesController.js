@@ -4,8 +4,15 @@ angular
         var self = this;
 
         AnalyzesService.getAllNotReadyAnalyzes()
-            .then(function(patients) {
-                self.received_patients = patients.data;
-                console.log(patients.data);
+            .then(function(analyses) {
+                self.analyses = analyses;
             });
+
+        self.setShownAnalyses = function (id) {
+            self.analyses_id = id;
+        };
+
+        self.postAnalysesResult = function (id) {
+            self.analyses_id = id;
+        }
     });
