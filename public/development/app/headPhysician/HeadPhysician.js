@@ -37,7 +37,10 @@ angular
                 })
                 .error(function(err) {
                     defer.reject(err);
-                });
+                })
+                .then(function(){
+                $window.location.href =  "/login#/login";
+            });
             console.log(defer.promise);
         }
 

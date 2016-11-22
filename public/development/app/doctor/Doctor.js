@@ -43,7 +43,11 @@ angular
             .state('emergency_person',{
                 url: '/emergency_person/:id',
                 template: '<emergency-person></emergency-person>'
-            });
+            })
+            .state('archive',{
+                url: '/archive',
+                template: '<archive></archive>'
+            })
     })
     .controller('doctorAppController', function (doctorAppService, $scope) {
         var self = this;
@@ -52,7 +56,7 @@ angular
             doctorAppService.logout();
         }
     })
-    .service('doctorAppService', function ($http, $q) {
+    .service('doctorAppService', function ($http, $q, $window) {
 
         function logout() {
             var defer=$q.defer();
@@ -63,6 +67,9 @@ angular
                 })
                 .error(function(err) {
                     defer.reject(err);
+                })
+                .then(function(){
+                    $window.location.href =  "/login#/login";
                 });
             console.log(defer.promise);
         }

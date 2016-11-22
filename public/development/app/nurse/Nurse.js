@@ -11,7 +11,10 @@ angular
                 url: '/new_patient',
                 template: '<new-patient></new-patient>'
             })
-
+            .state('analyzes',{
+                url: '/analyzes',
+                template: '<analyzes></analyzes>'
+            })
 
 
             .state('inpatient_treatment',{
@@ -59,6 +62,9 @@ angular
                 })
                 .error(function(err) {
                     defer.reject(err);
+                })
+                .then(function(){
+                    $window.location.href =  "/login#/login";
                 });
             console.log(defer.promise);
         }
