@@ -128,8 +128,8 @@ class InpatientRepository extends Repository implements InpatientRepositoryInter
                 ->join('chambers', 'inpatients.chamber_id', '=', 'chambers.id')
                 ->join('health_workers', 'inpatients.attending_doctor_id', '=', 'health_workers.id')
                 ->select([
-                    'inpatients.id as inpatient_id',
-                    'received_patients.fio as patient_fio',
+                    'inpatients.id',
+                    'received_patients.fio',
                     'chambers.number',
                     'start_date',
                     'diagnosis',

@@ -39,9 +39,9 @@ class DepartmentChiefController extends Controller
 
         $department_id = Auth::user()->health_worker->hospital_department->id; //TODO берем id отделения, которым управляет наш зав
         $response = $this->departmentChief_service->getDepartmentAllInpatientsSortByDateDesc($department_id, $per_page);
-        Debugbar::info($response);
-        return view('index', ['response' => $response]);
-        //return $response;
+        //Debugbar::info($response);
+        //return view('index', ['response' => $response]);
+        return $response;
     }
 
     public function getInpatientInfo(Request $request, $inpatient_id)
