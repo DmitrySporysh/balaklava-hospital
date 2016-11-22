@@ -22,41 +22,20 @@ Route::get('/login', 'Auth\AuthController@showLoginForm');
 Route::post('/login', 'Auth\AuthController@login');
 
 Route::post('/logout', 'Auth\AuthController@logout');
-/*
-
-Route::get('/forgetpassword','EntryController@getForgetPasswordPage');
-
-Route::get('/confirm/{token}','RegistrationController@confirm');
-
-Route::post('/registerConfirmUser','RegistrationController@registerConfirmUser');
-
-
-Route::post('/reset','Auth\PasswordController@forgetAccept@reset');
-
-Route::get('/newPassword','Auth\PasswordController@forget');
-
-Route::get('/reset/{token}','Auth\PasswordController@forgetAccept');
-
-Route::post('/forget','Auth\PasswordController@resetForget');
-
-Route::get('/profile','EntryController@profile');*/
-//
-
 //---------Doctor-------------------
-
-
 Route::get('/doctor', 'DoctorController@getDoctorInpatients'); //doctor#/patients
 
 Route::get('doctor', function () {
     return view('doctor');
 });
 
-
 Route::get('doctor/inpatients', 'DoctorController@getDoctorInpatients'); //doctor#/patients
 
 Route::get('doctor/inpatient/{id}', 'DoctorController@getInpatientInfo');
 
 Route::get('doctor/getInpatientAllInfo/{id}', 'DoctorController@getInpatientAllInfo');
+
+Route::get('doctor/departments', 'DoctorController@getAllDepartments');
 
 Route::get('doctor/inpatient/{id}/inspection_protocol', 'DoctorController@getInpatientInspectionProtocol');
 
@@ -132,9 +111,6 @@ Route::get('head_physician', function () {
 });
 
 //----------Nurse-------------------------------
-
-
-
 Route::get('nurse', function () {
     /*return view('layouts.emergency_room');*/
     return view('nurse');
@@ -175,7 +151,7 @@ Route::get('nurse/testFunc', 'NurseController@testFunc');
 //----------
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('files/getFile', 'FileController@getFile'); //получить файл по его урлу {file_path}
