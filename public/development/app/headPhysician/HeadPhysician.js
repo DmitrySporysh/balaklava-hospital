@@ -18,6 +18,33 @@ angular
 
         
         
+    })
+    .controller('headPhysicianAppController', function (headPhysicianAppService, $scope) {
+        var self = this;
+
+        $scope.logout = function () {
+            headPhysicianAppService.logout();
+        }
+    })
+    .service('headPhysicianAppService', function ($http, $q) {
+
+        function logout() {
+            var defer=$q.defer();
+
+            $http.post('/logout',{})
+                .success(function(response) {
+                    defer.resolve(response);
+                })
+                .error(function(err) {
+                    defer.reject(err);
+                });
+            console.log(defer.promise);
+        }
+
+        return {
+            logout: logout
+        }
+
     });
 
 

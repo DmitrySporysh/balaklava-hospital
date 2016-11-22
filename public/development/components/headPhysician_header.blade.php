@@ -31,13 +31,14 @@
                             <span class="user-badge__name">{{Session::get('fio')}}</span>
                             <span class="user-badge__post">{{Session::get('post')}}</span>
                         </div>
-                        <div class="drop-profile">
+                        <div class="drop-profile" ng-controller="headPhysicianAppController as headPhysicianController">
                             <div class="drop-profile__item-wrapper">
                                 <a class="drop-profile__item" href="#">
                                     <span class="ti-user drop-profile__icon"></span>
                                     Мой профиль
                                 </a>
-                                <a class="drop-profile__item" href="/login#/login">
+                                {{--<a class="drop-profile__item" href="/login#/login">--}}
+                                <a class="drop-profile__item" href="" ng-click="logout()">
                                     <span class="ti-key drop-profile__icon"></span>
                                     Выйти
                                 </a>
