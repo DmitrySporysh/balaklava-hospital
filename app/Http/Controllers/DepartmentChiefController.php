@@ -84,7 +84,7 @@ class DepartmentChiefController extends Controller
     //---------------------------------------------------------------------------------
     public function addAttendingDoctorToInpatient(Request $request)
     {
-        $response = $this->departmentChief_service->addAttendingDoctorToInpatient($request->doctor_id, $request->inpatient_id);
+        $response = $this->departmentChief_service->addAttendingDoctorToInpatient($request->all());
         return $response;
     }
 

@@ -44,7 +44,13 @@ Route::get('/profile','EntryController@profile');*/
 
 //---------Doctor-------------------
 
+
 Route::get('/doctor', 'DoctorController@getDoctorInpatients'); //doctor#/patients
+
+Route::get('doctor', function () {
+    return view('doctor');
+});
+
 
 Route::get('doctor/inpatients', 'DoctorController@getDoctorInpatients'); //doctor#/patients
 
@@ -82,10 +88,9 @@ Route::post('doctor/inpatient/addOperation', 'DoctorController@addNewInpatientOp
 
 Route::post('doctor/inpatient/addMedicalAppointment', 'DoctorController@addNewInpatientMedicalAppointment');
 
-Route::get('doctor', function () {
-    return view('doctor');
-});
+//--------operations doctor-------------
 
+Route::get('doctor/getAllNotReadyOperations', 'DoctorController@getAllNotReadyOperations');
 
 //TODO
 //-----------Medical nurse----------------
@@ -97,7 +102,12 @@ Route::get('nurse', function () {
     return view('nurse');
 });
 
+//-----------analyzes nurse--------------
+Route::get('medical_nurse/getAllNotReadyAnalyzes', 'MedicalNurseController@getAllNotReadyAnalyzes');
 
+Route::post('medial_nurse/addAnalysisResult', 'MedicalNurseController@addAnalysisResult');
+
+//TODO
 //---------DepartmentChief-------------------
 Route::get('department_chief', 'DepartmentChiefController@getDepartmentInpatients');
 

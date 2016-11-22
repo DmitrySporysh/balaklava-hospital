@@ -3,6 +3,7 @@ namespace App\Services;
 
 use App\Exceptions\EmergencyServiceException;
 use App\Exceptions\DALException;
+use App\Repositories\Interfaces\AnalysisRepositoryInterface;
 use App\Repositories\Interfaces\InpatientRepositoryInterface;
 use App\Repositories\Interfaces\ReceivedPatientRepositoryInterface;
 use App\Services\Interfaces\MedicalNurseServiceInterface;
@@ -24,12 +25,14 @@ class MedicalNurseService implements MedicalNurseServiceInterface
     private $patient_repo;
     private $inpatient_repo;
     private $received_patient_repo;
+    private $analysisRepository;
 
 
     public function __construct(UserRepositoryInterface $user_repo,
                                 PatientRepositoryInterface $patient_repo,
                                 InpatientRepositoryInterface $inpatient_repo,
-                                ReceivedPatientRepositoryInterface $received_patient_repo
+                                ReceivedPatientRepositoryInterface $received_patient_repo,
+                                AnalysisRepositoryInterface $analysisRepository
 
     )
     {
@@ -37,6 +40,7 @@ class MedicalNurseService implements MedicalNurseServiceInterface
         $this->patient_repo = $patient_repo;
         $this->inpatient_repo = $inpatient_repo;
         $this->received_patient_repo = $received_patient_repo;
+        $this->analysisRepository = $analysisRepository;
     }
 
 
@@ -50,6 +54,20 @@ class MedicalNurseService implements MedicalNurseServiceInterface
             throw new EmergencyServiceException($message, 0, $e);
         } catch (Exception $e) {
             $message = 'Error while creating withdraw patient request(UnknownError)';
+            throw new EmergencyServiceException($message, 0, $e);
+        }
+    }
+
+    public function getAllNotReadyAnalyzes()
+    {
+        try {
+            $data = $this->analysisRepository->getALLNotReadyAnalyzesWithDoctorsSortedByDateDESC();
+            return $data;
+        } catch (DALException $e) {
+            $message = 'Error while creating withdraw patients analyzes request(DAL Error)';
+            throw new EmergencyServiceException($message, 0, $e);
+        } catch (Exception $e) {
+            $message = 'Error while creating withdraw patients analyzes request(UnknownError)';
             throw new EmergencyServiceException($message, 0, $e);
         }
     }
@@ -70,9 +88,10 @@ class MedicalNurseService implements MedicalNurseServiceInterface
         }
     }
 
-    private function getReceivedPatientDataFromRequest(Request $request, $registration_nurse_id, $patient_id = null)
+    private function getReceivedPatientDataFromRequest($requestData, $registration_nurse_id, $patient_id = null)
     {
-        $data = $request->all();
+        //Debugbar::info($requestData);
+        $data = $requestData;
         unset($data['birth_date']);
         unset($data['sex']);
         unset($data['insurance_number']);
@@ -82,46 +101,69 @@ class MedicalNurseService implements MedicalNurseServiceInterface
         return $data;
     }
 
-    private function getPatientDataFromRequest(Request $request)
+    private function getPatientDataFromRequest($requestData)
     {
-        $data['birth_date'] = $request->birth_date;
-        $data['sex'] = $request->sex;
-        $data['insurance_number'] = $request->insurance_number;
+        //Debugbar::info($requestData);
+        $data['birth_date'] = $requestData->birth_date;
+        $data['sex'] = $requestData->sex;
+        $data['insurance_number'] = $requestData->insurance_number;
 
         return $data;
     }
 
 
-    public function addNewPatient(Request $request, $registration_nurse_id)
+    public function addNewPatient($requestData, $registration_nurse_id)
     {
         try {
-            $patient_id = $this->checkPatientExists($request->insurance_number);
+            $patient_id = $this->checkPatientExists($requestData->insurance_number);
 
             if ($patient_id != null) {
 
-                $received_patient_data = $this->getReceivedPatientDataFromRequest($request, $registration_nurse_id, $patient_id);
+                $received_patient_data = $this->getReceivedPatientDataFromRequest($requestData, $registration_nurse_id, $patient_id);
                 $this->received_patient_repo->create($received_patient_data);
 
             } else {
-                $patient_data = $this->getPatientDataFromRequest($request);
-                $received_patient_data = $this->getReceivedPatientDataFromRequest($request, $registration_nurse_id);
+                $patient_data = $this->getPatientDataFromRequest($requestData);
+                $received_patient_data = $this->getReceivedPatientDataFromRequest($requestData, $registration_nurse_id);
 
                 $this->received_patient_repo->createNewPatientAndReceivedPatient($patient_data, $received_patient_data);
             }
 
-            return "Новый пациент успешно добавлен";
+            return json_encode(['success' => true, 'message' => "Новый пациент успешно добавлен"]);
         } catch (DALException $e) {
             $message = 'Error while creating withdraw inpatient request(DAL Error)' . $e->getMessage();
             throw new EmergencyServiceException($message, 0, $e);
         } catch (Exception $e) {
-            $message = 'Error while creating withdraw inpatient request(UnknownError)';
+            $message = 'Error while creating withdraw inpatient request(UnknownError)'. $e->getMessage();
             throw new EmergencyServiceException($message, 0, $e);
         }
     }
 
-
-    public function ediPatient(Request $request, $patient_id)
+    private function getAnalysisDataFromRequest($requestData)
     {
-        // TODO: Implement ediPatient() method.
+        //Debugbar::info($requestData);
+        $data['ready_date'] = $requestData->birth_date;
+        $data['result_description'] = $requestData->sex;
+        $data['paths_to_files'] = $this->saveFile($requestData->file);
+
+        return $data;
+    }
+
+
+    public function addAnalysisResult($requestData, $registration_nurse_id)
+    {
+        try {
+            $dataForUpdate = $this->getAnalysisDataFromRequest($requestData);
+
+            $this->analysisRepository->update($dataForUpdate, $requestData->analysis_id);
+
+            return json_encode(['success' => true, 'message' => "Результат анализа успешно сохранен"]);
+        } catch (DALException $e) {
+            $message = 'Error while creating withdraw inpatient request(DAL Error)' . $e->getMessage();
+            throw new EmergencyServiceException($message, 0, $e);
+        } catch (Exception $e) {
+            $message = 'Error while creating withdraw inpatient request(UnknownError)'. $e->getMessage();
+            throw new EmergencyServiceException($message, 0, $e);
+        }
     }
 }

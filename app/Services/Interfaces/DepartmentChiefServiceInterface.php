@@ -19,7 +19,7 @@ interface DepartmentChiefServiceInterface
 
     public function getAllHospitals();
 
-    public function addAttendingDoctorToInpatient($doctor_id, $inpatient_id);
+    public function addAttendingDoctorToInpatient($requestData);
 
     public function dischargeInpatientFromDepartment($requestData);
 }

@@ -12,4 +12,6 @@ interface OperationRepositoryInterface extends RepositoryInterface
 {
     public function getInpatientOperationsWithDoctorsSortedByDateDESC($inpatient_id);
 
+    public function getALLNotReadyOperationsWithDoctorsSortedByDateDESC();
+
 }

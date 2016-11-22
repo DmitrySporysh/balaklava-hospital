@@ -53,22 +53,6 @@ class AuthController extends Controller
             $post = Auth::user()->health_worker->post;
 
             return ['success' => true, 'post' => $post];
-
-            /*
-            if($role == UserRole::getValueByNumber(0)){
-                
-                return redirect('/department_chief');
-            }
-            if($role == UserRole::getValueByNumber(1)){
-
-                return redirect('/nurse');
-            }
-            if($role == UserRole::getValueByNumber(2)){
-                return redirect('/doctor');
-            }
-            if($role == UserRole::getValueByNumber(3)){
-                return redirect('/emergency');
-            }*/
         }
         catch(AuthServiceException $e) {
             return $e->getMessage();
@@ -83,7 +67,7 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $this->auth_service->logout($request);
-        return redirect('login#/login');
+        return ['success' => true];
     }
 
 }

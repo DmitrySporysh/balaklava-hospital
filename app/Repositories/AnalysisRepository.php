@@ -74,4 +74,29 @@ class AnalysisRepository extends Repository implements AnalysisRepositoryInterfa
         if ($data != null) return $data;
         return array();
     }
+
+    public function getALLNotReadyAnalyzesWithDoctorsSortedByDateDESC()
+    {
+        try {
+            $data = DB::table('analyzes')
+                ->whereNull('analyzes.ready_date')
+                ->join('inpatients', 'analyzes.inpatient_id', '=', 'inpatients.id')
+                ->join('received_patients', 'inpatients.received_patient_id', '=', 'received_patients.id')
+                ->join('health_workers as doctor_who_appointed', 'analyzes.doctor_who_appointed', '=', 'doctor_who_appointed.id')
+                ->select([
+                        'inpatients.id as inpatient_id',
+                        'received_patients.fio as patient_fio',
+                        'analysis_name',
+                        'analysis_description',
+                        'doctor_who_appointed.fio as doctor_fio_who_appointed']
+                )
+                ->orderBy('analyzes.appointment_date', 'DESC')
+                ->get();
+        } catch (Exception $e) {
+            $message = 'Error while finding element using ' . $this->model();
+            throw new DALException($message, 0, $e);
+        }
+        if ($data != null) return $data;
+        return array();
+    }
 }
