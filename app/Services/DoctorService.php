@@ -78,6 +78,20 @@ class DoctorService implements DoctorServiceInterface
         }
     }
 
+    public function getAllNotReadyOperations()
+    {
+        try {
+            $data = $this->operationRepository->getALLNotReadyOperationsWithDoctorsSortedByDateDESC();
+            return $data;
+        } catch (DALException $e) {
+            $message = 'Error while creating withdraw patient operations request(DAL Error)';
+            throw new DoctorServiceException($message, 0, $e);
+        } catch (Exception $e) {
+            $message = 'Error while creating withdraw patient operations request(UnknownError)';
+            throw new DoctorServiceException($message, 0, $e);
+        }
+    }
+
     private function getInspectionProtocolDataFromRequest(Request $request, $doctor_id)
     {
         $data = $request->all();

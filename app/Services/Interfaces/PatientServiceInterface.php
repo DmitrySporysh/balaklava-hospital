@@ -31,7 +31,7 @@ interface PatientServiceInterface
     public function getInpatientProcedure($inpatient_id, $procedure_id);
 
     public function getInpatientOperations($inpatient_id);
-
+    
     public function getInpatientTemperatureLog($inpatient_id);
 
     public function getPatientsArchive($per_page, Request $request);

@@ -13,7 +13,9 @@ interface MedicalNurseServiceInterface
 {
     public function getAllReceivedPatientsSortByDateDesc($page_size);
 
-    public function addNewPatient(Request $request, $registration_nurse_id);
+    public function getAllNotReadyAnalyzes();
 
-    public function ediPatient(Request $request, $patient_id);
+    public function addNewPatient($requestData, $registration_nurse_id);
+
+    public function addAnalysisResult($requestData, $registration_nurse_id);
 }

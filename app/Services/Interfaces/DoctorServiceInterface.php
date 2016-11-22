@@ -13,6 +13,9 @@ interface DoctorServiceInterface
 {
     public function getDoctorAllInpatientsSortByDateDesc($doctor_id, $page_size);
 
+    public function getAllNotReadyOperations();
+
+
     public function addNewInspectionProtocol(Request $request, $doctor_id);
 
     public function addNewInpatientAnalysis($request, $doctor_id);

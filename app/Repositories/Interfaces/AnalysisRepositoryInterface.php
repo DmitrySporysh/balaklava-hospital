@@ -13,4 +13,6 @@ interface AnalysisRepositoryInterface extends RepositoryInterface
     public function getInpatientAnalyzesWithDoctorsSortedByDateDESC($inpatient_id);
 
     public function getInpatientAnalysesWithDoctor($analyses_id);
+
+    public function getALLNotReadyAnalyzesWithDoctorsSortedByDateDESC();
 }

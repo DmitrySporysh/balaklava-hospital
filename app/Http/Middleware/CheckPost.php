@@ -21,10 +21,10 @@ class CheckPost
     {
         if(Auth::guest())
         {
-            return redirect('login#/login');
+            return redirect('/');
         }
         if ((Auth::user()->health_worker->post != $post)) {
-            return redirect('login#/login');
+            return redirect('/');
         }
 
         return $next($request);

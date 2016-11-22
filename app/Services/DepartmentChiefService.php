@@ -117,10 +117,10 @@ class DepartmentChiefService implements DepartmentChiefServiceInterface
         }
     }
 
-    public function addAttendingDoctorToInpatient($doctor_id, $inpatient_id)
+    public function addAttendingDoctorToInpatient($requestData)
     {
         try {
-            $this->inpatient_repo->update(['attending_doctor_id' => $doctor_id], $inpatient_id);
+            $this->inpatient_repo->update(['attending_doctor_id' => $requestData->doctor_id], $requestData->inpatient_id);
             return ['success' => true];
         } catch (DALException $e) {
             $message = 'Error while updating withdraw inpatient in request(DAL Error)' . $e->getMessage();

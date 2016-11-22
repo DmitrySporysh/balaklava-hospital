@@ -129,11 +129,20 @@ class DoctorController extends Controller
     {
         $response = $this->patient_service->getInpatientOperations($patient_id);
         //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
+        //return view('index');
         return $response;
     }
 
-
+    //----------------------------------------------------
+    //TODO  methods for operating doctor
+    //------------------------------------------------
+    public function getAllNotReadyOperations()
+    {
+        $response = $this->patient_service->getAllNotReadyOperations();
+        //Debugbar::info($response);
+        //return view('index');
+        return $response;
+    }
 
     //----------------------------------------------------------------------------------
     //TODO Post requests

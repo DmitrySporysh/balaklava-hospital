@@ -27,6 +27,27 @@ class MedicalNurseController extends Controller
         $this->medicalNurseService = $medicalNurseService;
     }
 
+    //----------------------------------------------------
+    //TODO  methods for analyzes nurse
+    //------------------------------------------------
+    //gett
+    public function getAllNotReadyAnalyzes()
+    {
+        $response = $this->medicalNurseService->getAllNotReadyAnalyzes();
+        //Debugbar::info($response);
+        //return view('index');
+        return $response;
+    }
+
+    //post
+    public function addAnalysisResult(Request $request)
+    {
+        $registration_nurse_id = Auth::user()->health_worker->id;; //TODO брать ид авторизованной медсестры
+
+        $result =$this->medicalNurseService->addAnalysisResult($request->all(), $registration_nurse_id);
+        return $result;
+    }
+
     //TODO methods for emergency
     public function getReceivedPatients(Request $request)
     {
@@ -38,10 +59,11 @@ class MedicalNurseController extends Controller
 
     public function addNewInpatient(Request $request)
     {
+        //Debugbar::info($request->all());
         $registration_nurse_id = Auth::user()->health_worker->id;; //TODO брать ид авторизованной медсестры
 
-        $this->medicalNurseService->addNewPatient($request, $registration_nurse_id);
-        return json_encode(['success' => true]);
+        $result =$this->medicalNurseService->addNewPatient($request->all(), $registration_nurse_id);
+        return $result;
     }
 }
 
