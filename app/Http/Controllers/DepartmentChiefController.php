@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Common\Enums\MessageUserRole;
 use App\Common\Enums\UserRole;
 use App\Http\Requests;
+use App\Services\Interfaces\CommonServiceInterface;
 use App\Services\Interfaces\DepartmentChiefServiceInterface;
 use App\Exceptions\DALException;
 use App\Exceptions\HealthWorkerServiceException;
@@ -22,15 +23,18 @@ class DepartmentChiefController extends Controller
 {
     private $departmentChief_service;
     private $patientService;
+    private $commonService;
 
     public function __construct(DepartmentChiefServiceInterface $departmentChief_service,
-    PatientServiceInterface $patientService)
+                                PatientServiceInterface $patientService,
+                                CommonServiceInterface $commonService)
     {
         $this->middleware('auth');
         $this->middleware('checkPost:'.UserRole::DEPARTMENT_CHIEF);
 
         $this->departmentChief_service = $departmentChief_service;
         $this->patientService = $patientService;
+        $this->commonService = $commonService;
     }
 
     public function getDepartmentInpatients(Request $request)
@@ -65,7 +69,7 @@ class DepartmentChiefController extends Controller
 
     public function getAllDepartments(Request $request)
     {
-        $response = $this->departmentChief_service->getAllDepartments();
+        $response = $this->commonService->getAllDepartments();
         //Debugbar::info($response);
         //return view('index', ['response' => $response]);
         return $response;
@@ -73,7 +77,7 @@ class DepartmentChiefController extends Controller
 
     public function getAllHospitals(Request $request)
     {
-        $response = $this->departmentChief_service->getAllHospitals();
+        $response = $this->commonService->getAllHospitals();
         //Debugbar::info($response);
         //return view('index', ['response' => $response]);
         return $response;

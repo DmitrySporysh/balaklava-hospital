@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Common\Enums\UserRole;
+use App\Exceptions\CommonServiceException;
 use App\Http\Requests;
+use App\Services\Interfaces\CommonServiceInterface;
 use App\Services\Interfaces\DoctorServiceInterface;
 use App\Services\Interfaces\PatientServiceInterface;
 use Illuminate\Http\Request;
@@ -17,16 +19,19 @@ class DoctorController extends Controller
 {
     private $doctor_service;
     private $patient_service;
+    private $commonService;
 
     public function __construct(DoctorServiceInterface $doctor_service,
-                                PatientServiceInterface $patient_service
+                                PatientServiceInterface $patient_service,
+                                CommonServiceInterface $commonService
     )
     {
         $this->middleware('auth');
-        $this->middleware('checkPost:'.UserRole::DOCTOR);
+        $this->middleware('checkPost:' . UserRole::DOCTOR);
 
         $this->doctor_service = $doctor_service;
         $this->patient_service = $patient_service;
+        $this->commonService = $commonService;
     }
 
     public function getDoctorInpatients(Request $request)
@@ -64,6 +69,14 @@ class DoctorController extends Controller
         $response = $this->patient_service->getInpatientGeneralInfo($inpatient_id);
         //Debugbar::info($response);
         //return view('welcome', ['response' => $response]);
+        return $response;
+    }
+
+    public function getAllDepartments(Request $request)
+    {
+        $response = $this->commonService->getAllDepartments();
+        //Debugbar::info($response);
+        //return view('index', ['response' => $response]);
         return $response;
     }
 
@@ -109,6 +122,7 @@ class DoctorController extends Controller
         //return view('welcome', ['response' => $response]);
         return $response;
     }
+
     public function getInpatientAnalyzes(Request $request, $inpatient_id)
     {
         $response = $this->patient_service->getInpatientAllAnalyzes($inpatient_id);
@@ -138,7 +152,7 @@ class DoctorController extends Controller
     //------------------------------------------------
     public function getAllNotReadyOperations()
     {
-        $response = $this->patient_service->getAllNotReadyOperations();
+        $response = $this->doctor_service->getAllNotReadyOperations();
         //Debugbar::info($response);
         //return view('index');
         return $response;
@@ -201,7 +215,6 @@ class DoctorController extends Controller
 
         return $response;
     }
-
 
 
 }
