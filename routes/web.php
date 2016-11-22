@@ -71,6 +71,8 @@ Route::post('doctor/inpatient/addMedicalAppointment', 'DoctorController@addNewIn
 
 Route::get('doctor/getAllNotReadyOperations', 'DoctorController@getAllNotReadyOperations');
 
+Route::post('doctor/addOperationResult', 'DoctorController@addOperationResult');
+
 //TODO
 //-----------Medical nurse----------------
 Route::get('medical_nurse/received_patients', 'MedicalNurseController@getReceivedPatients'); //
