@@ -78,20 +78,6 @@ class DoctorService implements DoctorServiceInterface
         }
     }
 
-    public function getAllNotReadyOperations()
-    {
-        try {
-            $data = $this->operationRepository->getALLNotReadyOperationsWithDoctorsSortedByDateDESC();
-            return $data;
-        } catch (DALException $e) {
-            $message = 'Error while creating withdraw patient operations request(DAL Error)';
-            throw new DoctorServiceException($message, 0, $e);
-        } catch (Exception $e) {
-            $message = 'Error while creating withdraw patient operations request(UnknownError)';
-            throw new DoctorServiceException($message, 0, $e);
-        }
-    }
-
     private function getInspectionProtocolDataFromRequest(Request $request, $doctor_id)
     {
         $data = $request->all();
@@ -253,6 +239,48 @@ class DoctorService implements DoctorServiceInterface
         (Exception $e) {
             $message = 'Error while creating withdraw operation request(UnknownError)';
             throw new DoctorServiceException($message, 0, $e);
+        }
+    }
+
+    public function getAllNotReadyOperations()
+    {
+        try {
+            $data = $this->operationRepository->getALLNotReadyOperationsWithDoctorsSortedByDateDESC();
+            return $data;
+        } catch (DALException $e) {
+            $message = 'Error while creating withdraw patient operations request(DAL Error)';
+            throw new DoctorServiceException($message, 0, $e);
+        } catch (Exception $e) {
+            $message = 'Error while creating withdraw patient operations request(UnknownError)';
+            throw new DoctorServiceException($message, 0, $e);
+        }
+    }
+
+    private function getOperationResultDataFromRequest($requestData, $doctor_id)
+    {
+        //Debugbar::info($requestData);
+        $data['ready_date'] = $requestData->birth_date;
+        $data['result_description'] = $requestData->sex;
+        $data['paths_to_files analysis '] = $this->saveFile($requestData->file);
+
+        return $data;
+    }
+
+
+    public function addOperationResult($requestData, $doctor_id)
+    {
+        try {
+            $dataForUpdate = $this->getOperationResultDataFromRequest($requestData, $doctor_id);
+
+            $this->operationRepository->update($dataForUpdate, $requestData->operation_id);
+
+            return json_encode(['success' => true, 'message' => "Результат операции успешно сохранен"]);
+        } catch (DALException $e) {
+            $message = 'Error while creating withdraw inpatient request(DAL Error)' . $e->getMessage();
+            throw new EmergencyServiceException($message, 0, $e);
+        } catch (Exception $e) {
+            $message = 'Error while creating withdraw inpatient request(UnknownError)'. $e->getMessage();
+            throw new EmergencyServiceException($message, 0, $e);
         }
     }
 

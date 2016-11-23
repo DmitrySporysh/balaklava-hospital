@@ -139,7 +139,7 @@ class MedicalNurseService implements MedicalNurseServiceInterface
         }
     }
 
-    private function getAnalysisDataFromRequest($requestData)
+    private function getAnalysisDataFromRequest($requestData, $registration_nurse_ids)
     {
         //Debugbar::info($requestData);
         $data['ready_date'] = $requestData->birth_date;
@@ -153,7 +153,7 @@ class MedicalNurseService implements MedicalNurseServiceInterface
     public function addAnalysisResult($requestData, $registration_nurse_id)
     {
         try {
-            $dataForUpdate = $this->getAnalysisDataFromRequest($requestData);
+            $dataForUpdate = $this->getAnalysisDataFromRequest($requestData, $registration_nurse_id);
 
             $this->analysisRepository->update($dataForUpdate, $requestData->analysis_id);
 
