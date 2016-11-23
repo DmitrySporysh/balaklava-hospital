@@ -22,6 +22,9 @@
     <script src="../development/app/nurse/NewPatient/NewPatientDirective.js"></script>
     <script src="../development/app/nurse/NewPatient/NewPatientService.js"></script>
 
+    <script src="../development/app/nurse/Analyzes/AnalyzesService.js"></script>
+    <script src="../development/app/nurse/Analyzes/AnalyzesDirective.js"></script>
+    <script src="../development/app/nurse/Analyzes/AnalyzesController.js"></script>
 
     <link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700" media="all" />
     <link rel="stylesheet" href="../development/fonts/themify/themify-icons.css">

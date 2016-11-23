@@ -22,6 +22,18 @@
     <script src="../development/app/doctor/emergency/EmergencyController.js"></script>
     <script src="../development/app/doctor/emergency/EmergencyService.js"></script>
 
+    <script src="../development/app/doctor/archive/ArchiveDirective.js"></script>
+    <script src="../development/app/doctor/archive/ArchiveController.js"></script>
+    <script src="../development/app/doctor/archive/ArchiveService.js"></script>
+
+    <script src="../development/app/doctor/Archive_person/ArchivePersonDirective.js"></script>
+    <script src="../development/app/doctor/Archive_person/ArchivePersonController.js"></script>
+    <script src="../development/app/doctor/Archive_person/ArchivePersonService.js"></script>
+
+    <script src="../development/app/doctor/Operations/OperationsDirective.js"></script>
+    <script src="../development/app/doctor/Operations/OperationsController.js"></script>
+    <script src="../development/app/doctor/Operations/OperationsService.js"></script>
+
     <script src="../development/app/doctor/emergency_person/Emergency_pDirective.js"></script>
     <script src="../development/app/doctor/emergency_person/Emergency_pController.js"></script>
     <script src="../development/app/doctor/emergency_person/Emergency_pService.js"></script>

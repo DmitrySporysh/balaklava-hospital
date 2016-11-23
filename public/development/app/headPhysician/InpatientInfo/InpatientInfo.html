@@ -129,7 +129,6 @@
                                     <td class="patient-form__value">
                                         <select class="patient-form__select" name="received_type" ng-model="inpatientInfoCtrl.designate_the_doctor.doctor_id">
                                             <option value="" selected="selected">-- Выберите вариант --</option>
-                                            <option value="Планово">Планово</option>
                                             <option ng-repeat="doctor in inpatientInfoCtrl.doctorList" value="{{doctor.id}}">{{doctor.fio}}</option>
                                         </select>
                                     </td>

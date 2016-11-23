@@ -1,0 +1,50 @@
+<div class="content-header">
+    <div class="container">
+        <div class="content-header__title-block content-header__title-block_left">
+            <h3 class="content-header__title block-title">Архив</h3>
+            <span class="content-header__subtitle block-subtitle">Поиск пациентов</span>
+        </div>
+    </div>
+</div>
+
+<form name="FilterArchive" class="patient-form">
+    <div class="search-table mt-30">
+        <div class="container">
+            <table class="search-table__table">
+                <thead class="search-table__heading">
+                <tr class="search-table__heading-name">
+                    <th>ФИО</th>
+                    <th>№ Страховки</th>
+                    <th>Пол</th>
+                    <th>Номер карточки</th>
+                    <th>Код болезни</th>
+                </tr>
+                <!--<tr class="search-table__heading-filter">
+                    <th><input ng-blur="change()" ng-model="filter.fio" class="search-table__input" name="work_place" value="" type="text"></th>
+                    <th><input ng-blur="change()" ng-model="filter.insurance_number" class="search-table__input" name="work_place" value="" type="text"></th>
+                    <th><input ng-blur="change()" ng-model="filter.sex" class="search-table__input" name="work_place" value="" type="text"></th>
+                    <th><input ng-blur="change()" ng-model="filter.inpatient_number" class="search-table__input" name="work_place" value="" type="text"></th>
+                    <th><input  class="search-table__input" name="work_place" value="" type="text"></th>
+                </tr>-->
+                </thead>
+                <tbody class='search-table__value'>
+                    <!--<tr ng-repeat="patient in patients_info| filter:searchText">-->
+                    <tr ng-repeat="person in archiveCtrl.archivePeople">
+                        <td>
+                            <a  href="doctor#/archive/{{person.inpatient_number}}">{{person.fio}}</a>
+                        </td>
+                        <td>{{person.insurance_number}}</td>
+                        <td>{{person.sex}}</td>
+                        <td>{{person.inpatient_number}}</td>
+                        <td>{{person.phone}}</td>
+                    </tr>
+                <!--<tr>
+                    <td>
+                        <input type="submit" ng-click="archiveCtrl.test()">
+                    </td>
+                </tr>-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>

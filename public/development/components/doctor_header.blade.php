@@ -67,14 +67,19 @@
                 </a>
 
             <li class="nav-list__item">
+                <a ui-sref="operations" ui-sref-active="nav-list__ref_active" class="nav-list__ref nav-list__icon nav-list__icon_notes">
+                    <span class="nav-list__item-name">Операции</span>
+                </a>
+
+            <li class="nav-list__item">
                 <a href="" class="nav-list__ref nav-list__icon nav-list__icon_news">
                     <span class="nav-list__item-name">Уведомления</span>
                 </a>
 
-            <li class="nav-list__item">
+            {{--<li class="nav-list__item">
                 <a href="" class="nav-list__ref nav-list__icon nav-list__icon_notes">
                     <span class="nav-list__item-name">Заметки</span>
-                </a>
+                </a>--}}
 
             <li class="nav-list__item">
                 <a href="" class="nav-list__ref nav-list__icon nav-list__icon_schedule">

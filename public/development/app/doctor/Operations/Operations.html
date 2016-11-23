@@ -1,0 +1,97 @@
+<div class="content-header">
+    <div class="container">
+        <div class="content-header__title-block content-header__title-block_left">
+            <h3 class="content-header__title block-title">Анализы</h3>
+            <span class="content-header__subtitle block-subtitle">Прием пациентов</span>
+        </div>
+    </div>
+</div>
+
+
+<div class="patients-wrapper plain-table plain-table_full">
+    <div class="container">
+        <div class="plain-table__caption">
+            <span class="plain-table__icon ti-marker"></span>Последние поступившие больные
+        </div>
+        <table class="plain-table__table">
+            <thead class="plain-table__heading">
+            <tr>
+                <th>ФИО</th>
+                <th>Назначен</th>
+                <th>Операция</th>
+                <th>Эпикриз</th>
+                <th>Дата назначения</th>
+            </tr>
+            </thead>
+            <tbody class='plain-table__value'>
+            <tr ng-repeat="operation in operationsCtrl.operations">
+                <td data-toggle="modal" data-target="#addOperationResult" ng-click="operationsCtrl.setShownOperationIndex($index)">{{operation.patient_fio}}</td>
+                <td>{{operation.doctor_fio_who_appointed}}</td>
+                <td>{{operation.operation_name}}</td>
+                <td>{{operation.preliminary_epicrisis}}</td>
+                <td>{{operation.appointment_date}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="addOperationResult">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{operationsCtrl.operations[operationsCtrl.operation_index].operation_name}}</h4>
+            </div>
+            <div class="modal-body">
+                <form name="NewProcedure" class="patient-form">
+                    <div  class="accordion__content">
+                        <div class="plain-table__table-wrapper clearfix">
+                            <!--<table class="plain-table__table" ng-controller="OperationsCtrl as operationsCtrl">-->
+                            <table class="plain-table__table">
+                                <tbody class='plain-table__value plain-table__value_non-bordered'>
+                                <tr>
+                                    <td class="patient-form__label">ФИО</td>
+                                    <td class="patient-form__value">{{operationsCtrl.operations[operationsCtrl.operation_index].patient_fio}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Эпикриз</td>
+                                    <td class="patient-form__value">{{operationsCtrl.operations[operationsCtrl.operation_index].preliminary_epicrisis}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Описание операции</td>
+                                    <td class="patient-form__value">{{operationsCtrl.operations[operationsCtrl.operation_index].operation_description}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Дата назначения</td>
+                                    <td class="patient-form__value">{{operationsCtrl.operations[operationsCtrl.operation_index].appointment_date}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Кем назначен</td>
+                                    <td class="patient-form__value">{{operationsCtrl.operations[operationsCtrl.operation_index].doctor_fio_who_appointed}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Результат операции</td>
+                                    <td class="patient-form__value">
+                                        <textarea ng-model="operationsCtrl.operationResult.result" class="patient-form__textarea" rows="8" > </textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Приложение</td>
+                                    <td class="patient-form__value">
+                                        <input ng-model="operationsCtrl.operationResult.pictures" type="file" name="img" accept="image/jpeg,image/png,image/gif">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <a class="add-block__button button" href="" ng-click="operationsCtrl.addOperationResult()" data-dismiss="modal">
+                                <span class="ti-save-alt patient__icon_white"></span>
+                                <input class="patient-form__submit" type="submit" value="Отправить">
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
