@@ -158,6 +158,14 @@ class DoctorController extends Controller
         return $response;
     }
 
+    public function addOperationResult(Request $request)
+    {
+        $doctor_id = Auth::user()->health_worker->id;;
+
+        $result =$this->doctor_service->addOperationResult($request->all(), $doctor_id);
+        return $result;
+    }
+
     //----------------------------------------------------------------------------------
     //TODO Post requests
     //---------------------------------------------------------------------------------

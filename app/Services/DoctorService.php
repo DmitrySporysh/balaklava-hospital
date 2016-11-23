@@ -258,12 +258,11 @@ class DoctorService implements DoctorServiceInterface
 
     private function getOperationResultDataFromRequest($requestData, $doctor_id)
     {
-        //Debugbar::info($requestData);
-        $data['ready_date'] = $requestData->birth_date;
-        $data['result_description'] = $requestData->sex;
-        $data['paths_to_files analysis '] = $this->saveFile($requestData->file);
-
-        return $data;
+        $requestData['doctor_who_performed'] = $doctor_id;
+        $requestData['operation_date'] = Carbon::now()->toDateTimeString();
+        unset($requestData['operation_id']);
+        //$requestData['paths_to_files analysis '] = $this->saveFile($requestData->file);
+        return $requestData;
     }
 
 
@@ -271,16 +270,15 @@ class DoctorService implements DoctorServiceInterface
     {
         try {
             $dataForUpdate = $this->getOperationResultDataFromRequest($requestData, $doctor_id);
-
-            $this->operationRepository->update($dataForUpdate, $requestData->operation_id);
-
+            $this->operationRepository->update($dataForUpdate, $requestData['operation_id']);
             return json_encode(['success' => true, 'message' => "Результат операции успешно сохранен"]);
+
         } catch (DALException $e) {
-            $message = 'Error while creating withdraw inpatient request(DAL Error)' . $e->getMessage();
-            throw new EmergencyServiceException($message, 0, $e);
+            $message = 'Error while creating withdraw operation request(DAL Error)' . $e->getMessage();
+            throw new DoctorServiceException($message, 0, $e);
         } catch (Exception $e) {
-            $message = 'Error while creating withdraw inpatient request(UnknownError)'. $e->getMessage();
-            throw new EmergencyServiceException($message, 0, $e);
+            $message = 'Error while creating withdraw operation request(UnknownError)'. $e->getMessage();
+            throw new DoctorServiceException($message, 0, $e);
         }
     }
 

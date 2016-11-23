@@ -139,30 +139,28 @@ class MedicalNurseService implements MedicalNurseServiceInterface
         }
     }
 
-    private function getAnalysisDataFromRequest($requestData, $registration_nurse_ids)
+    private function getAnalysisDataFromRequest($requestData, $nurse_id)
     {
-        //Debugbar::info($requestData);
-        $data['ready_date'] = $requestData->birth_date;
-        $data['result_description'] = $requestData->sex;
-        $data['paths_to_files analysis '] = $this->saveFile($requestData->file);
-
+        $data['ready_date'] = Carbon::now()->toDateTimeString();
+        $data['result_description'] = $requestData['result'];
+        $data['doctor_who_performed'] = $nurse_id;
+        //$data['paths_to_files analysis '] = $this->saveFile($requestData->file);
         return $data;
     }
 
 
-    public function addAnalysisResult($requestData, $registration_nurse_id)
+    public function addAnalysisResult($requestData, $nurse_id)
     {
         try {
-            $dataForUpdate = $this->getAnalysisDataFromRequest($requestData, $registration_nurse_id);
-
-            $this->analysisRepository->update($dataForUpdate, $requestData->analysis_id);
-
+            $dataForUpdate = $this->getAnalysisDataFromRequest($requestData, $nurse_id);
+            $this->analysisRepository->update($dataForUpdate, $requestData['analyses_id']);
             return json_encode(['success' => true, 'message' => "Результат анализа успешно сохранен"]);
+
         } catch (DALException $e) {
-            $message = 'Error while creating withdraw inpatient request(DAL Error)' . $e->getMessage();
+            $message = 'Error while creating withdraw analysis request(DAL Error)' . $e->getMessage();
             throw new EmergencyServiceException($message, 0, $e);
         } catch (Exception $e) {
-            $message = 'Error while creating withdraw inpatient request(UnknownError)'. $e->getMessage();
+            $message = 'Error while creating withdraw analysis request(UnknownError)'. $e->getMessage();
             throw new EmergencyServiceException($message, 0, $e);
         }
     }

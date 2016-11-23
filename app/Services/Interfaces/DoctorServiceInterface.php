@@ -15,6 +15,7 @@ interface DoctorServiceInterface
 
     public function getAllNotReadyOperations();
 
+    public function addOperationResult($requestData, $doctor_id);
 
     public function addNewInspectionProtocol(Request $request, $doctor_id);
 

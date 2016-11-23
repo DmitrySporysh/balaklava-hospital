@@ -59,7 +59,8 @@ class MedicalNurseController extends Controller
 
     public function addNewInpatient(Request $request)
     {
-        //Debugbar::info($request->all());
+        Debugbar::info($request->all());
+        return 'fgf';
         $registration_nurse_id = Auth::user()->health_worker->id;; //TODO брать ид авторизованной медсестры
 
         $result =$this->medicalNurseService->addNewPatient($request->all(), $registration_nurse_id);
