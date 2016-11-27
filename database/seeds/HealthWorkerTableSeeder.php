@@ -18,38 +18,40 @@ class HealthWorkerTableSeeder extends Seeder
 
 
         $post = array(
-            'Медсестра', 'Врач', 'Мед персонал'
+            'Медсестра', 'Врач'
         );
 
-        /*$description = [
-            'Ответственный, исполнительный',
-            'Пунктуальный, справедливый',
-            'Дружелюбный, профессиональный',
-            'Быстрообучаемый, внимательный',
-            'Решительный, амбициозный',
-            'Действенный, уверенный',
-            'Понимающий, ответсвтенный',
-            'Усидчивый, внимательный'
-        ];*/
-
+        /*всего 18 отделений*/
         foreach (range(1, 18) as $index) {
             DB::table('health_workers')->insert([
                 'fio' => $departments_cheifs_fios[$index],
                 'birth_date' => '19' . (65 + $index) . '-' . ($index % 12 + 1) . '-' . $index,
                 'sex' => ($index % 2) ? 'Мужской' : 'Женский',
                 'post' => 'Заведующий отделением',
-                'login_id' => $index
+                'login_id' => $index,
+                'department_id' => $index
+            ]);
+
+            //связывание зав отделения с отделением
+            DB::table('hospital_departments')->updateOrInsert(['id' => $index], [
+                'department_chief_id' => $index
             ]);
         }
 
-        foreach (range(1, count($med_personal_fios) - 1) as $index) {
-            DB::table('health_workers')->insert([
-                'fio' => $med_personal_fios[$index],
-                'sex' => ($index % 2) ? 'Мужской' : 'Женский',
-                'birth_date' => '19' . (65 + $index % 32) . '-' . ($index % 12 + 1) . '-' . $index,
-                'post' => $post[$index % 3],
-                'login_id' => $index + 18
-            ]);
+        foreach (range(1, 18) as $departmentIndex) {
+            foreach (range(1, 8) as $currentIndex) {
+
+                $index = 18 + ($departmentIndex-1)*8 + $currentIndex;
+
+                DB::table('health_workers')->insert([
+                    'fio' => $med_personal_fios[$index - 19],
+                    'sex' => ($index % 2) ? 'Мужской' : 'Женский',
+                    'birth_date' => '19' . (65 + $index % 32) . '-' . ($index % 12 + 1) . '-' . $index,
+                    'post' => $post[$index % 2],
+                    'login_id' => $index,
+                    'department_id' => $departmentIndex
+                ]);
+            }
         }
     }
 }

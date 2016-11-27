@@ -57,7 +57,7 @@ class CreateInspectionsProtocolsTable extends Migration
             $table->string('percussion_sound')->nullable();
             //•	Тоны сердца
             $table->string('heart_tones')->nullable();
-            //Ритм string
+            //Ритм
             $table->string('heart_rhythm')->nullable();
             $table->string('heart_rhythm_extended')->nullable();
             //•	ЧДД (частота дыхательных движений)
@@ -76,7 +76,7 @@ class CreateInspectionsProtocolsTable extends Migration
             $table->string('joint_motion')->nullable();
             //Плотность живота
             $table->string('stomach_density')->nullable();
-            //Болезненость живота
+            //Болезненность живота
             $table->string('stomach_pain')->nullable();
             $table->string('stomach_extended')->nullable();
             //•	В позе Ромберга

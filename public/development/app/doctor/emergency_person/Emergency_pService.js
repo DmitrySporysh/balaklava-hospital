@@ -5,7 +5,7 @@ angular
         function getInfoFromEmergency(id) {
             var defer=$q.defer();
 
-            $http.get('doctor/received_patient/'+id)
+            $http.get('doctor/emergency/received_patient/'+id)
                 .success(function(patients) {
                     defer.resolve(patients);
                 })
@@ -19,7 +19,7 @@ angular
             patientInfo.id = id;
             var defer=$q.defer();
 
-            $http.post('/doctor/addNewInspectionProtocol',patientInfo)
+            $http.post('/doctor/emergency/addNewInspectionProtocol',patientInfo)
                 .success(function(response) {
                     defer.resolve(response);
                 })

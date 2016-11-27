@@ -35,7 +35,7 @@ class OperationRepository extends Repository implements OperationRepositoryInter
                     'operation_name',
                     'operation_description',
                     'preliminary_epicrisis',
-                    'result',
+                    'result_description',
                     'paths_to_files',
                     'doctor_who_appointed.fio as doctor_fio_who_appointed',
                     'doctor_who_performed.fio as doctor_fio_who_performed'

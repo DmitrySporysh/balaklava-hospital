@@ -35,8 +35,7 @@ class HospitalDepartmentsTableSeeder extends Seeder
         foreach (range(1, count($departments)) as $index) {
             DB::table('hospital_departments')->insert([
                 'department_name' => $departments[$index-1],
-                'address' => 'г.Севастополь, ул.Гагарина №' . $index,
-                'department_chief_id' => $index
+                'address' => 'г.Севастополь, ул.Гагарина №' . $index
             ]);
         }
     }

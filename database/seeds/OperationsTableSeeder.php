@@ -39,7 +39,7 @@ class OperationsTableSeeder extends Seeder
                     'operation_name' => $operation_name[$day-1],
                     'preliminary_epicrisis' => 'у пациента что-то болело, это надо удалить/поправить',
                     'operation_description' => 'тут описание операции',
-                    'result' => $day % 3 != 0 ? 'операция прошла успешно' : null
+                    'result_description' => $day % 3 != 0 ? 'операция прошла успешно' : null
                 ]);
             }
         }

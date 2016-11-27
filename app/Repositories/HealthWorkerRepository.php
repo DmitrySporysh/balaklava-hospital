@@ -6,6 +6,7 @@
  * Time: 12:33
  */
 namespace App\Repositories;
+
 use App\Common\Enums\UserRole;
 use App\Exceptions\DALException;
 use App\Repositories\Core\Repository;
@@ -26,6 +27,7 @@ class HealthWorkerRepository extends Repository implements HealthWorkerRepositor
         try {
             $data = DB::table('health_workers')
                 ->where('post', UserRole::DOCTOR)
+                ->where('department_id', $department_id)
                 ->select([
                     'id',
                     'fio',
@@ -34,6 +36,7 @@ class HealthWorkerRepository extends Repository implements HealthWorkerRepositor
                 ])
                 ->orderBy('fio', 'ASC')
                 ->paginate($page_size);
+
             if ($data == null) {
                 return array();
             }
@@ -46,5 +49,4 @@ class HealthWorkerRepository extends Repository implements HealthWorkerRepositor
 
         return array();
     }
-
 }

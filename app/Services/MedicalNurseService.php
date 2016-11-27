@@ -8,14 +8,10 @@ use App\Repositories\Interfaces\InpatientRepositoryInterface;
 use App\Repositories\Interfaces\ReceivedPatientRepositoryInterface;
 use App\Services\Interfaces\MedicalNurseServiceInterface;
 use Carbon\Carbon;
-use \Exception;
 use App\Repositories\Interfaces\PatientRepositoryInterface;
-use App\Repositories\Interfaces\DistrictDoctorRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
-use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Model;
+use Exception;
 
-use Barryvdh\Debugbar\Facade;
 use Debugbar;
 
 
@@ -76,21 +72,16 @@ class MedicalNurseService implements MedicalNurseServiceInterface
     {
         try {
             $data = $this->patient_repo->where('insurance_number', $insurance_number, '=', ['id']);
-            if($data != null)
+            if ($data != null)
                 return $data[0]['id'];
-            return $data;
-        } catch (DALException $e) {
-            $message = 'Error while creating withdraw patient request(DAL Error)';
-            throw new EmergencyServiceException($message, 0, $e);
+            return null;
         } catch (Exception $e) {
-            $message = 'Error while creating withdraw patient request(UnknownError)';
-            throw new EmergencyServiceException($message, 0, $e);
+            return null;
         }
     }
 
     private function getReceivedPatientDataFromRequest($requestData, $registration_nurse_id, $patient_id = null)
     {
-        //Debugbar::info($requestData);
         $data = $requestData;
         unset($data['birth_date']);
         unset($data['sex']);
@@ -103,11 +94,9 @@ class MedicalNurseService implements MedicalNurseServiceInterface
 
     private function getPatientDataFromRequest($requestData)
     {
-        //Debugbar::info($requestData);
-        $data['birth_date'] = $requestData->birth_date;
-        $data['sex'] = $requestData->sex;
-        $data['insurance_number'] = $requestData->insurance_number;
-
+        $data['birth_date'] = $requestData['birth_date'];
+        $data['sex'] = $requestData['birth_date'];
+        $data['insurance_number'] = $requestData['insurance_number'];
         return $data;
     }
 
@@ -118,23 +107,19 @@ class MedicalNurseService implements MedicalNurseServiceInterface
             $patient_id = $this->checkPatientExists($requestData->insurance_number);
 
             if ($patient_id != null) {
-
                 $received_patient_data = $this->getReceivedPatientDataFromRequest($requestData, $registration_nurse_id, $patient_id);
                 $this->received_patient_repo->create($received_patient_data);
-
             } else {
                 $patient_data = $this->getPatientDataFromRequest($requestData);
                 $received_patient_data = $this->getReceivedPatientDataFromRequest($requestData, $registration_nurse_id);
-
                 $this->received_patient_repo->createNewPatientAndReceivedPatient($patient_data, $received_patient_data);
             }
-
             return json_encode(['success' => true, 'message' => "Новый пациент успешно добавлен"]);
         } catch (DALException $e) {
             $message = 'Error while creating withdraw inpatient request(DAL Error)' . $e->getMessage();
             throw new EmergencyServiceException($message, 0, $e);
         } catch (Exception $e) {
-            $message = 'Error while creating withdraw inpatient request(UnknownError)'. $e->getMessage();
+            $message = 'Error while creating withdraw inpatient request(UnknownError)' . $e->getMessage();
             throw new EmergencyServiceException($message, 0, $e);
         }
     }
@@ -142,7 +127,7 @@ class MedicalNurseService implements MedicalNurseServiceInterface
     private function getAnalysisDataFromRequest($requestData, $nurse_id)
     {
         $data['ready_date'] = Carbon::now()->toDateTimeString();
-        $data['result_description'] = $requestData['result'];
+        $data['result_description'] = $requestData['result_description'];
         $data['doctor_who_performed'] = $nurse_id;
         //$data['paths_to_files analysis '] = $this->saveFile($requestData->file);
         return $data;
@@ -154,13 +139,12 @@ class MedicalNurseService implements MedicalNurseServiceInterface
         try {
             $dataForUpdate = $this->getAnalysisDataFromRequest($requestData, $nurse_id);
             $this->analysisRepository->update($dataForUpdate, $requestData['analyses_id']);
-            return json_encode(['success' => true, 'message' => "Результат анализа успешно сохранен"]);
-
+            return ['success' => true, 'message' => "Результат анализа успешно сохранен"];
         } catch (DALException $e) {
             $message = 'Error while creating withdraw analysis request(DAL Error)' . $e->getMessage();
             throw new EmergencyServiceException($message, 0, $e);
         } catch (Exception $e) {
-            $message = 'Error while creating withdraw analysis request(UnknownError)'. $e->getMessage();
+            $message = 'Error while creating withdraw analysis request(UnknownError)' . $e->getMessage();
             throw new EmergencyServiceException($message, 0, $e);
         }
     }

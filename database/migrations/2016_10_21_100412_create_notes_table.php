@@ -19,7 +19,7 @@ class CreateNotesTable extends Migration
             $table->timestamp('date');
             $table->string('topic')->nullable();
             $table->string('text')->nullable();
-            //$table->string('image_path')->nullable();
+            //$table->string('paths_to_files')->nullable();
 
 
             $table->softDeletes();

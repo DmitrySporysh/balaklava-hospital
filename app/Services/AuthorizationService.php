@@ -38,7 +38,7 @@ class AuthorizationService implements AuthorizationServiceInterface
                 return;
             }
 
-            return ['error' => 'Неверный логин или пароль'];
+            return 'Неверный логин или пароль';
 
         } catch (Exception $e) {
             $message = 'Login error';

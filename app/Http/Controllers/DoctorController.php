@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Services\Interfaces\CommonServiceInterface;
 use App\Services\Interfaces\DoctorServiceInterface;
 use App\Services\Interfaces\PatientServiceInterface;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -36,115 +37,136 @@ class DoctorController extends Controller
 
     public function getDoctorInpatients(Request $request)
     {
-        $per_page = ($request->has('per_page')) ? $request->per_page : 20;
-
-        $doctor_id = Auth::user()->health_worker->id;
-
-        $response = $this->doctor_service->getDoctorAllInpatientsSortByDateDesc($doctor_id, $per_page);
-
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            $per_page = ($request->has('per_page')) ? $request->per_page : 20;
+            $doctor_id = Auth::user()->health_worker->id;
+            $response = $this->doctor_service->getDoctorAllInpatientsSortByDateDesc($doctor_id, $per_page);
+            return $response;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     public function getAwaitingPrimaryInspectionPatients(Request $request)
     {
-        $per_page = ($request->has('per_page')) ? $request->per_page : 20;
-
-        $response = $this->patient_service->getAwaitingPrimaryInspectionPatientsSortByDatetimeAsc($per_page);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            $per_page = ($request->has('per_page')) ? $request->per_page : 20;
+            $response = $this->patient_service->getAwaitingPrimaryInspectionPatientsSortByDatetimeAsc($per_page);
+            return $response;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     public function getReceivedPatient(Request $request, $received_patient_id)
     {
-        $response = $this->patient_service->getReceivedPatientFullInfo($received_patient_id);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            $response = $this->patient_service->getReceivedPatientFullInfo($received_patient_id);
+            return $response;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     public function getInpatientInfo(Request $request, $inpatient_id)
     {
-        $response = $this->patient_service->getInpatientGeneralInfo($inpatient_id);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            $response = $this->patient_service->getInpatientGeneralInfo($inpatient_id);
+            return $response;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     public function getAllDepartments(Request $request)
     {
-        $response = $this->commonService->getAllDepartments();
-        //Debugbar::info($response);
-        //return view('index', ['response' => $response]);
-        return $response;
+        try {
+            $response = $this->commonService->getAllDepartments();
+            return $response;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     public function getPatientsArchive(Request $request)
     {
-        $per_page = ($request->has('per_page')) ? $request->per_page : 20;
-
-        $response = $this->patient_service->getPatientsArchive($per_page, $request);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            $per_page = ($request->has('per_page')) ? $request->per_page : 20;
+            $response = $this->patient_service->getPatientsArchive($per_page, $request);
+            return $response;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     public function getInpatientAllInfo(Request $request, $inpatient_id)
     {
-
-        $response = $this->patient_service->getInpatientAllInfo($inpatient_id);
-        ///Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            $response = $this->patient_service->getInpatientAllInfo($inpatient_id);
+            return $response;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     public function getInpatientInspectionProtocol(Request $request, $inpatient_id)
     {
-        $response = $this->patient_service->getInpatientInspectionProtocolInfo($inpatient_id);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            $response = $this->patient_service->getInpatientInspectionProtocolInfo($inpatient_id);
+            return $response;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     public function getInpatientMedicalAppointments(Request $request, $inpatient_id)
     {
-        $response = $this->patient_service->getInpatientMedicalAppointments($inpatient_id);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            $response = $this->patient_service->getInpatientMedicalAppointments($inpatient_id);
+            return $response;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     public function getInpatientInspections(Request $request, $inpatient_id)
     {
-        $response = $this->patient_service->getInpatientInspections($inpatient_id);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            $response = $this->patient_service->getInpatientInspections($inpatient_id);
+            return $response;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     public function getInpatientAnalyzes(Request $request, $inpatient_id)
     {
-        $response = $this->patient_service->getInpatientAllAnalyzes($inpatient_id);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            $response = $this->patient_service->getInpatientAllAnalyzes($inpatient_id);
+            return $response;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     public function getInpatientProcedures(Request $request, $patient_id)
     {
-        $response = $this->patient_service->getInpatientAllProcedures($patient_id);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            $response = $this->patient_service->getInpatientAllProcedures($patient_id);
+            return $response;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     public function getInpatientOperations(Request $request, $patient_id)
     {
-        $response = $this->patient_service->getInpatientOperations($patient_id);
-        //Debugbar::info($response);
-        //return view('index');
-        return $response;
+        try {
+            $response = $this->patient_service->getInpatientOperations($patient_id);
+            return $response;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     //----------------------------------------------------
@@ -152,18 +174,23 @@ class DoctorController extends Controller
     //------------------------------------------------
     public function getAllNotReadyOperations()
     {
-        $response = $this->doctor_service->getAllNotReadyOperations();
-        //Debugbar::info($response);
-        //return view('index');
-        return $response;
+        try {
+            $response = $this->doctor_service->getAllNotReadyOperations();
+            return $response;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     public function addOperationResult(Request $request)
     {
-        $doctor_id = Auth::user()->health_worker->id;;
-
-        $result =$this->doctor_service->addOperationResult($request->all(), $doctor_id);
-        return $result;
+        try {
+            $doctor_id = Auth::user()->health_worker->id;;
+            $result = $this->doctor_service->addOperationResult($request->json()->all(), $doctor_id);
+            return $result;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     //----------------------------------------------------------------------------------
@@ -171,57 +198,69 @@ class DoctorController extends Controller
     //---------------------------------------------------------------------------------
     public function addNewInpatientAnalysis(Request $request)
     {
-        $doctor_id = Auth::user()->health_worker->id;
-
-        $response = $this->doctor_service->addNewInpatientAnalysis($request, $doctor_id);
-
-        return $response;
+        try {
+            $doctor_id = Auth::user()->health_worker->id;
+            $result = $this->doctor_service->addNewInpatientAnalysis($request->json()->all(), $doctor_id);
+            return $result;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     public function addNewInpatientProcedure(Request $request)
     {
-        $doctor_id = Auth::user()->health_worker->id;
-
-        $response = $this->doctor_service->addNewInpatientProcedure($request, $doctor_id);
-
-        return $response;
+        try {
+            $doctor_id = Auth::user()->health_worker->id;
+            $result = $this->doctor_service->addNewInpatientProcedure($request->json()->all(), $doctor_id);
+            return $result;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     public function addNewInpatientInspection(Request $request)
     {
-        $doctor_id = Auth::user()->health_worker->id;
-
-        $response = $this->doctor_service->addNewInpatientInspection($request, $doctor_id);
-
-        return $response;
+        try {
+            $doctor_id = Auth::user()->health_worker->id;
+            $result = $this->doctor_service->addNewInpatientInspection($request->json()->all(), $doctor_id);
+            return $result;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     public function addNewInpatientOperation(Request $request)
     {
-        $doctor_id = Auth::user()->health_worker->id;
-
-        $response = $this->doctor_service->addNewInpatientOperation($request, $doctor_id);
-
-        return $response;
+        try {
+            $doctor_id = Auth::user()->health_worker->id;
+            $result =  $this->doctor_service->addNewInpatientOperation($request->json()->all(), $doctor_id);
+            return $result;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     public function addNewInpatientMedicalAppointment(Request $request)
     {
-        $doctor_id = Auth::user()->health_worker->id;
-
-        $response = $this->doctor_service->addNewInpatientMedicalAppointment($request, $doctor_id);
-
-        return $response;
+        try {
+            $doctor_id = Auth::user()->health_worker->id;
+            $result =  $this->doctor_service->addNewInpatientMedicalAppointment($request->json()->all(), $doctor_id);
+            return $result;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
 
     public function addNewInspectionProtocol(Request $request)
     {
-        $doctor_id = Auth::user()->health_worker->id;
-
-        $response = $this->doctor_service->addNewInspectionProtocol($request, $doctor_id);
-
-        return $response;
+        try {
+            $doctor_id = Auth::user()->health_worker->id;
+            $result =  $this->doctor_service->addNewInspectionProtocol($request->json()->all(), $doctor_id);
+            return $result;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
 

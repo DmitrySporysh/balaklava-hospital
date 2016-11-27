@@ -18,7 +18,7 @@ class CreateHospitalDepartmentsTable extends Migration
             $table->string('department_name');
             $table->string('address');
 
-            $table->integer('department_chief_id')->unsigned();
+            $table->integer('department_chief_id')->unsigned()->nullable();
 
             $table->softDeletes();
             $table->timestamps();

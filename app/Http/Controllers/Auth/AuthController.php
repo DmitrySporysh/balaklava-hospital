@@ -7,6 +7,7 @@ use App\Exceptions\AuthServiceException;
 use Auth;
 use App\Models\ConfirmUser;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Input;
@@ -19,17 +20,16 @@ use Barryvdh\Debugbar\Facade;
 use Debugbar;
 
 
-
 class AuthController extends Controller
 {
 
     private $auth_service;
-   
+
 
     public function __construct(AuthorizationServiceInterface $auth_service)
     {
         $this->auth_service = $auth_service;
-     
+
     }
 
     public function showLoginForm()
@@ -37,37 +37,38 @@ class AuthController extends Controller
         return view('index');
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
 
         try {
             $errors = $this->auth_service->login($request);
 
-            if(!empty($errors)) {
-                return $errors;
+            if (empty($errors)) {
+                $post = Auth::user()->health_worker->post;
+                return ['success' => true, 'post' => $post];
+            } else {
+                if (Auth::guest()) {
+                    return ['success' => false, 'message' => $errors];
+                }
             }
-
-            if(Auth::guest()){
-                return redirect('/');
-            }
-
-            $post = Auth::user()->health_worker->post;
-
-            return ['success' => true, 'post' => $post];
-        }
-        catch(AuthServiceException $e) {
-            return $e->getMessage();
-        }
-        catch(Exception $e) {
-            return 'Неизвестная ошибка логина.';
+        } catch (AuthServiceException $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => 'Неизвестная ошибка логина.'];
         }
     }
 
-   
 
     public function logout(Request $request)
     {
-        $this->auth_service->logout($request);
-        return ['success' => true];
+        try {
+            $this->auth_service->logout($request);
+            return ['success' => true];
+        } catch (AuthServiceException $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => 'Неизвестная ошибка при выходе из системы'];
+        }
     }
 
 }
