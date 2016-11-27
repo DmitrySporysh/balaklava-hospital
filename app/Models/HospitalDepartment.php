@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
 /**
  * App\Models\HospitalDepartment
  *
@@ -16,6 +17,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Chamber[] $chambers
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\HealthWorker[] $health_workers
  * @property-read \App\Models\HealthWorker $department_chief
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Inpatient[] $inpatients
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Discharge[] $discharges
@@ -43,6 +45,10 @@ class HospitalDepartment extends Model
 
     public function chambers(){
         return $this->hasMany('App\Models\Chamber','hospital_department_id');
+    }
+
+    public function health_workers(){
+        return $this->hasMany('App\Models\HealthWorker','department_id');
     }
 
     public function department_chief()

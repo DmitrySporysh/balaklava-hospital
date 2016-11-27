@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
 /**
  * App\Models\HealthWorker
  *
@@ -17,7 +18,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\Carbon $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property-read \App\Models\User $department_chief
+ * @property integer $department_id
+ * @property-read \App\Models\HospitalDepartment $department
  * @property-read \App\Models\HospitalDepartment $hospital_department
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Inpatient[] $inpatients
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\InspectionProtocol[] $inspections_protocols
@@ -37,6 +39,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereDeletedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereDepartmentId($value)
  * @mixin \Eloquent
  */
 class HealthWorker extends Model
@@ -51,13 +54,13 @@ class HealthWorker extends Model
 
     protected $fillable = [
         'fio', 'name', 'address', 'birth_date',
-        'post', 'description', 'login_id'
+        'post', 'description', 'login_id', 'department_id'
     ];
 
     //belongs to
-    public function department_chief()
+    public function department()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo('App\Models\HospitalDepartment');
     }
 
     //has one

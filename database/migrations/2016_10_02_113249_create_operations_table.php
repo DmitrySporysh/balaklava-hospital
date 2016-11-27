@@ -25,7 +25,7 @@ class CreateOperationsTable extends Migration
             $table->string('operation_name');
             $table->string('preliminary_epicrisis');
             $table->string('operation_description')->nullable();
-            $table->string('result')->nullable();
+            $table->string('result_description')->nullable();
             $table->string('paths_to_files')->nullable();
 
             $table->softDeletes();

@@ -30,7 +30,7 @@ class DepartmentChiefController extends Controller
                                 CommonServiceInterface $commonService)
     {
         $this->middleware('auth');
-        $this->middleware('checkPost:'.UserRole::DEPARTMENT_CHIEF);
+        $this->middleware('checkPost:' . UserRole::DEPARTMENT_CHIEF);
 
         $this->departmentChief_service = $departmentChief_service;
         $this->patientService = $patientService;
@@ -39,63 +39,91 @@ class DepartmentChiefController extends Controller
 
     public function getDepartmentInpatients(Request $request)
     {
-        $per_page = ($request->has('per_page')) ? $request->per_page : 20;
-
-        $department_id = Auth::user()->health_worker->hospital_department->id; //TODO берем id отделения, которым управляет наш зав
-        $response = $this->departmentChief_service->getDepartmentAllInpatientsSortByDateDesc($department_id, $per_page);
-        //Debugbar::info($response);
-        //return view('index', ['response' => $response]);
-        return $response;
+        try {
+            $per_page = ($request->has('per_page')) ? $request->per_page : 20;
+            $department_id = Auth::user()->health_worker->department_id;
+            $response = $this->departmentChief_service->getDepartmentAllInpatientsSortByDateDesc($department_id, $per_page);
+            return $response;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     public function getInpatientInfo(Request $request, $inpatient_id)
     {
-        $response = $this->patientService->getInpatientGeneralInfo($inpatient_id);
-        //Debugbar::info($response);
-        //return view('index', ['response' => $response]);
-        return $response;
+        try {
+            $response = $this->patientService->getInpatientGeneralInfo($inpatient_id);
+            return $response;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     public function getDepartmentDoctors(Request $request)
     {
-        $per_page = ($request->has('per_page')) ? $request->per_page : 20;
-
-        $department_id = Auth::user()->health_worker->hospital_department->id; //TODO берем id отделения, которым управляет наш зав
-        $response = $this->departmentChief_service->getDepartmentAllDoctorsSortByFio($department_id, $per_page);
-        //Debugbar::info($response);
-        //return view('index', ['response' => $response]);
-        return $response;
+        try {
+            $per_page = ($request->has('per_page')) ? $request->per_page : 20;
+            $department_id = Auth::user()->health_worker->department_id;
+            $response = $this->departmentChief_service->getDepartmentAllDoctorsSortByFio($department_id, $per_page);
+            return $response;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     public function getAllDepartments(Request $request)
     {
-        $response = $this->commonService->getAllDepartments();
-        //Debugbar::info($response);
-        //return view('index', ['response' => $response]);
-        return $response;
+        try {
+            $response = $this->commonService->getAllDepartments();
+            return $response;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     public function getAllHospitals(Request $request)
     {
-        $response = $this->commonService->getAllHospitals();
-        //Debugbar::info($response);
-        //return view('index', ['response' => $response]);
-        return $response;
+        try {
+            $response = $this->commonService->getAllHospitals();
+            return $response;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
+
+    public function getPatientsArchive(Request $request)
+    {
+        try {
+            $per_page = ($request->has('per_page')) ? $request->per_page : 20;
+            $response = $this->patientService->getPatientsArchive($per_page, $request);
+            return $response;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
+    }
+
 
     //----------------------------------------------------------------------------------
     //TODO Post requests
     //---------------------------------------------------------------------------------
     public function addAttendingDoctorToInpatient(Request $request)
     {
-        $response = $this->departmentChief_service->addAttendingDoctorToInpatient($request->all());
-        return $response;
+        try {
+            $result = $this->departmentChief_service->addAttendingDoctorToInpatient($request->json()->all());
+            return $result;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     public function dischargeInpatientFromDepartment(Request $request)
     {
-        $response = $this->departmentChief_service->dischargeInpatientFromDepartment($request->all());
-        return $response;
+        try {
+            $result = $this->departmentChief_service->dischargeInpatientFromDepartment($request->json()->all());
+            return $result;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
 }

@@ -5,7 +5,7 @@ angular
         function postGeneralEmergInfo(patientInfo) {
             var defer=$q.defer();
 
-            $http.post('medial_nurse/addNewInpatient',patientInfo)
+            $http.post('medical_nurse/emergency/addNewInpatient',patientInfo)
                 .success(function(response) {
                     defer.resolve(response);
                 })

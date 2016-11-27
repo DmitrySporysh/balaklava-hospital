@@ -87,6 +87,7 @@ class AnalysisRepository extends Repository implements AnalysisRepositoryInterfa
                         'analyzes.id as analyses_id',
                         'inpatients.id as inpatient_id',
                         'received_patients.fio as patient_fio',
+                        'appointment_date',
                         'analysis_name',
                         'analysis_description',
                         'doctor_who_appointed.fio as doctor_fio_who_appointed']

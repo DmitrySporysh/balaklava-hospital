@@ -5,7 +5,7 @@ angular
         function getRecievedPatients() {
             var defer=$q.defer();
 
-            $http.get('medical_nurse/received_patients')
+            $http.get('medical_nurse/emergency/received_patients')
                 .success(function(inpatients) {
                     defer.resolve(inpatients);
                 })

@@ -11,7 +11,7 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        foreach (range(1, 100) as $index) {
+        foreach (range(1, 228) as $index) {
             DB::table('users')->insert([
                 'login' => 'user'.$index,
                 'email' => 'someemail'.$index.'@mail.ru',

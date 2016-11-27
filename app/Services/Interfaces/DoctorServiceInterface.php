@@ -15,17 +15,18 @@ interface DoctorServiceInterface
 
     public function getAllNotReadyOperations();
 
+    public function addOperationResult($requestData, $doctor_id);
 
-    public function addNewInspectionProtocol(Request $request, $doctor_id);
+    public function addNewInspectionProtocol($requestData, $doctor_id);
 
-    public function addNewInpatientAnalysis($request, $doctor_id);
+    public function addNewInpatientAnalysis($requestData, $doctor_id);
 
-    public function addNewInpatientProcedure($request, $doctor_id);
+    public function addNewInpatientProcedure($requestData, $doctor_id);
 
-    public function addNewInpatientInspection($request, $doctor_id);
+    public function addNewInpatientInspection($requestData, $doctor_id);
 
-    public function addNewInpatientOperation($request, $doctor_id);
+    public function addNewInpatientOperation($requestData, $doctor_id);
 
-    public function addNewInpatientMedicalAppointment($request, $doctor_id);
+    public function addNewInpatientMedicalAppointment($requestData, $doctor_id);
 
 }

@@ -16,7 +16,7 @@ class CreateHealthWorkersTable extends Migration
         Schema::create('health_workers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('fio');
-            $table->string('sex');
+            $table->string('sex', 7);
             $table->date('birth_date');
             $table->string('post');
 
