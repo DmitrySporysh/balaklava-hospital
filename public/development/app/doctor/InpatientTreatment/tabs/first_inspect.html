@@ -46,7 +46,10 @@
                     </tr>
                     <tr>
                         <td class="patient-form__label">Кожные покровы</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.skin}}---{{inpatientTreatmentFirstInspect.firstInsp.skin_extended}}</td>
+                        <td class="patient-form__value">
+                            {{inpatientTreatmentFirstInspect.firstInsp.skin}}
+                            <span ng-show="inpatientTreatmentFirstInspect.firstInsp.skin_extended">---</span>
+                            {{inpatientTreatmentFirstInspect.firstInsp.skin_extended}}</td>
                     </tr>
                     <tr>
                         <td class="patient-form__label">Тургор</td>
@@ -58,11 +61,15 @@
                     </tr>
                     <tr>
                         <td class="patient-form__label">Язык</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.tongue}}---{{inpatientTreatmentFirstInspect.firstInsp.tongue_extended}}</td>
+                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.tongue}}
+                            <span ng-show="">---</span>
+                            {{inpatientTreatmentFirstInspect.firstInsp.tongue_extended}}</td>
                     </tr>
                     <tr>
                         <td class="patient-form__label">Аускультативно над лёгкими дыхание</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.auscultation}}---{{inpatientTreatmentFirstInspect.firstInsp.auscultation_extended}}</td>
+                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.auscultation}}
+                            <span ng-show="">---</span>
+                            {{inpatientTreatmentFirstInspect.firstInsp.auscultation_extended}}</td>
                     </tr>
                     <tr>
                         <td class="patient-form__label">Перкуторно над лёгкими звук</td>
@@ -78,11 +85,15 @@
                     </tr>
                     <tr>
                         <td class="patient-form__label">Ритм</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.heart_rhythm}}---{{inpatientTreatmentFirstInspect.firstInsp.heart_rhythm_extended}}</td>
+                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.heart_rhythm}}
+                            <span ng-show="inpatientTreatmentFirstInspect.firstInsp.heart_rhythm_extended">---</span>
+                            {{inpatientTreatmentFirstInspect.firstInsp.heart_rhythm_extended}}</td>
                     </tr>
                     <tr>
                         <td class="patient-form__label">Границы сердца</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.heart_boundaries}}---{{inpatientTreatmentFirstInspect.firstInsp.heart_boundaries_extended}}</td>
+                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.heart_boundaries}}
+                            <span ng-show="inpatientTreatmentFirstInspect.firstInsp.heart_boundaries_extended">---</span>
+                            {{inpatientTreatmentFirstInspect.firstInsp.heart_boundaries_extended}}</td>
                     </tr>
                     <tr>
                         <td class="patient-form__label">ЧСС</td>
@@ -90,7 +101,9 @@
                     </tr>
                     <tr>
                         <td class="patient-form__label">Мышечный тонус</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.muscle_tone}}---{{inpatientTreatmentFirstInspect.firstInsp.muscle_tone_extended}}</td>
+                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.muscle_tone}}
+                            <span ng-show="inpatientTreatmentFirstInspect.firstInsp.muscle_tone_extended">---</span>
+                            {{inpatientTreatmentFirstInspect.firstInsp.muscle_tone_extended}}</td>
                     </tr>
                     <tr>
                         <td class="patient-form__label">Движение в суставах</td>
@@ -102,7 +115,9 @@
                     </tr>
                     <tr>
                         <td class="patient-form__label">Болезненность живота</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.stomach_pain}}---{{inpatientTreatmentFirstInspect.firstInsp.stomach_extended}}</td>
+                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.stomach_pain}}
+                            <span ng-show="inpatientTreatmentFirstInspect.firstInsp.stomach_extended">---</span>
+                            {{inpatientTreatmentFirstInspect.firstInsp.stomach_extended}}</td>
                     </tr>
                     <tr>
                         <td class="patient-form__label">В позе Ромберга</td>
@@ -110,11 +125,15 @@
                     </tr>
                     <tr>
                         <td class="patient-form__label">Походка</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.gait}}---{{inpatientTreatmentFirstInspect.firstInsp.gait_extended}}</td>
+                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.gait}}
+                            <span ng-show="">---</span>
+                            {{inpatientTreatmentFirstInspect.firstInsp.gait_extended}}</td>
                     </tr>
                     <tr>
                         <td class="patient-form__label">Стул</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.stools}}---{{inpatientTreatmentFirstInspect.firstInsp.stools_extended}}</td>
+                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.stools}}
+                            <span ng-show="inpatientTreatmentFirstInspect.firstInsp.stools_extended">---</span>
+                            {{inpatientTreatmentFirstInspect.firstInsp.stools_extended}}</td>
                     </tr>
                     </tbody>
                 </table>

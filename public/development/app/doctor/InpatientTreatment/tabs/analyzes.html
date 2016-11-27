@@ -15,7 +15,6 @@
                             <th>Анализ</th>
                             <th>Описание</th>
                             <th>Дата назначения</th>
-                            <th>Назначен</th>
                             <th>Готовность</th>
                             <th>Результат</th>
                             <th>Файлы</th>
@@ -27,7 +26,6 @@
                             <td data-toggle="modal" data-target="#analysisInfo" ng-click="treatmentAnalyzes.setShownAnalyses($index+1)">{{analysis.analysis_name}}</td>
                             <td data-toggle="modal" data-target="#analysisInfo" ng-click="treatmentAnalyzes.setShownAnalyses($index+1)">{{analysis.analysis_description}}</td>
                             <td data-toggle="modal" data-target="#analysisInfo" ng-click="treatmentAnalyzes.setShownAnalyses($index+1)">{{analysis.appointment_date}}</td>
-                            <td data-toggle="modal" data-target="#analysisInfo" ng-click="treatmentAnalyzes.setShownAnalyses($index+1)">{{analysis.doctor_fio}}</td>
                             <td data-toggle="modal" data-target="#analysisInfo" ng-click="treatmentAnalyzes.setShownAnalyses($index+1)">{{analysis.ready_date}}</td>
                             <td data-toggle="modal" data-target="#analysisInfo" ng-click="treatmentAnalyzes.setShownAnalyses($index+1)">{{analysis.result_description}}</td>
                             <td ng-click="treatmentAnalyzes.setShownAnalyses($index+1)">
@@ -161,8 +159,8 @@
                         <div class="plain-table__table-wrapper clearfix">
                             <div class="clearfix">
                                 <div class="file-table__cell">
-                                    <a download href="/development/img/{{treatmentAnalyzes.shownAnalyses.paths_to_files}}">
-                                        <img class="file-table__img" src="/development/img/{{treatmentAnalyzes.shownAnalyses.paths_to_files}}" alt="">
+                                    <a download href="/storage/{{treatmentAnalyzes.shownAnalyses.paths_to_files}}">
+                                        <img class="file-table__img" src="/storage/{{treatmentAnalyzes.shownAnalyses.paths_to_files}}" alt="">
                                     </a>
                                 </div>
                             </div>

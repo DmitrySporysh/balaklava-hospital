@@ -3,8 +3,8 @@
     <div class="content-header">
         <div class="container">
             <div class="content-header__title-block content-header__title-block_left">
-                <h3 class="content-header__title block-title">Имя пациента</h3>
-                <span class="content-header__subtitle block-subtitle">Возраст, пол, номер</span>
+                <h3 class="content-header__title block-title">{{doctorEmPersonCtrl.patient_info.fio}}</h3>
+                <span class="content-header__subtitle block-subtitle">{{doctorEmPersonCtrl.patient_info.sex}}, {{doctorEmPersonCtrl.patient_info.birth_date}}</span>
             </div>
         </div>
     </div>
@@ -392,6 +392,15 @@
                                                 <input ng-model="doctorEmPersonCtrl.patientProtocol.stools_extended" name="stools_extended" class="patient-form__input patient-form__input_inline" value="" type="text">
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td class="patient-form__label">Назначить отделение</td>
+                                            <td class="patient-form__value">
+                                                <select class="patient-form__select patient-form__select_inline" name="stools" ng-model="doctorEmPersonCtrl.patientProtocol.department_id">
+                                                    <option value="" selected="selected">-- Выберите вариант --</option>
+                                                    <option ng-repeat="department in doctorEmPersonCtrl.departments" value="{{department.id}}">{{department.department_name}}</option>
+                                                </select>
+                                            </td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                     <div class="content-header__add content-header__add_right add-block">
@@ -406,8 +415,6 @@
                     </ul>
                 </div>
             </div>
-            <div>Ответ:</div>
-            <p ng-bind="doctorEmPersonCtrl.response"></p>
         </div>
     </div>
     </div>

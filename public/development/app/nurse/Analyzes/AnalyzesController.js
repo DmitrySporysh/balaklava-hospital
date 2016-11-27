@@ -6,6 +6,7 @@ angular
         AnalyzesService.getAllNotReadyAnalyzes()
             .then(function(analyses) {
                 self.analyses = analyses;
+                console.log(analyses);
             });
 
         self.setShownAnalyses = function (index) {

@@ -15,6 +15,19 @@ angular
             return defer.promise;
         }
 
+        function getDepartments(id) {
+                    var defer=$q.defer();
+
+                    $http.get('doctor/departments')
+                        .success(function(patients) {
+                            defer.resolve(patients);
+                        })
+                        .error(function(err) {
+                            defer.reject(err);
+                        });
+                    return defer.promise;
+                }
+
         function postInfoFromEmergency(patientInfo, id) {
             patientInfo.id = id;
             var defer=$q.defer();
@@ -30,6 +43,7 @@ angular
         }
 
         return {
+            getDepartments: getDepartments,
             getInfoFromEmergency: getInfoFromEmergency,
             postInfoFromEmergency: postInfoFromEmergency
         };

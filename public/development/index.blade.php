@@ -21,8 +21,9 @@
 
     <script src="../development/js/effects.js"></script>
 
+    <link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700" media="all" />
+    <link rel="stylesheet" href="../development/fonts/themify/themify-icons.css">
     <link rel="stylesheet" href="../development/css/font-awesome.css">
-
 
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../development/css/login.css">
