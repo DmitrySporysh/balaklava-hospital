@@ -14,16 +14,13 @@ angular
         };
 
         self.uploader = new FileUploader({
-            url: '/analyzes'
+            url: 'api/medical_nurse/analyzes/addAnalysisResult'
         });
-
-        var fd=new FileUploader({
-            url: 'test'
-        });
+        
         self.postAnalysesResult = function () {
             
-            console.log(fd);
+            console.log(self.uploader);
             /*AnalyzesService.postAnalysesResult(this.analysesResult, self.analyses_id);*/
-            AnalyzesService.postAnalysesResult(fd, self.analyses_id);
+        /*    AnalyzesService.postAnalysesResult(fd, self.analyses_id);*/
         }
     });
