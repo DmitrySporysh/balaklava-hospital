@@ -1,6 +1,6 @@
 angular
     .module('nurseApp')
-    .controller('AnalyzesCtrl', function($scope, AnalyzesService, FileUploader) {
+    .controller('AnalyzesCtrl', function($scope,$http, AnalyzesService, FileUploader) {
         var self = this;
 
         AnalyzesService.getAllNotReadyAnalyzes()
