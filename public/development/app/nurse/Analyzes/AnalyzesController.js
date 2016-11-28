@@ -16,6 +16,9 @@ angular
         $scope.uploadavtar = function(files) {
             var fd = new FormData();
             fd.append("file", files[0]);
+            fd.append("data1", {'result_description': '12312', 'analyses_id': 441});
+
+            console.log(fd);
 
             $http.post("api/medical_nurse/analyzes/addAnalysisResult", fd, {
                 withCredentials: true,
@@ -35,7 +38,7 @@ angular
 
         self.postAnalysesResult = function () {
             
-            console.log(self.analysesResult);
+            /*console.log(self.analysesResult);*/
             /*AnalyzesService.postAnalysesResult(this.analysesResult, self.analyses_id);*/
         /*    AnalyzesService.postAnalysesResult(fd, self.analyses_id);*/
         }
