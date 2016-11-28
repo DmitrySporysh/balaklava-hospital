@@ -56,13 +56,9 @@ class MedicalNurseController extends Controller
 
     public function addAnalysisResult(Request $request)
     {
-        Debugbar::info('Ща пойдет инфа по запросу');
-        Debugbar::info($request->all());
-        Debugbar::info($request->json()->all());
-        return 'fdf';
         try {
             $registration_nurse_id = Auth::user()->health_worker->id;; //TODO брать ид авторизованной медсестры
-            $result = $this->medicalNurseService->addAnalysisResult($request->json()->all(), $registration_nurse_id);
+            $result = $this->medicalNurseService->addAnalysisResult($request->all(), $registration_nurse_id);
             return $result;
         } catch (Exception $e) {
             return ['success' => false, 'message' => $e->getMessage()];

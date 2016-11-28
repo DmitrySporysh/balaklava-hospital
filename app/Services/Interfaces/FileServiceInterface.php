@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Request;
 interface FileServiceInterface
 {
 
-    public function save($file);
+    public function save($file, $folder, $obj_id);
 
     public function has($path);
 

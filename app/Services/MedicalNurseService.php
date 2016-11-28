@@ -196,6 +196,8 @@ class MedicalNurseService implements MedicalNurseServiceInterface
 
     private function getAnalysisDataFromRequest($requestData, $nurse_id)
     {
+        $data['paths_to_files'] = $this->fileService->save($requestData['file']);
+
         $data['ready_date'] = Carbon::now()->toDateTimeString();
         $data['result_description'] = $requestData['result_description'];
         $data['doctor_who_performed'] = $nurse_id;
@@ -227,7 +229,14 @@ class MedicalNurseService implements MedicalNurseServiceInterface
 
     public function addAnalysisResult($requestData, $nurse_id)
     {
+
         try {
+            Debugbar::info('$str');
+            Debugbar::info($requestData['file']);
+            $str = $this->fileService->save($requestData['file'], 'analyzes', '12');
+            Debugbar::info($str);
+            return 'fdf';
+
             $validationMessages = $this->validateAnalysisResultData($requestData);
             if(!empty($validationMessages))
             {
@@ -241,6 +250,7 @@ class MedicalNurseService implements MedicalNurseServiceInterface
             $message = 'Error while creating withdraw analysis request(DAL Error)' . $e->getMessage();
             throw new EmergencyServiceException($message, 0, $e);
         } catch (Exception $e) {
+            Debugbar::info($e->getMessage());
             $message = 'Error while creating withdraw analysis request(UnknownError)' . $e->getMessage();
             throw new EmergencyServiceException($message, 0, $e);
         }
