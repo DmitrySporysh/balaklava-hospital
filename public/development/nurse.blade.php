@@ -27,6 +27,14 @@
     <script src="../development/app/nurse/Analyzes/AnalyzesDirective.js"></script>
     <script src="../development/app/nurse/Analyzes/AnalyzesController.js"></script>
 
+    <script src="../development/app/nurse/archive/ArchiveDirective.js"></script>
+    <script src="../development/app/nurse/archive/ArchiveController.js"></script>
+    <script src="../development/app/nurse/archive/ArchiveService.js"></script>
+
+    <script src="../development/app/nurse/Archive_person/ArchivePersonDirective.js"></script>
+    <script src="../development/app/nurse/Archive_person/ArchivePersonController.js"></script>
+    <script src="../development/app/nurse/Archive_person/ArchivePersonService.js"></script>
+
     <link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700" media="all" />
     <link rel="stylesheet" href="../development/fonts/themify/themify-icons.css">
     <link rel="stylesheet" href="../development/css/font-awesome.css">

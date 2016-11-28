@@ -1,11 +1,11 @@
 angular
-    .module('doctorApp')
+    .module('nurseApp')
     .service('archivePersonService', function($http, $q) {
 
         function getPersonInfo(id) {
             var defer=$q.defer();
 
-            $http.get('api/doctor/getInpatientAllInfo/'+id)
+            $http.get('api/nurse/getInpatientAllInfo/'+id)
                 .success(function(patients) {
                     defer.resolve(patients);
 
@@ -13,7 +13,6 @@ angular
                 .error(function(err) {
                     defer.reject(err);
                 });
-            console.log(defer.promise);
             return defer.promise;
         }
 

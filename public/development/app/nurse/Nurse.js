@@ -19,6 +19,10 @@ angular
                 url: '/analyzes',
                 template: '<analyzes></analyzes>'
             })
+            .state('archive',{
+                url: '/archive',
+                template: '<archive></archive>'
+            })
 
 
             .state('inpatient_treatment',{

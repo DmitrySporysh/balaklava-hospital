@@ -1,5 +1,5 @@
 angular
-    .module('doctorApp')
+    .module('nurseApp')
     .controller('ArchivePersonCtrl', function($scope, archivePersonService, $stateParams) {
         var self = this;
 
@@ -70,6 +70,6 @@ angular
                 });
 
                 self.date_sort=sort_date;
-               /* console.log(self.date_sort);*/
+                console.log(self.date_sort);
             });
     });

@@ -92,7 +92,7 @@
                 </a>
 
             <li class="nav-list__item">
-                <a href="" class="nav-list__ref nav-list__icon nav-list__icon_catalog">
+                <a ui-sref="archive" ui-sref-active="nav-list__ref_active" class="nav-list__ref nav-list__icon nav-list__icon_catalog">
                     <span class="nav-list__item-name">Архив</span>
                 </a>
         </ul>

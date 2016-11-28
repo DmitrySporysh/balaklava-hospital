@@ -19,6 +19,10 @@ angular
                 url: '/general',
                 template: '<general></general>'
             })
+            .state('archive',{
+                url: '/archive',
+                template: '<archive></archive>'
+            })
     })
     .controller('headPhysicianAppController', function (headPhysicianAppService, $scope) {
         var self = this;
