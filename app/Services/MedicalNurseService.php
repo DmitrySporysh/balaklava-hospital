@@ -196,12 +196,11 @@ class MedicalNurseService implements MedicalNurseServiceInterface
 
     private function getAnalysisDataFromRequest($requestData, $nurse_id)
     {
-        $data['paths_to_files'] = $this->fileService->save($requestData['file']);
-
         $data['ready_date'] = Carbon::now()->toDateTimeString();
         $data['result_description'] = $requestData['result_description'];
         $data['doctor_who_performed'] = $nurse_id;
-        $data['paths_to_files'] = $this->fileService->save($requestData['file']);
+        $data['paths_to_files'] =  $this->fileService->save($requestData['file'], 'analyzes');
+
         return $data;
     }
 
@@ -229,14 +228,7 @@ class MedicalNurseService implements MedicalNurseServiceInterface
 
     public function addAnalysisResult($requestData, $nurse_id)
     {
-
         try {
-            Debugbar::info('$str');
-            Debugbar::info($requestData['file']);
-            $str = $this->fileService->save($requestData['file'], 'analyzes', '12');
-            Debugbar::info($str);
-            return 'fdf';
-
             $validationMessages = $this->validateAnalysisResultData($requestData);
             if(!empty($validationMessages))
             {
