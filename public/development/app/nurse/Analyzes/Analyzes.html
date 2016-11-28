@@ -81,13 +81,10 @@
                                         </li>
                                         </ul>-->
 
-                                        <input type="file" nv-file-select uploader="analyzesCtrl.uploader"/><br/>
-                                        <ul>
-                                            <li ng-repeat="item in analyzesCtrl.uploader.queue">
-                                                Name: <span ng-bind="item.file.name"></span><br/>
-                                                <button ng-click="item.upload()">upload</button>
-                                            </li>
-                                        </ul>
+                                        <div ng-controller="AnalyzesCtrl">
+                                            <input type="file" name="file" onchange="angular.element(this).scope().uploadavtar(this.files)"/>
+                                        </div>
+
                                     </td>
                                 </tr>
                                 </tbody>
