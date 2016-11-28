@@ -16,9 +16,10 @@ angular
         $scope.uploadavtar = function(files) {
             var fd = new FormData();
             fd.append("file", files[0]);
-            fd.append("data1", {'result_description': '12312', 'analyses_id': 441});
 
-            console.log(fd);
+            for (key in self.analysesResult) {
+                fd.append(key, self.analysesResult[key]);
+            }
 
             $http.post("api/medical_nurse/analyzes/addAnalysisResult", fd, {
                 withCredentials: true,
@@ -26,12 +27,8 @@ angular
                 transformRequest: angular.identity
             }).then(function successCallback(response) {
                 console.log(response);
-                // this callback will be called asynchronously
-                // when the response is available
             }, function errorCallback(response) {
                 console.log(response);
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
             });
 
         };

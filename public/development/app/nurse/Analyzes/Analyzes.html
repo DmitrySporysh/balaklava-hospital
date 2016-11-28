@@ -69,19 +69,8 @@
                                 <tr>
                                     <td class="patient-form__label">Приложение</td>
                                     <td class="patient-form__value">
-<!--
-                                        <input ng-model="analyzesCtrl.analysesResult.pictures" type="file" name="img" accept="image/jpeg,image/png,image/gif">
--->
-                                        <!--<input type="file" nv-file-select uploader="analyzesCtrl.uploader"/><br/>
 
-
-                                        <ul>
-                                            <li ng-repeat="item in analyzesCtrl.uploader.queue">
-                                            Name: <span ng-bind="item.file.name"></span><br/>
-                                        </li>
-                                        </ul>-->
-
-                                        <div ng-controller="AnalyzesCtrl">
+                                        <div >
                                             <input type="file" name="file" onchange="angular.element(this).scope().uploadavtar(this.files)"/>
                                         </div>
 
