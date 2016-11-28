@@ -26,14 +26,9 @@ Route::get('doctor', function () {
     return view('doctor');
 });
 
-<<<<<<< HEAD
 Route::get('login', function () {
     return view('index');
 });
-=======
-
-Route::get('/login', 'Auth\AuthController@showLoginForm');
->>>>>>> origin/Front
 
 
 Route::group(['prefix' => 'api'], function () {
