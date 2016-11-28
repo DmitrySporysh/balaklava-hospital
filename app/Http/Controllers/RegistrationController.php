@@ -22,10 +22,6 @@ class RegistrationController extends Controller
         $this->reg_service = $register_service;
     }
 
-    public function showRegistrationForm()
-    {
-        return view('auth.register');
-    }
 
     public function register(Request $request)
     {

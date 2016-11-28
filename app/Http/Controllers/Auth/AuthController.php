@@ -2,18 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Common\Enums\UserRole;
 use App\Exceptions\AuthServiceException;
 use Auth;
-use App\Models\ConfirmUser;
-use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Input;
-use Validator;
-use Mail;
-use Hasdh;
 use App\Services\Interfaces\AuthorizationServiceInterface;
 
 use Barryvdh\Debugbar\Facade;
@@ -30,11 +23,6 @@ class AuthController extends Controller
     {
         $this->auth_service = $auth_service;
 
-    }
-
-    public function showLoginForm()
-    {
-        return view('index');
     }
 
     public function login(Request $request)

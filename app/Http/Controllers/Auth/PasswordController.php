@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Exceptions\PasswordServiceException;
 use App\Http\Controllers\Controller;
 use App\Services\Interfaces\PasswordServiceInterface;
+use Exception;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
 
@@ -62,7 +63,6 @@ class PasswordController extends Controller
                 return 'Неверный код верификации.';
             }
             return view('newPassword',['token' => $token]);
-            //return view('/');
         }
         catch(PasswordServiceException $e) {
             return 'Ошибка при подтверждении мыла. Временная заглушка.';
