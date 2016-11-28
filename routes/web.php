@@ -10,35 +10,27 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
 Route::get('/', function () {
     return view('index');
 });
-
 Route::get('nurse', function () {
     return view('nurse');
 });
 Route::get('head_physician', function () {
     return view('headPhysician');
 });
-
 Route::get('doctor', function () {
     return view('doctor');
 });
-
 Route::get('login', function () {
     return view('index');
 });
-
-
 Route::group(['prefix' => 'api'], function () {
     /*-------------------------------------------------------------------------------------------------
     *             Регистрация и Авторизация
     *------------------------------------------------------------------------------------------------- */
     Route::post('/register', 'RegistrationController@register');
-
     Route::post('/login', 'Auth\AuthController@login');
-
     Route::post('/logout', 'Auth\AuthController@logout');
 
     /*-------------------------------------------------------------------------------------------------
