@@ -5,7 +5,7 @@ angular
         function getArchivePeople() {
             var defer=$q.defer();
 
-            $http.get('api/nurse/archive')
+            $http.get('/api/medical_nurse/archive')
                 .success(function(patients) {
                     defer.resolve(patients);
 

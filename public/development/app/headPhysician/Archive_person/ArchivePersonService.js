@@ -5,7 +5,7 @@ angular
         function getPersonInfo(id) {
             var defer=$q.defer();
 
-            $http.get('api/department_chief/getInpatientAllInfo/'+id)
+            $http.get('api/department_chief/inpatient/'+id+'/allInfo')
                 .success(function(patients) {
                     defer.resolve(patients);
 
