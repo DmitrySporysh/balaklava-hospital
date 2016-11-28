@@ -27,7 +27,7 @@ class MedicalNurseController extends Controller
         $this->middleware('checkPost:' . UserRole::NURSE);
 
         $this->medicalNurseService = $medicalNurseService;
-        $this->patient_service = $patientService;
+        $this->patientService = $patientService;
     }
 
     public function getPatientsArchive(Request $request)
@@ -56,6 +56,10 @@ class MedicalNurseController extends Controller
 
     public function addAnalysisResult(Request $request)
     {
+        Debugbar::info('Ща пойдет инфа по запросу');
+        Debugbar::info($request->all());
+        Debugbar::info($request->json()->all());
+        return 'fdf';
         try {
             $registration_nurse_id = Auth::user()->health_worker->id;; //TODO брать ид авторизованной медсестры
             $result = $this->medicalNurseService->addAnalysisResult($request->json()->all(), $registration_nurse_id);
