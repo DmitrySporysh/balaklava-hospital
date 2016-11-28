@@ -6,6 +6,7 @@ use App\Exceptions\DALException;
 use App\Repositories\Interfaces\AnalysisRepositoryInterface;
 use App\Repositories\Interfaces\InpatientRepositoryInterface;
 use App\Repositories\Interfaces\ReceivedPatientRepositoryInterface;
+use App\Services\Interfaces\FileServiceInterface;
 use App\Services\Interfaces\MedicalNurseServiceInterface;
 use Carbon\Carbon;
 use App\Repositories\Interfaces\PatientRepositoryInterface;
@@ -23,13 +24,15 @@ class MedicalNurseService implements MedicalNurseServiceInterface
     private $inpatient_repo;
     private $received_patient_repo;
     private $analysisRepository;
+    private $fileService;
     private $validator;
 
     public function __construct(UserRepositoryInterface $user_repo,
                                 PatientRepositoryInterface $patient_repo,
                                 InpatientRepositoryInterface $inpatient_repo,
                                 ReceivedPatientRepositoryInterface $received_patient_repo,
-                                AnalysisRepositoryInterface $analysisRepository
+                                AnalysisRepositoryInterface $analysisRepository,
+                                FileServiceInterface $fileService
 
     )
     {
@@ -38,6 +41,7 @@ class MedicalNurseService implements MedicalNurseServiceInterface
         $this->inpatient_repo = $inpatient_repo;
         $this->received_patient_repo = $received_patient_repo;
         $this->analysisRepository = $analysisRepository;
+        $this->fileService = $fileService;
     }
 
 
@@ -195,7 +199,7 @@ class MedicalNurseService implements MedicalNurseServiceInterface
         $data['ready_date'] = Carbon::now()->toDateTimeString();
         $data['result_description'] = $requestData['result_description'];
         $data['doctor_who_performed'] = $nurse_id;
-        //$data['paths_to_files analysis '] = $this->saveFile($requestData->file);
+        $data['paths_to_files'] = $this->fileService->save($requestData['file']);
         return $data;
     }
 

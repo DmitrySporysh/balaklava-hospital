@@ -56,6 +56,7 @@ class MedicalNurseController extends Controller
 
     public function addAnalysisResult(Request $request)
     {
+        Debugbar::info('ffddddfg');
         Debugbar::info($request->json()->all());
         return 'fdf';
         try {
