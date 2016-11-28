@@ -16,6 +16,7 @@ angular
         $scope.uploadavtar = function(files) {
             var fd = new FormData();
             fd.append("file", files[0]);
+            fd.append('analyses_id', self.analyses_id);
 
             for (key in self.analysesResult) {
                 fd.append(key, self.analysesResult[key]);
