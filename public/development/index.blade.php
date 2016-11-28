@@ -27,6 +27,8 @@
 
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../development/css/login.css">
+
+    <base href="/">
 </head>
 
 <script type="text/javascript">

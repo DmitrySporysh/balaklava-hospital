@@ -30,7 +30,7 @@ angular
             InpatientTreatmentService.newAnalysis(self.emPerson_id, self.analysisInfo)
                 .then(function(response) {
                     self.response = response;
-                    self.analyzes.unshift(response);
+                    self.analyzes.unshift(response['data']);
                 });
         };
 
@@ -64,21 +64,21 @@ angular
         self.newCondition = function (){
             InpatientTreatmentService.newCondition(self.emPerson_id, self.condition)
                 .then(function(response) {
-                    self.inspections.unshift(response);
+                    self.inspections.unshift(response['data']);
                 });
         };
 
         self.newOperation = function (){
             InpatientTreatmentService.newOperation(self.emPerson_id, self.operation)
                 .then(function(response) {
-                    self.operations.unshift(response);
+                    self.operations.unshift(response['data']);
                 });
         };
 
         self.newProcedure = function (){
             InpatientTreatmentService.newProcedure(self.emPerson_id, self.procedure)
                 .then(function(response) {
-                    self.procedures.unshift(response);
+                    self.procedures.unshift(response['data']);
                 });
         };
 
@@ -102,7 +102,7 @@ angular
                 .then(function(response) {
                     self.response = response;
                     console.log(self.response);
-                    self.prescriptions.unshift(response);
+                    self.prescriptions.unshift(response['data']);
                 });
         };
     })

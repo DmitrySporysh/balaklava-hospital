@@ -15,21 +15,21 @@
                 <tr class="search-table__heading-name">
                     <th>
                         ФИО
-                        <span class="search-table_arrow"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
-                        <span class="search-table_arrow"><i class="fa fa-chevron-up" aria-hidden="true"></i></span>
+                        <span ng-click="archiveCtrl.change('fio_Desc')" class="search-table_arrow"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                        <span ng-click="archiveCtrl.change('fio_Asc')" class="search-table_arrow"><i class="fa fa-chevron-up" aria-hidden="true"></i></span>
                     </th>
                     <th>
                         № Страховки
-                        <span class="search-table_arrow"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
-                        <span class="search-table_arrow"><i class="fa fa-chevron-up" aria-hidden="true"></i></span>
+                        <span ng-click="archiveCtrl.change('insurance_number_Desc')" class="search-table_arrow"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                        <span ng-click="archiveCtrl.change('insurance_number_Asc')" class="search-table_arrow"><i class="fa fa-chevron-up" aria-hidden="true"></i></span>
                     </th>
                     <th>
                         Пол
                     </th>
                     <th>
                         Номер карточки
-                        <span class="search-table_arrow"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
-                        <span class="search-table_arrow"><i class="fa fa-chevron-up" aria-hidden="true"></i></span>
+                        <span ng-click="archiveCtrl.change('inpatient_number_Desc')" class="search-table_arrow"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                        <span ng-click="archiveCtrl.change('inpatient_number_Asc')" class="search-table_arrow"><i class="fa fa-chevron-up" aria-hidden="true"></i></span>
                     </th>
                     <th>
                         Код болезни
@@ -62,11 +62,6 @@
                         <td>{{person.inpatient_number}}</td>
                         <td>{{person.phone}}</td>
                     </tr>
-                <!--<tr>
-                    <td>
-                        <input type="submit" ng-click="archiveCtrl.test()">
-                    </td>
-                </tr>-->
                 </tbody>
             </table>
         </div>

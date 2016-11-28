@@ -1,52 +1,47 @@
 angular
     .module('doctorApp', ['ui.router','ngMaterial'])
     .constant('PATHDIR', 'development/app/doctor')
-    .config(function($stateProvider) { //Because $stateProvider is an Angular Provider, you must inject it into a .config() block using Angular 1 Dependency Injection.
+    .config(function($stateProvider, $locationProvider) { //Because $stateProvider is an Angular Provider, you must inject it into a .config() block using Angular 1 Dependency Injection.
         $stateProvider
             .state('inpatients',{
                 url: '/inpatients',
                 template: '<inpatients></inpatients>'
             })
-            .state('inpatients.general',{
-                url: '/general/:id',
-                template: '<general></general>'
-            })
 
-            .state('inpatient_treatment',{
-                url: '/inpatient_treatment/:id',
+            .state('inpatients.id',{
+                url: '/{id}',
                 template: '<inpatient-treatment></inpatient-treatment>'
             })
-                .state('inpatient_treatment.general',{
+                .state('inpatients.id.general',{
                     url: '/general',
                     template: '<general></general>'
                 })
-                .state('inpatient_treatment.analyzes',{
+                .state('inpatients.id.analyzes',{
                     url: '/analyzes',
                     template: '<analyzes></analyzes>'
                 })
-                .state('inpatient_treatment.dynamic',{
+                .state('inpatients.id.dynamic',{
                     url: '/dynamic',
                     template: '<dynamic></dynamic>'
                 })
-                .state('inpatient_treatment.prescriptions',{
+                .state('inpatients.id.prescriptions',{
                     url: '/prescriptions',
                     template: '<prescriptions></prescriptions>'
                 })
-                .state('inpatient_treatment.first_inspect',{
+                .state('inpatients.id.first_inspect',{
                     url: '/inspections',
                     template: '<first-inspect></first-inspect>'
                 })
-
-
 
             .state('emergency',{
                 url: '/emergency',
                 template: '<emergency></emergency>'
             })
-            .state('emergency_person',{
-                url: '/emergency_person/:id',
-                template: '<emergency-person></emergency-person>'
-            })
+                .state('emergency.id',{
+                    url: '/{id}',
+                    template: '<emergency-person></emergency-person>'
+                })
+
             .state('archive',{
                 url: '/archive',
                 template: '<archive></archive>'
@@ -58,7 +53,8 @@ angular
             .state('operations',{
                 url: '/operations',
                 template: '<operations></operations>'
-            })
+            });
+      /*  $locationProvider.html5Mode(true);*/
     })
     .controller('doctorAppController', function (doctorAppService, $scope) {
         var self = this;
