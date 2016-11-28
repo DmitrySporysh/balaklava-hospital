@@ -136,11 +136,10 @@ class PatientService implements PatientServiceInterface
                 'phone',
                 'health_workers.fio as attending_doctor_fio',
                 'chambers.number as chamber_number',
-                'hospital_departments.department_name',
-                'district_doctors.fio as district_doctor_fio'
+                'hospital_departments.department_name'
             ];
             $data = $this->inpatient_repo->getInpatientInfoGeneralInfo($inpatient_id, $columns,
-                ['received_patients', 'patients', 'health_workers', 'district_doctors', 'hospital_departments', 'chambers']);
+                ['received_patients', 'patients', 'health_workers', 'hospital_departments', 'chambers']);
             return $data;
         } catch (DALException $e) {
             $message = 'Error while creating withdraw inpatient request(DAL Error)'.$e->getMessage();
