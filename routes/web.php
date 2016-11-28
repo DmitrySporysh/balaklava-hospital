@@ -26,16 +26,15 @@ Route::get('doctor', function () {
     return view('doctor');
 });
 
-Route::get('/login', 'Auth\AuthController@showLoginForm');
+Route::get('login', function () {
+    return view('index');
+});
 
 
 Route::group(['prefix' => 'api'], function () {
     /*-------------------------------------------------------------------------------------------------
     *             Регистрация и Авторизация
     *------------------------------------------------------------------------------------------------- */
-
-    Route::get('/register', 'RegistrationController@showRegistrationForm');
-
     Route::post('/register', 'RegistrationController@register');
 
     Route::post('/login', 'Auth\AuthController@login');
