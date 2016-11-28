@@ -1,8 +1,8 @@
 <div class="content-header">
     <div class="container">
         <div class="content-header__title-block content-header__title-block_left">
-            <h3 class="content-header__title block-title">Имя</h3>
-            <span class="content-header__subtitle block-subtitle">Карта пациента</span>
+            <h3 class="content-header__title block-title">Личная карта</h3>
+            <span class="content-header__subtitle block-subtitle">Личная карта пациента</span>
         </div>
         <div class="content-header__add content-header__add_right add-block">
             <a ng-click="inpatientInfoCtrl.getDepartments(); inpatientInfoCtrl.getHospitals()" class='add-block__button button ml-15' data-toggle="modal" data-target="#WriteOutPatient"><span class="ti-plus add-block__icon"></span>Выписать</a>
@@ -72,14 +72,14 @@
                                     <td class="patient-form__value">
                                         <select class="patient-form__select" name="received_type" ng-model="inpatientInfoCtrl.write_out_patient.discharge_type">
                                             <option value="" selected="selected">-- Выберите вариант --</option>
-                                            <option value="По скорой">Выписан</option>
-                                            <option value="Планово">Перевод  в больницу</option>
-                                            <option value="Экстренно">Перевод в отделение</option>
-                                            <option value="По скорой">Умер</option>
+                                            <option value="Выписан">Выписан</option>
+                                            <option value="Перевод  в больницу">Перевод  в больницу</option>
+                                            <option value="Перевод в отделение">Перевод в отделение</option>
+                                            <option value="Умер">Умер</option>
                                         </select>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr ng-show="inpatientInfoCtrl.write_out_patient.discharge_type=='Перевод в отделение'">
                                     <td class="patient-form__label">Перевод в отедение</td>
                                     <td class="patient-form__value">
                                         <select class="patient-form__select" name="received_type" ng-model="inpatientInfoCtrl.write_out_patient.discharge_department_id">
@@ -88,7 +88,7 @@
                                         </select>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr ng-show="inpatientInfoCtrl.write_out_patient.discharge_type=='Перевод  в больницу'">
                                     <td class="patient-form__label">Перевод в больницу</td>
                                     <td class="patient-form__value">
                                         <select class="patient-form__select" name="received_type" ng-model="inpatientInfoCtrl.write_out_patient.discharge_hospital_id">

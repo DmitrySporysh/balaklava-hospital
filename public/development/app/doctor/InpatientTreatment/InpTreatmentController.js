@@ -54,6 +54,7 @@ angular
         InpatientTreatmentService.getProcedures(self.emPerson_id)
             .then(function(procedures){
                 self.procedures = procedures;
+                console.log(procedures);
             });
         InpatientTreatmentService.getOperations(self.emPerson_id)
             .then(function(operations){
@@ -63,8 +64,6 @@ angular
         self.newCondition = function (){
             InpatientTreatmentService.newCondition(self.emPerson_id, self.condition)
                 .then(function(response) {
-                    self.response = response;
-                    console.log(self.response);
                     self.inspections.unshift(response);
                 });
         };
@@ -72,8 +71,6 @@ angular
         self.newOperation = function (){
             InpatientTreatmentService.newOperation(self.emPerson_id, self.operation)
                 .then(function(response) {
-                    self.response = response;
-                    console.log(self.response);
                     self.operations.unshift(response);
                 });
         };
@@ -81,10 +78,13 @@ angular
         self.newProcedure = function (){
             InpatientTreatmentService.newProcedure(self.emPerson_id, self.procedure)
                 .then(function(response) {
-                    self.response = response;
-                    console.log(self.response);
                     self.procedures.unshift(response);
                 });
+        };
+
+        self.setShownProcedure = function (procedure_id){
+            console.log(procedure_id);
+            self.shownProcedure = self.procedures[procedure_id-1];
         };
     })
 

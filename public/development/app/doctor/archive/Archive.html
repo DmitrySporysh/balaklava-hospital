@@ -13,19 +13,43 @@
             <table class="search-table__table">
                 <thead class="search-table__heading">
                 <tr class="search-table__heading-name">
-                    <th>ФИО</th>
-                    <th>№ Страховки</th>
-                    <th>Пол</th>
-                    <th>Номер карточки</th>
-                    <th>Код болезни</th>
+                    <th>
+                        ФИО
+                        <span class="search-table_arrow"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                        <span class="search-table_arrow"><i class="fa fa-chevron-up" aria-hidden="true"></i></span>
+                    </th>
+                    <th>
+                        № Страховки
+                        <span class="search-table_arrow"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                        <span class="search-table_arrow"><i class="fa fa-chevron-up" aria-hidden="true"></i></span>
+                    </th>
+                    <th>
+                        Пол
+                    </th>
+                    <th>
+                        Номер карточки
+                        <span class="search-table_arrow"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                        <span class="search-table_arrow"><i class="fa fa-chevron-up" aria-hidden="true"></i></span>
+                    </th>
+                    <th>
+                        Код болезни
+                        <span class="search-table_arrow"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                        <span class="search-table_arrow"><i class="fa fa-chevron-up" aria-hidden="true"></i></span>
+                    </th>
                 </tr>
-                <!--<tr class="search-table__heading-filter">
-                    <th><input ng-blur="change()" ng-model="filter.fio" class="search-table__input" name="work_place" value="" type="text"></th>
-                    <th><input ng-blur="change()" ng-model="filter.insurance_number" class="search-table__input" name="work_place" value="" type="text"></th>
-                    <th><input ng-blur="change()" ng-model="filter.sex" class="search-table__input" name="work_place" value="" type="text"></th>
-                    <th><input ng-blur="change()" ng-model="filter.inpatient_number" class="search-table__input" name="work_place" value="" type="text"></th>
+                <tr class="search-table__heading-filter">
+                    <th><input ng-blur="archiveCtrl.change()" ng-model="archiveCtrl.filter_info.fio" class="search-table__input" name="work_place" value="" type="text"></th>
+                    <th><input ng-blur="archiveCtrl.change()" ng-model="archiveCtrl.filter_info.insurance_number" class="search-table__input" name="work_place" value="" type="text"></th>
+                    <th>
+                        <select ng-change="archiveCtrl.change()" class="patient-form__select search-table__select" ng-model="archiveCtrl.filter_info.sex">
+                            <option value="" selected="selected">-- Выберите вариант --</option>
+                            <option value="Женский" selected="selected">Женский</option>
+                            <option value="Мужской">Мужской</option>
+                        </select>
+                    </th>
+                    <th><input ng-blur="archiveCtrl.change()" ng-model="archiveCtrl.filter_info.inpatient_number" class="search-table__input" name="work_place" value="" type="text"></th>
                     <th><input  class="search-table__input" name="work_place" value="" type="text"></th>
-                </tr>-->
+                </tr>
                 </thead>
                 <tbody class='search-table__value'>
                     <!--<tr ng-repeat="patient in patients_info| filter:searchText">-->

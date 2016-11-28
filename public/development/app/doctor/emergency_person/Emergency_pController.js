@@ -11,6 +11,11 @@ angular
                 self.patient_info = info[0];
             });
 
+        DoctorEmergencyPersonService.getDepartments()
+            .then(function(info) {
+                self.departments = info;
+            });
+
         self.saveProtocol = function (){
             DoctorEmergencyPersonService.postInfoFromEmergency(self.patientProtocol,self.emPerson_id)
                 .then(function(response) {

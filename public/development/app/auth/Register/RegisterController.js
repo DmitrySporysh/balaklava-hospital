@@ -3,13 +3,13 @@ angular
     .controller('RegisterCtrl', function(RegisterService, $sessionStorage) {
         var self = this;
 
-        this.login = function() {
-            loginService.login(this.login_info.login, this.login_info.password)
+
+        self.register = function () {
+            RegisterService.registration(self.register_info)
                 .then (function(access) {
-                    if (access.success) {
-                        loginService.cahngeSessionInfo();
-                        loginService.redirection(access.post);
-                    }
+                    self.answer = access;
+                    console.log(access);
                 });
         };
+
     });

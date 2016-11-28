@@ -41,6 +41,8 @@ body {
     font-size: 14px;
     color: #fff;
     border: none;
+    margin: 0 auto;
+    display: block;
     margin-top: 30px;
     background: rgba(37, 188, 233, 1);
     text-transform: uppercase;
@@ -66,5 +68,35 @@ body {
 
 .transition-1 {
     transition: 1s;
+}
+
+
+.register-container__fields {
+    margin: 0 auto;
+    width: 550px;
+    padding: 35px;
+    padding-top: 0px;
+}
+
+.input__label {
+    width: 130px;
+}
+
+.register-container__fields .login-container__input {
+    padding-left: 160px;
+}
+
+
+.login_ref{
+    font-family: "Roboto";
+    color: #fff;
+    display: block;
+    text-align: center;
+    font-weight: 100;
+}
+
+.login_ref:hover {
+    color: white;
+    text-decoration: none;
 }
 

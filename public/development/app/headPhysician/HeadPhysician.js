@@ -15,9 +15,6 @@ angular
                     url: '/general',
                     template: '<general></general>'
                 })
-
-        
-        
     })
     .controller('headPhysicianAppController', function (headPhysicianAppService, $scope) {
         var self = this;
@@ -26,7 +23,7 @@ angular
             headPhysicianAppService.logout();
         }
     })
-    .service('headPhysicianAppService', function ($http, $q) {
+    .service('headPhysicianAppService', function ($http, $q, $window) {
 
         function logout() {
             var defer=$q.defer();
