@@ -26,6 +26,7 @@ Route::get('doctor', function () {
     return view('doctor');
 });
 
+
 Route::get('/login', 'Auth\AuthController@showLoginForm');
 
 

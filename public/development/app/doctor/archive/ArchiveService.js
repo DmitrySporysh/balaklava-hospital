@@ -5,7 +5,7 @@ angular
         function getArchivePeople() {
             var defer=$q.defer();
 
-            $http.get('doctor/archive')
+            $http.get('api/doctor/archive')
                 .success(function(patients) {
                     defer.resolve(patients);
 
@@ -20,7 +20,7 @@ angular
         function filtering(filter_info) {
             var defer=$q.defer();
 
-            $http({method:'GET', url:'/doctor/archive', params: filter_info})
+            $http({method:'GET', url:'api/doctor/archive', params: filter_info})
                 .success(function(response) {
                     defer.resolve(response);
                 })

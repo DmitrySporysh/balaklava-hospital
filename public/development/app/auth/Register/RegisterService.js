@@ -5,7 +5,7 @@ angular
         function registration(info) {
             var defer=$q.defer();
 
-            $http.post("/register", info)
+            $http.post("api/register", info)
                 .success(function (answ) {
                     defer.resolve(answ);
                 }).error(function(err) {

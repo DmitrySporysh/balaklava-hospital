@@ -3,6 +3,10 @@ angular
     .constant('PATHDIR', 'development/app/doctor')
     .config(function($stateProvider, $locationProvider) { //Because $stateProvider is an Angular Provider, you must inject it into a .config() block using Angular 1 Dependency Injection.
         $stateProvider
+            .state('null',{
+                url: '',
+                template: '<inpatients></inpatients>'
+            })
             .state('inpatients',{
                 url: '/inpatients',
                 template: '<inpatients></inpatients>'
@@ -76,7 +80,7 @@ angular
                     defer.reject(err);
                 })
                 .then(function(){
-                    $window.location.href =  "/login#/login";
+                    $window.location.href =  "/";
                 });
             console.log(defer.promise);
         }

@@ -5,7 +5,7 @@ angular
         function getAllNotReadyAnalyzes() {
             var defer=$q.defer();
 
-            $http.get('medical_nurse/analyzes/getAllNotReadyAnalyzes')
+            $http.get('api/medical_nurse/analyzes/getAllNotReadyAnalyzes')
                 .success(function(inpatients) {
                     defer.resolve(inpatients);
                 })
@@ -18,7 +18,7 @@ angular
         function postAnalysesResult(date, id) {
             var defer=$q.defer();
             date.analyses_id = id;
-            $http.post('medical_nurse/analyzes/addAnalysisResult',date)
+            $http.post('api/medical_nurse/analyzes/addAnalysisResult',date)
                 .success(function(response) {
                     defer.resolve(response);
                 })

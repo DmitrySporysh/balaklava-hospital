@@ -7,15 +7,14 @@ angular
                 url: '/login',
                 template: '<login-form></login-form>'
             })
-            .state('/',{
-                url: '/',
+            .state('null',{
+                url: '',
                 template: '<login-form></login-form>'
             })
             .state('registration',{
                 url: '/registration',
                 template: '<register-form></register-form>'
             });
-        $locationProvider.html5Mode(true);
     });
 
     

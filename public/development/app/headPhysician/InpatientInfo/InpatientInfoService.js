@@ -5,7 +5,7 @@ angular
         function getInpatients() {
             var defer=$q.defer();
 
-            $http.get('department_chief/inpatients')
+            $http.get('api/department_chief/inpatients')
                 .success(function(inpatients) {
                     defer.resolve(inpatients);
 
@@ -19,7 +19,7 @@ angular
         function getGeneralInfo(id) {
             var defer=$q.defer();
 
-            $http.get('department_chief/inpatient/'+id)
+            $http.get('api/department_chief/inpatient/'+id)
                 .success(function(generalInfo) {
                     defer.resolve(generalInfo);
                 })
@@ -33,7 +33,7 @@ angular
         function getDoctors() {
             var defer=$q.defer();
 
-            $http.get('department_chief/doctors')
+            $http.get('api/department_chief/doctors')
                 .success(function(doctors) {
                     defer.resolve(doctors);
                 })
@@ -47,7 +47,7 @@ angular
         function getDepartments() {
             var defer=$q.defer();
 
-            $http.get('department_chief/departments')
+            $http.get('api/department_chief/departments')
                 .success(function(doctors) {
                     defer.resolve(doctors);
                 })
@@ -60,7 +60,7 @@ angular
         function getHospitals() {
             var defer=$q.defer();
 
-            $http.get('department_chief/hospitals')
+            $http.get('api/department_chief/hospitals')
                 .success(function(doctors) {
                     defer.resolve(doctors);
                 })
@@ -75,7 +75,7 @@ angular
 
             data.inpatient_id = p_id;
 
-            $http.post('department_chief/addAttendingDoctorToInpatient',data)
+            $http.post('api/department_chief/addAttendingDoctorToInpatient',data)
                 .success(function(response) {
                     defer.resolve(response);
                 })
@@ -90,7 +90,7 @@ angular
 
             data.inpatient_id = p_id;
 
-            $http.post('department_chief/dischargeInpatient',data)
+            $http.post('api/department_chief/dischargeInpatient',data)
                 .success(function(response) {
                     defer.resolve(response);
                 })

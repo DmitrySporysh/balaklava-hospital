@@ -5,7 +5,7 @@ angular
         function getAllNotReadyOperations() {
             var defer=$q.defer();
 
-            $http.get('doctor/operation/getAllNotReadyOperations')
+            $http.get('api/doctor/operation/getAllNotReadyOperations')
                 .success(function(inpatients) {
                     defer.resolve(inpatients);
                 })
@@ -19,7 +19,7 @@ angular
             var defer=$q.defer();
             date.operation_id  = id;
 
-            $http.post('doctor/operation/addOperationResult',date)
+            $http.post('api/doctor/operation/addOperationResult',date)
                 .success(function(response) {
                     defer.resolve(response);
                 })
