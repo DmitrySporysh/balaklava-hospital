@@ -26,6 +26,9 @@ Route::get('doctor', function () {
     return view('doctor');
 });
 
+Route::get('/login', 'Auth\AuthController@showLoginForm');
+
+
 Route::group(['prefix' => 'api'], function () {
     /*-------------------------------------------------------------------------------------------------
     *             Регистрация и Авторизация
@@ -34,8 +37,6 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('/register', 'RegistrationController@showRegistrationForm');
 
     Route::post('/register', 'RegistrationController@register');
-
-    Route::get('/login', 'Auth\AuthController@showLoginForm');
 
     Route::post('/login', 'Auth\AuthController@login');
 
