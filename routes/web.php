@@ -11,21 +11,6 @@
 |
 */
 
-//Auth-Register routes
-
-Route::get('/register', 'RegistrationController@showRegistrationForm');
-
-Route::post('/register', 'RegistrationController@register');
-
-Route::get('/login', 'Auth\AuthController@showLoginForm');
-
-Route::post('/login', 'Auth\AuthController@login');
-
-Route::post('/logout', 'Auth\AuthController@logout');
-
-/*
- *
- */
 Route::get('/', function () {
     return view('index');
 });
@@ -37,97 +22,113 @@ Route::get('head_physician', function () {
     return view('headPhysician');
 });
 
-/*-------------------------------------------------------------------------------------------------
-*             ВРАЧИ
-*------------------------------------------------------------------------------------------------- */
-Route::group(['prefix' => 'doctor'], function () {
-    /*
-     * лечащий врач
-     */
-    Route::group(['prefix' => 'inpatient'], function () {
-        Route::get('all', 'DoctorController@getDoctorInpatients'); //doctor#/patients
-        Route::get('{id}', 'DoctorController@getInpatientInfo');
-        Route::get('{id}/allInfo', 'DoctorController@getInpatientAllInfo');
-        Route::get('{id}/inspection_protocol', 'DoctorController@getInpatientInspectionProtocol');
-        Route::get('{id}/medical_appointments', 'DoctorController@getInpatientMedicalAppointments');
-        Route::get('{id}/inspections', 'DoctorController@getInpatientInspections');
-        Route::get('{id}/analyzes', 'DoctorController@getInpatientAnalyzes');
-        Route::get('{id}/procedures', 'DoctorController@getInpatientProcedures');
-        Route::get('{id}/operations', 'DoctorController@getInpatientOperations');
-
-        Route::post('addAnalysis', 'DoctorController@addNewInpatientAnalysis');
-        Route::post('addProcedure', 'DoctorController@addNewInpatientProcedure');
-        Route::post('addInspection', 'DoctorController@addNewInpatientInspection');
-        Route::post('addOperation', 'DoctorController@addNewInpatientOperation');
-        Route::post('addMedicalAppointment', 'DoctorController@addNewInpatientMedicalAppointment');
-    });
-
-    /*
-     * дежурный врач
-     */
-    Route::group(['prefix' => 'emergency'], function () {
-        Route::get('/', 'DoctorController@getAwaitingPrimaryInspectionPatients');
-        Route::get('received_patient/{id}', 'DoctorController@getReceivedPatient');
-        Route::post('addNewInspectionProtocol', 'DoctorController@addNewInspectionProtocol');
-    });
-    /*
-     * операционый врач
-     */
-    Route::group(['prefix' => 'operation'], function () {
-        Route::get('getAllNotReadyOperations', 'DoctorController@getAllNotReadyOperations');
-        Route::post('addOperationResult', 'DoctorController@addOperationResult');
-    });
-
-    /*
-     * общие запросы
-     */
-    Route::get('/', function () {
-        return view('doctor');
-    });
-    Route::get('archive', 'DoctorController@getPatientsArchive');
-    Route::get('departments', 'DoctorController@getAllDepartments');
+Route::get('doctor', function () {
+    return view('doctor');
 });
 
-/*-------------------------------------------------------------------------------------------------
-*             МЕДСЕСТРЫ
-*------------------------------------------------------------------------------------------------- */
-Route::group(['prefix' => 'medical_nurse'], function () {
+Route::group(['prefix' => 'api'], function () {
+    /*-------------------------------------------------------------------------------------------------
+    *             Регистрация и Авторизация
+    *------------------------------------------------------------------------------------------------- */
 
-    /*
-     * медсестры регистратуры
-     */
-    Route::group(['prefix' => 'emergency'], function () {
-        Route::get('received_patients', 'MedicalNurseController@getReceivedPatients');
-        Route::post('addNewInpatient', 'MedicalNurseController@addNewInpatient');
+    Route::get('/register', 'RegistrationController@showRegistrationForm');
+
+    Route::post('/register', 'RegistrationController@register');
+
+    Route::get('/login', 'Auth\AuthController@showLoginForm');
+
+    Route::post('/login', 'Auth\AuthController@login');
+
+    Route::post('/logout', 'Auth\AuthController@logout');
+
+    /*-------------------------------------------------------------------------------------------------
+    *             ВРАЧИ
+    *------------------------------------------------------------------------------------------------- */
+    Route::group(['prefix' => 'doctor'], function () {
+        /*
+         * лечащий врач
+         */
+        Route::group(['prefix' => 'inpatient'], function () {
+            Route::get('all', 'DoctorController@getDoctorInpatients'); //doctor#/patients
+            Route::get('{id}', 'DoctorController@getInpatientInfo');
+            Route::get('{id}/allInfo', 'DoctorController@getInpatientAllInfo');
+            Route::get('{id}/inspection_protocol', 'DoctorController@getInpatientInspectionProtocol');
+            Route::get('{id}/medical_appointments', 'DoctorController@getInpatientMedicalAppointments');
+            Route::get('{id}/inspections', 'DoctorController@getInpatientInspections');
+            Route::get('{id}/analyzes', 'DoctorController@getInpatientAnalyzes');
+            Route::get('{id}/procedures', 'DoctorController@getInpatientProcedures');
+            Route::get('{id}/operations', 'DoctorController@getInpatientOperations');
+
+            Route::post('addAnalysis', 'DoctorController@addNewInpatientAnalysis');
+            Route::post('addProcedure', 'DoctorController@addNewInpatientProcedure');
+            Route::post('addInspection', 'DoctorController@addNewInpatientInspection');
+            Route::post('addOperation', 'DoctorController@addNewInpatientOperation');
+            Route::post('addMedicalAppointment', 'DoctorController@addNewInpatientMedicalAppointment');
+        });
+
+        /*
+         * дежурный врач
+         */
+        Route::group(['prefix' => 'emergency'], function () {
+            Route::get('/', 'DoctorController@getAwaitingPrimaryInspectionPatients');
+            Route::get('received_patient/{id}', 'DoctorController@getReceivedPatient');
+            Route::post('addNewInspectionProtocol', 'DoctorController@addNewInspectionProtocol');
+        });
+        /*
+         * операционый врач
+         */
+        Route::group(['prefix' => 'operation'], function () {
+            Route::get('getAllNotReadyOperations', 'DoctorController@getAllNotReadyOperations');
+            Route::post('addOperationResult', 'DoctorController@addOperationResult');
+        });
+
+        /*
+         * общие запросы
+         */
+
+        Route::get('archive', 'DoctorController@getPatientsArchive');
+        Route::get('departments', 'DoctorController@getAllDepartments');
     });
 
-    /*
-     * медсестры, принимающие анализы
-     */
-    Route::group(['prefix' => 'analyzes'], function () {
-        Route::get('getAllNotReadyAnalyzes', 'MedicalNurseController@getAllNotReadyAnalyzes');
-        Route::post('addAnalysisResult', 'MedicalNurseController@addAnalysisResult');
+    /*-------------------------------------------------------------------------------------------------
+    *             МЕДСЕСТРЫ
+    *------------------------------------------------------------------------------------------------- */
+    Route::group(['prefix' => 'medical_nurse'], function () {
+
+        /*
+         * медсестры регистратуры
+         */
+        Route::group(['prefix' => 'emergency'], function () {
+            Route::get('received_patients', 'MedicalNurseController@getReceivedPatients');
+            Route::post('addNewInpatient', 'MedicalNurseController@addNewInpatient');
+        });
+
+        /*
+         * медсестры, принимающие анализы
+         */
+        Route::group(['prefix' => 'analyzes'], function () {
+            Route::get('getAllNotReadyAnalyzes', 'MedicalNurseController@getAllNotReadyAnalyzes');
+            Route::post('addAnalysisResult', 'MedicalNurseController@addAnalysisResult');
+        });
+
+        Route::get('archive', 'MedicalNurseController@getPatientsArchive');
     });
 
-    Route::get('archive', 'MedicalNurseController@getPatientsArchive');
+    /*-------------------------------------------------------------------------------------------------
+    *             ЗАВ ОТДЕЛЕНИЯ
+    *------------------------------------------------------------------------------------------------- */
+    Route::group(['prefix' => 'department_chief'], function () {
+        Route::get('inpatients', 'DepartmentChiefController@getDepartmentInpatients');
+        Route::get('inpatient/{id}', 'DepartmentChiefController@getInpatientInfo');
+        Route::get('doctors', 'DepartmentChiefController@getDepartmentDoctors');
+        Route::get('departments', 'DepartmentChiefController@getAllDepartments');
+        Route::get('hospitals', 'DepartmentChiefController@getAllHospitals');
+        Route::get('archive', 'DepartmentChiefController@getPatientsArchive');
+
+        Route::post('addAttendingDoctorToInpatient', 'DepartmentChiefController@addAttendingDoctorToInpatient');
+        Route::post('dischargeInpatient', 'DepartmentChiefController@dischargeInpatientFromDepartment');
+    });
 });
-
-/*-------------------------------------------------------------------------------------------------
-*             ЗАВ ОТДЕЛЕНИЯ
-*------------------------------------------------------------------------------------------------- */
-Route::group(['prefix' => 'department_chief'], function () {
-    Route::get('inpatients', 'DepartmentChiefController@getDepartmentInpatients');
-    Route::get('inpatient/{id}', 'DepartmentChiefController@getInpatientInfo');
-    Route::get('doctors', 'DepartmentChiefController@getDepartmentDoctors');
-    Route::get('departments', 'DepartmentChiefController@getAllDepartments');
-    Route::get('hospitals', 'DepartmentChiefController@getAllHospitals');
-    Route::get('archive', 'DepartmentChiefController@getPatientsArchive');
-
-    Route::post('addAttendingDoctorToInpatient', 'DepartmentChiefController@addAttendingDoctorToInpatient');
-    Route::post('dischargeInpatient', 'DepartmentChiefController@dischargeInpatientFromDepartment');
-});
-
-
 
 //TODO Сервисы для моб приложения
 /*-------------------------------------------------------------------------------------------------

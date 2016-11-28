@@ -17,6 +17,7 @@ use App\Repositories\Interfaces\PatientRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
+use Validator;
 
 
 class DepartmentChiefService implements DepartmentChiefServiceInterface
@@ -29,6 +30,7 @@ class DepartmentChiefService implements DepartmentChiefServiceInterface
     private $departmentRepository;
     private $hospitalRepository;
     private $dischargeRepository;
+    private $validator;
 
 
     public function __construct(UserRepositoryInterface $user_repo,
@@ -117,9 +119,37 @@ class DepartmentChiefService implements DepartmentChiefServiceInterface
     /*
      * назначение пациенту нового лечащего врача
      */
+    private function validateDataForAddingAttendingDoctorToInpatientRequest($requestData)
+    {
+        $messages = array(
+            'doctor_id.required' => "Поле 'id врача' должно быть заполнено",
+            'doctor_id.exists'=>'Доктора с таким id не существует',
+            'inpatient_id.required' => "Поле 'id пациента' должно быть заполнено",
+            'inpatient_id.exists' => "Пациента с таким id не существует",
+        );
+        try {
+            $this->validator = Validator::make($requestData, [
+                'doctor_id' => 'required|exists:health_workers,id',
+                'inpatient_id' => 'required|exists:inpatients,id'
+            ], $messages);
+            if ($this->validator->fails()) {
+                return $this->validator->messages();
+            }
+        } catch (Exception $e) {
+            $message = 'Ошибка валидации полей';
+            throw new DepartmentChiefServiceException($message, 0, $e);
+        }
+    }
+
     public function addAttendingDoctorToInpatient($requestData)
     {
         try {
+            $validationMessages = $this->validateDataForAddingAttendingDoctorToInpatientRequest($requestData);
+            if(!empty($validationMessages))
+            {
+                return ['success' => false, 'data' => null, 'message' => $validationMessages ];
+            }
+
             $this->inpatient_repo->update(['attending_doctor_id' => $requestData['doctor_id']], $requestData['inpatient_id']);
             return ['success' => true, 'result' => 'Лечащий врач успешно назначен пациенту'];
         } catch (DALException $e) {
@@ -138,9 +168,40 @@ class DepartmentChiefService implements DepartmentChiefServiceInterface
         return $requestData;
     }
 
+    private function validateDischargeData($requestData)
+    {
+        $messages = array(
+            'doctor_id.required' => "Поле 'id врача' должно быть заполнено",
+            'doctor_id.exists'=>'Доктора с таким id не существует',
+            'inpatient_id.required' => "Поле 'id пациента' должно быть заполнено",
+            'inpatient_id.exists' => "Пациента с таким id не существует",
+        );
+        try {
+            $this->validator = Validator::make($requestData, [
+                'inpatient_id' => 'required|exists:inpatients,id',
+                'result_epicrisis' => 'required|max:255',
+                'discharge_type' => 'required|in:Выписан,Перевод в больницу,Перевод в отделение,Умер',
+                'discharge_department_id' => 'required_if:discharge_type,Перевод в отделение',
+                'discharge_hospital_id' => 'required_if:discharge_type,Перевод в больницу'
+            ], $messages);
+            if ($this->validator->fails()) {
+                return $this->validator->messages();
+            }
+        } catch (Exception $e) {
+            $message = 'Ошибка валидации полей';
+            throw new DepartmentChiefServiceException($message, 0, $e);
+        }
+    }
+
     public function dischargeInpatientFromDepartment($requestData)
     {
         try {
+            $validationMessages = $this->validateDischargeData($requestData);
+            if(!empty($validationMessages))
+            {
+                return ['success' => false, 'data' => null, 'message' => $validationMessages ];
+            }
+
             $dischargeDataFromRequest = $this->getDischargeDataFromRequest($requestData);
             $newDischarge = $this->dischargeRepository->create($dischargeDataFromRequest);
             return ['success' => true, 'data' => $newDischarge, 'message' => 'Пациент успешно выписан'];
