@@ -17,11 +17,12 @@ angular
             url: '/analyzes'
         });
 
-        var fd=new FormData();
+        var fd=new FileUploader({
+            url: 'test'
+        });
         self.postAnalysesResult = function () {
-            fd.append('file',self.file);
-            fd.append("date",JSON.stringify(self.analysesResult));
-            /*console.log(fd);*/
+            
+            console.log(fd);
             /*AnalyzesService.postAnalysesResult(this.analysesResult, self.analyses_id);*/
             AnalyzesService.postAnalysesResult(fd, self.analyses_id);
         }
