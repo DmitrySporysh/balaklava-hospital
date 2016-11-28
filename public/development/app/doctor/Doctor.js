@@ -72,7 +72,7 @@ angular
         function logout() {
             var defer=$q.defer();
 
-            $http.post('/logout',{})
+            $http.post('/api/logout',{})
                 .success(function(response) {
                     defer.resolve(response);
                 })
