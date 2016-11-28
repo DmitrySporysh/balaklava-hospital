@@ -6,6 +6,7 @@ angular
             this.login = function() {
                 loginService.login(this.login_info.login, this.login_info.password)
                     .then (function(access) {
+                        console.log(access);
                         if (access.success) {
                             loginService.cahngeSessionInfo();
                             loginService.redirection(access.post);

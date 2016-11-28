@@ -1,12 +1,15 @@
 angular
     .module('nurseApp')
-    .controller('AnalyzesCtrl', function(AnalyzesService) {
+    .controller('AnalyzesCtrl', function($scope, AnalyzesService, FileUploader) {
         var self = this;
+
+        self.uploader = new FileUploader({
+            url: 'medical_nurse/analyzes/addAnalysisResult'
+        });
 
         AnalyzesService.getAllNotReadyAnalyzes()
             .then(function(analyses) {
                 self.analyses = analyses;
-                console.log(analyses);
             });
 
         self.setShownAnalyses = function (index) {
@@ -15,6 +18,11 @@ angular
         };
 
         self.postAnalysesResult = function () {
+
+
+            console.log(self.uploader.queue);
+/*
             AnalyzesService.postAnalysesResult(this.analysesResult, self.analyses_id);
+*/
         }
     });

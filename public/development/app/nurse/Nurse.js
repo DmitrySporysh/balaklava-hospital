@@ -1,5 +1,5 @@
 angular
-    .module('nurseApp', ['ui.router','ngMaterial'])
+    .module('nurseApp', ['ui.router','ngMaterial','angularFileUpload'])
     .constant('PATHDIR', 'development/app/nurse')
     .config(function($stateProvider) { //Because $stateProvider is an Angular Provider, you must inject it into a .config() block using Angular 1 Dependency Injection.
         $stateProvider
