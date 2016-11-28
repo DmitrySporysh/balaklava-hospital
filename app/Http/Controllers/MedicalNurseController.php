@@ -27,7 +27,7 @@ class MedicalNurseController extends Controller
         $this->middleware('checkPost:' . UserRole::NURSE);
 
         $this->medicalNurseService = $medicalNurseService;
-        $this->patient_service = $patientService;
+        $this->patientService = $patientService;
     }
 
     public function getPatientsArchive(Request $request)
