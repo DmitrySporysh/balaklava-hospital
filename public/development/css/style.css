@@ -617,6 +617,24 @@ body {
     color: #25bce9;
 }
 
+.vert-menu__item {
+    cursor: pointer;
+    color: #888;
+}
+
+.vert-menu__item:hover {
+    text-decoration: none;
+}
+
+.vert-menu__item:focus {
+    text-decoration: none;
+    color: #22bae7;
+}
+
+.vert-menu__item_active {
+    color: #22bae7;
+}
+
 .tab-area {
     width: 70%;
     float: right;

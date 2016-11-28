@@ -2,6 +2,44 @@
 <ul class="accordion">
     <li>
         <div class="accordion__title  accordion__title_active">
+            <span class="accordion__icon ti-support"></span>Информация о стационаре
+        </div>
+        <div  class="accordion__content">
+            <div class="plain-table__table-wrapper clearfix">
+                <table class="plain-table__table">
+                    <tbody class='plain-table__value plain-table__value_non-bordered'>
+                    <tr>
+                        <td class="patient-form__label">Отделение</td>
+                        <td class="patient-form__value">
+                            <span >{{generalCtrl.inpatient_info.department_name}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Диагноз</td>
+                        <td class="patient-form__value">
+                            <span >{{generalCtrl.inpatient_info.diagnosis}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Лечащий врач</td>
+                        <td class="patient-form__value">
+                            <span >{{generalCtrl.inpatient_info.attending_doctor_fio}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Палата</td>
+                        <td class="patient-form__value">
+                            <span >{{generalCtrl.inpatient_info.chamber_number}}</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="accordion__title  accordion__title_active">
             <span class="accordion__icon ti-support"></span>Основные данные
         </div>
         <div  class="accordion__content">

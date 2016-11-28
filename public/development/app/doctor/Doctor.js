@@ -7,6 +7,11 @@ angular
                 url: '/inpatients',
                 template: '<inpatients></inpatients>'
             })
+            .state('inpatients.general',{
+                url: '/general/:id',
+                template: '<general></general>'
+            })
+
             .state('inpatient_treatment',{
                 url: '/inpatient_treatment/:id',
                 template: '<inpatient-treatment></inpatient-treatment>'
@@ -31,6 +36,8 @@ angular
                     url: '/inspections',
                     template: '<first-inspect></first-inspect>'
                 })
+
+
 
             .state('emergency',{
                 url: '/emergency',
