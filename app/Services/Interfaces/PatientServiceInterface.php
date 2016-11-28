@@ -12,8 +12,6 @@ interface PatientServiceInterface
 
     public function getInpatientGeneralInfo($inpatient_id);
 
-    public function getInpatientWithGeneralInfoAndAttendingDoctor($inpatient_id);
-
     public function getInpatientAllInfo($inpatient_id);
 
     public function getInpatientInspectionProtocolInfo($inpatient_id);

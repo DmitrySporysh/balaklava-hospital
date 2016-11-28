@@ -53,8 +53,12 @@
                             </tr>
                             <tr>
                                 <td>Семейное положение</td>
-                                <td>
-                                    <input ng-model="newPatientCtrl.patient_info.marital_status"  class="patient-form__input" name="marital_status" value="" title="Person Name" type="text">
+                                <td class="patient-form__value">
+                                    <select class="patient-form__select" name="marital_status" ng-model="newPatientCtrl.patient_info.marital_status">
+                                        <option value="" selected="selected">-- Выберите вариант --</option>
+                                        <option value="Не в браке" selected="selected">Не в браке</option>
+                                        <option value="В браке" selected="selected">В браке</option>
+                                    </select>
                                 </td>
                             </tr>
                             <tr>

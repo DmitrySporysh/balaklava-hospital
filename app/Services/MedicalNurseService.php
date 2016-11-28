@@ -13,6 +13,7 @@ use App\Repositories\Interfaces\UserRepositoryInterface;
 use Exception;
 
 use Debugbar;
+use Validator;
 
 
 class MedicalNurseService implements MedicalNurseServiceInterface
@@ -22,7 +23,7 @@ class MedicalNurseService implements MedicalNurseServiceInterface
     private $inpatient_repo;
     private $received_patient_repo;
     private $analysisRepository;
-
+    private $validator;
 
     public function __construct(UserRepositoryInterface $user_repo,
                                 PatientRepositoryInterface $patient_repo,
@@ -100,11 +101,76 @@ class MedicalNurseService implements MedicalNurseServiceInterface
         return $data;
     }
 
+    private function validatePatientData($patientData)
+    {
+        $messages = array(
+            'fio.required' => "Поле 'fio' должно быть заполнено",
+            'fio.between' => "Поле 'fio' должно быть от 8 до 255 символов",
+
+            'sex.required' => "Поле 'sex' должно быть заполнено",
+            'sex.in' => "Поле 'sex' должно иметь значение 'Мужской' или 'Женский'",
+
+            'work_place.required' => "Поле 'work_place' должно быть заполнено",
+            'work_place.max' => "Поле 'work_place' должно быть не больше 255 символов",
+
+            'birth_date.required' => "Поле 'birth_date' должно быть заполнено",
+            'birth_date.date' => "Поле 'birth_date' должно иметь формат даты",
+
+            'marital_status.required' => "Поле 'marital_status' должно быть заполнено",
+            'marital_status.in' => "Поле 'marital_status' должно иметь значение 'В браке' или 'Не в браке'",
+
+            'residential_address.required' => "Поле 'residential_address' должно быть заполнено",
+            'residential_address.max' => "Поле 'residential_address' должно быть не больше 255 символов",
+
+            'registration_address.required' => "Поле 'registration_address' должно быть заполнено",
+            'registration_address.max' => "Поле 'registration_address' должно быть не больше 255 символов",
+
+            'phone.required' => "Поле 'phone' должно быть заполнено",
+            'phone.between' => "Поле 'phone' должно быть от 11 до 18 символов",
+
+            'received_type.required' => "Поле 'received_type' должно быть заполнено",
+            'received_type.in' => "Поле 'received_type' должно иметь значение 'Планово', 'Экстренно' или 'По скорой'",
+
+            'insurance_number.required' => "Поле 'insurance_number' должно быть заполнено",
+            'insurance_number.max' => "Поле 'insurance_number' должно быть не больше 16 символов",
+
+            'complaints.required' => "Поле 'complaints' должно быть заполнено",
+            'complaints.max' => "Поле 'complaints' должно быть не больше 255 символов"
+
+        );
+        try {
+            $this->validator = Validator::make($patientData, [
+                'fio' => 'required|between:8,255',
+                'sex' => 'required|in:Мужской,Женский',
+                'work_place' => 'required|max:255',
+                'birth_date' => 'required|date',
+                'marital_status' => 'required|in:В браке,Не в браке',
+                'residential_address' => 'required|max:255',
+                'registration_address' => 'required|max:255',
+                'phone' => 'required|between:11,18',
+                'received_type' => 'required|in:Планово,Экстренно,По скорой',
+                'insurance_number' => 'required|max:16',
+                'complaints' => 'required|max:255'
+            ], $messages);
+            if ($this->validator->fails()) {
+                return $this->validator->messages();
+            }
+        } catch (Exception $e) {
+            $message = 'Ошибка валидации полей';
+            throw new EmergencyServiceException($message, 0, $e);
+        }
+    }
 
     public function addNewPatient($requestData, $registration_nurse_id)
     {
         try {
-            $patient_id = $this->checkPatientExists($requestData->insurance_number);
+            $validationMessages = $this->validatePatientData($requestData);
+            if(!empty($validationMessages))
+            {
+                return ['success' => false, 'data' => null, 'message' => $validationMessages ];
+            }
+
+            $patient_id = $this->checkPatientExists($requestData['insurance_number']);
 
             if ($patient_id != null) {
                 $received_patient_data = $this->getReceivedPatientDataFromRequest($requestData, $registration_nurse_id, $patient_id);
@@ -133,12 +199,39 @@ class MedicalNurseService implements MedicalNurseServiceInterface
         return $data;
     }
 
+    private function validateAnalysisResultData($analysisResult_data)
+    {
+        $messages = array(
+            'analyses_id.required' => "Поле 'id анализа' должно быть заполнено",
+            'analyses_id.exists'=>'Анализа с таким id не существует',
+            'result_description.required' => "Поле 'описание результата' должно быть заполнено",
+            'result_description.max' => "Поле 'описание результата' должно быть не больше 255 символов",
+        );
+        try {
+            $this->validator = Validator::make($analysisResult_data, [
+                'analyses_id' => 'required|exists:analyzes,id',
+                'result_description' => 'required|max:255'
+            ], $messages);
+            if ($this->validator->fails()) {
+                return $this->validator->messages();
+            }
+        } catch (Exception $e) {
+            $message = 'Ошибка валидации полей';
+            throw new EmergencyServiceException($message, 0, $e);
+        }
+    }
 
     public function addAnalysisResult($requestData, $nurse_id)
     {
         try {
-            $dataForUpdate = $this->getAnalysisDataFromRequest($requestData, $nurse_id);
-            $this->analysisRepository->update($dataForUpdate, $requestData['analyses_id']);
+            $validationMessages = $this->validateAnalysisResultData($requestData);
+            if(!empty($validationMessages))
+            {
+                return ['success' => false, 'data' => null, 'message' => $validationMessages ];
+            }
+
+            $analysisResultData = $this->getAnalysisDataFromRequest($requestData, $nurse_id);
+            $this->analysisRepository->update($analysisResultData, $requestData['analyses_id']);
             return ['success' => true, 'message' => "Результат анализа успешно сохранен"];
         } catch (DALException $e) {
             $message = 'Error while creating withdraw analysis request(DAL Error)' . $e->getMessage();
