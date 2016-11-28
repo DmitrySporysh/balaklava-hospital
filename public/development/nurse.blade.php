@@ -9,6 +9,7 @@
     <script src="../bower_components/angular-material/angular-material.min.js"></script>
     <script src="../bower_components/angular-aria/angular-aria.js"></script>
     <script src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
@@ -25,6 +26,14 @@
     <script src="../development/app/nurse/Analyzes/AnalyzesService.js"></script>
     <script src="../development/app/nurse/Analyzes/AnalyzesDirective.js"></script>
     <script src="../development/app/nurse/Analyzes/AnalyzesController.js"></script>
+
+    <script src="../development/app/nurse/archive/ArchiveDirective.js"></script>
+    <script src="../development/app/nurse/archive/ArchiveController.js"></script>
+    <script src="../development/app/nurse/archive/ArchiveService.js"></script>
+
+    <script src="../development/app/nurse/Archive_person/ArchivePersonDirective.js"></script>
+    <script src="../development/app/nurse/Archive_person/ArchivePersonController.js"></script>
+    <script src="../development/app/nurse/Archive_person/ArchivePersonService.js"></script>
 
     <link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700" media="all" />
     <link rel="stylesheet" href="../development/fonts/themify/themify-icons.css">

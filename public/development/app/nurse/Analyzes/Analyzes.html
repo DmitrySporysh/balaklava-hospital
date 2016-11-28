@@ -20,14 +20,16 @@
                 <th>Назначен</th>
                 <th>Анализ</th>
                 <th>Описание</th>
+                <th>Дата назначения</th>
             </tr>
             </thead>
             <tbody class='plain-table__value'>
             <tr ng-repeat="analyses in analyzesCtrl.analyses">
                 <td data-toggle="modal" data-target="#addAnalysesResult" ng-click="analyzesCtrl.setShownAnalyses($index)">{{analyses.patient_fio}}</td>
-                <td>{{analyses.doctor_fio_who_appointed}}</td>
-                <td>{{analyses.analysis_name}}</td>
-                <td>{{analyses.analysis_description}}</td>
+                <td data-toggle="modal" data-target="#addAnalysesResult" ng-click="analyzesCtrl.setShownAnalyses($index)">{{analyses.doctor_fio_who_appointed}}</td>
+                <td data-toggle="modal" data-target="#addAnalysesResult" ng-click="analyzesCtrl.setShownAnalyses($index)">{{analyses.analysis_name}}</td>
+                <td data-toggle="modal" data-target="#addAnalysesResult" ng-click="analyzesCtrl.setShownAnalyses($index)">{{analyses.analysis_description}}</td>
+                <td data-toggle="modal" data-target="#addAnalysesResult" ng-click="analyzesCtrl.setShownAnalyses($index)">{{analyses.appointment_date}}</td>
             </tr>
             </tbody>
         </table>
@@ -42,7 +44,7 @@
                 <h4 class="modal-title">{{analyzesCtrl.analyses[analyzesCtrl.index].analysis_name}}</h4>
             </div>
             <div class="modal-body">
-                <form name="NewProcedure" class="patient-form">
+                <form name="NewProcedure" class="patient-form" >
                     <div  class="accordion__content">
                         <div class="plain-table__table-wrapper clearfix">
                             <table class="plain-table__table">
@@ -67,7 +69,27 @@
                                 <tr>
                                     <td class="patient-form__label">Приложение</td>
                                     <td class="patient-form__value">
+<!--
                                         <input ng-model="analyzesCtrl.analysesResult.pictures" type="file" name="img" accept="image/jpeg,image/png,image/gif">
+-->
+                                        <!--<input type="file" nv-file-select uploader="analyzesCtrl.uploader"/><br/>
+
+
+                                        <ul>
+                                            <li ng-repeat="item in analyzesCtrl.uploader.queue">
+                                            Name: <span ng-bind="item.file.name"></span><br/>
+                                        </li>
+                                        </ul>-->
+
+                                        <!--<input type="file" nv-file-select uploader="analyzesCtrl.uploader"/><br/>
+                                        <ul>
+                                            <li ng-repeat="item in analyzesCtrl.uploader.queue">
+                                                Name: <span ng-bind="item.file.name"></span><br/>
+                                                <button ng-click="item.upload()">upload</button>
+                                            </li>
+                                        </ul>-->
+
+                                        <input type="file"  ng-model="analyzesCtrl.analysesResult.file" multiple/>
                                     </td>
                                 </tr>
                                 </tbody>

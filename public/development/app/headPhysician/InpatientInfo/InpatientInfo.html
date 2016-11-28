@@ -6,7 +6,7 @@
         </div>
         <div class="content-header__add content-header__add_right add-block">
             <a ng-click="inpatientInfoCtrl.getDepartments(); inpatientInfoCtrl.getHospitals()" class='add-block__button button ml-15' data-toggle="modal" data-target="#WriteOutPatient"><span class="ti-plus add-block__icon"></span>Выписать</a>
-            <a ng-click="inpatientInfoCtrl.getDoctorList()" class='add-block__button button' data-toggle="modal" data-target="#designateTheDoctor"><span class="ti-plus add-block__icon"></span>Назначить врача</a>
+            <a ng-show="true" ng-click="inpatientInfoCtrl.getDoctorList()" class='add-block__button button' data-toggle="modal" data-target="#designateTheDoctor"><span class="ti-plus add-block__icon"></span>Назначить врача</a>
         </div>
     </div>
 </div>
@@ -23,21 +23,21 @@
             </div>
             <table class="plain-table__table vert-menu__table">
                 <tbody class='plain-table__value'>
-                <tr>
-                    <td><a ui-sref="inpatient_info.general" href="">Основыне данные</a></td>
-                </tr>
-                <tr>
-                    <td><a ui-sref="inpatient_info.analyzes" href="">Результаты анализов</a></td>
-                </tr>
-                <tr>
-                    <td><a ui-sref="inpatient_info.dynamic" href="">Динамика лечения</a></td>
-                </tr>
-                <tr>
-                    <td><a ui-sref="inpatient_info.prescriptions" href="">Назначения</a></td>
-                </tr>
-                <tr>
-                    <td><a ui-sref="inpatient_info.first_inspect" href="">Первичный осмотр</a></td>
-                </tr>
+                    <tr>
+                        <td><a ui-sref="inpatients.id.general" href="">Основыне данные</a></td>
+                    </tr>
+                    <tr>
+                        <td><a ui-sref="inpatient_info.analyzes" href="">Результаты анализов</a></td>
+                    </tr>
+                    <tr>
+                        <td><a ui-sref="inpatient_info.dynamic" href="">Динамика лечения</a></td>
+                    </tr>
+                    <tr>
+                        <td><a ui-sref="inpatient_info.prescriptions" href="">Назначения</a></td>
+                    </tr>
+                    <tr>
+                        <td><a ui-sref="inpatient_info.first_inspect" href="">Первичный осмотр</a></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -137,7 +137,7 @@
                             </table>
                             <a class="add-block__button button" href="" ng-click="inpatientInfoCtrl.designateTheDoctor()" data-dismiss="modal">
                                 <span class="ti-save-alt patient__icon_white"></span>
-                                <input class="patient-form__submit" type="submit" value="Добавить">
+                                <input class="patient-form__submit" type="submit" value="Назначить">
                             </a>
                         </div>
                     </div>

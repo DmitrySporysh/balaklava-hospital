@@ -5,7 +5,7 @@ angular
         function postGeneralEmergInfo(patientInfo) {
             var defer=$q.defer();
 
-            $http.post('medical_nurse/emergency/addNewInpatient',patientInfo)
+            $http.post('api/medical_nurse/emergency/addNewInpatient',patientInfo)
                 .success(function(response) {
                     defer.resolve(response);
                 })
@@ -13,8 +13,7 @@ angular
                     defer.reject(err);
                 });
 
-            console.log(defer.promise);
-            /*return defer.promise;*/
+            return defer.promise;
         }
 
         return {

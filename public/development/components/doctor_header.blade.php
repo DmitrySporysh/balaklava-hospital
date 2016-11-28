@@ -36,7 +36,6 @@
                                     <span class="ti-user drop-profile__icon"></span>
                                     Мой профиль
                                 </a>
-                                {{--<a class="drop-profile__item" href="/login#/login">--}}
                                 <a class="drop-profile__item" href="" ng-click="logout()">
                                     <span class="ti-key drop-profile__icon"></span>
                                     Выйти

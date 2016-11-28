@@ -6,6 +6,5 @@ angular
         InpatientsService.getInpatients()
             .then(function(inpatients) {
                 self.inpatients = inpatients.data;
-                console.log(self.inpatients);
             });
     });

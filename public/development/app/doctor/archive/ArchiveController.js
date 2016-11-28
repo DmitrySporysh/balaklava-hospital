@@ -7,9 +7,11 @@ angular
         ArchiveService.getArchivePeople()
             .then(function (people) {
                 self.archivePeople = people.data;
+                console.log(people.data);
             });
 
-        self.change = function () {
+        self.change = function (sort) {
+            self.filter_info.sort = sort;
             ArchiveService.filtering(self.filter_info)
                 .then(function (people) {
                     self.archivePeople = people.data;

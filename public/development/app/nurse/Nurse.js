@@ -1,8 +1,12 @@
 angular
-    .module('nurseApp', ['ui.router','ngMaterial'])
+    .module('nurseApp', ['ui.router','ngMaterial','angularFileUpload'])
     .constant('PATHDIR', 'development/app/nurse')
     .config(function($stateProvider) { //Because $stateProvider is an Angular Provider, you must inject it into a .config() block using Angular 1 Dependency Injection.
         $stateProvider
+            .state('null',{
+                url: '',
+                template: '<received-patients></received-patients>'
+            })
             .state('received_patients',{
                 url: '/received_patients',
                 template: '<received-patients></received-patients>'
@@ -14,6 +18,10 @@ angular
             .state('analyzes',{
                 url: '/analyzes',
                 template: '<analyzes></analyzes>'
+            })
+            .state('archive',{
+                url: '/archive',
+                template: '<archive></archive>'
             })
 
 
@@ -64,7 +72,7 @@ angular
                     defer.reject(err);
                 })
                 .then(function(){
-                    $window.location.href =  "/login#/login";
+                    $window.location.href =  "/";
                 });
             console.log(defer.promise);
         }

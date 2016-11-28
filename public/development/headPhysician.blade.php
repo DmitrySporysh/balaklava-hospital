@@ -26,6 +26,14 @@
     <script src="../development/app/headPhysician/InpatientInfo/InpatientInfoController.js"></script>
     <script src="../development/app/headPhysician/InpatientInfo/InpatientInfoService.js"></script>
 
+    <script src="../development/app/headPhysician/archive/ArchiveDirective.js"></script>
+    <script src="../development/app/headPhysician/archive/ArchiveController.js"></script>
+    <script src="../development/app/headPhysician/archive/ArchiveService.js"></script>
+
+    <script src="../development/app/headPhysician/Archive_person/ArchivePersonDirective.js"></script>
+    <script src="../development/app/headPhysician/Archive_person/ArchivePersonController.js"></script>
+    <script src="../development/app/headPhysician/Archive_person/ArchivePersonService.js"></script>
+
     <link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700" media="all" />
     <link rel="stylesheet" href="../development/fonts/themify/themify-icons.css">
     <link rel="stylesheet" href="../development/css/font-awesome.css">

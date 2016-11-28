@@ -5,7 +5,7 @@ angular
         function getEmergencyPeople() {
             var defer=$q.defer();
 
-            $http.get('doctor/emergency?page=1')
+            $http.get('api/doctor/emergency?page=1')
                 .success(function(patients) {
                     defer.resolve(patients);
 

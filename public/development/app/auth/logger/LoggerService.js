@@ -6,7 +6,7 @@ angular
                 var info = {login: login, password: password};
                 var defer=$q.defer();
 
-                $http.post("/login", info)
+                $http.post("api/login", info)
                     .success(function (answ) {
                         defer.resolve(answ);
                     }).error(function(err) {

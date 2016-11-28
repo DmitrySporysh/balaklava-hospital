@@ -70,6 +70,6 @@ angular
                 });
 
                 self.date_sort=sort_date;
-                console.log(self.date_sort);
+               /* console.log(self.date_sort);*/
             });
     });

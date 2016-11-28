@@ -1,3 +1,4 @@
+<ui-view>
 <div class="content-header">
     <div class="container">
         <div class="content-header__title-block content-header__title-block_left">
@@ -26,7 +27,8 @@
             <tbody class='plain-table__value'>
             <tr ng-repeat="patient in inpatientsCtrl.inpatients">
                 <td >
-                    <a href="head_physician#/inpatients/{{patient.id}}/general">{{patient.fio}}</a>
+             <!--       <a href="head_physician#/inpatients/{{patient.id}}/general">{{patient.fio}}</a>-->
+                    <a ui-sref="inpatients.id({ id: patient.id})">{{patient.fio}}</a>
                 </td>
                 <td>{{patient.start_date}}</td>
                 <td>{{patient.diagnosis}}</td>
@@ -37,3 +39,4 @@
         </table>
     </div>
 </div>
+</ui-view>

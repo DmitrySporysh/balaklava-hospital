@@ -5,7 +5,7 @@ angular
         function getGeneralInfo(id) {
             var defer=$q.defer();
 
-            $http.get('doctor/inpatient/'+id)
+            $http.get('api/doctor/inpatient/'+id)
                 .success(function(generalInfo) {
                     defer.resolve(generalInfo);
                 })
@@ -19,7 +19,7 @@ angular
         function getAnalyzes(id) {
             var defer=$q.defer();
 
-            $http.get('doctor/inpatient/'+id+'/analyzes')
+            $http.get('api/doctor/inpatient/'+id+'/analyzes')
                 .success(function(analyzes) {
                     defer.resolve(analyzes);
                 })
@@ -33,7 +33,7 @@ angular
         function getInspections(id) {
             var defer=$q.defer();
 
-            $http.get('doctor/inpatient/'+id+'/inspections')
+            $http.get('api/doctor/inpatient/'+id+'/inspections')
                 .success(function(response) {
                     defer.resolve(response);
                 })
@@ -46,7 +46,7 @@ angular
         function getProcedures(id) {
             var defer=$q.defer();
 
-            $http.get('doctor/inpatient/'+id+'/procedures')
+            $http.get('api/doctor/inpatient/'+id+'/procedures')
                 .success(function(response) {
                     defer.resolve(response);
                 })
@@ -59,7 +59,7 @@ angular
         function getOperations(id) {
             var defer=$q.defer();
 
-            $http.get('doctor/inpatient/'+id+'/operations')
+            $http.get('api/doctor/inpatient/'+id+'/operations')
                 .success(function(response) {
                     defer.resolve(response);
                 })
@@ -72,7 +72,7 @@ angular
         function getPrescriptions(id) {
             var defer=$q.defer();
 
-            $http.get('doctor/inpatient/'+id+'/medical_appointments')
+            $http.get('api/doctor/inpatient/'+id+'/medical_appointments')
                 .success(function(response) {
                     defer.resolve(response);
                 })
@@ -85,7 +85,7 @@ angular
         function getInspectionProtocol(id) {
             var defer=$q.defer();
 
-            $http.get('doctor/inpatient/'+id+'/inspection_protocol')
+            $http.get('api/doctor/inpatient/'+id+'/inspection_protocol')
                 .success(function(response) {
                     defer.resolve(response);
                 })
@@ -99,7 +99,7 @@ angular
             var defer=$q.defer();
             analysisInfo.inpatient_id = id;
 
-            $http.post('doctor/inpatient/addAnalysis',analysisInfo)
+            $http.post('api/doctor/inpatient/addAnalysis',analysisInfo)
                 .success(function(response) {
                     defer.resolve(response);
                 })
@@ -113,7 +113,7 @@ angular
             var defer=$q.defer();
             data.inpatient_id = id;
 
-            $http.post('doctor/inpatient/addInspection',data)
+            $http.post('api/doctor/inpatient/addInspection',data)
                 .success(function(response) {
                     defer.resolve(response);
                 })
@@ -127,7 +127,7 @@ angular
             var defer=$q.defer();
             data.inpatient_id = id;
 
-            $http.post('doctor/inpatient/addProcedure',data)
+            $http.post('api/doctor/inpatient/addProcedure',data)
                 .success(function(response) {
                     defer.resolve(response);
                 })
@@ -141,7 +141,7 @@ angular
             var defer=$q.defer();
             data.inpatient_id = id;
 
-            $http.post('doctor/inpatient/addOperation',data)
+            $http.post('api/doctor/inpatient/addOperation',data)
                 .success(function(response) {
                     defer.resolve(response);
                 })
@@ -155,7 +155,7 @@ angular
             var defer=$q.defer();
             data.inpatient_id = id;
 
-            $http.post('doctor/inpatient/addMedicalAppointment',data)
+            $http.post('api/doctor/inpatient/addMedicalAppointment',data)
                 .success(function(response) {
                     defer.resolve(response);
                 })

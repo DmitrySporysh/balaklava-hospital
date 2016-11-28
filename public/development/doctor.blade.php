@@ -55,6 +55,8 @@
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../bower_components/angular-material/angular-material.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../development/css/style.css">
+
+    {{--<base href="/">--}}
 </head>
 
 <body ng-app="doctorApp">

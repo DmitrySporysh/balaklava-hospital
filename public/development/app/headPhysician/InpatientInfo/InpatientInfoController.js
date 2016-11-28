@@ -4,11 +4,6 @@ angular
         var self = this;
         self.emPerson_id = $stateParams.id;
 
-        InpatientInfoService.getInpatients()
-            .then(function(inpatients) {
-                self.inpatients = inpatients.data;
-            });
-
         self.getDoctorList = function (){
             InpatientInfoService.getDoctors()
                 .then(function(response) {
@@ -55,6 +50,7 @@ angular
         InpatientInfoService.getGeneralInfo(self.person_id)
             .then(function(info) {
                 self.inpatient_info = info[0];
+                console.log(info[0]);
             });
 
 

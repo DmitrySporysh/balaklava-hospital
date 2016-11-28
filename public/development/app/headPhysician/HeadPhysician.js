@@ -3,18 +3,26 @@ angular
     .constant('PATHDIR', 'development/app/headPhysician')
     .config(function($stateProvider) { //Because $stateProvider is an Angular Provider, you must inject it into a .config() block using Angular 1 Dependency Injection.
         $stateProvider
+            .state('null',{
+                url: '',
+                template: '<inpatients></inpatients>'
+            })
             .state('inpatients',{
                 url: '/inpatients',
                 template: '<inpatients></inpatients>'
             })
-            .state('inpatient_info',{
-                url: '/inpatients/:id',
-                template: '<inpatient-info></inpatient-info>'
-            })
-                .state('inpatient_info.general',{
-                    url: '/general',
-                    template: '<general></general>'
+                .state('inpatients.id',{
+                    url: '/{id}',
+                    template: '<inpatient-info></inpatient-info>'
                 })
+            .state('inpatients.id.general',{
+                url: '/general',
+                template: '<general></general>'
+            })
+            .state('archive',{
+                url: '/archive',
+                template: '<archive></archive>'
+            })
     })
     .controller('headPhysicianAppController', function (headPhysicianAppService, $scope) {
         var self = this;
@@ -36,7 +44,7 @@ angular
                     defer.reject(err);
                 })
                 .then(function(){
-                $window.location.href =  "/login#/login";
+                $window.location.href =  "/";
             });
             console.log(defer.promise);
         }
