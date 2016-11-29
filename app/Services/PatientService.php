@@ -189,10 +189,10 @@ class PatientService implements PatientServiceInterface
             $data['medical_appointments'] = $this->medical_appointment_repo->getInpatientMedicalAppointmentsWithDoctorsSortedByDateDESC($inpatient_id);
             return $data;
         } catch (DALException $e) {
-            $message = 'Error while creating withdraw inpatient request(DAL Error)';
+            $message = 'Error while creating withdraw inpatient request(DAL Error)'.$e->getMessage();
             throw new PatientServiceException($message, 0, $e);
         } catch (Exception $e) {
-            $message = 'Error while creating withdraw inpatient request(UnknownError)';
+            $message = 'Error while creating withdraw inpatient request(UnknownError)'.$e->getMessage();
             throw new PatientServiceException($message, 0, $e);
         }
     }

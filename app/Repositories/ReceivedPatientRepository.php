@@ -104,6 +104,7 @@ class ReceivedPatientRepository extends Repository implements ReceivedPatientRep
     {
         try {
             $builder = DB::table('received_patients')
+                ->whereNull('inpatients.deleted_at') //TODO
                 ->join('patients', 'received_patients.patient_id', '=', 'patients.id')
                 ->leftJoin('inpatients', 'inpatients.received_patient_id', '=', 'received_patients.id');
 
@@ -136,7 +137,6 @@ class ReceivedPatientRepository extends Repository implements ReceivedPatientRep
             'heart_boundaries_extended', 'muscle_tone', 'muscle_tone_extended', 'joint_motion', 'stomach_density',
             'stomach_pain', 'stomach_extended', 'in_romberg_position', 'gait', 'gait_extended', 'stools',
             'stools_extended', 'stools_consistency',
-            //received_patient_columns
             'complaints'
         ];
 

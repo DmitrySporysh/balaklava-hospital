@@ -102,6 +102,16 @@ class DepartmentChiefController extends Controller
         }
     }
 
+    public function getInpatientAllInfo(Request $request, $inpatient_id)
+    {
+        try {
+            $response = $this->patientService->getInpatientAllInfo($inpatient_id);
+            return $response;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
+    }
+
 
     //----------------------------------------------------------------------------------
     //TODO Post requests
@@ -118,8 +128,6 @@ class DepartmentChiefController extends Controller
 
     public function dischargeInpatientFromDepartment(Request $request)
     {
-        Debugbar::info($request->all());
-
         try {
             $result = $this->departmentChief_service->dischargeInpatientFromDepartment($request->json()->all());
             Debugbar::info($result);

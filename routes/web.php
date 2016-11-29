@@ -105,6 +105,7 @@ Route::group(['prefix' => 'api'], function () {
         });
 
         Route::get('archive', 'MedicalNurseController@getPatientsArchive');
+        Route::get('inpatient/{id}/allInfo', 'MedicalNurseController@getInpatientAllInfo');
     });
 
     /*-------------------------------------------------------------------------------------------------
@@ -117,6 +118,7 @@ Route::group(['prefix' => 'api'], function () {
         Route::get('departments', 'DepartmentChiefController@getAllDepartments');
         Route::get('hospitals', 'DepartmentChiefController@getAllHospitals');
         Route::get('archive', 'DepartmentChiefController@getPatientsArchive');
+        Route::get('inpatient/{id}/allInfo', 'DepartmentChiefController@getInpatientAllInfo');
 
         Route::post('addAttendingDoctorToInpatient', 'DepartmentChiefController@addAttendingDoctorToInpatient');
         Route::post('dischargeInpatient', 'DepartmentChiefController@dischargeInpatientFromDepartment');

@@ -41,6 +41,16 @@ class MedicalNurseController extends Controller
         }
     }
 
+    public function getInpatientAllInfo(Request $request, $inpatient_id)
+    {
+        try {
+            $response = $this->patientService->getInpatientAllInfo($inpatient_id);
+            return $response;
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
+    }
+
     //----------------------------------------------------
     //TODO  methods for analyzes nurse
     //------------------------------------------------
