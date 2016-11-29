@@ -65,13 +65,11 @@ class PatientFilters extends QueryFilters
         $sortField = explode('_', $sort)[0];
         $sortDirection = strtoupper(explode('_', $sort)[1]);
 
-        Debugbar::info($sortField . ' fff ' . $sortDirection);
-
         switch ($sortField)
         {
             case 'fio': return $this->builder->orderBy('received_patients.fio', $sortDirection);
-            case 'insurance_number': return $this->builder->orderBy('patients.insurance_number', $sortDirection);
-            case 'inpatient_number': return $this->builder->orderBy('inpatients.id', $sortDirection);
+            case 'insuranceNumber': return $this->builder->orderBy('patients.insurance_number', $sortDirection);
+            case 'inpatientNumber': return $this->builder->orderBy('inpatients.id', $sortDirection);
             default: return $this->builder->orderBy('received_patients.fio', 'ASC');
         }
     }
