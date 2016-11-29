@@ -32,6 +32,8 @@ class MedicalNurseController extends Controller
 
     public function getPatientsArchive(Request $request)
     {
+        Debugbar::info($request->all());
+
         try {
             $per_page = ($request->has('per_page')) ? $request->per_page : 20;
             $response = $this->patientService->getPatientsArchive($per_page, $request);
