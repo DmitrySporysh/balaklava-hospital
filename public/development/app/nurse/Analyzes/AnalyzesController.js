@@ -13,9 +13,15 @@ angular
             self.analyses_id = self.analyses[index].analyses_id;
         };
 
+
+        var fd = new FormData();
         $scope.uploadavtar = function(files) {
-            var fd = new FormData();
             fd.append("file", files[0]);
+        };
+
+        self.postAnalysesResult = function () {
+
+
             fd.append('analyses_id', self.analyses_id);
 
             for (key in self.analysesResult) {
@@ -27,15 +33,9 @@ angular
                 headers: {'Content-Type': undefined },
                 transformRequest: angular.identity
             }).then(function successCallback(response) {
-                console.log(response);
             }, function errorCallback(response) {
-                console.log(response);
             });
 
-        };
-
-        self.postAnalysesResult = function () {
-            
             /*console.log(self.analysesResult);*/
             /*AnalyzesService.postAnalysesResult(this.analysesResult, self.analyses_id);*/
         /*    AnalyzesService.postAnalysesResult(fd, self.analyses_id);*/
