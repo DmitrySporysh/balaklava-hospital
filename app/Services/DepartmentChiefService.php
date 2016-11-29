@@ -171,8 +171,6 @@ class DepartmentChiefService implements DepartmentChiefServiceInterface
     private function validateDischargeData($requestData)
     {
         $messages = array(
-            'doctor_id.required' => "Поле 'id врача' должно быть заполнено",
-            'doctor_id.exists'=>'Доктора с таким id не существует',
             'inpatient_id.required' => "Поле 'id пациента' должно быть заполнено",
             'inpatient_id.exists' => "Пациента с таким id не существует",
         );
@@ -180,7 +178,7 @@ class DepartmentChiefService implements DepartmentChiefServiceInterface
             $this->validator = Validator::make($requestData, [
                 'inpatient_id' => 'required|exists:inpatients,id',
                 'result_epicrisis' => 'required|max:255',
-                'discharge_type' => 'required|in:Выписан,Перевод в больницу,Перевод в отделение,Умер',
+                'discharge_type' => 'required|in:Выписан,Перевод в отделение,Перевод  в больницу,Умер',
                 'discharge_department_id' => 'required_if:discharge_type,Перевод в отделение',
                 'discharge_hospital_id' => 'required_if:discharge_type,Перевод в больницу'
             ], $messages);
@@ -204,8 +202,8 @@ class DepartmentChiefService implements DepartmentChiefServiceInterface
 
             $dischargeDataFromRequest = $this->getDischargeDataFromRequest($requestData);
 
-            $newDischarge = $this->dischargeRepository->create($dischargeDataFromRequest);
-            return ['success' => true, 'data' => $newDischarge, 'message' => 'Пациент успешно выписан'];
+            $this->dischargeRepository->addDischargeAndDeleteInpatient($dischargeDataFromRequest);
+            return ['success' => true, 'data' => null, 'message' => 'Пациент успешно выписан'];
         } catch (DALException $e) {
             $message = 'Error while creating withdraw discharge request(DAL Error)' . $e->getMessage();
             throw new DepartmentChiefServiceException($message, 0, $e);

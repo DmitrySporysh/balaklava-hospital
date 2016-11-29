@@ -118,6 +118,8 @@ class DepartmentChiefController extends Controller
 
     public function dischargeInpatientFromDepartment(Request $request)
     {
+        Debugbar::info($request->all());
+
         try {
             $result = $this->departmentChief_service->dischargeInpatientFromDepartment($request->json()->all());
             Debugbar::info($result);

@@ -10,5 +10,5 @@ namespace App\Repositories\Interfaces;
 
 interface DischargeRepositoryInterface extends RepositoryInterface
 {
-
+    public function addDischargeAndDeleteInpatient($dischargeData);
 }

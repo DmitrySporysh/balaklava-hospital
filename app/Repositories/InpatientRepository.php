@@ -28,6 +28,7 @@ class InpatientRepository extends Repository implements InpatientRepositoryInter
         try {
             $data = DB::table('inpatients')
                 ->where('inpatients.attending_doctor_id', $doctor_id)
+                ->whereNull('inpatients.deleted_at')
                 ->join('received_patients', 'inpatients.received_patient_id', '=', 'received_patients.id')
                 ->join('patients', 'received_patients.patient_id', '=', 'patients.id')
                 ->join('chambers', 'inpatients.chamber_id', '=', 'chambers.id')
@@ -124,6 +125,7 @@ class InpatientRepository extends Repository implements InpatientRepositoryInter
         try {
             $data = DB::table('inpatients')
                 ->where('inpatients.hospital_department_id', $department_id)
+                ->whereNull('inpatients.deleted_at')
                 ->join('received_patients', 'inpatients.received_patient_id', '=', 'received_patients.id')
                 ->join('chambers', 'inpatients.chamber_id', '=', 'chambers.id')
                 ->join('health_workers', 'inpatients.attending_doctor_id', '=', 'health_workers.id')

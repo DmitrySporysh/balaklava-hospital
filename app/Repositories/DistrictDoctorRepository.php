@@ -19,24 +19,4 @@ class DistrictDoctorRepository extends Repository implements DistrictDoctorRepos
     {
         return 'App\Models\DistrictDoctor';
     }
-
-   /* public function getDistrictDoctorsWithPatients($id){
-
-        try {
-            $data = DistrictDoctor::where('id', $id)
-                ->with(['patients'
-                ])->get();
-            ;
-            if ($data == null) {
-                return array();
-            }
-        } catch (Exception $e) {
-            $message = 'Error while finding element using ' . $this->model();
-            throw new DALException($message, 0, $e);
-        }
-
-        if($data!=null) return $data;
-
-        return array();
-    }*/
 }
