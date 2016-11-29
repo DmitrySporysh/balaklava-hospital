@@ -9,10 +9,10 @@ angular
                 self.archivePeople = people.data;
                 console.log(people.data);
             });
+        self.filter_info = {};
+        self.filter_info.sort = "";
 
         self.change = function (sort) {
-            if (self.filter_info == undefined)
-                self.filter_info={};
             self.filter_info.sort = sort;
             ArchiveService.filtering(self.filter_info)
                 .then(function (people) {
