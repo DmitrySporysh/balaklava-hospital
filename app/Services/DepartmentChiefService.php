@@ -203,6 +203,7 @@ class DepartmentChiefService implements DepartmentChiefServiceInterface
             }
 
             $dischargeDataFromRequest = $this->getDischargeDataFromRequest($requestData);
+
             $newDischarge = $this->dischargeRepository->create($dischargeDataFromRequest);
             return ['success' => true, 'data' => $newDischarge, 'message' => 'Пациент успешно выписан'];
         } catch (DALException $e) {

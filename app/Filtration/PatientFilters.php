@@ -59,9 +59,10 @@ class PatientFilters extends QueryFilters
 
     public function sort($sort = null)
     {
-        if(!$sort)
+        Debugbar::info('fdsfs');
+        if(!$sort) {
             return $this->builder->orderBy('received_patients.fio', 'ASC');
-
+        }
         $sortField = explode('_', $sort)[0];
         $sortDirection = strtoupper(explode('_', $sort)[1]);
 

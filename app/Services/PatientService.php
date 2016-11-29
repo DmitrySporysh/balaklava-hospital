@@ -107,6 +107,8 @@ class PatientService implements PatientServiceInterface
                 'inpatients.id as inpatient_number'
             ];
             $filters = $request->all();
+            if ($filters == null) $filters['sort'] = null; // для сортировки по умолчанию
+            else if($filters['sort'] == null) $filters['sort'] = null; // для сортировки по умолчанию
             $data = $this->received_patient_repo->getAllPatientsSortedAndFiltered($per_page, $columns, $filters);
             return $data;
         } catch (DALException $e) {
@@ -142,7 +144,7 @@ class PatientService implements PatientServiceInterface
                 ['received_patients', 'patients', 'health_workers', 'hospital_departments', 'chambers']);
             return $data;
         } catch (DALException $e) {
-            $message = 'Error while creating withdraw inpatient request(DAL Error)'.$e->getMessage();
+            $message = 'Error while creating withdraw inpatient request(DAL Error)' . $e->getMessage();
             throw new PatientServiceException($message, 0, $e);
         } catch (Exception $e) {
             $message = 'Error while creating withdraw inpatient request(UnknownError)';
