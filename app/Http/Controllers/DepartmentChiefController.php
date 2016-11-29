@@ -30,7 +30,7 @@ class DepartmentChiefController extends Controller
                                 CommonServiceInterface $commonService)
     {
         $this->middleware('auth');
-        $this->middleware('checkPost:' . UserRole::DEPARTMENT_CHIEF);
+        $this->middleware('checkPost:' . UserRole::department_chief);
 
         $this->departmentChief_service = $departmentChief_service;
         $this->patientService = $patientService;

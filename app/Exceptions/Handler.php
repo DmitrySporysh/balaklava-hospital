@@ -2,6 +2,8 @@
 
 namespace App\Exceptions;
 
+use Closure;
+use Illuminate\Support\Facades\Auth;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -52,12 +54,8 @@ class Handler extends ExceptionHandler
 
         // handle Angular routes when accessed directly from the browser without the need of the '#'
         if ($e instanceof NotFoundHttpException) {
-
-            $url = parse_url($request->url());
-
-            $angular_url = $url['scheme'] . '://' . $url['host'] . '/#' . $url['path'];
-
-            return response()->redirectTo($angular_url);
+            return redirect('login');
+            //return parent::render($request, $e);
         }
 
         return parent::render($request, $e);
@@ -73,7 +71,7 @@ class Handler extends ExceptionHandler
     protected function unauthenticated($request, AuthenticationException $exception)
     {
         if ($request->expectsJson()) {
-            return response()->json(['error' => 'Unauthenticated.'], 401);
+            return redirect()->guest('login');
         }
 
         return redirect()->guest('login');

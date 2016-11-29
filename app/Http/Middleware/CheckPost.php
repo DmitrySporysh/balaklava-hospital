@@ -24,7 +24,13 @@ class CheckPost
             return redirect('login');
         }
         if ((Auth::user()->health_worker->post != $post)) {
-            return redirect('/');
+            switch(Auth::user()->health_worker->post)
+            {
+                case 'Медсестра': return redirect('nurse'); break;
+                case 'Врач': return redirect('doctor'); break;
+                case 'Заведующий отделением': return redirect('head_physician'); break;
+                default: redirect('login');
+            }
         }
 
         return $next($request);

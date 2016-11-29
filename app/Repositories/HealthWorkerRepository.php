@@ -26,7 +26,7 @@ class HealthWorkerRepository extends Repository implements HealthWorkerRepositor
     {
         try {
             $data = DB::table('health_workers')
-                ->where('post', UserRole::DOCTOR)
+                ->where('post', UserRole::doctor)
                 ->where('department_id', $department_id)
                 ->select([
                     'id',
