@@ -23,6 +23,10 @@ angular
                 url: '/archive',
                 template: '<archive></archive>'
             })
+            .state('archive.id',{
+                url: '/{id}',
+                template: '<archive-person></archive-person>'
+            })
     })
     .controller('headPhysicianAppController', function (headPhysicianAppService, $scope) {
         var self = this;

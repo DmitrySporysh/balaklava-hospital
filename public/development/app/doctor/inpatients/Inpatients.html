@@ -26,9 +26,9 @@
             </tr>
             </thead>
             <tbody class='plain-table__value'>
-            <tr ng-repeat="patient in inpatientsCtrl.inpatients">
-                <td  >
-                    <a ui-sref="inpatients.id({ id: patient.inpatient_id})" href="#">{{patient.fio}}</a>
+            <tr ng-repeat="patient in inpatientsCtrl.inpatients" ui-sref="inpatients.id({ id: patient.inpatient_id})">
+                <td>
+                    {{patient.fio}}
                 </td>
                 <td>{{patient.birth_date}}</td>
                 <td>{{patient.sex}}</td>

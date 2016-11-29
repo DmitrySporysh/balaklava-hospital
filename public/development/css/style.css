@@ -435,6 +435,7 @@ body {
 
 .plain-table__value tr:hover {
     background-color: #f0f2ef;
+    cursor: pointer;
 }
 
 .plain-table__icon {

@@ -1,4 +1,3 @@
-
 angular
     .module('headPhysicianApp')
     .controller('ArchiveCtrl', function(ArchiveService) {
@@ -20,13 +19,3 @@ angular
                 });
         }
     });
-
-
-/*$scope.change = function() {
- console.log($scope.filter);
- $http({method:'GET', url:'/doctor/archive', params: $scope.filter})
- .success(function (answ) {
- $scope.response=answ;
- console.log(answ);
- });
- };*/

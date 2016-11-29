@@ -1,3 +1,5 @@
+
+<ui-view>
 <div class="content-header">
     <div class="container">
         <div class="content-header__title-block content-header__title-block_left">
@@ -52,10 +54,9 @@
                 </tr>
                 </thead>
                 <tbody class='search-table__value'>
-                    <!--<tr ng-repeat="patient in patients_info| filter:searchText">-->
-                    <tr ng-repeat="person in archiveCtrl.archivePeople">
-                        <td>
-                            <a  href="doctor#/archive/{{person.inpatient_number}}">{{person.fio}}</a>
+                    <tr ng-repeat="person in archiveCtrl.archivePeople" ui-sref="archive.id({ id: person.inpatient_number})">
+                        <td >
+                            {{person.fio}}
                         </td>
                         <td>{{person.insurance_number}}</td>
                         <td>{{person.sex}}</td>
@@ -67,3 +68,7 @@
         </div>
     </div>
 </form>
+
+
+
+</ui-view>

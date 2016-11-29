@@ -12,6 +12,7 @@ angular
                 template: '<inpatients></inpatients>'
             })
 
+
             .state('inpatients.id',{
                 url: '/{id}',
                 template: '<inpatient-treatment></inpatient-treatment>'

@@ -36,7 +36,7 @@ angular
         var sort_date=[];
         var date_to_in;
 
-
+        
         archivePersonService.getPersonInfo(self.archPerson_id)
             .then(function(data) {
                 self.full_info =  data;
