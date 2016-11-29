@@ -111,7 +111,6 @@ class ReceivedPatientRepository extends Repository implements ReceivedPatientRep
 
             $data = $query
                 ->select($columns)
-                ->orderBy('received_patients.fio', 'ASC')
                 ->paginate($page_size);
 
             if ($data == null) {

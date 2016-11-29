@@ -57,5 +57,23 @@ class PatientFilters extends QueryFilters
             return $this->builder->where('patients.sex', 'LIKE', trim($sex . '%'));
     }
 
+    public function sort($sort = null)
+    {
+        Debugbar::info('fdsfs');
+        if(!$sort) {
+            return $this->builder->orderBy('received_patients.fio', 'ASC');
+        }
+        $sortField = explode('_', $sort)[0];
+        $sortDirection = strtoupper(explode('_', $sort)[1]);
+
+        switch ($sortField)
+        {
+            case 'fio': return $this->builder->orderBy('received_patients.fio', $sortDirection);
+            case 'insuranceNumber': return $this->builder->orderBy('patients.insurance_number', $sortDirection);
+            case 'inpatientNumber': return $this->builder->orderBy('inpatients.id', $sortDirection);
+            default: return $this->builder->orderBy('received_patients.fio', 'ASC');
+        }
+    }
+
 
 }

@@ -20,7 +20,7 @@ angular
         function filtering(filter_info) {
             var defer=$q.defer();
 
-            $http({method:'GET', url:'api/nurse/archive', params: filter_info})
+            $http({method:'GET', url:'/api/medical_nurse/archive', params: filter_info})
                 .success(function(response) {
                     defer.resolve(response);
                 })

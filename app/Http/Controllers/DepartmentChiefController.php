@@ -30,7 +30,7 @@ class DepartmentChiefController extends Controller
                                 CommonServiceInterface $commonService)
     {
         $this->middleware('auth');
-        $this->middleware('checkPost:' . UserRole::DEPARTMENT_CHIEF);
+        $this->middleware('checkPost:' . UserRole::department_chief);
 
         $this->departmentChief_service = $departmentChief_service;
         $this->patientService = $patientService;
@@ -118,11 +118,12 @@ class DepartmentChiefController extends Controller
 
     public function dischargeInpatientFromDepartment(Request $request)
     {
-        Debugbar::info($request->json()->all());
         try {
             $result = $this->departmentChief_service->dischargeInpatientFromDepartment($request->json()->all());
+            Debugbar::info($result);
             return $result;
         } catch (Exception $e) {
+            Debugbar::info(['success' => false, 'message' => $e->getMessage()]);
             return ['success' => false, 'message' => $e->getMessage()];
         }
     }

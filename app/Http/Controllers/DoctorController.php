@@ -28,7 +28,7 @@ class DoctorController extends Controller
     )
     {
         $this->middleware('auth');
-        $this->middleware('checkPost:' . UserRole::DOCTOR);
+        $this->middleware('checkPost:' . UserRole::doctor);
 
         $this->doctor_service = $doctor_service;
         $this->patient_service = $patient_service;

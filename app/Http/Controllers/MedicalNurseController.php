@@ -24,7 +24,7 @@ class MedicalNurseController extends Controller
                                 PatientServiceInterface $patientService)
     {
         $this->middleware('auth');
-        $this->middleware('checkPost:' . UserRole::NURSE);
+        $this->middleware('checkPost:' . UserRole::medical_nurse);
 
         $this->medicalNurseService = $medicalNurseService;
         $this->patientService = $patientService;
