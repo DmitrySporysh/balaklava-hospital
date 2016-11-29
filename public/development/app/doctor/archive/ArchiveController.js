@@ -10,6 +10,9 @@ angular
                 console.log(people.data);
             });
 
+        self.filter_info = {};
+        self.filter_info.sort = "";
+
         self.change = function (sort) {
             self.filter_info.sort = sort;
             ArchiveService.filtering(self.filter_info)
@@ -18,13 +21,3 @@ angular
                 });
         }
     });
-
-
-/*$scope.change = function() {
- console.log($scope.filter);
- $http({method:'GET', url:'/doctor/archive', params: $scope.filter})
- .success(function (answ) {
- $scope.response=answ;
- console.log(answ);
- });
- };*/

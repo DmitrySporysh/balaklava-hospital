@@ -10,6 +10,9 @@ angular
                 console.log(people.data);
             });
 
+        self.filter_info = {};
+        self.filter_info.sort = "";
+
         self.change = function (sort) {
             self.filter_info.sort = sort;
             ArchiveService.filtering(self.filter_info)

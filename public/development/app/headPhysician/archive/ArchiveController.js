@@ -9,6 +9,8 @@ angular
                 self.archivePeople = people.data;
                 console.log(people.data);
             });
+        self.filter_info = {};
+        self.filter_info.sort = "";
 
         self.change = function (sort) {
             self.filter_info.sort = sort;
