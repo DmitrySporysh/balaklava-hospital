@@ -261,7 +261,6 @@ class DoctorService implements DoctorServiceInterface
         return $response;
     }
 
-
     public function addNewInpatientOperation($requestData, $doctor_id)
     {
         try {
@@ -301,7 +300,6 @@ class DoctorService implements DoctorServiceInterface
         //$requestData['paths_to_files analysis '] = $this->saveFile($requestData->file);
         return $requestData;
     }
-
 
     public function addOperationResult($requestData, $doctor_id)
     {

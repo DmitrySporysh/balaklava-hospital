@@ -107,8 +107,7 @@ class PatientService implements PatientServiceInterface
                 'inpatients.id as inpatient_number'
             ];
             $filters = $request->all();
-            if ($filters == null) $filters['sort'] = null; // для сортировки по умолчанию
-            else if($filters['sort'] == null) $filters['sort'] = null; // для сортировки по умолчанию
+            $filters['sort'] = $request->input('sort','fio_ASC');
             $data = $this->received_patient_repo->getAllPatientsSortedAndFiltered($per_page, $columns, $filters);
             return $data;
         } catch (DALException $e) {
