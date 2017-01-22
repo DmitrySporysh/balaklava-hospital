@@ -6,7 +6,7 @@
             <div class="input__icon">
                 <i class="fa fa-user"></i>
             </div>
-            <input ng-model="loginCtrl.login_info.login" class="login-container__input" name="login" value="" title="Person Name" type="text">
+            <input id="login" ng-model="loginCtrl.login_info.login" class="login-container__input" name="login"   value="" title="Person Name" type="text">
         </div>
 
         <div class="login-container__field-wrap">
@@ -14,7 +14,7 @@
                 <i class="fa fa-lock"></i>
             </div>
 
-            <input ng-model="loginCtrl.login_info.password" class="login-container__input"  name="password" value="" title="Person Name" type="password">
+            <input id="password" ng-model="loginCtrl.login_info.password" class="login-container__input" name="password"  value="" title="Person Name" type="password">
         </div>
         <div class="login-container__field-wrap">
             <input  id='test' ng-click="loginCtrl.login()" class="login-container__submit transition" type="submit" value="Войти">

@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Common\Enums\UserRole;
 use App\Services\Interfaces\NurseServiceInterface;
 use App\Services\Interfaces\PatientServiceInterface;
-
+use Exception;
 use Illuminate\Http\Request;
-
-//Debugbar
-use Barryvdh\Debugbar\Facade;
-use Debugbar;
-use Illuminate\Support\Facades\Auth;
 
 
 class NurseController extends Controller
@@ -18,120 +14,138 @@ class NurseController extends Controller
     private $nurse_service;
     private $patient_service;
 
+    private function checkPost()
+    {
+        $this->middleware('auth');
+        $this->middleware('checkRole:' . UserRole::medical_nurse);
+    }
+
     public function __construct(NurseServiceInterface $nurse_service,
                                 PatientServiceInterface $patient_service
     )
     {
+        //$this->checkPost();
         $this->nurse_service = $nurse_service;
         $this->patient_service = $patient_service;
-
-        //$this->middleware('auth');
-        //$this->middleware('checkRole:'.'Медсестра');
     }
 
 
-    public function getDepartments(Request $request)
+    public function getDepartments()
     {
-        $response = $this->nurse_service->getAllDepartmentsWithDepartmentChiefFio();
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            return $this->nurse_service->getAllDepartmentsWithDepartmentChiefFio();
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
-    public function getDepartmentChambers(Request $request, $department_id)
+    public function getDepartmentChambers($department_id)
     {
-        $response = $this->nurse_service->getDepartmentChambers($department_id);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            return $this->nurse_service->getDepartmentChambers($department_id);
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
 
-    public function getChamberWithPatients(Request $request, $chamber_id)
+    public function getChamberWithPatients($chamber_id)
     {
-        $response = $this->nurse_service->getChamberWithPatients($chamber_id);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            return $this->nurse_service->getChamberWithPatients($chamber_id);
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
-    public function getInpatientInfo(Request $request, $inpatient_id)
+    public function getInpatientInfo($inpatient_id)
     {
-        $response = $this->patient_service->getInpatientWithGeneralInfoAndAttendingDoctor($inpatient_id);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            // TODO потом потестить
+            return $this->patient_service->getInpatientWithGeneralInfoAndAttendingDoctor($inpatient_id);
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
-    public function getInpatientInspectionProtocol(Request $request, $inpatient_id)
+    public function getInpatientInspectionProtocol($inpatient_id)
     {
-        $response = $this->patient_service->getInpatientInspectionProtocolInfo($inpatient_id);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            return $this->patient_service->getInpatientInspectionProtocolInfo($inpatient_id);
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
-    public function getInpatientMedicalAppointments(Request $request, $inpatient_id)
+    public function getInpatientMedicalAppointments($inpatient_id)
     {
-        $response = $this->patient_service->getInpatientMedicalAppointments($inpatient_id);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            return $this->patient_service->getInpatientMedicalAppointments($inpatient_id);
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
-    public function getInpatientInspections(Request $request, $inpatient_id)
+    public function getInpatientInspections($inpatient_id)
     {
-        $response = $this->patient_service->getInpatientInspections($inpatient_id);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            return $this->patient_service->getInpatientInspections($inpatient_id);
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
-    public function getInpatientAllAnalyzes(Request $request, $inpatient_id)
+    public function getInpatientAllAnalyzes($inpatient_id)
     {
-        $response = $this->patient_service->getInpatientAllAnalyzes($inpatient_id);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            return $this->patient_service->getInpatientAllAnalyzes($inpatient_id);
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
-    public function getInpatientAnalyses(Request $request, $inpatient_id, $analyses_id)
+    public function getInpatientAnalyses($inpatient_id, $analyses_id)
     {
-        $response = $this->patient_service->getInpatientAnalyses($inpatient_id, $analyses_id);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            return $this->patient_service->getInpatientAnalyses($inpatient_id, $analyses_id);
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
-    public function getInpatientAllProcedures(Request $request, $inpatient_id)
+    public function getInpatientAllProcedures($inpatient_id)
     {
-        $response = $this->patient_service->getInpatientAllProcedures($inpatient_id);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            return $this->patient_service->getInpatientAllProcedures($inpatient_id);
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
-    public function getInpatientProcedure(Request $request, $inpatient_id, $procedure_id)
+    public function getInpatientProcedure($inpatient_id, $procedure_id)
     {
-        $response = $this->patient_service->getInpatientProcedure($inpatient_id, $procedure_id);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            return $this->patient_service->getInpatientProcedure($inpatient_id, $procedure_id);
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
-    public function getInpatientOperations(Request $request, $inpatient_id)
+    public function getInpatientOperations($inpatient_id)
     {
-        $response = $this->patient_service->getInpatientOperations($inpatient_id);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            return $this->patient_service->getInpatientOperations($inpatient_id);
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
-    public function getInpatientTemperatureLog(Request $request, $inpatient_id)
+    public function getInpatientTemperatureLog($inpatient_id)
     {
-        $response = $this->patient_service->getInpatientTemperatureLog($inpatient_id);
-        //Debugbar::info($response);
-        //return view('welcome', ['response' => $response]);
-        return $response;
+        try {
+            return $this->patient_service->getInpatientTemperatureLog($inpatient_id);
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 }

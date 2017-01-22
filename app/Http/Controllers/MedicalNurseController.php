@@ -20,12 +20,16 @@ class MedicalNurseController extends Controller
     private $medicalNurseService;
     private $patientService;
 
-    public function __construct(MedicalNurseServiceInterface $medicalNurseService,
-                                PatientServiceInterface $patientService)
+    private function checkPost()
     {
         $this->middleware('auth');
         $this->middleware('checkPost:' . UserRole::medical_nurse);
+    }
 
+    public function __construct(MedicalNurseServiceInterface $medicalNurseService,
+                                PatientServiceInterface $patientService)
+    {
+        $this->checkPost();
         $this->medicalNurseService = $medicalNurseService;
         $this->patientService = $patientService;
     }
@@ -34,18 +38,16 @@ class MedicalNurseController extends Controller
     {
         try {
             $per_page = ($request->has('per_page')) ? $request->per_page : 20;
-            $response = $this->patientService->getPatientsArchive($per_page, $request);
-            return $response;
+            return $this->patientService->getPatientsArchive($per_page, $request);
         } catch (Exception $e) {
             return ['success' => false, 'message' => $e->getMessage()];
         }
     }
 
-    public function getInpatientAllInfo(Request $request, $inpatient_id)
+    public function getInpatientAllInfo($inpatient_id)
     {
         try {
-            $response = $this->patientService->getInpatientAllInfo($inpatient_id);
-            return $response;
+            return $this->patientService->getInpatientAllInfo($inpatient_id);
         } catch (Exception $e) {
             return ['success' => false, 'message' => $e->getMessage()];
         }
@@ -57,8 +59,7 @@ class MedicalNurseController extends Controller
     public function getAllNotReadyAnalyzes()
     {
         try {
-            $response = $this->medicalNurseService->getAllNotReadyAnalyzes();
-            return $response;
+            return $this->medicalNurseService->getAllNotReadyAnalyzes();
         } catch (Exception $e) {
             return ['success' => false, 'message' => $e->getMessage()];
         }
@@ -67,9 +68,8 @@ class MedicalNurseController extends Controller
     public function addAnalysisResult(Request $request)
     {
         try {
-            $registration_nurse_id = Auth::user()->health_worker->id;; //TODO брать ид авторизованной медсестры
-            $result = $this->medicalNurseService->addAnalysisResult($request->all(), $registration_nurse_id);
-            return $result;
+            $registration_nurse_id = $request->session()->get('health_worker_id');
+            return $this->medicalNurseService->addAnalysisResult($request->all(), $registration_nurse_id);
         } catch (Exception $e) {
             return ['success' => false, 'message' => $e->getMessage()];
         }
@@ -82,8 +82,7 @@ class MedicalNurseController extends Controller
     {
         try {
             $per_page = ($request->has('per_page')) ? $request->per_page : 20;
-            $response = $this->medicalNurseService->getAllReceivedPatientsSortByDateDesc($per_page);
-            return $response;
+            return $this->medicalNurseService->getAllReceivedPatientsSortByDateDesc($per_page);
         } catch (Exception $e) {
             return ['success' => false, 'message' => $e->getMessage()];
         }
@@ -92,9 +91,8 @@ class MedicalNurseController extends Controller
     public function addNewInpatient(Request $request)
     {
         try {
-            $registration_nurse_id = Auth::user()->health_worker->id;; //TODO брать ид авторизованной медсестры
-            $result = $this->medicalNurseService->addNewPatient($request->json()->all(), $registration_nurse_id);
-            return $result;
+            $registration_nurse_id = $request->session()->get('health_worker_id');
+            return $this->medicalNurseService->addNewPatient($request->json()->all(), $registration_nurse_id);
         } catch (Exception $e) {
             return ['success' => false, 'message' => $e->getMessage()];
         }

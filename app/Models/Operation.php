@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 
+/**
+ * App\Models\Operation
+ *
+ * @property-read \App\Models\Inpatient $inpatient
+ * @property-read \App\Models\HealthWorker $doctor
+ * @mixin \Eloquent
+ */
 class Operation extends Model
 {
     use SoftDeletes;

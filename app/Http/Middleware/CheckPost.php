@@ -23,8 +23,8 @@ class CheckPost
         {
             return redirect('login');
         }
-        if ((Auth::user()->health_worker->post != $post)) {
-            switch(Auth::user()->health_worker->post)
+        if (($request->session()->get("post") != $post)) {
+            switch($request->session()->get("post"))
             {
                 case 'Медсестра': return redirect('nurse'); break;
                 case 'Врач': return redirect('doctor'); break;

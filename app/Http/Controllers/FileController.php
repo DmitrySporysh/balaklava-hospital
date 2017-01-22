@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\Services\Interfaces\FileServiceInterface;
 use Illuminate\Http\Request;
 
-//Debugbar
-use Barryvdh\Debugbar\Facade;
-use Debugbar;
 
 class FileController extends Controller
 {
@@ -15,8 +12,8 @@ class FileController extends Controller
 
     public function __construct(FileServiceInterface $fileService)
     {
+        $this->middleware('auth');
         $this->fileService = $fileService;
-        //$this->middleware('auth');
     }
 
     public function getFile(Request $request)
@@ -25,11 +22,10 @@ class FileController extends Controller
         return $response;
     }
 
-    public function saveFile(Request $request)
+    /*public function saveFile(Request $request)
     {
         $file = $request->file('photo');
         if ($file)
             return $this->fileService->save($file);
-
-    }
+    }*/
 }

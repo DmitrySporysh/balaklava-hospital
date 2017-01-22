@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Alpha</title>
+    <title>Beta</title>
 </head>
 <body>
-<p>This is the Alpha page.</p>
+<p>This is the Beta page.</p>
+<p><a href="/alpha">Previous</a></p>
 </body>
 </html>

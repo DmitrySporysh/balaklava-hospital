@@ -48,8 +48,7 @@ class MedicalNurseService implements MedicalNurseServiceInterface
     public function getAllReceivedPatientsSortByDateDesc($page_size)
     {
         try {
-            $data = $this->received_patient_repo->getReceivedPatientsWithPatientInfoSortByDateDesc_Paginate($page_size);
-            return $data;
+            return $this->received_patient_repo->getReceivedPatientsWithPatientInfoSortByDateDesc_Paginate($page_size);
         } catch (DALException $e) {
             $message = 'Error while creating withdraw patient request(DAL Error)';
             throw new EmergencyServiceException($message, 0, $e);
@@ -62,8 +61,7 @@ class MedicalNurseService implements MedicalNurseServiceInterface
     public function getAllNotReadyAnalyzes()
     {
         try {
-            $data = $this->analysisRepository->getALLNotReadyAnalyzesWithDoctorsSortedByDateDESC();
-            return $data;
+            return $this->analysisRepository->getALLNotReadyAnalyzesWithDoctorsSortedByDateDESC();
         } catch (DALException $e) {
             $message = 'Error while creating withdraw patients analyzes request(DAL Error)';
             throw new EmergencyServiceException($message, 0, $e);
@@ -87,22 +85,22 @@ class MedicalNurseService implements MedicalNurseServiceInterface
 
     private function getReceivedPatientDataFromRequest($requestData, $registration_nurse_id, $patient_id = null)
     {
-        $data = $requestData;
-        unset($data['birth_date']);
-        unset($data['sex']);
-        unset($data['insurance_number']);
-        $data['patient_id'] = $patient_id;
-        $data['registration_nurse_id'] = $registration_nurse_id;
-        $data['received_date'] = Carbon::now()->toDateTimeString();
-        return $data;
+        $receivedPatientData = $requestData;
+        unset($receivedPatientData['birth_date']);
+        unset($receivedPatientData['sex']);
+        unset($receivedPatientData['insurance_number']);
+        $receivedPatientData['patient_id'] = $patient_id;
+        $receivedPatientData['registration_nurse_id'] = $registration_nurse_id;
+        $receivedPatientData['received_date'] = Carbon::now()->toDateTimeString();
+        return $receivedPatientData;
     }
 
     private function getPatientDataFromRequest($requestData)
     {
-        $data['birth_date'] = $requestData['birth_date'];
-        $data['sex'] = $requestData['birth_date'];
-        $data['insurance_number'] = $requestData['insurance_number'];
-        return $data;
+        $patientData['birth_date'] = $requestData['birth_date'];
+        $patientData['sex'] = $requestData['birth_date'];
+        $patientData['insurance_number'] = $requestData['insurance_number'];
+        return $patientData;
     }
 
     private function validatePatientData($patientData)
@@ -194,14 +192,15 @@ class MedicalNurseService implements MedicalNurseServiceInterface
         }
     }
 
+
+
     private function getAnalysisDataFromRequest($requestData, $nurse_id)
     {
-        $data['ready_date'] = Carbon::now()->toDateTimeString();
-        $data['result_description'] = $requestData['result_description'];
-        $data['doctor_who_performed'] = $nurse_id;
-        $data['paths_to_files'] =  $this->fileService->save($requestData['file'], 'analyzes');
-
-        return $data;
+        $analysisData['ready_date'] = Carbon::now()->toDateTimeString();
+        $analysisData['result_description'] = $requestData['result_description'];
+        $analysisData['doctor_who_performed'] = $nurse_id;
+        $analysisData['paths_to_files'] =  $this->fileService->save($requestData['file'], 'analyzes');
+        return $analysisData;
     }
 
     private function validateAnalysisResultData($analysisResult_data)
@@ -242,7 +241,6 @@ class MedicalNurseService implements MedicalNurseServiceInterface
             $message = 'Error while creating withdraw analysis request(DAL Error)' . $e->getMessage();
             throw new EmergencyServiceException($message, 0, $e);
         } catch (Exception $e) {
-            Debugbar::info($e->getMessage());
             $message = 'Error while creating withdraw analysis request(UnknownError)' . $e->getMessage();
             throw new EmergencyServiceException($message, 0, $e);
         }

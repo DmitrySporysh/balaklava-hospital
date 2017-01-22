@@ -2,22 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Common\Enums\MessageUserRole;
 use App\Common\Enums\UserRole;
 use App\Http\Requests;
 use App\Services\Interfaces\CommonServiceInterface;
 use App\Services\Interfaces\DepartmentChiefServiceInterface;
-use App\Exceptions\DALException;
-use App\Exceptions\HealthWorkerServiceException;
 use App\Services\Interfaces\PatientServiceInterface;
 use Illuminate\Http\Request;
 use Exception;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Input;
 
-use Barryvdh\Debugbar\Facade;
-use Debugbar;
-use Validator;
 
 class DepartmentChiefController extends Controller
 {
@@ -25,25 +17,29 @@ class DepartmentChiefController extends Controller
     private $patientService;
     private $commonService;
 
+    private function checkPost()
+    {
+        $this->middleware('auth');
+        $this->middleware('checkPost:' . UserRole::department_chief);
+    }
+
     public function __construct(DepartmentChiefServiceInterface $departmentChief_service,
                                 PatientServiceInterface $patientService,
                                 CommonServiceInterface $commonService)
     {
-        $this->middleware('auth');
-        $this->middleware('checkPost:' . UserRole::department_chief);
-
+        $this->checkPost();
         $this->departmentChief_service = $departmentChief_service;
         $this->patientService = $patientService;
         $this->commonService = $commonService;
     }
 
+
     public function getDepartmentInpatients(Request $request)
     {
         try {
             $per_page = ($request->has('per_page')) ? $request->per_page : 20;
-            $department_id = Auth::user()->health_worker->department_id;
-            $response = $this->departmentChief_service->getDepartmentAllInpatientsSortByDateDesc($department_id, $per_page);
-            return $response;
+            $department_id = $request->session()->get('health_worker_id');
+            return $this->departmentChief_service->getDepartmentAllInpatientsSortByDateDesc($department_id, $per_page);
         } catch (Exception $e) {
             return ['success' => false, 'message' => $e->getMessage()];
         }
@@ -52,8 +48,7 @@ class DepartmentChiefController extends Controller
     public function getInpatientInfo(Request $request, $inpatient_id)
     {
         try {
-            $response = $this->patientService->getInpatientGeneralInfo($inpatient_id);
-            return $response;
+            return $this->patientService->getInpatientGeneralInfo($inpatient_id);
         } catch (Exception $e) {
             return ['success' => false, 'message' => $e->getMessage()];
         }
@@ -63,9 +58,8 @@ class DepartmentChiefController extends Controller
     {
         try {
             $per_page = ($request->has('per_page')) ? $request->per_page : 20;
-            $department_id = Auth::user()->health_worker->department_id;
-            $response = $this->departmentChief_service->getDepartmentAllDoctorsSortByFio($department_id, $per_page);
-            return $response;
+            $department_id = $request->session()->get('health_worker_id');
+            return $this->departmentChief_service->getDepartmentAllDoctorsSortByFio($department_id, $per_page);
         } catch (Exception $e) {
             return ['success' => false, 'message' => $e->getMessage()];
         }
@@ -74,8 +68,7 @@ class DepartmentChiefController extends Controller
     public function getAllDepartments(Request $request)
     {
         try {
-            $response = $this->commonService->getAllDepartments();
-            return $response;
+            return $this->commonService->getAllDepartments();
         } catch (Exception $e) {
             return ['success' => false, 'message' => $e->getMessage()];
         }
@@ -84,8 +77,7 @@ class DepartmentChiefController extends Controller
     public function getAllHospitals(Request $request)
     {
         try {
-            $response = $this->commonService->getAllHospitals();
-            return $response;
+            return $this->commonService->getAllHospitals();
         } catch (Exception $e) {
             return ['success' => false, 'message' => $e->getMessage()];
         }
@@ -95,8 +87,7 @@ class DepartmentChiefController extends Controller
     {
         try {
             $per_page = ($request->has('per_page')) ? $request->per_page : 20;
-            $response = $this->patientService->getPatientsArchive($per_page, $request);
-            return $response;
+            return $this->patientService->getPatientsArchive($per_page, $request);
         } catch (Exception $e) {
             return ['success' => false, 'message' => $e->getMessage()];
         }
@@ -105,8 +96,7 @@ class DepartmentChiefController extends Controller
     public function getInpatientAllInfo(Request $request, $inpatient_id)
     {
         try {
-            $response = $this->patientService->getInpatientAllInfo($inpatient_id);
-            return $response;
+            return $this->patientService->getInpatientAllInfo($inpatient_id);
         } catch (Exception $e) {
             return ['success' => false, 'message' => $e->getMessage()];
         }
@@ -119,8 +109,7 @@ class DepartmentChiefController extends Controller
     public function addAttendingDoctorToInpatient(Request $request)
     {
         try {
-            $result = $this->departmentChief_service->addAttendingDoctorToInpatient($request->json()->all());
-            return $result;
+            return $this->departmentChief_service->addAttendingDoctorToInpatient($request->json()->all());
         } catch (Exception $e) {
             return ['success' => false, 'message' => $e->getMessage()];
         }
@@ -129,11 +118,8 @@ class DepartmentChiefController extends Controller
     public function dischargeInpatientFromDepartment(Request $request)
     {
         try {
-            $result = $this->departmentChief_service->dischargeInpatientFromDepartment($request->json()->all());
-            Debugbar::info($result);
-            return $result;
+            return $this->departmentChief_service->dischargeInpatientFromDepartment($request->json()->all());
         } catch (Exception $e) {
-            Debugbar::info(['success' => false, 'message' => $e->getMessage()]);
             return ['success' => false, 'message' => $e->getMessage()];
         }
     }

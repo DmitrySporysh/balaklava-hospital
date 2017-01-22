@@ -22,10 +22,9 @@ class RegistrationController extends Controller
         $this->reg_service = $register_service;
     }
 
-
     public function register(Request $request)
     {
-        $messages = $this->reg_service->register($request);
+        $messages = $this->reg_service->register($request->all());
         return  $messages;
     }
 }

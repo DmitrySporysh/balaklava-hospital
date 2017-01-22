@@ -11,5 +11,5 @@ use Hash;
 
 interface RegistrationServiceInterface
 {
-    public function register(Request $request);
+    public function register($request);
 }

@@ -67,8 +67,7 @@ class NurseService implements NurseServiceInterface
     public function getAllDepartmentsWithDepartmentChiefFio()
     {
         try {
-            $data = $this->department_repo->getAllDepartmentsWithDepartmentChiefFio();
-            return $data;
+            return $this->department_repo->getAllDepartmentsWithDepartmentChiefFio();
         } catch (DALException $e) {
             $message = 'Error while creating withdraw departments request(DAL Error)';
             throw new NurseServiceException($message, 0, $e);
@@ -84,8 +83,7 @@ class NurseService implements NurseServiceInterface
             //$data['department'] = $this->department_repo->find($department_id, array('department_name'));
             //$data['chambers'] = $this->chamber_repo->getNotEmptyChambersByDepartmentNum($department_id,
             //    array('id', 'number', 'beds_occupied_count'));
-            $data = $this->chamber_repo->getNotEmptyChambersByDepartmentNum($department_id, array('id', 'number', 'beds_occupied_count'));
-            return $data;
+            return $this->chamber_repo->getNotEmptyChambersByDepartmentNum($department_id, array('id', 'number', 'beds_occupied_count'));
         } catch (DALException $e) {
             $message = 'Error while creating withdraw departments request(DAL Error)';
             throw new NurseServiceException($message, 0, $e);
@@ -100,8 +98,7 @@ class NurseService implements NurseServiceInterface
         try {
             //$data['chamber'] = $this->chamber_repo->where('id', $chamber_id, '=', array('id as chamber_id', 'number'));
             //$data['inpatients'] = $this->inpatient_repo->getInpatientsGeneralInfoByChamberId($chamber_id);
-            $data = $this->inpatient_repo->getInpatientsGeneralInfoByChamberId($chamber_id, ['fio', 'inpatients.id']);
-            return $data;
+            return $this->inpatient_repo->getInpatientsGeneralInfoByChamberId($chamber_id, ['fio', 'inpatients.id']);
         } catch (DALException $e) {
             $message = 'Error while creating withdraw chamber request(DAL Error)';
             throw new NurseServiceException($message, 0, $e);
@@ -110,9 +107,4 @@ class NurseService implements NurseServiceInterface
             throw new NurseServiceException($message, 0, $e);
         }
     }
-
-
-
-
-    
 }

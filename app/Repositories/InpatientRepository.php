@@ -12,48 +12,65 @@ use App\Models\Inpatient;
 use App\Models\Patient;
 use App\Repositories\Core\Repository;
 use App\Repositories\Interfaces\InpatientRepositoryInterface;
+use Cache;
 use DB;
 use Exception;
+use Illuminate\Support\Facades\Redis;
 
 
 class InpatientRepository extends Repository implements InpatientRepositoryInterface
 {
+    private static $_redisClient;
     function model()
     {
         return 'App\Models\Inpatient';
     }
 
+    /**
+     * @return Redis
+     */
+    private static function getRedisClient(){
+        if (self::$_redisClient == null){
+            self::$_redisClient = app()->make('redis');
+        }
+        return self::$_redisClient;
+    }
+
+
     public function getDoctorAllInpatientsSortByDateDesc($doctor_id, $per_page)
     {
+        $this->doctor_id = $doctor_id;
+        $this->per_page = $per_page;
+
         try {
-            $data = DB::table('inpatients')
-                ->where('inpatients.attending_doctor_id', $doctor_id)
-                ->whereNull('inpatients.deleted_at')
-                ->join('received_patients', 'inpatients.received_patient_id', '=', 'received_patients.id')
-                ->join('patients', 'received_patients.patient_id', '=', 'patients.id')
-                ->join('chambers', 'inpatients.chamber_id', '=', 'chambers.id')
-                ->select([
-                    'inpatients.id as inpatient_id',
-                    'received_patients.fio',
-                    'patients.birth_date',
-                    'patients.sex',
-                    'chambers.number',
-                    'received_patients.phone',
-                    'inpatients.start_date',
-                    'patients.insurance_number'])
-                ->orderBy('inpatients.start_date', 'DESC')
-                ->paginate($per_page);
-            if ($data == null) {
-                return array();
-            }
+            $data = Cache::remember("doctor_inpatients_".$doctor_id, 1, function() {
+                $data = DB::table('inpatients')
+                    ->where('inpatients.attending_doctor_id', $this->doctor_id)
+                    ->whereNull('inpatients.deleted_at')
+                    ->join('received_patients', 'inpatients.received_patient_id', '=', 'received_patients.id')
+                    ->join('patients', 'received_patients.patient_id', '=', 'patients.id')
+                    ->join('chambers', 'inpatients.chamber_id', '=', 'chambers.id')
+                    ->select([
+                        'inpatients.id as inpatient_id',
+                        'received_patients.fio',
+                        'patients.birth_date',
+                        'patients.sex',
+                        'chambers.number',
+                        'received_patients.phone',
+                        'inpatients.start_date',
+                        'patients.insurance_number'])
+                    ->orderBy('inpatients.start_date', 'DESC')
+                    ->paginate($this->per_page);
+
+                return $data;
+            });
+
+            return $data;
+
         } catch (Exception $e) {
             $message = 'Error while finding element using ' . $this->model();
             throw new DALException($message, 0, $e);
         }
-
-        if ($data != null) return $data;
-
-        return array();
     }
 
     public function getInpatientInfoGeneralInfo($inpatient_id, $columns, $joins)

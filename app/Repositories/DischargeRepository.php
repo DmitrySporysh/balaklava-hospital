@@ -6,6 +6,7 @@
  * Time: 12:33
  */
 namespace App\Repositories;
+
 use App\Exceptions\DALException;
 use App\Models\Inpatient;
 use App\Repositories\Core\Repository;
@@ -28,9 +29,7 @@ class DischargeRepository extends Repository implements DischargeRepositoryInter
                 $this->create($dischargeData);
                 Inpatient::destroy($dischargeData['inpatient_id']);
             });
-
-        } catch
-        (Exception $e) {
+        } catch (Exception $e) {
             $message = 'Error while creating element using ' . $this->model() . "\n" . $e->getMessage();
             throw new DALException($message, 0, $e);
         }

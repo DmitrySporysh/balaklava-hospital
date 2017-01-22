@@ -25,16 +25,19 @@ class AuthorizationService implements AuthorizationServiceInterface
     public function login(Request $request)
     {
         try {
-            $messages = $this->validateLoginInput($request);
+            $requestDate = $request->all();
+            $messages = $this->validateLoginInput($requestDate);
 
             if (!empty($messages)) {
                 return $messages;
             }
 
             $remember = $this->checkRememberMe($request);
-            if (Auth::attempt(['login' => $request->login, 'password' => $request->password], $remember)) {
-                $request->session()->put('fio',  Auth::user()->health_worker->fio);
-                $request->session()->put('post',  Auth::user()->health_worker->post);
+            if (Auth::attempt(['login' => $requestDate['login'], 'password' => $requestDate['password']], $remember)) {
+                $worker = Auth::user()->health_worker;
+                $request->session()->put('fio',  $worker->fio);
+                $request->session()->put('post',  $worker->post);
+                $request->session()->put('health_worker_id', $worker->id);
                 return;
             }
 
@@ -47,7 +50,7 @@ class AuthorizationService implements AuthorizationServiceInterface
     }
 
 
-    private function validateLoginInput(Request $request)
+    private function validateLoginInput($requestDate)
     {
         $messages = array(
             'password.required' => 'Поле "Пароль" должно быть заполнено',
@@ -57,7 +60,7 @@ class AuthorizationService implements AuthorizationServiceInterface
             'login.max'=>'Логин должен быть не больше 16 символов'
         );
         try {
-            $this->validator = Validator::make($request->all(), [
+            $this->validator = Validator::make($requestDate, [
                 'login' => 'required|min:2|max:16',
                 'password' => 'required|between:4,16'
             ], $messages);
