@@ -62,7 +62,7 @@ class NurseController extends Controller
     {
         try {
             // TODO потом потестить
-            return $this->patient_service->getInpatientWithGeneralInfoAndAttendingDoctor($inpatient_id);
+            return $this->patient_service->getInpatientGeneralInfo($inpatient_id);
         } catch (Exception $e) {
             return ['success' => false, 'message' => $e->getMessage()];
         }

@@ -12,7 +12,7 @@ class FileController extends Controller
 
     public function __construct(FileServiceInterface $fileService)
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
         $this->fileService = $fileService;
     }
 
