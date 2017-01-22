@@ -134,7 +134,7 @@ class PatientService implements PatientServiceInterface
     public function getInpatientGeneralInfo($inpatient_id)
     {
         try {
-            $data = $this->inpatient_repo->getInpatientInfoGeneralInfo($inpatient_id, $this->getColumnsArrayForInpatientGeneralInfo(),
+            $data = $this->inpatient_repo->getInpatientGeneralInfo($inpatient_id, $this->getColumnsArrayForInpatientGeneralInfo(),
                 ['received_patients', 'patients', 'health_workers', 'hospital_departments', 'chambers']);
             return $data;
         } catch (DALException $e) {
@@ -164,7 +164,7 @@ class PatientService implements PatientServiceInterface
                 'phone'
             ];
             //general patient info
-            $data['inpatient_info'] = $this->inpatient_repo->getInpatientInfoGeneralInfo($inpatient_id, $columnsInpatient,
+            $data['inpatient_info'] = $this->inpatient_repo->getInpatientGeneralInfo($inpatient_id, $columnsInpatient,
                 ['received_patients', 'patients']);
             //inspection_protocol
             $received_patient_id = $this->getReceivedPatientByInpatient($inpatient_id);

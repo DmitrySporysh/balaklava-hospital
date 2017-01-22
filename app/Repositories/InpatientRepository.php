@@ -73,7 +73,7 @@ class InpatientRepository extends Repository implements InpatientRepositoryInter
         }
     }
 
-    public function getInpatientInfoGeneralInfo($inpatient_id, $columns, $joins)
+    public function getInpatientGeneralInfo($inpatient_id, $columns, $joins)
     {
         try {
             $query = DB::table('inpatients')
