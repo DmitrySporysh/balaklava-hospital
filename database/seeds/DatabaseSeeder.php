@@ -29,5 +29,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AnalyzesTableSeeder::class);
         $this->call(MedicalAppointmentsTableSeeder::class);
         $this->call(NotesTableSeeder::class);
+        $this->call(BindingHospitalDepartmentWithDepartmentChiefSeeder::class);
     }
 }
