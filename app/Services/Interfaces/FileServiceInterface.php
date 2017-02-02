@@ -10,6 +10,6 @@ interface FileServiceInterface
 
     public function has($path);
 
-    public function get($path);
+    public function get($filename);
 
 }
