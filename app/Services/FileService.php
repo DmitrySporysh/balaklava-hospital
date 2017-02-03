@@ -39,7 +39,7 @@ class FileService implements FileServiceInterface
      */
     private function getFilePath($filename)
     {
-        return public_path() . "\\storage\\" . $filename;
+        return public_path() . "/storage/" . $filename;
     }
 
     /**
