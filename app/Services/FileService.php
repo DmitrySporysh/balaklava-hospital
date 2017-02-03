@@ -39,7 +39,6 @@ class FileService implements FileServiceInterface
      */
     private function getFilePath($filename)
     {
-        $filename = str_replace("/", "\\", $filename);
         return public_path() . "\\storage\\" . $filename;
     }
 
