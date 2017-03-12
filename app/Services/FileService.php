@@ -18,6 +18,8 @@ class FileService implements FileServiceInterface
         return $name;
     }
 
+
+
     public function has($path)
     {
         return Storage::has($path);
