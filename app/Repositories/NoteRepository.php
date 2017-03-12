@@ -6,12 +6,8 @@
  * Time: 12:33
  */
 namespace App\Repositories;
-use App\Exceptions\DALException;
-use App\Models\Note;
 use App\Repositories\Core\Repository;
 use App\Repositories\Interfaces\NoteRepositoryInterface;
-use Exception;
-
 
 class NoteRepository extends Repository implements NoteRepositoryInterface
 {

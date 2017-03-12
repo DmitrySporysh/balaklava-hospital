@@ -12,15 +12,10 @@ use App\Repositories\Interfaces\MedicalAppointmentRepositoryInterface;
 use App\Repositories\Interfaces\OperationRepositoryInterface;
 use App\Repositories\Interfaces\ReceivedPatientRepositoryInterface;
 use App\Repositories\Interfaces\TemperatureLogRepositoryInterface;
-use App\Services\Interfaces\FileServiceInterface;
 use App\Services\Interfaces\PatientServiceInterface;
 use \Exception;
 use App\Repositories\Interfaces\PatientRepositoryInterface;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Model;
-
-use Barryvdh\Debugbar\Facade;
-use Debugbar;
 
 class PatientService implements PatientServiceInterface
 {
@@ -211,13 +206,14 @@ class PatientService implements PatientServiceInterface
         try {
             $received_patient_id = $this->getReceivedPatientByInpatient($inpatient_id);
             if (!$received_patient_id)
-                return ['success' => false, 'message' => 'Inpatient not found'];
-
+                return null;
+            /*
             return [
                 'success' => true,
                 'data' => $this->received_patient_repo->getReceivedPatientInspectionProtocolInfo($received_patient_id),
                 'message' => 'Все хорошо'
-            ];
+            ];*/
+            return $this->received_patient_repo->getReceivedPatientInspectionProtocolInfo($received_patient_id);
         } catch (DALException $e) {
             $message = 'Error while creating withdraw inpatient request(DAL Error)';
             throw new PatientServiceException($message, 0, $e);

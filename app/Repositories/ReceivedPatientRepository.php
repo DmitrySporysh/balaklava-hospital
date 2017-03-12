@@ -11,12 +11,10 @@ use App\Exceptions\DALException;
 use App\Filtration\PatientFilters;
 use App\Models\InspectionProtocol;
 use App\Models\Patient;
-use App\Models\ReceivedPatient;
 use App\Repositories\Core\Repository;
 use App\Repositories\Interfaces\ReceivedPatientRepositoryInterface;
 use DB;
 use Exception;
-use Illuminate\Database\Query\Builder;
 
 class ReceivedPatientRepository extends Repository implements ReceivedPatientRepositoryInterface
 {

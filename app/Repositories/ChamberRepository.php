@@ -7,7 +7,6 @@
  */
 namespace App\Repositories;
 use App\Exceptions\DALException;
-use App\Models\Chamber;
 use App\Repositories\Core\Repository;
 use App\Repositories\Interfaces\ChamberRepositoryInterface;
 use Exception;

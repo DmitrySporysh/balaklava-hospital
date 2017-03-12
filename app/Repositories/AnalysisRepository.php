@@ -8,7 +8,6 @@
 namespace App\Repositories;
 
 use App\Exceptions\DALException;
-use App\Models\Analysis;
 use App\Repositories\Core\Repository;
 use App\Repositories\Interfaces\AnalysisRepositoryInterface;
 use DB;

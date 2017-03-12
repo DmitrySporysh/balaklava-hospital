@@ -7,12 +7,8 @@
  */
 namespace App\Repositories;
 
-use App\Exceptions\DALException;
-use App\Models\InspectionProtocol;
 use App\Repositories\Core\Repository;
 use App\Repositories\Interfaces\InspectionProtocolRepositoryInterface;
-use Exception;
-
 
 class InspectionProtocolRepository extends Repository implements InspectionProtocolRepositoryInterface
 {

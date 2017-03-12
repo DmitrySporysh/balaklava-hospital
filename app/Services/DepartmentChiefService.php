@@ -3,7 +3,6 @@ namespace App\Services;
 
 use App\Exceptions\DepartmentChiefServiceException;
 use App\Exceptions\DALException;
-use App\Repositories\HospitalDepartmentRepository;
 use App\Repositories\Interfaces\DischargeRepositoryInterface;
 use App\Repositories\Interfaces\HealthWorkerRepositoryInterface;
 use App\Repositories\Interfaces\HospitalDepartmentRepositoryInterface;
@@ -15,8 +14,6 @@ use Carbon\Carbon;
 use \Exception;
 use App\Repositories\Interfaces\PatientRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
-use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Model;
 use Validator;
 
 

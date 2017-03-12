@@ -12,9 +12,6 @@ use App\Repositories\Core\Repository;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use DB;
 
-use Barryvdh\Debugbar\Facade;
-use Debugbar;
-
 class UserRepository extends Repository implements UserRepositoryInterface
 {
 

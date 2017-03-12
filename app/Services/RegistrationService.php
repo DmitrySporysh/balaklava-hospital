@@ -3,10 +3,8 @@ namespace App\Services;
 
 use App\Services\Interfaces\RegistrationServiceInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
-use Auth;
 use App\Common\Enums\UserRole;
 use Exception;
-use Illuminate\Http\Request;
 use Validator;
 
 

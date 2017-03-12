@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Common\Enums\UserRole;
-use App\Http\Requests;
 use App\Services\Interfaces\CommonServiceInterface;
 use App\Services\Interfaces\DepartmentChiefServiceInterface;
 use App\Services\Interfaces\PatientServiceInterface;

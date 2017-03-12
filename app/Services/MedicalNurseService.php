@@ -12,8 +12,6 @@ use Carbon\Carbon;
 use App\Repositories\Interfaces\PatientRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use Exception;
-
-use Debugbar;
 use Validator;
 
 

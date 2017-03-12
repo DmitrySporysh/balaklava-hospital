@@ -4,13 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\Interfaces\RegistrationServiceInterface;
-use App\Exceptions\RegistrationServiceException;
-use Exception;
-use App\Http\Requests;
-use Auth;
 
-use Barryvdh\Debugbar\Facade;
-use Debugbar;
 
 class RegistrationController extends Controller
 {

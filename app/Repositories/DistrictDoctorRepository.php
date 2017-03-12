@@ -6,11 +6,8 @@
  * Time: 12:33
  */
 namespace App\Repositories;
-use App\Exceptions\DALException;
-use App\Models\DistrictDoctor;
 use App\Repositories\Core\Repository;
 use App\Repositories\Interfaces\DistrictDoctorRepositoryInterface;
-use Exception;
 
 
 class DistrictDoctorRepository extends Repository implements DistrictDoctorRepositoryInterface

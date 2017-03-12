@@ -20,9 +20,6 @@ use App\Repositories\Interfaces\InspectionRepositoryInterface;
 use App\Repositories\Interfaces\OperationRepositoryInterface;
 use App\Repositories\Interfaces\HealthWorkerRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
-//
-use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Model;
 
 
 class NurseService implements NurseServiceInterface

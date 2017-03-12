@@ -6,8 +6,6 @@ use App\Common\Enums\UserRole;
 use App\Services\Interfaces\NurseServiceInterface;
 use App\Services\Interfaces\PatientServiceInterface;
 use Exception;
-use Illuminate\Http\Request;
-
 
 class NurseController extends Controller
 {

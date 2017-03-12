@@ -3,18 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Common\Enums\UserRole;
-use App\Exceptions\CommonServiceException;
-use App\Http\Requests;
 use App\Services\Interfaces\CommonServiceInterface;
 use App\Services\Interfaces\DoctorServiceInterface;
 use App\Services\Interfaces\PatientServiceInterface;
 use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Input;
-
-use Barryvdh\Debugbar\Facade;
-use Debugbar;
 
 class DoctorController extends Controller
 {

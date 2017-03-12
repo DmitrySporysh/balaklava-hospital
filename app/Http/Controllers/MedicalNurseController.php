@@ -4,16 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Common\Enums\UserRole;
 use App\Services\Interfaces\MedicalNurseServiceInterface;
-use App\Exceptions\DALException;
 use App\Services\Interfaces\PatientServiceInterface;
 use Illuminate\Http\Request;
 use Exception;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Input;
-
-use Barryvdh\Debugbar\Facade;
-use Debugbar;
-use Validator;
 
 class MedicalNurseController extends Controller
 {

@@ -15,13 +15,7 @@ use App\Services\Interfaces\DoctorServiceInterface;
 use Carbon\Carbon;
 use \Exception;
 use App\Repositories\Interfaces\PatientRepositoryInterface;
-use App\Repositories\Interfaces\DistrictDoctorRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
-use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Model;
-
-use Barryvdh\Debugbar\Facade;
-use Debugbar;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 
