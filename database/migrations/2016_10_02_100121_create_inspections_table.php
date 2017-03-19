@@ -16,8 +16,7 @@ class CreateInspectionsTable extends Migration
         Schema::create('inspections', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamp('inspection_date');
-            $table->string('state_type');
-            $table->string('description_extended');
+            $table->string('description');
 
             $table->integer('inpatient_id')->unsigned();
             $table->integer('doctor_id')->unsigned();
