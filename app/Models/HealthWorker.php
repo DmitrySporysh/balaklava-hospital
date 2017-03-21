@@ -9,38 +9,38 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * App\Models\HealthWorker
  *
- * @property integer $id
- * @property string $fio
- * @property string $sex
- * @property string $birth_date
- * @property string $post
- * @property integer $login_id
- * @property \Carbon\Carbon $deleted_at
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
- * @property integer $department_id
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Analysis[] $analyzes
  * @property-read \App\Models\HospitalDepartment $department
  * @property-read \App\Models\HospitalDepartment $hospital_department
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Inpatient[] $inpatients
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\InspectionProtocol[] $inspections_protocols
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ReceivedPatient[] $received_patients
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Inspection[] $inspections
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Procedure[] $procedures
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Operation[] $operations
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Analysis[] $analyzes
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\MedicalAppointment[] $medical_appointments
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Note[] $notes
- * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereFio($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereSex($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereBirthDate($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker wherePost($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereLoginId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereDeletedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereUpdatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereDepartmentId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Operation[] $operations
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Procedure[] $procedures
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ReceivedPatient[] $received_patients
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\StateDynamic[] $statesDynamics
  * @mixin \Eloquent
+ * @property int $id
+ * @property string $fio
+ * @property string $sex
+ * @property string $birth_date
+ * @property string $post
+ * @property int $login_id
+ * @property \Carbon\Carbon $deleted_at
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property int $department_id
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereBirthDate($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereDepartmentId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereFio($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereLoginId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker wherePost($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereSex($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\HealthWorker whereUpdatedAt($value)
  */
 class HealthWorker extends Model
 {
@@ -82,8 +82,8 @@ class HealthWorker extends Model
         return $this->hasMany('App\Models\ReceivedPatient','registration_nurse_id');
     }
 
-    public function inspections(){
-        return $this->hasMany('App\Models\Inspection','doctor_id');
+    public function statesDynamics(){
+        return $this->hasMany('App\Models\StateDynamic','doctor_id');
     }
 
     public function procedures(){

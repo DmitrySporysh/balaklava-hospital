@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInspectionsTable extends Migration
+class CreateStateDynamicTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateInspectionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('inspections', function (Blueprint $table) {
+        Schema::create('state_dynamic', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamp('inspection_date');
+            $table->timestamp('date');
             $table->string('description');
+            $table->string('appointment');
 
             $table->integer('inpatient_id')->unsigned();
             $table->integer('doctor_id')->unsigned();
@@ -25,7 +26,7 @@ class CreateInspectionsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('inspections',function (Blueprint $table){
+        Schema::table('state_dynamic',function (Blueprint $table){
             $table->foreign('inpatient_id')->references('id')->on('inpatients')
                 ->onUpdate('cascade');
             $table->foreign('doctor_id')->references('id')->on('health_workers')
@@ -40,6 +41,6 @@ class CreateInspectionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inspections');
+        Schema::dropIfExists('state_dynamic');
     }
 }

@@ -50,7 +50,7 @@ Route::group(['prefix' => 'api'], function () {
             Route::get('{id}/allInfo', 'DoctorController@getInpatientAllInfo');
             Route::get('{id}/inspection_protocol', 'DoctorController@getInpatientInspectionProtocol');
             Route::get('{id}/medical_appointments', 'DoctorController@getInpatientMedicalAppointments');
-            Route::get('{id}/inspections', 'DoctorController@getInpatientInspections');
+            Route::get('{id}/statesDynamics', 'DoctorController@getInpatientStatesDynamics');
             Route::get('{id}/analyzes', 'DoctorController@getInpatientAnalyzes');
             Route::get('{id}/procedures', 'DoctorController@getInpatientProcedures');
             Route::get('{id}/operations', 'DoctorController@getInpatientOperations');
@@ -126,30 +126,32 @@ Route::group(['prefix' => 'api'], function () {
         Route::post('addAttendingDoctorToInpatient', 'DepartmentChiefController@addAttendingDoctorToInpatient');
         Route::post('dischargeInpatient', 'DepartmentChiefController@dischargeInpatientFromDepartment');
     });
-});
 
-//TODO Сервисы для моб приложения
-/*-------------------------------------------------------------------------------------------------
-*             МЕДСЕСТРЫ
-*------------------------------------------------------------------------------------------------- */
-Route::group(['prefix' => 'nurse'], function () {
-    Route::get('departments', 'NurseController@getDepartments'); //+
-    Route::get('department/{id}/chambers', 'NurseController@getDepartmentChambers');//+
-    Route::get('chamber/{id}', 'NurseController@getChamberWithPatients');//+
+    //TODO Сервисы для моб приложения
+    /*-------------------------------------------------------------------------------------------------
+    *             МЕДСЕСТРЫ МОБ ВЕРСИЯ
+    *------------------------------------------------------------------------------------------------- */
+    Route::group(['prefix' => 'nurse'], function () {
+        Route::get('departments', 'NurseController@getDepartments'); //+
+        Route::get('department/{id}/chambers', 'NurseController@getDepartmentChambers');//+
+        Route::get('chamber/{id}', 'NurseController@getChamberWithPatients');//+
 
-    Route::group(['prefix' => 'inpatient'], function () {
-        Route::get('{id}', 'NurseController@getInpatientInfo');
-        Route::get('{id}/inspection_protocol', 'NurseController@getInpatientInspectionProtocol');
-        Route::get('{id}/medical_appointments', 'NurseController@getInpatientMedicalAppointments');
-        Route::get('{id}/inspections', 'NurseController@getInpatientInspections');
-        Route::get('{id}/analyzes', 'NurseController@getInpatientAllAnalyzes');
-        Route::get('{id}/analyzes/{analyses_id}', 'NurseController@getInpatientAnalyses');
-        Route::get('{id}/procedures', 'NurseController@getInpatientAllProcedures');
-        Route::get('{id}/procedures/{procedure_id}', 'NurseController@getInpatientProcedure');
-        Route::get('{id}/operations', 'NurseController@getInpatientOperations');
-        Route::get('{id}/temperature_log', 'NurseController@getInpatientTemperatureLog');
+        Route::group(['prefix' => 'inpatient'], function () {
+            Route::get('{id}', 'NurseController@getInpatientInfo');
+            Route::get('{id}/inspection_protocol', 'NurseController@getInpatientInspectionProtocol');
+            Route::get('{id}/medical_appointments', 'NurseController@getInpatientMedicalAppointments');
+            Route::get('{id}/statesDynamics', 'NurseController@getInpatientStatesDynamics');
+            Route::get('{id}/analyzes', 'NurseController@getInpatientAllAnalyzes');
+            Route::get('{id}/analyzes/{analyses_id}', 'NurseController@getInpatientAnalyses');
+            Route::get('{id}/procedures', 'NurseController@getInpatientAllProcedures');
+            Route::get('{id}/procedures/{procedure_id}', 'NurseController@getInpatientProcedure');
+            Route::get('{id}/operations', 'NurseController@getInpatientOperations');
+            Route::get('{id}/temperature_log', 'NurseController@getInpatientTemperatureLog');
+        });
     });
 });
+
+
 
 Route::get('file', 'FileController@getFile'); //получить файл по его урлу {file_path}
 Route::post('file/save', 'FileController@saveFile');

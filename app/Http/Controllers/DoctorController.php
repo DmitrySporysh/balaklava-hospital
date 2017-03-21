@@ -26,7 +26,7 @@ class DoctorController extends Controller
                                 CommonServiceInterface $commonService
     )
     {
-        $this->checkPost();
+        //$this->checkPost();
         $this->doctor_service = $doctor_service;
         $this->patient_service = $patient_service;
         $this->commonService = $commonService;
@@ -117,10 +117,10 @@ class DoctorController extends Controller
         }
     }
 
-    public function getInpatientInspections(Request $request, $inpatient_id)
+    public function getInpatientStatesDynamics($inpatient_id)
     {
         try {
-            return $this->patient_service->getInpatientInspections($inpatient_id);
+            return $this->patient_service->getInpatientStatesDynamics($inpatient_id);
         } catch (Exception $e) {
             return ['success' => false, 'message' => $e->getMessage()];
         }

@@ -48,6 +48,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $marital_status
  * @method static \Illuminate\Database\Query\Builder|\App\Models\ReceivedPatient whereMaritalStatus($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\ReceivedPatient filter($filters)
+ * @property string $education
+ * @property string $policy_oms
+ * @property string $medical_insurance_company
+ * @property string $medical_company_sent
+ * @property string $diagnosis_medical_company_sent
+ * @property string $diagnosis_complications_medical_company_sent
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ReceivedPatient whereDiagnosisComplicationsMedicalCompanySent($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ReceivedPatient whereDiagnosisMedicalCompanySent($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ReceivedPatient whereEducation($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ReceivedPatient whereMedicalCompanySent($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ReceivedPatient whereMedicalInsuranceCompany($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ReceivedPatient wherePolicyOms($value)
  */
 class ReceivedPatient extends Model
 {
@@ -64,7 +76,11 @@ class ReceivedPatient extends Model
     protected $fillable = [
         'patient_id', 'marital_status', 'registration_nurse_id', 'received_date', 'fio', 'work_place',
         'residential_address', 'registration_address', 'phone', 'complaints', 'received_type',
-        'inspection_protocol_id'
+        'inspection_protocol_id',
+
+        'policy_oms', 'education', 'medical_insurance_company',
+        'medical_company_sent', 'diagnosis_medical_company_sent',
+        'diagnosis_complications_medical_company_sent'
     ];
 
 

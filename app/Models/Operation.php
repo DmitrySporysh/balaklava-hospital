@@ -13,6 +13,34 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read \App\Models\Inpatient $inpatient
  * @property-read \App\Models\HealthWorker $doctor
  * @mixin \Eloquent
+ * @property int $id
+ * @property int $inpatient_id
+ * @property int $doctor_who_appointed
+ * @property int $doctor_who_performed
+ * @property string $appointment_date
+ * @property string $operation_date
+ * @property string $operation_name
+ * @property string $preliminary_epicrisis
+ * @property string $operation_description
+ * @property string $result_description
+ * @property string $paths_to_files
+ * @property \Carbon\Carbon $deleted_at
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Operation whereAppointmentDate($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Operation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Operation whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Operation whereDoctorWhoAppointed($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Operation whereDoctorWhoPerformed($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Operation whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Operation whereInpatientId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Operation whereOperationDate($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Operation whereOperationDescription($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Operation whereOperationName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Operation wherePathsToFiles($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Operation wherePreliminaryEpicrisis($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Operation whereResultDescription($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Operation whereUpdatedAt($value)
  */
 class Operation extends Model
 {

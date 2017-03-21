@@ -21,16 +21,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property-read \App\Models\Discharge $discharge
- * @property-read \App\Models\ReceivedPatient $received_patient
- * @property-read \App\Models\DistrictDoctor $district_doctor
- * @property-read \App\Models\HealthWorker $attending_doctor
- * @property-read \App\Models\HospitalDepartment $hospital_department
- * @property-read \App\Models\Chamber $chamber
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Operation[] $operations
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Procedure[] $procedures
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Inspection[] $inspection
+ * @property-read \App\Models\ReceivedPatient                                               $received_patient
+ * @property-read \App\Models\DistrictDoctor                                                $district_doctor
+ * @property-read \App\Models\HealthWorker                                                  $attending_doctor
+ * @property-read \App\Models\HospitalDepartment                                            $hospital_department
+ * @property-read \App\Models\Chamber                                                       $chamber
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Operation[]          $operations
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Procedure[]          $procedures
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\StateDynamic[]       $inspection
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\MedicalAppointment[] $medical_appointments
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Analysis[] $analyzes
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Analysis[]           $analyzes
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Inpatient whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Inpatient whereStartDate($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Inpatient whereDiagnosis($value)
@@ -43,6 +43,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Inpatient whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Inpatient whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\StateDynamic[] $statesDynamics
  */
 class Inpatient extends Model
 {
@@ -96,8 +97,8 @@ class Inpatient extends Model
         return $this->hasMany('App\Models\Procedure','inpatient_id');
     }
 
-    public function inspection(){
-        return $this->hasMany('App\Models\Inspection','inpatient_id');
+    public function statesDynamics(){
+        return $this->hasMany('App\Models\StateDynamic','inpatient_id');
     }
 
     public function medical_appointments(){

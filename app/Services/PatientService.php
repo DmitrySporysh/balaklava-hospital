@@ -7,7 +7,7 @@ use App\Repositories\Interfaces\AnalysisRepositoryInterface;
 use App\Repositories\Interfaces\ProcedureRepositoryInterface;
 use App\Repositories\Interfaces\HealthWorkerRepositoryInterface;
 use App\Repositories\Interfaces\InpatientRepositoryInterface;
-use App\Repositories\Interfaces\InspectionRepositoryInterface;
+use App\Repositories\Interfaces\StateDynamicRepositoryInterface;
 use App\Repositories\Interfaces\MedicalAppointmentRepositoryInterface;
 use App\Repositories\Interfaces\OperationRepositoryInterface;
 use App\Repositories\Interfaces\ReceivedPatientRepositoryInterface;
@@ -23,7 +23,7 @@ class PatientService implements PatientServiceInterface
     private $inpatient_repo;
     private $received_patient_repo;
     private $medical_appointment_repo;
-    private $inspection_repo;
+    private $state_dynamic_repo;
     private $analysis_repo;
     private $procedureRepository;
     private $operation_repo;
@@ -34,7 +34,7 @@ class PatientService implements PatientServiceInterface
                                 InpatientRepositoryInterface $inpatient_repo,
                                 ReceivedPatientRepositoryInterface $received_patient_repo,
                                 MedicalAppointmentRepositoryInterface $medical_appointment_repo,
-                                InspectionRepositoryInterface $inspection_repo,
+                                StateDynamicRepositoryInterface $stateDynamicRepository,
                                 AnalysisRepositoryInterface $analysis_repo,
                                 ProcedureRepositoryInterface $procedureRepository,
                                 OperationRepositoryInterface $operation_repo,
@@ -46,7 +46,7 @@ class PatientService implements PatientServiceInterface
         $this->inpatient_repo = $inpatient_repo;
         $this->received_patient_repo = $received_patient_repo;
         $this->medical_appointment_repo = $medical_appointment_repo;
-        $this->inspection_repo = $inspection_repo;
+        $this->state_dynamic_repo = $stateDynamicRepository;
         $this->analysis_repo = $analysis_repo;
         $this->procedureRepository = $procedureRepository;
         $this->operation_repo = $operation_repo;
@@ -122,7 +122,11 @@ class PatientService implements PatientServiceInterface
             'phone',
             'health_workers.fio as attending_doctor_fio',
             'chambers.number as chamber_number',
-            'hospital_departments.department_name'
+            'hospital_departments.department_name',
+            //добавил
+            'policy_oms', 'education', 'medical_insurance_company',
+            'medical_company_sent', 'diagnosis_medical_company_sent',
+            'diagnosis_complications_medical_company_sent'
         ];
     }
 
@@ -156,7 +160,12 @@ class PatientService implements PatientServiceInterface
                 'insurance_number',
                 'blood_type',
                 'sex',
-                'phone'
+                'phone',
+                //
+                //добавил
+                'policy_oms', 'education', 'medical_insurance_company',
+                'medical_company_sent', 'diagnosis_medical_company_sent',
+                'diagnosis_complications_medical_company_sent'
             ];
             //general patient info
             $data['inpatient_info'] = $this->inpatient_repo->getInpatientGeneralInfo($inpatient_id, $columnsInpatient,
@@ -174,7 +183,7 @@ class PatientService implements PatientServiceInterface
             //procedures
             $data['procedures'] = $this->procedureRepository->getInpatientProceduresWithDoctorsSortedByDateDESC($inpatient_id);
             //inspections
-            $data['inspections'] = $this->inspection_repo->getInpatientInspectionsWithDoctorsSortedByDateDESC($inpatient_id);
+            $data['states_dynamic'] = $this->state_dynamic_repo->getInpatientStatesDynamicsWithDoctorsSortedByDateDESC($inpatient_id);
             //medical_appointments
             $data['medical_appointments'] = $this->medical_appointment_repo->getInpatientMedicalAppointmentsWithDoctorsSortedByDateDESC($inpatient_id);
             return $data;
@@ -236,10 +245,10 @@ class PatientService implements PatientServiceInterface
         }
     }
 
-    public function getInpatientInspections($inpatient_id)
+    public function getInpatientStatesDynamics($inpatient_id)
     {
         try {
-            return $this->inspection_repo->getInpatientInspectionsWithDoctorsSortedByDateDESC($inpatient_id);
+            return $this->state_dynamic_repo->getInpatientStatesDynamicsWithDoctorsSortedByDateDESC($inpatient_id);
         } catch (DALException $e) {
             $message = 'Error while creating withdraw inspections request(DAL Error)';
             throw new PatientServiceException($message, 0, $e);

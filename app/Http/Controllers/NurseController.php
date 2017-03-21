@@ -83,10 +83,10 @@ class NurseController extends Controller
         }
     }
 
-    public function getInpatientInspections($inpatient_id)
+    public function getInpatientStatesDynamics($inpatient_id)
     {
         try {
-            return $this->patient_service->getInpatientInspections($inpatient_id);
+            return $this->patient_service->getInpatientStatesDynamics($inpatient_id);
         } catch (Exception $e) {
             return ['success' => false, 'message' => $e->getMessage()];
         }

@@ -4,7 +4,7 @@ namespace App\Services;
 use App\Exceptions\DoctorServiceException;
 use App\Exceptions\DALException;
 use App\Repositories\Interfaces\AnalysisRepositoryInterface;
-use App\Repositories\Interfaces\InspectionRepositoryInterface;
+use App\Repositories\Interfaces\StateDynamicRepositoryInterface;
 use App\Repositories\Interfaces\MedicalAppointmentRepositoryInterface;
 use App\Repositories\Interfaces\OperationRepositoryInterface;
 use App\Repositories\Interfaces\ProcedureRepositoryInterface;
@@ -41,7 +41,7 @@ class DoctorService implements DoctorServiceInterface
                                 HealthWorkerRepositoryInterface $doctor_repo,
                                 AnalysisRepositoryInterface $analysisRepository,
                                 ProcedureRepositoryInterface $procedureRepository,
-                                InspectionRepositoryInterface $inspectionRepository,
+                                StateDynamicRepositoryInterface $inspectionRepository,
                                 OperationRepositoryInterface $operationRepository,
                                 MedicalAppointmentRepositoryInterface $medicalAppointmentRepository
 

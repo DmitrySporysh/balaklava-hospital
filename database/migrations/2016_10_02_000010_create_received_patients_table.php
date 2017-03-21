@@ -29,6 +29,14 @@ class CreateReceivedPatientsTable extends Migration
             $table->string('complaints')->nullable();
             $table->string('received_type');
 
+
+            $table->string('education')->nullable();
+            $table->string('policy_oms')->nullable();
+            $table->string('medical_insurance_company')->nullable();
+            $table->string('medical_company_sent')->nullable();
+            $table->string('diagnosis_medical_company_sent')->nullable();
+            $table->string('diagnosis_complications_medical_company_sent')->nullable();
+
             $table->integer('inspection_protocol_id')->unsigned()->nullable();
 
             $table->softDeletes();

@@ -31,7 +31,15 @@ class ReceivedPatientsTableSeeder extends Seeder
                 'work_place' => 'Фирма № '.($index % 8 + 1),
                 'residential_address' => 'г.Севастополь, ул.Вакуленчука №'.$index,
                 'registration_address' => 'г.Севастополь, ул.Гагарина №'.$index,
-                'complaints' => 'у пацинта что-то болит. Говорит "мне прям ваще фигово"'
+                'complaints' => 'у пацинта что-то болит. Говорит "мне прям ваще фигово"',
+
+
+                'policy_oms' => mt_rand(),
+                'education' => 'Высшее образование СевГУ',
+                'medical_insurance_company' => 'Страхование РФ',
+                'medical_company_sent' => '1 гор больница',
+                'diagnosis_medical_company_sent' => 'Разрыв кишки',
+                'diagnosis_complications_medical_company_sent' => 'Кровоизлеяние в живот'
             ]);
         }
 
@@ -48,7 +56,14 @@ class ReceivedPatientsTableSeeder extends Seeder
                 'work_place' => 'Фирма № '.($index % 25 + 1),
                 'residential_address' => 'г.Севастополь, ул.Вакуленчука №'.$index,
                 'registration_address' => 'г.Севастополь, ул.Гагарина №'.$index,
-                'complaints' => 'у пацинта что-то болит. Говорит "мне прям ваще фигово"'
+                'complaints' => 'у пацинта что-то болит. Говорит "мне прям ваще фигово"',
+
+                'policy_oms' => mt_rand(),
+                'education' => 'Высшее образование СевГУ',
+                'medical_insurance_company' => 'Страхование РФ',
+                'medical_company_sent' => '1 гор больница',
+                'diagnosis_medical_company_sent' => 'Разрыв кишки',
+                'diagnosis_complications_medical_company_sent' => 'Кровоизлеяние в живот'
             ]);
         }
     }

@@ -16,7 +16,7 @@ use App\Services\Interfaces\NurseServiceInterface;
 use App\Repositories\Interfaces\PatientRepositoryInterface;
 use App\Repositories\Interfaces\ChamberRepositoryInterface;
 use App\Repositories\Interfaces\ProcedureRepositoryInterface;
-use App\Repositories\Interfaces\InspectionRepositoryInterface;
+use App\Repositories\Interfaces\StateDynamicRepositoryInterface;
 use App\Repositories\Interfaces\OperationRepositoryInterface;
 use App\Repositories\Interfaces\HealthWorkerRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
@@ -41,7 +41,7 @@ class NurseService implements NurseServiceInterface
                                 InpatientRepositoryInterface $inpatient_repo,
                                 ChamberRepositoryInterface $chamber_repo,
                                 ProcedureRepositoryInterface $dressing_repo,
-                                InspectionRepositoryInterface $inspection_repo,
+                                StateDynamicRepositoryInterface $inspection_repo,
                                 OperationRepositoryInterface $operation_repo,
                                 MedicalAppointmentRepositoryInterface $medical_appointment_repo,
                                 HospitalDepartmentRepositoryInterface $department_repo,
