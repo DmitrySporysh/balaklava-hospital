@@ -40,7 +40,6 @@ angular
         archivePersonService.getPersonInfo(self.archPerson_id)
             .then(function(data) {
                 self.full_info =  data;
-                console.log(data);
 
                 for (block in self.full_info){
                     for (row in self.full_info[block]){
@@ -70,6 +69,5 @@ angular
                 });
 
                 self.date_sort=sort_date;
-               /* console.log(self.date_sort);*/
             });
     });

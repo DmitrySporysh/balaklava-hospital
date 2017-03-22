@@ -79,7 +79,6 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
     $scope.testFactory=testFactory;
     $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id).success(function(patients) {
         $scope.patient_info = patients[0];
-        console.log(patients[0]);
     });
 
     $scope.save_analiz = function (patient, PatientProtocol){
@@ -156,20 +155,17 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
             case 'tab-general' :
                 $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id).success(function(patients) {
                     $scope.patient_info = patients[0];
-                    console.log($scope.patient_info)
                 });
                 break;
             case 'tab-results' :
                 $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id+'/analyzes').success(function(analizes) {
                     $scope.analizes = analizes;
-                    console.log($scope.analizes);
                 });
                 break;
             case 'tab-dynamic' :
                 {
                     $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id+'/inspections').success(function(inspections) {
                         $scope.inspections = inspections;
-                        console.log($scope.inspections);
                     });
                     $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id+'/procedures').success(function(dressings) {
                         $scope.dressings = dressings;
@@ -182,13 +178,11 @@ doctorAppControllers.controller('PatientFullController', function ($scope, $http
             case 'tab-prescriptions' :
                 $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id+'/medical_appointments').success(function(prescriptions) {
                     $scope.prescriptions = prescriptions;
-                    console.log($scope.prescriptions);
                 });
                 break;
             case 'tab-first-inspection' :
                 $http.get('doctor/inpatient/'+$scope.testFactory.patient_full_id+'/inspection_protocol').success(function(patients) {
                     $scope.patient_info = patients[0];
-                    console.log($scope.patient_info);
                 });
                 break;
         }
@@ -209,11 +203,9 @@ doctorAppControllers.controller('ArchiveController', function ($scope, $http, te
     };
 
     $scope.change = function() {
-        console.log($scope.filter);
         $http({method:'GET', url:'/doctor/archive', params: $scope.filter})
             .success(function (answ) {
                 $scope.response=answ;
-                console.log(answ);
             });
     };
 
@@ -265,8 +257,7 @@ doctorAppControllers.controller('ArchivePatientController', function ($scope, $h
 
         for (block in ans) {
             for (row in ans[block]) {
-                var date = ans[block][row][date_comp[block]];//Это вывод даты, т.е.  имена разные , то приходится делать вот такой мусор
-                /*console.log(date);*/
+                var date = ans[block][row][date_comp[block]];
 
                 sort_date.push({
                     'block':block,
@@ -275,7 +266,6 @@ doctorAppControllers.controller('ArchivePatientController', function ($scope, $h
             }
         }
 
-       /* console.log(sort_date);*/
 
         for (item in sort_date)
         {
@@ -291,8 +281,6 @@ doctorAppControllers.controller('ArchivePatientController', function ($scope, $h
         });
 
         $scope.date_sort=sort_date;
-
-        /*console.log(sort_date);*/
     });
 
 

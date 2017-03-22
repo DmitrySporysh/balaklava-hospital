@@ -107,15 +107,15 @@
                     <tr>
                         <th>Дата осмотра</th>
                         <th>Состояние</th>
-                        <th>Результат осмотра</th>
+                        <th>Назначения</th>
                         <th>Врач</th>
                     </tr>
                     </thead>
                     <tbody class='plain-table__value' id="inspection-table">
                     <tr ng-repeat="inspection in treatmentDynamic.inspections">
-                        <td>{{inspection.inspection_date}}</td>
-                        <td>{{inspection.state_type}}</td>
-                        <td>{{inspection.description_extended}}</td>
+                        <td>{{inspection.date}}</td>
+                        <td>{{inspection.description}}</td>
+                        <td>{{inspection.appointment}}</td>
                         <td>{{inspection.doctor_fio}}</td>
                     </tr>
                     </tbody>

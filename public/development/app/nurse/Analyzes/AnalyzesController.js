@@ -35,9 +35,5 @@ angular
             }).then(function successCallback(response) {
             }, function errorCallback(response) {
             });
-
-            /*console.log(self.analysesResult);*/
-            /*AnalyzesService.postAnalysesResult(this.analysesResult, self.analyses_id);*/
-        /*    AnalyzesService.postAnalysesResult(fd, self.analyses_id);*/
         }
     });

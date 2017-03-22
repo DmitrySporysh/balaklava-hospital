@@ -7,7 +7,6 @@ angular
         ArchiveService.getArchivePeople()
             .then(function (people) {
                 self.archivePeople = people.data;
-                console.log(people.data);
             });
 
         self.filter_info = {};
@@ -21,13 +20,3 @@ angular
                 });
         }
     });
-
-
-/*$scope.change = function() {
- console.log($scope.filter);
- $http({method:'GET', url:'/doctor/archive', params: $scope.filter})
- .success(function (answ) {
- $scope.response=answ;
- console.log(answ);
- });
- };*/

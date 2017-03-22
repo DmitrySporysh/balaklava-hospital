@@ -8,7 +8,6 @@ angular
             RegisterService.registration(self.register_info)
                 .then (function(access) {
                     self.answer = access;
-                    console.log(access);
                 });
         };
 

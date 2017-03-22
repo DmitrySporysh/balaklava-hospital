@@ -29,7 +29,6 @@ angular
             InpatientInfoService.designateTheDoctor(self.designate_the_doctor, self.emPerson_id)
                 .then(function(response) {
                     self.response = response;
-                    console.log(self.response);
                 });
         };
 
@@ -37,7 +36,6 @@ angular
             InpatientInfoService.writeOutPatient(self.write_out_patient, self.emPerson_id)
                 .then(function(response) {
                     self.response = response;
-                    console.log(self.response);
                 });
         };
 
@@ -50,7 +48,6 @@ angular
         InpatientInfoService.getGeneralInfo(self.person_id)
             .then(function(info) {
                 self.inpatient_info = info[0];
-                console.log(info[0]);
             });
 
 

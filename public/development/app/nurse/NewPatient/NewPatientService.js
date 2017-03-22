@@ -22,18 +22,3 @@ angular
 
     });
 
-
-/*
- $http.get('/emergency/patients').success(function(patients) {
- $scope.patients_info = patients.data;
- console.log(patients);
- });
-
- $scope.save = function (patient, NewPatient){
- $scope.response={};
- if(NewPatient.$valid){
- $http.post("/emergency/addNewInpatient", patient).success(function (answ) {
- $scope.response=answ;
- });
- }
- };*/

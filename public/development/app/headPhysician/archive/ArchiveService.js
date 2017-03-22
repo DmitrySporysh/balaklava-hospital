@@ -13,7 +13,6 @@ angular
                 .error(function(err) {
                     defer.reject(err);
                 });
-            console.log(defer.promise);
             return defer.promise;
         }
 

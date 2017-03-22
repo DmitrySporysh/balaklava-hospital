@@ -78,7 +78,6 @@ angular
                 .then(function(){
                     $window.location.href =  "/";
                 });
-            console.log(defer.promise);
         }
 
         return {
