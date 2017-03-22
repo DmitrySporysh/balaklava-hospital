@@ -77,7 +77,6 @@ class ReceivedPatient extends Model
         'patient_id', 'marital_status', 'registration_nurse_id', 'received_date', 'fio', 'work_place',
         'residential_address', 'registration_address', 'phone', 'complaints', 'received_type',
         'inspection_protocol_id',
-
         'policy_oms', 'education', 'medical_insurance_company',
         'medical_company_sent', 'diagnosis_medical_company_sent',
         'diagnosis_complications_medical_company_sent'
