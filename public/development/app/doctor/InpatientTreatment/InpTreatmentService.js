@@ -33,13 +33,14 @@ angular
         function getInspections(id) {
             var defer=$q.defer();
 
-            $http.get('api/doctor/inpatient/'+id+'/inspections')
+            $http.get('api/doctor/inpatient/'+id+'/statesDynamics')
                 .success(function(response) {
                     defer.resolve(response);
                 })
                 .error(function(err) {
                     defer.reject(err);
                 });
+                console.log(defer.promise);
             return defer.promise;
         }
 
@@ -170,7 +171,6 @@ angular
                 return 'green';
 
             else
-                console.log(0);
                 return 'red';
 
         }

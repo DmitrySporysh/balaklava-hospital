@@ -6,9 +6,6 @@ angular
             templateUrl: PATHDIR+"/Register/Register.html",
             controller: 'RegisterCtrl',
             controllerAs: 'registerCtrl'
-            /*link: function(scope, element, attrs, loginCtrl) {
-             console.log(loginCtrl.name) ;//'myCtrl'
-             }*/
         };
     });
 

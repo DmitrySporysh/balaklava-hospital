@@ -12,6 +12,7 @@ angular
         InpatientTreatmentService.getGeneralInfo(self.emPerson_id)
             .then(function(generalInfo){
                 self.generalInfo = generalInfo[0];
+                console.log(self.generalInfo);
             });
     })
 
@@ -23,7 +24,6 @@ angular
         InpatientTreatmentService.getAnalyzes(self.emPerson_id)
             .then(function(analyzes){
                  self.analyzes = analyzes;
-                console.log(self.analyzes)
              });
 
         self.new_analysis = function (){
@@ -54,7 +54,6 @@ angular
         InpatientTreatmentService.getProcedures(self.emPerson_id)
             .then(function(procedures){
                 self.procedures = procedures;
-                console.log(procedures);
             });
         InpatientTreatmentService.getOperations(self.emPerson_id)
             .then(function(operations){
@@ -83,7 +82,6 @@ angular
         };
 
         self.setShownProcedure = function (procedure_id){
-            console.log(procedure_id);
             self.shownProcedure = self.procedures[procedure_id-1];
         };
     })
@@ -101,7 +99,6 @@ angular
             InpatientTreatmentService.newPrescription(self.emPerson_id, self.prescription)
                 .then(function(response) {
                     self.response = response;
-                    console.log(self.response);
                     self.prescriptions.unshift(response['data']);
                 });
         };

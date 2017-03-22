@@ -31,7 +31,6 @@
 <script type="text/javascript">
     $( document ).ready(function() {
         $('#test').on('click', function () {
-            console.log(12);
             sessionStorage.setItem('fio', '{{Session::get('fio')}}');
             sessionStorage.setItem('post', '{{Session::get('post')}}');
         });

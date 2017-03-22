@@ -6,7 +6,6 @@ angular
         OperationsService.getAllNotReadyOperations()
             .then(function(operations) {
                 self.operations = operations;
-                console.log(operations);
             });
 
         self.setShownOperationIndex = function (index) {

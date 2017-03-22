@@ -13,7 +13,6 @@ emergencyRoomAppControllers.controller('MainController', ['$scope', '$http', fun
    /* $scope.general=[{'header_title':'Поступившие больные'}];*/
     $http.get('/emergency/patients').success(function(patients) {
         $scope.patients_info = patients.data;
-        console.log(patients);
     });
 
     $scope.save = function (patient, NewPatient){

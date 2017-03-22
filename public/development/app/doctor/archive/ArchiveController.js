@@ -7,7 +7,6 @@ angular
         ArchiveService.getArchivePeople()
             .then(function (people) {
                 self.archivePeople = people.data;
-                console.log(people.data);
             });
 
         self.filter_info = {};
