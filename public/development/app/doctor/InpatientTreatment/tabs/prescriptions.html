@@ -7,20 +7,171 @@
     </div>
     <table class="plain-table__table">
         <thead class="plain-table__heading">
-        <tr>
-            <th>Дата назначения</th>
-            <th>Описание</th>
-            <th>Врач</th>
-        </tr>
+            <tr class='test-header'>
+                <th colspan="2">Назначения</th>
+                <th colspan="1">Исполнители</th>
+                <th colspan="10">Даты и отметки их выполнения</th>
+            </tr>
         </thead>
         <tbody class='plain-table__value'>
-        <tr ng-repeat="prescription in treatmentPrescr.prescriptions">
-            <td>{{prescription.date}}</td>
-            <td>{{prescription.description}}</td>
-            <td>{{prescription.doctor_fio}}</td>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>4 авг.</td>
+            <td>5 авг.</td>
+            <td>6 авг.</td>
+            <td>7 авг.</td>
+            <td>8 авг.</td>
+            <td>9 авг.</td>
+            <td>10 авг.</td>
+            <td>11 авг.</td>
+            <td>12 авг.</td>
+            <td>13 авг.</td>
+        </tr>
+        <tr>
+            <td>Режим  </td>
+            <td>палатный</td>
+            <td><input  class="patient-form__input" name="" value="врач м/c" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+        </tr>
+        <tr>
+            <td>Диета  </td>
+            <td>ОВД</td>
+            <td><input  class="patient-form__input" name="" value="врач м/c" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Подготовка к операции</td>
+            <td><input  class="patient-form__input" name="" value="врач м/c" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Amoksiclav-1,2гм,в\в х3 раза</td>
+            <td><input  class="patient-form__input" name="" value="врач м/c" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Ketorol-100mg,в\м,х3 раза</td>
+            <td><input  class="patient-form__input" name="" value="врач м/c" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Drotaverinе-2мл,в\м х2 раза	</td>
+            <td><input  class="patient-form__input" name="" value="врач м/c" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Sol.NaCl 0.9%-400ml+Sol Euphilini 2.4%-10ml,в\в кап х 1 раз </td>
+            <td><input  class="patient-form__input" name="" value="врач м/c" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Sol.Glucosae 5%-400ml+Insulini-6 Ед, в\в кап х 1 раз </td>
+            <td><input  class="patient-form__input" name="" value="врач м/c" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Sol.NaCl 0.9%-400ml,в\в кап х 1 раз</td>
+            <td><input  class="patient-form__input" name="" value="врач м/c" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="+" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
         </tr>
         </tbody>
     </table>
+    <div class="content-header__add content-header__add_right add-block">
+        <a class="add-block__button button" href="">
+            <span class="ti-save-alt patient__icon_white"></span>
+            <input class="patient-form__submit" ng-click="doctorEmPersonCtrl.saveProtocol()" type="submit" value="Сохранить">
+        </a>
+    </div>
 </div>
 
 

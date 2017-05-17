@@ -1,4 +1,10 @@
-<div class="help-block_85"></div>
+<div class="clearfix tabs-button">
+    <a class=" button button_right" download href='https://vk.com/doc47507016_445225858?hash=580d8e98190de0223b&dl=81fb0d547624047627' target='_blank'><span class="ti-plus add-block__icon"></span>Согласие</a>
+    <a class=" button button_right" download href='https://vk.com/doc47507016_445225859?hash=78567edaa9f24b1a8b&dl=3bcfc6dc87b02c8f8e' target='_blank'><span class="ti-plus add-block__icon"></span>Клин. разбор</a>
+    <a class=" button button_right" download href='https://vk.com/doc47507016_445225860?hash=0a0c202586672bff26&dl=3908e53d404c1417ac' target='_blank'><span class="ti-plus add-block__icon"></span>Выписной эпикриз</a>
+    <a class=" button button_right" download href='https://vk.com/doc47507016_445225861?hash=b51eff5838b0d771b3&dl=985c619a59b4a8ccbd' target='_blank'><span class="ti-plus add-block__icon"></span>Этапный эпикриз</a>
+    <a class=" button button_right" download href='https://vk.com/doc47507016_445225862?hash=8869ce3fb84d0c6ea8&dl=4bcf4f105cbdbe8d2a' target='_blank'><span class="ti-plus add-block__icon"></span>5 препаратов</a>
+</div>
 <ul class="accordion">
     <li>
         <div class="accordion__title  accordion__title_active">
@@ -9,162 +15,170 @@
                 <table class="plain-table__table">
                     <tbody class='plain-table__value plain-table__value_non-bordered'>
                     <tr>
-                        <td class="patient-form__label">Отделение</td>
+                        <td class="patient-form__label">ФИО</td>
                         <td class="patient-form__value">
-                            <span >{{treatmentGeneral.generalInfo.department_name}}</span>
+                            <input  class="patient-form__input" name="fio" value="Иванов Иван Иванович" title="Person Name" type="text">
                         </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">Диагноз</td>
+                        <td class="patient-form__label">№ н/б</td>
                         <td class="patient-form__value">
-                            <span >{{treatmentGeneral.generalInfo.diagnosis}}</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="patient-form__label">Лечащий врач</td>
-                        <td class="patient-form__value">
-                            <span >{{treatmentGeneral.generalInfo.attending_doctor_fio}}</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="patient-form__label">Палата</td>
-                        <td class="patient-form__value">
-                            <span >{{treatmentGeneral.generalInfo.chamber_number}}</span>
+                            <input  class="patient-form__input" name="fio" value="5903" title="Person Name" type="text">
                         </td>
                     </tr>
                     <tr>
                         <td class="patient-form__label">Дата поступления</td>
                         <td class="patient-form__value">
-                            <span >{{treatmentGeneral.generalInfo.start_date}}</span>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-
-            </div>
-        </div>
-    </li>
-
-    <li>
-        <div class="accordion__title  accordion__title_active">
-            <span class="accordion__icon ti-support"></span>Основные данные
-        </div>
-        <div  class="accordion__content">
-            <div class="plain-table__table-wrapper clearfix">
-                <table class="plain-table__table">
-                    <tbody class='plain-table__value plain-table__value_non-bordered'>
-                    <tr>
-                        <td class="patient-form__label">ФИО</td>
-                        <td class="patient-form__value">
-                            <span >{{treatmentGeneral.generalInfo.fio}}</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="patient-form__label">Пол</td>
-                        <td class="patient-form__value">
-                            <span >{{treatmentGeneral.generalInfo.sex}}</span>
+                            <input  class="patient-form__input" name="fio" value="среда, августа 10, 2016" title="Person Name" type="text">
                         </td>
                     </tr>
                     <tr>
                         <td class="patient-form__label">Дата рождения</td>
                         <td class="patient-form__value">
-                            <span >{{treatmentGeneral.generalInfo.birth_date}}</span>
-                            <!-- <span class="ti-calendar patient__icon"></span>-->
+                            <input  class="patient-form__input" name="fio" value="2/3/1960" title="Person Name" type="text">
                         </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">Место работы/учебы</td>
+                        <td class="patient-form__label">Место жительства</td>
                         <td class="patient-form__value">
-                            <span >{{treatmentGeneral.generalInfo.work_place}}</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="patient-form__label">Образование</td>
-                        <td class="patient-form__value">
-                            <span >{{treatmentGeneral.generalInfo.education}}</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="patient-form__label">Семейное положение</td>
-                        <td class="patient-form__value">
-                            <span >{{treatmentGeneral.generalInfo.marital_status}}</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="patient-form__label">Адрес проживания</td>
-                        <td class="patient-form__value">
-                            <span >{{treatmentGeneral.generalInfo.residential_address}}</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="patient-form__label">Адрес по паспорту</td>
-                        <td class="patient-form__value">
-                            <span >{{treatmentGeneral.generalInfo.registration_address}}</span>
+                            <input  class="patient-form__input" name="fio" value="" title="Person Name" type="text">
                         </td>
                     </tr>
                     <tr>
                         <td class="patient-form__label">Телефон</td>
                         <td class="patient-form__value">
-                            <span >{{treatmentGeneral.generalInfo.phone}}</span>
+                            <input  class="patient-form__input" name="fio" value="" title="Person Name" type="text">
                         </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">Дата заселения</td>
+                        <td class="patient-form__label">Жалобы</td>
                         <td class="patient-form__value">
-                            <span >{{treatmentGeneral.generalInfo.start_date}}</span>
-                            <!--<span class="ti-calendar patient__icon"></span>-->
+                            <select class="patient-form__select" name="">
+                                <option value="Планово" selected="selected">Боли в поясничной области</option>
+                                <option value="Экстренно">Экстренно</option>
+                                <option value="По скорой">По скорой</option>
+                            </select>                        
                         </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">№ Страховки</td>
-                        <td class="patient-form__value">
-                            <span >{{treatmentGeneral.generalInfo.insurance_number}}</span>
+                        <td class="patient-form__label">Anamnesis morbi</td>
+                        <td>
+                            <textarea name="complaints" class="patient-form__textarea" rows="8">Болеет МКБ в течение 25-ти лет. Камневыделитель. В феврале 2016 г приступ почечной колики. На контрольном обследовании  имеется камень в н\ чашке до 20 мм. Обратилась в 9 г/б для определения дальнейшей тактики лечения. 
+                            </textarea>
                         </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">ОМС</td>
+                        <td class="patient-form__label">Anamnesis vitae</td>
                         <td class="patient-form__value">
-                            <span >{{treatmentGeneral.generalInfo.policy_oms}}</span>
+                            <textarea name="complaints" class="patient-form__textarea" rows="8">
+                            </textarea>
                         </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">Мед. страховая компания</td>
+                        <td class="patient-form__label">Аллергоанамнез</td>
                         <td class="patient-form__value">
-                            <span >{{treatmentGeneral.generalInfo.medical_insurance_company}}</span>
+                            <input  class="patient-form__input" name="" value="левомицетин, новокаин" title="Person Name" type="text">
                         </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">Наименование направившей мед организации</td>
+                        <td class="patient-form__label">Трудовой анамнез, место работы</td>
                         <td class="patient-form__value">
-                            <span >{{treatmentGeneral.generalInfo.medical_company_sent}}</span>
+                            <select class="patient-form__select" name="">
+                                <option value="Планово" selected="selected">пенсионер, в б\л не нуждается</option>
+                            </select> 
                         </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">Диагноз направившей мед организации</td>
+                        <td class="patient-form__label">Трансфузиологический анамнез</td>
                         <td class="patient-form__value">
-                            <span >{{treatmentGeneral.generalInfo.diagnosis_medical_company_sent}}</span>
+                            <input  class="patient-form__input" name="" value="не отягощен" title="Person Name" type="text">
                         </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">Осложнения основного диагноза, установленного направившей мед организацией</td>
+                        <td class="patient-form__label">Объективно при поступлении</td>
                         <td class="patient-form__value">
-                            <span >{{treatmentGeneral.generalInfo.diagnosis_complications_medical_company_sent}}</span>
+                            <textarea name="complaints" class="patient-form__textarea" rows="8">Состояние  удовлетворительное. Температура 36,9 С. Кожные покровы обычной окраски. Л/у доступные пальпации не увеличены. Дыхание в легких везикулярное. ЧД 16 в мин. Тоны сердца приглушены, ритмичные. АД 140/80, ЧСС 78 в мин. Живот не вздут, симметричный, мягкий, участвует в акте дыхания, чувствительный над лоном. Перистальтика выслушивается. С-м Щеткина-Блюмберга отр. Печень по краю реберной дуги. Стул в норме. Поясничная область не изменена. Почки не пальпируются. Пальпация их безболезненная. С-м "поколачивания" отриц   Мочевой пузырь пальпаторно и перкуторно не определяется. Мочится  самостоятельно.  Уретрита нет.  
+                            </textarea>
                         </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">Диагноз при поступлении</td>
+                        <td class="patient-form__label">Per rectum</td>
                         <td class="patient-form__value">
-                            <span >{{treatmentGeneral.generalInfo.diagnosis}}</span>
+                            <input  class="patient-form__input" name="" value="" title="Person Name" type="text">
                         </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">Группа крови</td>
+                        <td class="patient-form__label">Данные ПГИ</td>
                         <td class="patient-form__value">
-                            <span >{{treatmentGeneral.generalInfo.blood_type}}</span>
+                            <input  class="patient-form__input" name="" value="" title="Person Name" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Данные амбулаторного обследования</td>
+                        <td class="patient-form__value">
+                            <input  class="patient-form__input" name="" value="" title="Person Name" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Предварительный диагноз</td>
+                        <td class="patient-form__value">
+                            <input  class="patient-form__input" name="" value="" title="Person Name" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Показание для операции</td>
+                        <td class="patient-form__value">
+                            <input  class="patient-form__input" name="" value="Наличие камня н\ чашки почки, вызывающего  воспаление и нарушение функции почек. " title="Person Name" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Цель операции</td>
+                        <td class="patient-form__value">
+                            <input  class="patient-form__input" name="" value="Удаление камня" title="Person Name" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Операции</td>
+                        <td class="patient-form__value">
+                            <input  class="patient-form__input" name="" value="Комбинированная нефролитолапаксия. Стентирование справа." title="Person Name" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Дата операции</td>
+                        <td class="patient-form__value">
+                            <input  class="patient-form__input" name="" value="пятница, августа 05, 2016" title="Person Name" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Выписан</td>
+                        <td class="patient-form__value">
+                            <select class="patient-form__select" name="">
+                                <option value="Планово" selected="selected">с выздоровлением</option>
+                            </select> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Трудоспособность</td>
+                        <td class="patient-form__value">
+                            <select class="patient-form__select" name="">
+                                <option value="Планово" selected="selected">Востановлена полностью</option>
+                            </select> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="patient-form__label">Лист нетрудоспособности</td>
+                        <td class="patient-form__value">
+                            <input  class="patient-form__input" name="" value="нет" title="Person Name" type="text">
                         </td>
                     </tr>
                     </tbody>
                 </table>
+                <div class="content-header__add content-header__add_right add-block">
+                                        <a class="add-block__button button" href="">
+                                            <span class="ti-save-alt patient__icon_white"></span>
+                                            <input class="patient-form__submit" ng-click="doctorEmPersonCtrl.saveProtocol()" type="submit" value="Сохранить">
+                                        </a>
+                                    </div>
 
             </div>
         </div>

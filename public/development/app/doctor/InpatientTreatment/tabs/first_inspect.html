@@ -10,133 +10,113 @@
                     <tbody class='plain-table__value plain-table__value_non-bordered'>
                     <tr>
                         <td class="patient-form__label">Жалобы</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.complaints}}</td>
-                    </tr>
-                    <tr>
-                        <td class="patient-form__label">Из анамнеза</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.from_anamnesis}}</td>
-                    </tr>
-                    <tr>
-                        <td class="patient-form__label">В анамнезе</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.in_anamnesis}}</td>
-                    </tr>
-                    <tr>
-                        <td class="patient-form__label">Страховой анамнез</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.insurance_anamnesis}}</td>
-                    </tr>
-                    <tr>
-                        <td class="patient-form__label">Алерго анамнез</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.allergoanamnez}}</td>
-                    </tr>
-                    <tr>
-                        <td class="patient-form__label">Состояние больного</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.condition}}</td>
-                    </tr>
-                    <tr>
-                        <td class="patient-form__label">Сознание</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.consciousness}}</td>
-                    </tr>
-                    <tr>
-                        <td class="patient-form__label">Телосложение</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.body_type}}</td>
-                    </tr>
-                    <tr>
-                        <td class="patient-form__label">Питание</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.food}}</td>
-                    </tr>
-                    <tr>
-                        <td class="patient-form__label">Кожные покровы</td>
                         <td class="patient-form__value">
-                            {{inpatientTreatmentFirstInspect.firstInsp.skin}}
-                            <span ng-show="inpatientTreatmentFirstInspect.firstInsp.skin_extended">---</span>
-                            {{inpatientTreatmentFirstInspect.firstInsp.skin_extended}}</td>
+                            <select class="patient-form__select" name="">
+                                <option value="Планово" selected="selected">Боли в поясничной области</option>
+                                <option value="Экстренно">Экстренно</option>
+                                <option value="По скорой">По скорой</option>
+                            </select>                        
+                        </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">Тургор</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.turgor}}</td>
+                        <td class="patient-form__label">Anamnesis morbi</td>
+                        <td>
+                            <textarea name="complaints" class="patient-form__textarea" rows="8">Болеет МКБ в течение 25-ти лет. Камневыделитель. В феврале 2016 г приступ почечной колики. На контрольном обследовании  имеется камень в н\ чашке до 20 мм. Обратилась в 9 г/б для определения дальнейшей тактики лечения. 
+                            </textarea>
+                        </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">Зрачки</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.pupils}}</td>
+                        <td class="patient-form__label">Anamnesis vitae</td>
+                        <td class="patient-form__value">
+                            <textarea name="complaints" class="patient-form__textarea" rows="8">
+                            </textarea>
+                        </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">Язык</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.tongue}}
-                            <span ng-show="">---</span>
-                            {{inpatientTreatmentFirstInspect.firstInsp.tongue_extended}}</td>
+                        <td class="patient-form__label">Аллергоанамнез</td>
+                        <td class="patient-form__value">
+                            <input  class="patient-form__input" name="" value="левомицетин, новокаин" title="Person Name" type="text">
+                        </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">Аускультативно над лёгкими дыхание</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.auscultation}}
-                            <span ng-show="">---</span>
-                            {{inpatientTreatmentFirstInspect.firstInsp.auscultation_extended}}</td>
+                        <td class="patient-form__label">Трудовой анамнез, место работы</td>
+                        <td class="patient-form__value">
+                            <select class="patient-form__select" name="">
+                                <option value="Планово" selected="selected">пенсионер, в б\л не нуждается</option>
+                            </select> 
+                        </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">Перкуторно над лёгкими звук</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.percussion_sound}}</td>
+                        <td class="patient-form__label">Трансфузиологический анамнез</td>
+                        <td class="patient-form__value">
+                            <input  class="patient-form__input" name="" value="не отягощен" title="Person Name" type="text">
+                        </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">ЧДД</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.respiratory_movements_frequency_ChDD}}</td>
+                        <td class="patient-form__label">Объективно при поступлении</td>
+                        <td class="patient-form__value">
+                            <textarea name="complaints" class="patient-form__textarea" rows="8">Состояние  удовлетворительное. Температура 36,9 С. Кожные покровы обычной окраски. Л/у доступные пальпации не увеличены. Дыхание в легких везикулярное. ЧД 16 в мин. Тоны сердца приглушены, ритмичные. АД 140/80, ЧСС 78 в мин. Живот не вздут, симметричный, мягкий, участвует в акте дыхания, чувствительный над лоном. Перистальтика выслушивается. С-м Щеткина-Блюмберга отр. Печень по краю реберной дуги. Стул в норме. Поясничная область не изменена. Почки не пальпируются. Пальпация их безболезненная. С-м "поколачивания" отриц   Мочевой пузырь пальпаторно и перкуторно не определяется. Мочится  самостоятельно.  Уретрита нет.  
+                            </textarea>
+                        </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">Тоны сердца</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.heart_tones}}</td>
+                        <td class="patient-form__label">Per rectum</td>
+                        <td class="patient-form__value">
+                            <input  class="patient-form__input" name="" value="" title="Person Name" type="text">
+                        </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">Ритм</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.heart_rhythm}}
-                            <span ng-show="inpatientTreatmentFirstInspect.firstInsp.heart_rhythm_extended">---</span>
-                            {{inpatientTreatmentFirstInspect.firstInsp.heart_rhythm_extended}}</td>
+                        <td class="patient-form__label">Данные ПГИ</td>
+                        <td class="patient-form__value">
+                            <input  class="patient-form__input" name="" value="" title="Person Name" type="text">
+                        </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">Границы сердца</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.heart_boundaries}}
-                            <span ng-show="inpatientTreatmentFirstInspect.firstInsp.heart_boundaries_extended">---</span>
-                            {{inpatientTreatmentFirstInspect.firstInsp.heart_boundaries_extended}}</td>
+                        <td class="patient-form__label">Данные амбулаторного обследования</td>
+                        <td class="patient-form__value">
+                            <input  class="patient-form__input" name="" value="" title="Person Name" type="text">
+                        </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">ЧСС</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.heart_rate_ChSS}}</td>
+                        <td class="patient-form__label">Заключение</td>
+                        <td class="patient-form__value">
+                            <textarea name="complaints" class="patient-form__textarea" rows="8">МКБ, рецидив. Резидуальный камень н\чашки справа 20 мм.                                                                                                                                                                                                                                                                                                                                                           Гидронефроз справа 1 ст. Стриктура н\ 3 справа. Хронический калькулезный пиелонефрит , латентное течение. ХПН 0-1.  
+                            </textarea>
+                        </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">Мышечный тонус</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.muscle_tone}}
-                            <span ng-show="inpatientTreatmentFirstInspect.firstInsp.muscle_tone_extended">---</span>
-                            {{inpatientTreatmentFirstInspect.firstInsp.muscle_tone_extended}}</td>
+                        <td class="patient-form__label">Объективно при поступлении</td>
+                        <td class="patient-form__value">
+                            <textarea name="complaints" class="patient-form__textarea" rows="8">Состояние  удовлетворительное. Температура 36,9 С. Кожные покровы обычной окраски. Л/у доступные пальпации не увеличены. Дыхание в легких везикулярное. ЧД 16 в мин. Тоны сердца приглушены, ритмичные. АД 140/80, ЧСС 78 в мин. Живот не вздут, симметричный, мягкий, участвует в акте дыхания, чувствительный над лоном. Перистальтика выслушивается. С-м Щеткина-Блюмберга отр. Печень по краю реберной дуги. Стул в норме. Поясничная область не изменена. Почки не пальпируются. Пальпация их безболезненная. С-м "поколачивания" отриц   Мочевой пузырь пальпаторно и перкуторно не определяется. Мочится  самостоятельно.  Уретрита нет.  
+                            </textarea>
+                        </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">Движение в суставах</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.joint_motion}}</td>
+                        <td class="patient-form__label">Сопутствующий диагноз</td>
+                        <td class="patient-form__value">
+                            <textarea name="complaints" class="patient-form__textarea" rows="8">ИБС: АКС. САГ 2 ст, 2 ст, риск 3. Ожирение 3-4 ст. П\о вентральная грыжа. 													                                                                                                                                                                                                                                                                                                                                                          Гидронефроз справа 1 ст. Стриктура н\ 3 справа. Хронический калькулезный пиелонефрит , латентное течение. ХПН 0-1.  
+                            </textarea>
+                        </td>
                     </tr>
                     <tr>
-                        <td class="patient-form__label">Плотность живота</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.stomach_density}}</td>
-                    </tr>
-                    <tr>
-                        <td class="patient-form__label">Болезненность живота</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.stomach_pain}}
-                            <span ng-show="inpatientTreatmentFirstInspect.firstInsp.stomach_extended">---</span>
-                            {{inpatientTreatmentFirstInspect.firstInsp.stomach_extended}}</td>
-                    </tr>
-                    <tr>
-                        <td class="patient-form__label">В позе Ромберга</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.in_romberg_position}}</td>
-                    </tr>
-                    <tr>
-                        <td class="patient-form__label">Походка</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.gait}}
-                            <span ng-show="">---</span>
-                            {{inpatientTreatmentFirstInspect.firstInsp.gait_extended}}</td>
-                    </tr>
-                    <tr>
-                        <td class="patient-form__label">Стул</td>
-                        <td class="patient-form__value">{{inpatientTreatmentFirstInspect.firstInsp.stools}}
-                            <span ng-show="inpatientTreatmentFirstInspect.firstInsp.stools_extended">---</span>
-                            {{inpatientTreatmentFirstInspect.firstInsp.stools_extended}}</td>
+                        <td class="patient-form__label">Назначить</td>
+                        <td class="patient-form__value">
+                            <textarea name="complaints" class="patient-form__textarea" rows="8">Динамическое наблюдение, контроль жалоб, термометрия
+ОАК, ОАМ, б/х крови, коагулограмма, группа крови
+Стол ОВД3, режим палатный
+Консультация терапевта
+ЭКГ, Рентген грудной клетки,  п\ к отдела  позвоночника																					                                                                                                                                                                                                                                                                                                                                                          Гидронефроз справа 1 ст. Стриктура н\ 3 справа. Хронический калькулезный пиелонефрит , латентное течение. ХПН 0-1.  
+                            </textarea>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
+                <div class="content-header__add content-header__add_right add-block">
+                                        <a class="add-block__button button" href="">
+                                            <span class="ti-save-alt patient__icon_white"></span>
+                                            <input class="patient-form__submit" ng-click="doctorEmPersonCtrl.saveProtocol()" type="submit" value="Сохранить">
+                                        </a>
+                                    </div>
 
             </div>
         </div>

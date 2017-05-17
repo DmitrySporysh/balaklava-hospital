@@ -1,4 +1,5 @@
 <div class="clearfix tabs-button">
+    <a class=" button button_right" data-toggle="modal" data-target="#Vipisat"><span class="ti-plus add-block__icon"></span>Выписать</a>
     <a class=" button button_right" data-toggle="modal" data-target="#addCondition"><span class="ti-plus add-block__icon"></span>Обход</a>
     <a class=" button button_right" data-toggle="modal" data-target="#addOperation"><span class="ti-plus add-block__icon"></span>Операция</a>
     <a class=" button button_right" data-toggle="modal" data-target="#addProcedure"><span class="ti-plus add-block__icon"></span>Процедура</a>
@@ -6,29 +7,66 @@
 <ul class="accordion">
     <li>
         <div class="accordion__title  accordion__title_active">
-            <span class="accordion__icon ti-support"></span>Стационары
+            <span class="accordion__icon ti-support"></span>Клинический разбор
         </div>
         <div  class="accordion__content">
             <div class="plain-table__table-wrapper clearfix">
                 <table class="plain-table__table">
-                    <thead class="plain-table__heading">
-                    <tr>
-                        <th>Отделение</th>
-                        <th>Дата заселение</th>
-                        <th>Дата выписки</th>
-                        <th>Направлен в</th>
-                    </tr>
-                    </thead>
                     <tbody class='plain-table__value'>
-                    <!--<tr ng-repeat="analysis in analizes">
-                        <td>{{analysis.analysis_name}}</td>
-                        <td>{{analysis.analysis_description}}</td>
-                        <td>{{analysis.appointment_date}}</td>
-                        <td>{{analysis.doctor_fio}}</td>
-                        <td>{{analysis.ready_date}}</td>
-                        <td>{{analysis.result_description}}</td>
-                        <td>{{analysis.paths_to_files}}</td>
-                    </tr>-->
+                        <tr>
+                        <td class="patient-form__label">ФИО</td>
+                            <td class="patient-form__value">
+                                <input  class="patient-form__input" name="fio" value="Иванов Иван Иванович" title="Person Name" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="patient-form__label">№ н/б</td>
+                            <td class="patient-form__value">
+                                <input  class="patient-form__input" name="fio" value="5903" title="Person Name" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="patient-form__label">Дата поступления</td>
+                            <td class="patient-form__value">
+                                <input  class="patient-form__input" name="fio" value="среда, августа 10, 2016" title="Person Name" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="patient-form__label">Дата рождения</td>
+                            <td class="patient-form__value">
+                                <input  class="patient-form__input" name="fio" value="2/3/1960" title="Person Name" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="patient-form__label">Место жительства</td>
+                            <td class="patient-form__value">
+                                <input  class="patient-form__input" name="fio" value="" title="Person Name" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="patient-form__label">Телефон</td>
+                            <td class="patient-form__value">
+                                <input  class="patient-form__input" name="fio" value="" title="Person Name" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="patient-form__label">Клинический диагноз:</td>
+                            <td class="patient-form__value">
+                                <input  class="patient-form__input" name="fio" value="МКБ, рецидив. Резидуальный камень н\чашки справа 20 мм.                                                                                                                                                                                                                                                                                                                                                           Гидронефроз справа 1 ст. Хронический калькулезный пиелонефрит , латентное течение. ХПН 0-1							" title="Person Name" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="patient-form__label">Сопутствующий диагноз</td>
+                            <td class="patient-form__value">
+                                <input  class="patient-form__input" name="fio" value="ИБС: АКС. САГ 2 ст, 2 ст, риск 3. Ожирение 3-4 ст. П\о вентральная грыжа. 							" title="Person Name" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="patient-form__label">Планируемое оперативное вмешательство:</td>
+                            <td class="patient-form__value">
+                                <input  class="patient-form__input" name="fio" value="Комбинированная нефролитолапаксия. Стентирование справа. " title="Person Name" type="text">
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -179,11 +217,44 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="patient-form__label">Результат осмотра</td>
+                                    <td class="patient-form__label">Жалобы: </td>
                                     <td class="patient-form__value">
-                                        <input ng-model="treatmentDynamic.condition.description_extended" class="search-table__input" name="work_place" value="" type="text">
+                                        <select class="patient-form__select" name="">
+                                            <option value="Планово" selected="selected">Активно не предьявляет</option>
+                                            <option value="Экстренно">-</option>
+                                            <option value="По скорой">-</option>
+                                        </select>  
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td class="patient-form__label">Объективно: </td>
+                                    <td class="patient-form__value">
+                                        <textarea name="complaints" class="patient-form__textarea" rows="8"></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Стул:</td>
+                                    <td class="patient-form__value">
+                                        <input ng-model="treatmentDynamic.operation.preliminary_epicrisis" class="search-table__input" name="work_place" value="нет" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Диурез, мл:	</td>
+                                    <td class="patient-form__value">
+                                        <input ng-model="treatmentDynamic.operation.preliminary_epicrisis" class="search-table__input" name="work_place" value="2000" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Мочится:</td>
+                                    <td class="patient-form__value">
+                                        <textarea name="complaints" class="patient-form__textarea" rows="8"></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">На перевязке:	</td>
+                                    <td class="patient-form__value">
+                                        <textarea name="complaints" class="patient-form__textarea" rows="8"></textarea>
+                                    </td>
                                 </tbody>
                             </table>
                             <a class="add-block__button button" href="" ng-click="treatmentDynamic.newCondition()" data-dismiss="modal">
@@ -199,8 +270,8 @@
 </div>
 
 
-<div class="modal fade" id="addOperation">
-    <div class="modal-dialog">
+<div class="modal fade " id="addOperation">
+    <div class="modal-dialog modal_big">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -213,21 +284,108 @@
                             <table class="plain-table__table">
                                 <tbody class='plain-table__value plain-table__value_non-bordered'>
                                 <tr>
-                                    <td class="patient-form__label">Операция</td>
+                                    <td class="patient-form__label">Клинический диагноз:</td>
                                     <td class="patient-form__value">
-                                        <input ng-model="treatmentDynamic.operation.operation_name" class="search-table__input" name="work_place" value="" type="text">
+                                        <input ng-model="treatmentDynamic.operation.operation_name" class="search-table__input" name="work_place" value="МКБ, рецидив. Резидуальный камень н\чашки справа 20 мм.                                                                                                                                                                                                                                                                                                                                                           Гидронефроз справа 1 ст. Хронический калькулезный пиелонефрит , латентное течение. ХПН 0-1							" type="text">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="patient-form__label">Эпикриз</td>
+                                    <td class="patient-form__label">Сопутствующий диагноз:</td>
+                                    <td class="patient-form__value">
+                                        <input ng-model="treatmentDynamic.operation.preliminary_epicrisis" class="search-table__input" name="work_place" value="ИБС: АКС. САГ 2 ст, 2 ст, риск 3. Ожирение 3-4 ст. П\о вентральная грыжа. 							" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Anamnesis morbi:</td>
+                                    <td class="patient-form__value">
+                                        <textarea name="complaints" class="patient-form__textarea" rows="8">Болеет МКБ в течение 25-ти лет. Камневыделитель. В феврале 2016 г приступ почечной колики. На контрольном обследовании  имеется камень в н\ чашке до 20 мм. Обратилась в 9 г/б для определения дальнейшей тактики лечения. 							
+
+                                        </textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Anamnesis vitae:</td>
+                                    <td class="patient-form__value">
+                                        <textarea name="complaints" class="patient-form__textarea" rows="8">ВИЧ, сифилис, гепатиты, сахарный диабет , туберкулез, ОИМ, ОНМК - отрицает. Артериальная гипертензия + . Операции -  аппендкэтомия, кесаррево сечение.    Хронические болезни: - Препараты- энап. 							
+                                        </textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Аллергоанамнез:</td>
+                                    <td class="patient-form__value">
+                                        <input ng-model="treatmentDynamic.operation.preliminary_epicrisis" class="search-table__input" name="work_place" value="левомицетин, новокаин" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Сопутствующий диагноз:</td>
+                                    <td class="patient-form__value">
+                                        <input ng-model="treatmentDynamic.operation.preliminary_epicrisis" class="search-table__input" name="work_place" value="ИБС: АКС. САГ 2 ст, 2 ст, риск 3. Ожирение 3-4 ст. П\о вентральная грыжа. 							" type="text">
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td class="patient-form__label">Трудовой анамнез, место работы:</td>
+                                    <td class="patient-form__value">
+                                        <input ng-model="treatmentDynamic.operation.preliminary_epicrisis" class="search-table__input" name="work_place" value="пенсионер, в б\л не нуждается" type="text">
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td class="patient-form__label">Трансфузиологический анамнез:</td>
+                                    <td class="patient-form__value">
+                                        <input ng-model="treatmentDynamic.operation.preliminary_epicrisis" class="search-table__input" name="work_place" value="не отягощен	" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Данные объективного обследования:</td>
+                                    <td class="patient-form__value">
+                                        <textarea name="complaints" class="patient-form__textarea" rows="8"></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Аллергоанамнез:</td>
                                     <td class="patient-form__value">
                                         <input ng-model="treatmentDynamic.operation.preliminary_epicrisis" class="search-table__input" name="work_place" value="" type="text">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="patient-form__label">Описание</td>
+                                    <td class="patient-form__label">Данные дополнит. исследований:</td>
                                     <td class="patient-form__value">
-                                        <input ng-model="treatmentDynamic.operation.operation_description" class="search-table__input" name="work_place" value="" type="text">
+                                        <input ng-model="treatmentDynamic.operation.preliminary_epicrisis" class="search-table__input" name="work_place" value="" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Показания  к операции:</td>
+                                    <td class="patient-form__value">
+                                        <input ng-model="treatmentDynamic.operation.preliminary_epicrisis" class="search-table__input" name="work_place" value="Наличие камня н\ чашки почки, вызывающего  воспаление и нарушение функции почек. " type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Цель операции:</td>
+                                    <td class="patient-form__value">
+                                        <input ng-model="treatmentDynamic.operation.preliminary_epicrisis" class="search-table__input" name="work_place" value="Удаление камня" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Планируемая операция:</td>
+                                    <td class="patient-form__value">
+                                        <input ng-model="treatmentDynamic.operation.preliminary_epicrisis" class="search-table__input" name="work_place" value="Комбинированная нефролитолапаксия. Стентирование справа. " type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Возможные осложнения:</td>
+                                    <td class="patient-form__value">
+                                        <input ng-model="treatmentDynamic.operation.preliminary_epicrisis" class="search-table__input" name="work_place" value="Стриктура,  кровотечение, перфорация, инфекционно- воспалительные изменения, необходимость открытого оперативного вмешательства." type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Операционная бригада:</td>
+                                    <td class="patient-form__value">
+                                        <input ng-model="treatmentDynamic.operation.preliminary_epicrisis" class="search-table__input" name="work_place" value="Еременко А. Н." type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Обезболивание:</td>
+                                    <td class="patient-form__value">
+                                        <input ng-model="treatmentDynamic.operation.preliminary_epicrisis" class="search-table__input" name="work_place" value="СМА	" type="text">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -282,3 +440,283 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="Vipisat">
+    <div class="modal-dialog modal_big_big">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Выписной эпикриз</h4>
+            </div>
+            <div class="modal-body">
+                <form name="NewProcedure" class="patient-form">
+                    <div  class="accordion__content">
+                        <div class="plain-table__table-wrapper clearfix">
+                            <table class="plain-table__table">
+                                <tbody class='plain-table__value plain-table__value_non-bordered'>
+                                <tr>
+                                    <td class="patient-form__label">Ф.И.О.:</td>
+                                    <td class="patient-form__value">
+                                        <input ng-model="treatmentDynamic.procedure.procedure_name" class="search-table__input" name="work_place" value="Иванова Е.П." type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Дата рождения:</td>
+                                    <td class="patient-form__value">
+                                        <input ng-model="treatmentDynamic.procedure.procedure_name" class="search-table__input" name="work_place" value="2/3/1960 " type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Место работы: </td>
+                                    <td class="patient-form__value">
+                                        <input ng-model="treatmentDynamic.procedure.procedure_name" class="search-table__input" name="work_place" value="пенсионер, в б\л не нуждается " type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Находился(-ась) в урологическом отделении:с</td>
+                                    <td class="patient-form__value">
+                                        <input ng-model="treatmentDynamic.procedure.procedure_name" class="search-table__input" name="work_place" value="8/10/2016 " type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Диагноз при поступлении: </td>
+                                    <td class="patient-form__value">
+                                        <textarea name="complaints" class="patient-form__textarea" rows="8">МКБ, рецидив. Резидуальный камень н\чашки справа 20 мм.                                                                                                                                                                                                                                                                                                                                                           Гидронефроз справа 1 ст. Стриктура н\ 3 справа. Хронический калькулезный пиелонефрит , латентное течение. ХПН 0-1.														
+                                        </textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Клинический диагноз:</td>
+                                    <td class="patient-form__value">
+                                        <textarea name="complaints" class="patient-form__textarea" rows="8">МКБ, рецидив. Резидуальный камень н\чашки справа 20 мм.                                                                                                                                                                                                                                                                                                                                                           Гидронефроз справа 1 ст. Хронический калькулезный пиелонефрит , латентное течение. ХПН 0-1														
+                                        </textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Сопутствующий_диагноз</td>
+                                    <td class="patient-form__value">
+                                        <textarea name="complaints" class="patient-form__textarea" rows="8">
+                                        </textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Жалобы:</td>
+                                    <td class="patient-form__value">
+                                        <textarea name="complaints" class="patient-form__textarea" rows="8">боли в поясничной области;справа 
+                                        </textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Anamnesis morbi:</td>
+                                    <td class="patient-form__value">
+                                        <textarea name="complaints" class="patient-form__textarea" rows="8">Болеет МКБ в течение 25-ти лет. Камневыделитель. В феврале 2016 г приступ почечной колики. На контрольном обследовании имеется камень в н\ чашке до 20 мм. Обратилась в 9 г/б для определения дальнейшей тактики лечения.  
+                                        </textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Anamnesis vitae:</td>
+                                    <td class="patient-form__value">
+                                        <textarea name="complaints" class="patient-form__textarea" rows="8">ВИЧ, сифилис, гепатиты, сахарный диабет , туберкулез, ОИМ, ОНМК - отрицает. Артериальная гипертензия + . Операции - аппендкэтомия, кесаррево сечение. Хронические болезни: - Препараты- энап.  
+                                        </textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Аллергоанамнез:</td>
+                                    <td class="patient-form__value">
+                                        <textarea name="complaints" class="patient-form__textarea" rows="8">левомицетин, новокаин 
+                                        </textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Трансфузиологический анамнез:</td>
+                                    <td class="patient-form__value">
+                                        <textarea name="complaints" class="patient-form__textarea" rows="8">не отягощен 
+                                        </textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Объективно при поступлении:</td>
+                                    <td class="patient-form__value">
+                                        <textarea name="complaints" class="patient-form__textarea" rows="8">Состояние удовлетворительное. Температура 36,9 С. Кожные покровы обычной окраски. Л/у доступные пальпации не увеличены. Дыхание в легких везикулярное. ЧД 16 в мин. Тоны сердца приглушены, ритмичные. АД 140/80, ЧСС 78 в мин. Живот не вздут, симметричный, мягкий, участвует в акте дыхания, чувствительный над лоном. Перистальтика выслушивается. С-м Щеткина-Блюмберга отр. Печень по краю реберной дуги. Стул в норме. Поясничная область не изменена. Почки не пальпируются. Пальпация их безболезненная. С-м "поколачивания" отриц Мочевой пузырь пальпаторно и перкуторно не определяется. Мочится самостоятельно. Уретрита нет.  
+
+                                        </textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Данные проведенного обследования:</td>
+                                    <td class="patient-form__value">
+                                        <textarea name="complaints" class="patient-form__textarea" rows="8">"ФЛГ (амб): без свежих инфильтративных изменений.
+Терапевт (амб): противопоказаний для оперативного лечения нет. "														
+                                        </textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Состояние</td>
+                                    <td class="patient-form__value">
+                                        <textarea name="complaints" class="patient-form__textarea" rows="8">Состояние при выписке удовлетворительное. Температура тела 36,7С. Гемодинамика стабильная. При пальпации область почек безболезненная. Болезненности по ходу мочеточников нет. Симптом «поколачивания» отрицательный с обеих сторон. При пальпации живот мягкий, безболезненный во всех отделах. Дизурии нет. Диурез достаточный. Моча без видимых патологических примесей. 														
+                                        </textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Общий анализ крови от 8/10/2016 </td>
+                                    <td class="patient-form__value">
+                                        <table class="plain-table__table">
+                                            <thead class="plain-table__heading">
+                                                <tr class='test-header'>
+                                                    <th>Гем.,  г/л</th>
+                                                    <th>Эритроциты х10(12)/л</th>
+                                                    <th>Тромбоциты х10(9)/л</th>
+                                                    <th>Лейкоциты 
+х10(9)/л</th>
+                                                    <th>П/я 
+%</th>
+                                                    <th>С/я 
+%</th>
+                                                    <th>Эоз 
+%</th>
+                                                    <th>Баз 
+%</th>
+                                                    <th>Лф 
+%</th>
+                                                    <th>Мон %</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class='plain-table__value'>
+                                            <tr>
+                                                <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+            <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Общий анализ мочи от 8/10/2016 </td>
+                                    <td class="patient-form__value">
+                                        <table class="plain-table__table">
+                                            <thead class="plain-table__heading">
+                                                <tr class='test-header'>
+                                                    <th>рН мочи</th>
+                                                    <th>Белок, г/л</th>
+                                                    <th>Плотность</th>
+                                                    <th>Лейкоциты х10(9)/л</th>
+                                                    <th>Эритроциты в поле зрения"</th1>
+                                                    <th>Соли</th>
+                                                    <th>Бактерии</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class='plain-table__value'>
+                                            <tr>
+                                                <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+                                                <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+                                                <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+                                                <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+                                                <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+                                                <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+                                                <td><input  class="patient-form__input" name="" value="" title="Person Name" type="text"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">AT IG к Treponema pallidum						</td>
+                                    <td class="patient-form__value">
+                                        <textarea name="complaints" class="patient-form__textarea" rows="8">отрицательно		
+                                        </textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">Суммарная лучевая нагрузка за время госпитализации:					</td>
+                                    <td class="patient-form__value">
+                                        <textarea name="complaints" class="patient-form__textarea" rows="8">	мкЗв	
+                                        </textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">			Группа крови:		</td>
+                                    <td class="patient-form__value">
+                                        <textarea name="complaints" class="patient-form__textarea" rows="8">	А(II) вторая, Rh(+) положительная 
+	
+                                        </textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">			ЭКГ		</td>
+                                    <td class="patient-form__value">
+                                        <textarea name="complaints" class="patient-form__textarea" rows="8">		
+                                        </textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">			Посев мочи		</td>
+                                    <td class="patient-form__value">
+                                        <textarea name="complaints" class="patient-form__textarea" rows="8">		От выдачи справки о стоимости медицинской помощи, оказанной застрахованному лицу в рамках ОМС отказался(-ась). 
+
+                                        </textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">			Выписан:		</td>
+                                    <td class="patient-form__value">
+                                        <select class="patient-form__select" name="">
+                                            <option value="Планово" selected="selected">с выздоровлением</option>
+                                            <option value="Экстренно">-</option>
+                                            <option value="По скорой">-</option>
+                                        </select>  
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">		Трудоспособность			</td>
+                                    <td class="patient-form__value">
+                                        <select class="patient-form__select" name="">
+                                            <option value="Планово" selected="selected">восстановлена полностью </option>
+                                            <option value="Экстренно">-</option>
+                                            <option value="По скорой">-</option>
+                                        </select>  
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">		Лист нетрудоспособности:			</td>
+                                    <td class="patient-form__value">
+                                        <input  class="patient-form__input" name="fio" value="Нет" title="Person Name" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">		Явка в поликлинику по м/ж			</td>
+                                    <td class="patient-form__value">
+                                        <input  class="patient-form__input" name="fio" value="Нет" title="Person Name" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="patient-form__label">		Рекомендовано			</td>
+                                    <td class="patient-form__value">
+                                        <textarea name="complaints" class="patient-form__textarea" rows="8"> Гидравлическое бужирование, антисклеротическое  ФТЛ (лидаза, глюкокортикоиды)
+                                        .Дальнейшая тактика лечения будет определена после гистологической верификации диагноза. Получить через 10-14 суток  результаты гистологического исследования (с 14-00 до 15-30, тел.636277) 
+                                        </textarea>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <a class="add-block__button button" href="" ng-click="treatmentDynamic.newProcedure()" data-dismiss="modal">
+                                <span class="ti-save-alt patient__icon_white"></span>
+                                <input class="patient-form__submit" type="submit" value="Выписать">
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!---->

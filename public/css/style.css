@@ -171,6 +171,7 @@ body {
 .nav {
     background: #323945;
     height: 66px;
+    display: none;
 }
 
 .nav__list {

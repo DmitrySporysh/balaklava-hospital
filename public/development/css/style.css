@@ -15,6 +15,18 @@
     color: #444444;
 }
 
+.modal_big {
+    width: 900px;
+}
+
+.modal_big_big {
+    width: 1200px;
+}
+
+.test-header th {
+    text-align: center;
+}
+
 
 body {
     font-family: "Roboto";
